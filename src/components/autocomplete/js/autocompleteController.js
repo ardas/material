@@ -34,7 +34,7 @@
     self.getCurrentDisplayValue = getCurrentDisplayValue;
     self.fetch = $mdUtil.debounce(fetchResults);
     self.messages = [];
-
+    self.update = handleSearchText;
     //-- While the mouse is inside of the dropdown, we don't want to handle input blur
     //-- This is to allow the user to scroll the list without causing it to hide
     self.listEnter = function () { noBlur = true; };
