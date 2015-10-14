@@ -8,7 +8,7 @@
 angular.module('material.083fork.components.input', [
   'material.083fork.core'
 ])
-  .directive('mdInputContainer', mdInputContainerDirective)
+  .directive('md083forkInputContainer', mdInputContainerDirective)
   .directive('label', labelDirective)
   .directive('input', inputTextareaDirective)
   .directive('textarea', inputTextareaDirective)
@@ -17,15 +17,15 @@ angular.module('material.083fork.components.input', [
 
 /**
  * @ngdoc directive
- * @name mdInputContainer
+ * @name md083forkInputContainer
  * @module material.components.input
  *
  * @restrict E
  *
  * @description
- * `<md-input-container>` is the parent of any input or textarea element.
+ * `<md083fork-input-container>` is the parent of any input or textarea element.
  *
- * Input and textarea elements will not behave properly unless the md-input-container
+ * Input and textarea elements will not behave properly unless the md083fork-input-container
  * parent is provided.
  *
  * @param md-is-error {expression=} When the given expression evaluates to true, the input container will go into error state. Defaults to erroring if the input has been touched and is invalid.
@@ -34,15 +34,15 @@ angular.module('material.083fork.components.input', [
  * @usage
  * <hljs lang="html">
  *
- * <md-input-container>
+ * <md083fork-input-container>
  *   <label>Username</label>
  *   <input type="text" ng-model="user.name">
- * </md-input-container>
+ * </md083fork-input-container>
  *
- * <md-input-container>
+ * <md083fork-input-container>
  *   <label>Description</label>
  *   <textarea ng-model="user.description"></textarea>
- * </md-input-container>
+ * </md083fork-input-container>
  *
  * </hljs>
  */
@@ -84,7 +84,7 @@ function mdInputContainerDirective($md083forkTheming, $parse) {
 function labelDirective() {
   return {
     restrict: 'E',
-    require: '^?mdInputContainer',
+    require: '^?md083forkInputContainer',
     link: function(scope, element, attr, containerCtrl) {
       if (!containerCtrl || attr.mdNoFloat) return;
 
@@ -103,22 +103,22 @@ function labelDirective() {
  * @module material.components.input
  *
  * @description
- * Use the `<input>` or the  `<textarea>` as a child of an `<md-input-container>`.
+ * Use the `<input>` or the  `<textarea>` as a child of an `<md083fork-input-container>`.
  *
  * @param {number=} md-maxlength The maximum number of characters allowed in this input. If this is specified, a character counter will be shown underneath the input.<br/><br/>
  * The purpose of **`md-maxength`** is exactly to show the max length counter text. If you don't want the counter text and only need "plain" validation, you can use the "simple" `ng-maxlength` or maxlength attributes.
  *
  * @usage
  * <hljs lang="html">
- * <md-input-container>
+ * <md083fork-input-container>
  *   <label>Color</label>
  *   <input type="text" ng-model="color" required md-maxlength="10">
- * </md-input-container>
+ * </md083fork-input-container>
  * </hljs>
  * <h3>With Errors (uses [ngMessages](https://docs.angularjs.org/api/ngMessages))</h3>
  * <hljs lang="html">
  * <form name="userForm">
- *   <md-input-container>
+ *   <md083fork-input-container>
  *     <label>Last Name</label>
  *     <input name="lastName" ng-model="lastName" required md-maxlength="10" minlength="4">
  *     <div ng-messages="userForm.lastName.$error" ng-show="userForm.bio.$dirty">
@@ -126,15 +126,15 @@ function labelDirective() {
  *       <div ng-message="md-maxlength">That's too long!</div>
  *       <div ng-message="minlength">That's too short!</div>
  *     </div>
- *   </md-input-container>
- *   <md-input-container>
+ *   </md083fork-input-container>
+ *   <md083fork-input-container>
  *     <label>Biography</label>
  *     <textarea name="bio" ng-model="biography" required md-maxlength="150"></textarea>
  *     <div ng-messages="userForm.bio.$error" ng-show="userForm.bio.$dirty">
  *       <div ng-message="required">This is required!</div>
  *       <div ng-message="md-maxlength">That's too long!</div>
  *     </div>
- *   </md-input-container>
+ *   </md083fork-input-container>
  * </form>
  * </hljs>
  *
@@ -145,7 +145,7 @@ function labelDirective() {
 function inputTextareaDirective($md083forkUtil, $window) {
   return {
     restrict: 'E',
-    require: ['^?mdInputContainer', '?ngModel'],
+    require: ['^?md083forkInputContainer', '?ngModel'],
     link: postLink
   };
 
@@ -157,7 +157,7 @@ function inputTextareaDirective($md083forkUtil, $window) {
 
     if ( !containerCtrl ) return;
     if (containerCtrl.input) {
-      throw new Error("<md-input-container> can only have *one* <input> or <textarea> child element!");
+      throw new Error("<md083fork-input-container> can only have *one* <input> or <textarea> child element!");
     }
     containerCtrl.input = element;
 
@@ -263,7 +263,7 @@ function inputTextareaDirective($md083forkUtil, $window) {
 function mdMaxlengthDirective($animate) {
   return {
     restrict: 'A',
-    require: ['ngModel', '^mdInputContainer'],
+    require: ['ngModel', '^md083forkInputContainer'],
     link: postLink
   };
 
@@ -314,7 +314,7 @@ function mdMaxlengthDirective($animate) {
 function placeholderDirective() {
   return {
     restrict: 'A',
-    require: '^^?mdInputContainer',
+    require: '^^?md083forkInputContainer',
     link: postLink
   };
 

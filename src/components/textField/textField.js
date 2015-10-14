@@ -26,8 +26,8 @@ function mdTextFloatDirective($md083forkTheming, $md083forkUtil, $parse, $log) {
     },
     compile : function(element, attr) {
 
-      $log.warn('<md-text-float> is deprecated. Please use `<md-input-container>` and `<input>`.' + 
-                'More information at http://material.angularjs.org/#/api/material.components.input/directive/mdInputContainer');
+      $log.warn('<md-text-float> is deprecated. Please use `<md083fork-input-container>` and `<input>`.' +
+                'More information at http://material.angularjs.org/#/api/material.components.input/directive/md083forkInputContainer');
 
       if ( angular.isUndefined(attr.mdFid) ) {
         attr.mdFid = $md083forkUtil.nextUid();
@@ -58,8 +58,8 @@ function mdInputGroupDirective($log) {
     restrict: 'CE',
     controller: ['$element', function($element) {
 
-      $log.warn('<md-input-group> is deprecated. Please use `<md-input-container>` and `<input>`.' + 
-                'More information at http://material.angularjs.org/#/api/material.components.input/directive/mdInputContainer');
+      $log.warn('<md-input-group> is deprecated. Please use `<md083fork-input-container>` and `<input>`.' +
+                'More information at http://material.angularjs.org/#/api/material.components.input/directive/md083forkInputContainer');
       this.setFocused = function(isFocused) {
         $element.toggleClass('md-input-focused', !!isFocused);
       };
@@ -80,8 +80,8 @@ function mdInputDirective($md083forkUtil, $log) {
     link: function(scope, element, attr, ctrls) {
       if ( !ctrls[0] ) return;
 
-      $log.warn('<md-input> is deprecated. Please use `<md-input-container>` and `<input>`.' + 
-                'More information at http://material.angularjs.org/#/api/material.components.input/directive/mdInputContainer');
+      $log.warn('<md-input> is deprecated. Please use `<md083fork-input-container>` and `<input>`.' +
+                'More information at http://material.angularjs.org/#/api/material.components.input/directive/md083forkInputContainer');
 
       var inputGroupCtrl = ctrls[0];
       var ngModelCtrl = ctrls[1];

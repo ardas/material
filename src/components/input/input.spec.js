@@ -1,11 +1,11 @@
-describe('md-input-container directive', function() {
+describe('md083fork-input-container directive', function() {
   beforeEach(module('material.083fork.components.input'));
 
   function setup(attrs, isForm) {
     var container;
     inject(function($rootScope, $compile) {
       container = $compile((isForm ? '<form>' : '') + 
-          '<md-input-container><input ' +(attrs||'')+ '><label></label></md-input-container>' +
+          '<md083fork-input-container><input ' +(attrs||'')+ '><label></label></md083fork-input-container>' +
           (isForm ? '<form>' : ''))($rootScope);
       $rootScope.$apply();
     });
@@ -29,7 +29,7 @@ describe('md-input-container directive', function() {
   }));
 
   it('should show error with given md-is-error expression', inject(function($rootScope, $compile) {
-    var el = $compile('<md-input-container md-is-error="$root.isError"><input ng-model="foo"></md-input-container>')($rootScope);
+    var el = $compile('<md083fork-input-container md-is-error="$root.isError"><input ng-model="foo"></md083fork-input-container>')($rootScope);
 
     $rootScope.$apply();
     expect(el).not.toHaveClass('md-input-invalid');
@@ -105,9 +105,9 @@ describe('md-input-container directive', function() {
 
     it('should work with a constant', inject(function($rootScope, $compile) {
       var el = $compile('<form name="form">' +
-                          '<md-input-container>' +
+                          '<md083fork-input-container>' +
                             '<input md-maxlength="5" ng-model="foo" name="foo">' +
-                          '</md-input-container>' +
+                          '</md083fork-input-container>' +
                         '</form>')($rootScope);
       $rootScope.$apply();
       expect($rootScope.form.foo.$error['md-maxlength']).toBeFalsy();
@@ -130,9 +130,9 @@ describe('md-input-container directive', function() {
 
     it('should add and remove maxlength element & error with expression', inject(function($rootScope, $compile) {
       var el = $compile('<form name="form">' +
-                          '<md-input-container>' +
+                          '<md083fork-input-container>' +
                             '<input md-maxlength="max" ng-model="foo" name="foo">' +
-                          '</md-input-container>' +
+                          '</md083fork-input-container>' +
                         '</form>')($rootScope);
 
       $rootScope.$apply();
