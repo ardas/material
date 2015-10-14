@@ -1,7 +1,7 @@
 
 angular.module('toastDemo1', ['ngMaterial'])
 
-.controller('AppCtrl', function($scope, $mdToast, $animate) {
+.controller('AppCtrl', function($scope, $md083forkToast, $animate) {
 
   $scope.toastPosition = {
     bottom: false,
@@ -17,7 +17,7 @@ angular.module('toastDemo1', ['ngMaterial'])
   };
 
   $scope.showCustomToast = function() {
-    $mdToast.show({
+    $md083forkToast.show({
       controller: 'ToastCtrl',
       templateUrl: 'toast-template.html',
       hideDelay: 6000,
@@ -26,8 +26,8 @@ angular.module('toastDemo1', ['ngMaterial'])
   };
 
   $scope.showSimpleToast = function() {
-    $mdToast.show(
-      $mdToast.simple()
+    $md083forkToast.show(
+      $md083forkToast.simple()
         .content('Simple Toast!')
         .position($scope.getToastPosition())
         .hideDelay(3000)
@@ -35,21 +35,21 @@ angular.module('toastDemo1', ['ngMaterial'])
   };
 
   $scope.showActionToast = function() {
-    var toast = $mdToast.simple()
+    var toast = $md083forkToast.simple()
           .content('Action Toast!')
           .action('OK')
           .highlightAction(false)
           .position($scope.getToastPosition());
 
-    $mdToast.show(toast).then(function() {
+    $md083forkToast.show(toast).then(function() {
       alert('You clicked \'OK\'.');
     });
   };
 
 })
 
-.controller('ToastCtrl', function($scope, $mdToast) {
+.controller('ToastCtrl', function($scope, $md083forkToast) {
   $scope.closeToast = function() {
-    $mdToast.hide();
+    $md083forkToast.hide();
   };
 });

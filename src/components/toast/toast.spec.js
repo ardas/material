@@ -1,12 +1,12 @@
-describe('$mdToast service', function() {
+describe('$md083forkToast service', function() {
   beforeEach(module('material.083fork.components.toast', 'ngAnimateMock', function($provide) {
   }));
 
   function setup(options) {
-    inject(function($mdToast, $rootScope, $animate) {
+    inject(function($md083forkToast, $rootScope, $animate) {
       $animate.triggerCallbacks();
       options = options || {};
-      $mdToast.show(options);
+      $md083forkToast.show(options);
       $rootScope.$apply();
       $animate.triggerCallbacks();
     });
@@ -15,11 +15,11 @@ describe('$mdToast service', function() {
   describe('simple()', function() {
     hasConfigMethods(['content', 'action', 'capsule', 'highlightAction', 'theme']);
 
-    it('supports a basic toast', inject(function($mdToast, $rootScope, $timeout, $animate) {
+    it('supports a basic toast', inject(function($md083forkToast, $rootScope, $timeout, $animate) {
       var rejected = false;
       var parent = angular.element('<div>');
-      $mdToast.show(
-        $mdToast.simple({
+      $md083forkToast.show(
+        $md083forkToast.simple({
           parent: parent,
           content: 'Do something',
           theme: 'some-theme',
@@ -30,28 +30,28 @@ describe('$mdToast service', function() {
       });
       $rootScope.$digest();
       expect(parent.find('span').text()).toBe('Do something');
-      expect(parent.find('md-toast')).toHaveClass('md-capsule');
-      expect(parent.find('md-toast').attr('md-theme')).toBe('some-theme');
+      expect(parent.find('md083fork-toast')).toHaveClass('md-capsule');
+      expect(parent.find('md083fork-toast').attr('md-theme')).toBe('some-theme');
       $animate.triggerCallbacks();
       $timeout.flush();
       $animate.triggerCallbacks();
       expect(rejected).toBe(true);
     }));
 
-    it('supports dynamicly updating the content', inject(function($mdToast, $rootScope, $rootElement) {
+    it('supports dynamicly updating the content', inject(function($md083forkToast, $rootScope, $rootElement) {
       var parent = angular.element('<div>');
-      $mdToast.showSimple('Hello world');
+      $md083forkToast.showSimple('Hello world');
       $rootScope.$digest();
-      $mdToast.updateContent('Goodbye world');
+      $md083forkToast.updateContent('Goodbye world');
       $rootScope.$digest();
       expect($rootElement.find('span').text()).toBe('Goodbye world');
     }));
 
-    it('supports an action toast', inject(function($mdToast, $rootScope, $animate) {
+    it('supports an action toast', inject(function($md083forkToast, $rootScope, $animate) {
       var resolved = false;
       var parent = angular.element('<div>');
-      $mdToast.show(
-        $mdToast.simple({
+      $md083forkToast.show(
+        $md083forkToast.simple({
           content: 'Do something',
           parent: parent
         })
@@ -75,14 +75,14 @@ describe('$mdToast service', function() {
         $interpolateProvider.startSymbol('[[').endSymbol(']]');
       }));
 
-      it('displays correctly', inject(function($mdToast, $rootScope) {
+      it('displays correctly', inject(function($md083forkToast, $rootScope) {
         var parent = angular.element('<div>');
-        var toast = $mdToast.simple({
+        var toast = $md083forkToast.simple({
           content: 'Do something',
           parent: parent
         }).action('Click me');
 
-        $mdToast.show(toast);
+        $md083forkToast.show(toast);
         $rootScope.$digest();
 
         var content = parent.find('span').eq(0);
@@ -95,8 +95,8 @@ describe('$mdToast service', function() {
 
     function hasConfigMethods(methods) {
       angular.forEach(methods, function(method) {
-        return it('supports config method #' + method, inject(function($mdToast) {
-          var basic = $mdToast.simple();
+        return it('supports config method #' + method, inject(function($md083forkToast) {
+          var basic = $md083forkToast.simple();
           expect(typeof basic[method]).toBe('function');
           expect(basic[method]()).toBe(basic);
         }));
@@ -108,64 +108,64 @@ describe('$mdToast service', function() {
     describe('options', function() {
       it('should hide current toast when showing new one', inject(function($rootElement) {
         setup({
-          template: '<md-toast class="one">'
+          template: '<md083fork-toast class="one">'
         });
-        expect($rootElement[0].querySelector('md-toast.one')).toBeTruthy();
-        expect($rootElement[0].querySelector('md-toast.two')).toBeFalsy();
-        expect($rootElement[0].querySelector('md-toast.three')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.one')).toBeTruthy();
+        expect($rootElement[0].querySelector('md083fork-toast.two')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.three')).toBeFalsy();
 
         setup({
-          template: '<md-toast class="two">'
+          template: '<md083fork-toast class="two">'
         });
-        expect($rootElement[0].querySelector('md-toast.one')).toBeFalsy();
-        expect($rootElement[0].querySelector('md-toast.two')).toBeTruthy();
-        expect($rootElement[0].querySelector('md-toast.three')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.one')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.two')).toBeTruthy();
+        expect($rootElement[0].querySelector('md083fork-toast.three')).toBeFalsy();
 
         setup({
-          template: '<md-toast class="three">'
+          template: '<md083fork-toast class="three">'
         });
-        expect($rootElement[0].querySelector('md-toast.one')).toBeFalsy();
-        expect($rootElement[0].querySelector('md-toast.two')).toBeFalsy();
-        expect($rootElement[0].querySelector('md-toast.three')).toBeTruthy();
+        expect($rootElement[0].querySelector('md083fork-toast.one')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.two')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.three')).toBeTruthy();
       }));
 
       it('should hide after duration', inject(function($timeout, $animate, $rootElement) {
         var parent = angular.element('<div>');
         setup({
-          template: '<md-toast />',
+          template: '<md083fork-toast />',
           hideTimeout: 1234
         });
-        expect($rootElement.find('md-toast').length).toBe(1);
+        expect($rootElement.find('md083fork-toast').length).toBe(1);
         $timeout.flush();
-        expect($rootElement.find('md-toast').length).toBe(0);
+        expect($rootElement.find('md083fork-toast').length).toBe(0);
       }));
 
       it('should have template', inject(function($timeout, $rootScope, $rootElement) {
         var parent = angular.element('<div>');
         setup({
-          template: '<md-toast>{{1}}234</md-toast>',
+          template: '<md083fork-toast>{{1}}234</md083fork-toast>',
           appendTo: parent
         });
-        var toast = $rootElement.find('md-toast');
+        var toast = $rootElement.find('md083fork-toast');
         $timeout.flush();
         expect(toast.text()).toBe('1234');
       }));
 
       it('should have templateUrl', inject(function($timeout, $rootScope, $templateCache, $rootElement) {
-        $templateCache.put('template.html', '<md-toast>hello, {{1}}</md-toast>');
+        $templateCache.put('template.html', '<md083fork-toast>hello, {{1}}</md083fork-toast>');
         setup({
           templateUrl: 'template.html',
         });
-        var toast = $rootElement.find('md-toast');
+        var toast = $rootElement.find('md083fork-toast');
         expect(toast.text()).toBe('hello, 1');
       }));
 
       it('should add position class to tast', inject(function($rootElement, $timeout) {
         setup({
-          template: '<md-toast>',
+          template: '<md083fork-toast>',
           position: 'top left'
         });
-        var toast = $rootElement.find('md-toast');
+        var toast = $rootElement.find('md083fork-toast');
         $timeout.flush();
         expect(toast.hasClass('md-top')).toBe(true);
         expect(toast.hasClass('md-left')).toBe(true);
@@ -175,35 +175,35 @@ describe('$mdToast service', function() {
     describe('lifecycle', function() {
       it('should hide current toast when showing new one', inject(function($rootElement) {
         setup({
-          template: '<md-toast class="one">'
+          template: '<md083fork-toast class="one">'
         });
-        expect($rootElement[0].querySelector('md-toast.one')).toBeTruthy();
-        expect($rootElement[0].querySelector('md-toast.two')).toBeFalsy();
-        expect($rootElement[0].querySelector('md-toast.three')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.one')).toBeTruthy();
+        expect($rootElement[0].querySelector('md083fork-toast.two')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.three')).toBeFalsy();
 
         setup({
-          template: '<md-toast class="two">'
+          template: '<md083fork-toast class="two">'
         });
-        expect($rootElement[0].querySelector('md-toast.one')).toBeFalsy();
-        expect($rootElement[0].querySelector('md-toast.two')).toBeTruthy();
-        expect($rootElement[0].querySelector('md-toast.three')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.one')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.two')).toBeTruthy();
+        expect($rootElement[0].querySelector('md083fork-toast.three')).toBeFalsy();
 
         setup({
-          template: '<md-toast class="three">'
+          template: '<md083fork-toast class="three">'
         });
-        expect($rootElement[0].querySelector('md-toast.one')).toBeFalsy();
-        expect($rootElement[0].querySelector('md-toast.two')).toBeFalsy();
-        expect($rootElement[0].querySelector('md-toast.three')).toBeTruthy();
+        expect($rootElement[0].querySelector('md083fork-toast.one')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.two')).toBeFalsy();
+        expect($rootElement[0].querySelector('md083fork-toast.three')).toBeTruthy();
       }));
 
       it('should add class to toastParent', inject(function($rootElement) {
         setup({
-          template: '<md-toast>'
+          template: '<md083fork-toast>'
         });
         expect($rootElement.hasClass('md-toast-open-bottom')).toBe(true);
 
         setup({
-          template: '<md-toast>',
+          template: '<md083fork-toast>',
           position: 'top'
         });
         expect($rootElement.hasClass('md-toast-open-top')).toBe(true);

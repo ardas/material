@@ -1,5 +1,5 @@
 // See height set globally, depended on by buttons
-md-toast {
+md083fork-toast {
   display: flex;
   position:absolute;
   box-sizing: border-box;
@@ -76,7 +76,7 @@ md-toast {
 
 
 @media (max-width: $layout-breakpoint-sm) {
-  md-toast {
+  md083fork-toast {
     left: 0;
     right: 0;
     width: 100%;
@@ -91,7 +91,7 @@ md-toast {
   }
 }
 @media (min-width: $layout-breakpoint-sm) {
-  md-toast {
+  md083fork-toast {
     min-width: 288px;
     &.md-bottom {
       bottom: $toast-margin;

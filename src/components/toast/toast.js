@@ -11,8 +11,8 @@ angular.module('material.083fork.components.toast', [
   'material.083fork.core',
   'material.083fork.components.button'
 ])
-  .directive('mdToast', MdToastDirective)
-  .provider('$mdToast', MdToastProvider);
+  .directive('md083forkToast', MdToastDirective)
+  .provider('$md083forkToast', MdToastProvider);
 
 function MdToastDirective() {
   return {
@@ -22,16 +22,16 @@ function MdToastDirective() {
 
 /**
  * @ngdoc service
- * @name $mdToast
+ * @name $md083forkToast
  * @module material.components.toast
  *
  * @description
- * `$mdToast` is a service to build a toast nofication on any position
+ * `$md083forkToast` is a service to build a toast nofication on any position
  * on the screen with an optional duration, and provides a simple promise API.
  *
  *
  * ## Restrictions on custom toasts
- * - The toast's template must have an outer `<md-toast>` element.
+ * - The toast's template must have an outer `<md083fork-toast>` element.
  * - For a toast action, use element with class `md-action`.
  * - Add the class `md-capsule` for curved corners.
  *
@@ -46,10 +46,10 @@ function MdToastDirective() {
  *
  * <hljs lang="js">
  * var app = angular.module('app', ['ngMaterial']);
- * app.controller('MyController', function($scope, $mdToast) {
+ * app.controller('MyController', function($scope, $md083forkToast) {
  *   $scope.openToast = function($event) {
- *     $mdToast.show($mdToast.simple().content('Hello!'));
- *     // Could also do $mdToast.showSimple('Hello');
+ *     $md083forkToast.show($md083forkToast.simple().content('Hello!'));
+ *     // Could also do $md083forkToast.showSimple('Hello');
  *   };
  * });
  * </hljs>
@@ -57,35 +57,35 @@ function MdToastDirective() {
 
 /**
  * @ngdoc method
- * @name $mdToast#showSimple
+ * @name $md083forkToast#showSimple
  * 
  * @description
  * Convenience method which builds and shows a simple toast.
  *
- * @returns {promise} A promise that can be resolved with `$mdToast.hide()` or
- * rejected with `$mdToast.cancel()`.
+ * @returns {promise} A promise that can be resolved with `$md083forkToast.hide()` or
+ * rejected with `$md083forkToast.cancel()`.
  *
  */
 
  /**
  * @ngdoc method
- * @name $mdToast#simple
+ * @name $md083forkToast#simple
  *
  * @description
  * Builds a preconfigured toast.
  *
- * @returns {obj} a `$mdToastPreset` with the chainable configuration methods:
+ * @returns {obj} a `$md083forkToastPreset` with the chainable configuration methods:
  *
- * - $mdToastPreset#content(string) - sets toast content to string
- * - $mdToastPreset#action(string) - adds an action button, which resolves the promise returned from `show()` if clicked.
- * - $mdToastPreset#highlightAction(boolean) - sets action button to be highlighted
- * - $mdToastPreset#capsule(boolean) - adds 'md-capsule' class to the toast (curved corners)
- * - $mdToastPreset#theme(boolean) - sets the theme on the toast to theme (default is `$md083forkThemingProvider`'s default theme)
+ * - $md083forkToastPreset#content(string) - sets toast content to string
+ * - $md083forkToastPreset#action(string) - adds an action button, which resolves the promise returned from `show()` if clicked.
+ * - $md083forkToastPreset#highlightAction(boolean) - sets action button to be highlighted
+ * - $md083forkToastPreset#capsule(boolean) - adds 'md-capsule' class to the toast (curved corners)
+ * - $md083forkToastPreset#theme(boolean) - sets the theme on the toast to theme (default is `$md083forkThemingProvider`'s default theme)
  */
 
 /**
  * @ngdoc method
- * @name $mdToast#updateContent
+ * @name $md083forkToast#updateContent
  * 
  * @description
  * Updates the content of an existing toast. Useful for updating things like counts, etc.
@@ -94,26 +94,26 @@ function MdToastDirective() {
 
  /**
  * @ngdoc method
- * @name $mdToast#build
+ * @name $md083forkToast#build
  *
  * @description
- * Creates a custom `$mdToastPreset` that you can configure.
+ * Creates a custom `$md083forkToastPreset` that you can configure.
  *
- * @returns {obj} a `$mdToastPreset` with the chainable configuration methods for shows' options (see below).
+ * @returns {obj} a `$md083forkToastPreset` with the chainable configuration methods for shows' options (see below).
  */
 
  /**
  * @ngdoc method
- * @name $mdToast#show
+ * @name $md083forkToast#show
  *
  * @description Shows the toast.
  *
- * @param {object} optionsOrPreset Either provide an `$mdToastPreset` returned from `simple()`
+ * @param {object} optionsOrPreset Either provide an `$md083forkToastPreset` returned from `simple()`
  * and `build()`, or an options object with the following properties:
  *
  *   - `templateUrl` - `{string=}`: The url of an html template file that will
  *     be used as the content of the toast. Restrictions: the template must
- *     have an outer `md-toast` element.
+ *     have an outer `md083fork-toast` element.
  *   - `template` - `{string=}`: Same as templateUrl, except this is an actual
  *     template string.
  *   - `scope` - `{object=}`: the scope to link the template / controller to. If none is specified, it will create a new child scope.
@@ -138,16 +138,16 @@ function MdToastDirective() {
  *   - `parent` - `{element=}`: The element to append the toast to. Defaults to appending
  *     to the root element of the application.
  *
- * @returns {promise} A promise that can be resolved with `$mdToast.hide()` or
- * rejected with `$mdToast.cancel()`.
+ * @returns {promise} A promise that can be resolved with `$md083forkToast.hide()` or
+ * rejected with `$md083forkToast.cancel()`.
  */
 
 /**
  * @ngdoc method
- * @name $mdToast#hide
+ * @name $md083forkToast#hide
  *
  * @description
- * Hide an existing toast and resolve the promise returned from `$mdToast.show()`.
+ * Hide an existing toast and resolve the promise returned from `$md083forkToast.show()`.
  *
  * @param {*=} response An argument for the resolved promise.
  *
@@ -157,11 +157,11 @@ function MdToastDirective() {
 
 /**
  * @ngdoc method
- * @name $mdToast#cancel
+ * @name $md083forkToast#cancel
  *
  * @description
  * Hide the existing toast and reject the promise returned from
- * `$mdToast.show()`.
+ * `$md083forkToast.show()`.
  *
  * @param {*=} response An argument for the rejected promise.
  *
@@ -171,7 +171,7 @@ function MdToastDirective() {
 
 function MdToastProvider($$083forkInterimElementProvider) {
   var activeToastContent;
-  var $mdToast = $$083forkInterimElementProvider('$mdToast')
+  var $md083forkToast = $$083forkInterimElementProvider('$md083forkToast')
     .setDefaults({
       methods: ['position', 'hideDelay', 'capsule'],
       options: toastDefaultOptions
@@ -179,15 +179,15 @@ function MdToastProvider($$083forkInterimElementProvider) {
     .addPreset('simple', {
       argOption: 'content',
       methods: ['content', 'action', 'highlightAction', 'theme'],
-      options: /* @ngInject */ function($mdToast, $md083forkTheming) {
+      options: /* @ngInject */ function($md083forkToast, $md083forkTheming) {
         var opts = {
           template: [
-            '<md-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">',
+            '<md083fork-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">',
               '<span flex>{{ toast.content }}</span>',
               '<md-button class="md-action" ng-if="toast.action" ng-click="toast.resolve()" ng-class="{\'md-highlight\': toast.highlightAction}">',
                 '{{ toast.action }}',
               '</md-button>',
-            '</md-toast>'
+            '</md083fork-toast>'
           ].join(''),
           controller: /* @ngInject */ function mdToastCtrl($scope) {
             var self = this;
@@ -195,7 +195,7 @@ function MdToastProvider($$083forkInterimElementProvider) {
               self.content = activeToastContent;
             });
             this.resolve = function() {
-              $mdToast.hide();
+              $md083forkToast.hide();
             };
           },
           theme: $md083forkTheming.defaultTheme(),
@@ -209,10 +209,10 @@ function MdToastProvider($$083forkInterimElementProvider) {
       activeToastContent = newContent;
     });
 
-    return $mdToast;
+    return $md083forkToast;
 
   /* @ngInject */
-  function toastDefaultOptions($timeout, $animate, $mdToast) {
+  function toastDefaultOptions($timeout, $animate, $md083forkToast) {
     return {
       onShow: onShow,
       onRemove: onRemove,
@@ -232,7 +232,7 @@ function MdToastProvider($$083forkInterimElementProvider) {
       options.onSwipe = function(ev, gesture) {
         //Add swipeleft/swiperight class to element so it can animate correctly
         element.addClass('md-' + ev.type.replace('$md.',''));
-        $timeout($mdToast.cancel);
+        $timeout($md083forkToast.cancel);
       };
       element.on('$md.swipeleft $md.swiperight', options.onSwipe);
       return $animate.enter(element, options.parent);

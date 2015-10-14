@@ -17,9 +17,9 @@ angular.module('material.083fork.core')
  * elements.
  *
  * ```js
- * app.service('$mdToast', function($$083forkInterimElement) {
- *   var $mdToast = $$083forkInterimElement(toastDefaultOptions);
- *   return $mdToast;
+ * app.service('$md083forkToast', function($$083forkInterimElement) {
+ *   var $md083forkToast = $$083forkInterimElement(toastDefaultOptions);
+ *   return $md083forkToast;
  * });
  * ```
  * @param {object=} defaultOptions Options used by default for the `show` method on the service.
@@ -179,7 +179,7 @@ function InterimElementProvider() {
           // If argOption is supplied, eg `argOption: 'content'`, then we assume
           // if the argument is not an options object then it is the `argOption` option.
           //
-          // @example `$mdToast.simple('hello')` // sets options.content to hello
+          // @example `$md083forkToast.simple('hello')` // sets options.content to hello
           //                                     // because argOption === 'content'
           if (arguments.length && definition.argOption && !angular.isObject(arg) &&
               !angular.isArray(arg)) {
