@@ -4,9 +4,9 @@
 angular.module('material.083fork.components.tabs')
   .controller('$mdTabs', MdTabsController);
 
-function MdTabsController($scope, $element, $mdUtil, $timeout) {
+function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
 
-  var tabsList = $mdUtil.iterator([], false);
+  var tabsList = $md083forkUtil.iterator([], false);
   var self = this;
 
   // Properties

@@ -5,7 +5,7 @@
 angular.module('material.083fork.components.tabs')
   .controller('$mdTab', TabItemController);
 
-function TabItemController($scope, $element, $attrs, $compile, $animate, $mdUtil, $parse, $timeout) {
+function TabItemController($scope, $element, $attrs, $compile, $animate, $md083forkUtil, $parse, $timeout) {
   var self = this;
   var tabsCtrl = $element.controller('mdTabs');
 
@@ -38,7 +38,7 @@ function TabItemController($scope, $element, $attrs, $compile, $animate, $mdUtil
       $compile(self.contentContainer)(self.contentScope);
       if (shouldDisconnectScope === true) {
         $timeout(function () {
-          $mdUtil.disconnectScope(self.contentScope);
+          $md083forkUtil.disconnectScope(self.contentScope);
         }, 0, false);
       }
     }
@@ -57,7 +57,7 @@ function TabItemController($scope, $element, $attrs, $compile, $animate, $mdUtil
 
   function onSelect(rightToLeft) {
     // Resume watchers and events firing when tab is selected
-    $mdUtil.reconnectScope(self.contentScope);
+    $md083forkUtil.reconnectScope(self.contentScope);
 
     $element
       .addClass('active')
@@ -75,7 +75,7 @@ function TabItemController($scope, $element, $attrs, $compile, $animate, $mdUtil
 
   function onDeselect(rightToLeft) {
     // Stop watchers & events from firing while tab is deselected
-    $mdUtil.disconnectScope(self.contentScope);
+    $md083forkUtil.disconnectScope(self.contentScope);
 
     $element
       .removeClass('active')

@@ -10,11 +10,11 @@ angular
   .config( MdCoreConfigure );
 
 
-function MdCoreConfigure($provide, $mdThemingProvider) {
+function MdCoreConfigure($provide, $md083forkThemingProvider) {
 
   $provide.decorator('$$rAF', ["$delegate", rAFDecorator]);
 
-  $mdThemingProvider.theme('default')
+  $md083forkThemingProvider.theme('default')
     .primaryPalette('indigo')
     .accentPalette('pink')
     .warnPalette('red')

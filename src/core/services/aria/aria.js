@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('material.083fork.core')
-  .service('$mdAria', AriaService);
+  .service('$md083forkAria', AriaService);
 
 function AriaService($$rAF, $log, $window) {
 

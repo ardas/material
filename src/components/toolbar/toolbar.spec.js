@@ -2,7 +2,7 @@ describe('<md-toolbar>', function() {
 
   beforeEach(module('material.083fork.components.toolbar'));
 
-  it('with scrollShrink, it should shrink scrollbar when going to bottom', inject(function($compile, $rootScope, $mdConstant, mdToolbarDirective) {
+  it('with scrollShrink, it should shrink scrollbar when going to bottom', inject(function($compile, $rootScope, $md083forkConstant, mdToolbarDirective) {
 
     var parent = angular.element('<div>');
     var toolbar = angular.element('<md-toolbar>');
@@ -36,9 +36,9 @@ describe('<md-toolbar>', function() {
     $rootScope.$broadcast('$mdContentLoaded', contentEl);
 
     //Expect everything to be in its proper initial state.
-    expect(toolbarCss[$mdConstant.CSS.TRANSFORM]).toEqual('translate3d(0,0px,0)');
+    expect(toolbarCss[$md083forkConstant.CSS.TRANSFORM]).toEqual('translate3d(0,0px,0)');
     expect(contentCss['margin-top']).toEqual('-100px');
-    expect(contentCss[$mdConstant.CSS.TRANSFORM]).toEqual('translate3d(0,100px,0)');
+    expect(contentCss[$md083forkConstant.CSS.TRANSFORM]).toEqual('translate3d(0,100px,0)');
 
     // Fake scroll to the bottom
     contentEl.triggerHandler({
@@ -46,8 +46,8 @@ describe('<md-toolbar>', function() {
       target: { scrollTop: 500 }
     });
 
-    expect(toolbarCss[$mdConstant.CSS.TRANSFORM]).toEqual('translate3d(0,-100px,0)');
-    expect(contentCss[$mdConstant.CSS.TRANSFORM]).toEqual('translate3d(0,0px,0)');
+    expect(toolbarCss[$md083forkConstant.CSS.TRANSFORM]).toEqual('translate3d(0,-100px,0)');
+    expect(contentCss[$md083forkConstant.CSS.TRANSFORM]).toEqual('translate3d(0,0px,0)');
 
     // Fake scroll back to the top
     contentEl.triggerHandler({
@@ -55,8 +55,8 @@ describe('<md-toolbar>', function() {
       target: { scrollTop: 0 }
     });
 
-    expect(toolbarCss[$mdConstant.CSS.TRANSFORM]).toEqual('translate3d(0,0px,0)');
-    expect(contentCss[$mdConstant.CSS.TRANSFORM]).toEqual('translate3d(0,100px,0)');
+    expect(toolbarCss[$md083forkConstant.CSS.TRANSFORM]).toEqual('translate3d(0,0px,0)');
+    expect(contentCss[$md083forkConstant.CSS.TRANSFORM]).toEqual('translate3d(0,100px,0)');
 
   }));
 });

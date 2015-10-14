@@ -1,4 +1,4 @@
-describe('$mdComponentRegistry Service', function() {
+describe('$md083forkComponentRegistry Service', function() {
   beforeEach(module( 'material.083fork.core', 'material.083fork.components.sidenav' ));
 
   /**
@@ -17,37 +17,37 @@ describe('$mdComponentRegistry Service', function() {
   }
 
   describe('registration', function() {
-    var $mdComponentRegistry, $timeout;
+    var $md083forkComponentRegistry, $timeout;
 
-    beforeEach( inject(function(_$mdComponentRegistry_, _$timeout_) {
-      $mdComponentRegistry = _$mdComponentRegistry_;
+    beforeEach( inject(function(_$md083forkComponentRegistry_, _$timeout_) {
+      $md083forkComponentRegistry = _$md083forkComponentRegistry_;
       $timeout = _$timeout_;
     }));
 
     it('should print error on no handle', inject(function($log) {
       spyOn($log, 'error');
-      $mdComponentRegistry.notFoundError('badHandle');
+      $md083forkComponentRegistry.notFoundError('badHandle');
       expect($log.error).toHaveBeenCalled();
     }));
 
     it('Should register handle', function() {
-      $mdComponentRegistry.register({needle: true}, 'test');
-      var instance = $mdComponentRegistry.get('test');
+      $md083forkComponentRegistry.register({needle: true}, 'test');
+      var instance = $md083forkComponentRegistry.get('test');
       expect(instance).toBeTruthy();
       expect(instance.needle).not.toBe(undefined);
-      expect($mdComponentRegistry.getInstances().length).toBe(1);
+      expect($md083forkComponentRegistry.getInstances().length).toBe(1);
     });
 
     it('Should deregister', function() {
-      var deregister = $mdComponentRegistry.register({needle: true}, 'test');
-      expect($mdComponentRegistry.getInstances().length).toBe(1);
+      var deregister = $md083forkComponentRegistry.register({needle: true}, 'test');
+      expect($md083forkComponentRegistry.getInstances().length).toBe(1);
       deregister();
-      expect($mdComponentRegistry.getInstances().length).toBe(0);
+      expect($md083forkComponentRegistry.getInstances().length).toBe(0);
     });
 
     it('should register component when element is created', function() {
       var el = setup('md-component-id="left"');
-      var instance = $mdComponentRegistry.get('left');
+      var instance = $md083forkComponentRegistry.get('left');
 
       expect(instance).toNotBe(null);
     });
@@ -56,14 +56,14 @@ describe('$mdComponentRegistry Service', function() {
       var el = setup('md-component-id="left"');
       el.triggerHandler('$destroy');
 
-      var instance = $mdComponentRegistry.get('left');
+      var instance = $md083forkComponentRegistry.get('left');
       expect(instance).toBe(null);
     });
 
     it('should wait for component registration', function() {
-      var promise = $mdComponentRegistry.when('left');
+      var promise = $md083forkComponentRegistry.when('left');
       var el = setup('md-component-id="left"');
-      var instance = $mdComponentRegistry.get('left');
+      var instance = $md083forkComponentRegistry.get('left');
       var resolved = false;
 
       promise.then(function(inst){   resolved = inst;  });
@@ -75,7 +75,7 @@ describe('$mdComponentRegistry Service', function() {
     it('should wait for next component registration', function() {
       var resolved;
       var count = 0;
-      var promise = $mdComponentRegistry.when('left');
+      var promise = $md083forkComponentRegistry.when('left');
       var el = setup('md-component-id="left"');
 
       promise.then(function(inst){ count += 1; });
@@ -84,7 +84,7 @@ describe('$mdComponentRegistry Service', function() {
       el.triggerHandler('$destroy');
 
       el = setup('md-component-id="left"');
-      promise = $mdComponentRegistry.when('left');
+      promise = $md083forkComponentRegistry.when('left');
       promise.then(function(inst){
         resolved = inst;
         count += 1;
@@ -100,10 +100,10 @@ describe('$mdComponentRegistry Service', function() {
   });
 
   describe('component ids', function() {
-    var $mdComponentRegistry, $timeout;
+    var $md083forkComponentRegistry, $timeout;
 
-    beforeEach( inject(function(_$mdComponentRegistry_, _$timeout_) {
-      $mdComponentRegistry = _$mdComponentRegistry_;
+    beforeEach( inject(function(_$md083forkComponentRegistry_, _$timeout_) {
+      $md083forkComponentRegistry = _$md083forkComponentRegistry_;
       $timeout = _$timeout_;
     }));
 
@@ -112,8 +112,8 @@ describe('$mdComponentRegistry Service', function() {
 
       var resolved;
       var count = 0;
-      var promise = $mdComponentRegistry.when('left');
-      var instance = $mdComponentRegistry.get('left');
+      var promise = $md083forkComponentRegistry.when('left');
+      var instance = $md083forkComponentRegistry.get('left');
 
       promise.then(function(inst){ resolved = inst; count += 1; });
       $timeout.flush();
@@ -131,13 +131,13 @@ describe('$mdComponentRegistry Service', function() {
 
 
       fail = false;
-      $mdComponentRegistry.when(componentID = undefined).catch( onFail );
+      $md083forkComponentRegistry.when(componentID = undefined).catch( onFail );
       $timeout.flush();
 
       expect(fail).toBe(true);
 
       fail = false;
-      $mdComponentRegistry.when(componentID = "").catch( onFail );
+      $md083forkComponentRegistry.when(componentID = "").catch( onFail );
       $timeout.flush();
 
       expect(fail).toBe(true);

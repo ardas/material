@@ -1,4 +1,4 @@
-describe('$mdThemingProvider', function() {
+describe('$md083forkThemingProvider', function() {
 
   var themingProvider;
   var defaultTheme;
@@ -6,8 +6,8 @@ describe('$mdThemingProvider', function() {
   var testPalette;
   var startAngular = inject;
   function setup() {
-    module('material.083fork.core.theming', function($mdThemingProvider, $provide) {
-      themingProvider = $mdThemingProvider;
+    module('material.083fork.core.theming', function($md083forkThemingProvider, $provide) {
+      themingProvider = $md083forkThemingProvider;
 
       testPalette = themingProvider._PALETTES.testPalette = themingProvider._PALETTES.otherTestPalette = {
         '50': 'ffebee',
@@ -286,10 +286,10 @@ describe('$mdThemingProvider', function() {
 
 });
 
-describe('$mdTheming service', function() {
-  var $mdThemingProvider;
-  beforeEach(module('material.083fork.core', function(_$mdThemingProvider_) {
-    $mdThemingProvider = _$mdThemingProvider_;
+describe('$md083forkTheming service', function() {
+  var $md083forkThemingProvider;
+  beforeEach(module('material.083fork.core', function(_$md083forkThemingProvider_) {
+    $md083forkThemingProvider = _$md083forkThemingProvider_;
   }));
 
   var el, testHtml, compileAndLink;
@@ -306,29 +306,29 @@ describe('$mdTheming service', function() {
   });
 
 
-  it('applies a default theme if no theme can be found', inject(function($mdTheming) {
-    $mdTheming(el);
+  it('applies a default theme if no theme can be found', inject(function($md083forkTheming) {
+    $md083forkTheming(el);
     expect(el.hasClass('md-default-theme')).toBe(true);
   }));
 
   it('supports setting a different default theme', function() {
-    $mdThemingProvider.setDefaultTheme('other');
-    inject(function($rootScope, $compile, $mdTheming) {
+    $md083forkThemingProvider.setDefaultTheme('other');
+    inject(function($rootScope, $compile, $md083forkTheming) {
       el = $compile('<h1>Test</h1>')($rootScope);
-      $mdTheming(el);
+      $md083forkTheming(el);
       expect(el.hasClass('md-other-theme')).toBe(true);
       expect(el.hasClass('md-default-theme')).toBe(false);
     });
   });
 
-  it('inherits the theme from parent elements', inject(function($mdTheming) {
+  it('inherits the theme from parent elements', inject(function($md083forkTheming) {
     el = compileAndLink([
       '<div md-theme="awesome">',
         testHtml,
       '</div>'
     ].join('')).children(0);
 
-    $mdTheming(el);
+    $md083forkTheming(el);
     expect(el.hasClass('md-default-theme')).toBe(false);
     expect(el.hasClass('md-awesome-theme')).toBe(true);
   }));
@@ -338,19 +338,19 @@ describe('$mdTheming service', function() {
     expect(el.hasClass('md-default-theme')).toBe(true);
   });
 
-  it('can inherit from explicit parents', inject(function($rootScope, $mdTheming) {
+  it('can inherit from explicit parents', inject(function($rootScope, $md083forkTheming) {
     var child = compileAndLink('<h1 md-theme="dark"></h1>');
     var container = compileAndLink('<div md-theme="space"><h1></h1></div>');
     var inherited = container.children();
-    $mdTheming(child);
+    $md083forkTheming(child);
     expect(child.hasClass('md-dark-theme')).toBe(true);
-    $mdTheming.inherit(child, inherited);
+    $md083forkTheming.inherit(child, inherited);
     expect(child.hasClass('md-dark-theme')).toBe(false);
     expect(child.hasClass('md-space-theme')).toBe(true);
   }));
 
-  it('exposes a getter for the default theme', inject(function($mdTheming) {
-    expect($mdTheming.defaultTheme()).toBe('default');
+  it('exposes a getter for the default theme', inject(function($md083forkTheming) {
+    expect($md083forkTheming.defaultTheme()).toBe('default');
   }));
 });
 
@@ -387,9 +387,9 @@ describe('md-theme directive', function() {
 });
 
 describe('md-themable directive', function() {
-  var $mdThemingProvider;
-  beforeEach(module('material.083fork.core', function(_$mdThemingProvider_) {
-    $mdThemingProvider = _$mdThemingProvider_;
+  var $md083forkThemingProvider;
+  beforeEach(module('material.083fork.core', function(_$md083forkThemingProvider_) {
+    $md083forkThemingProvider = _$md083forkThemingProvider_;
   }));
 
   it('should inherit parent theme', inject(function($compile, $rootScope) {
@@ -421,8 +421,8 @@ describe('md-themable directive', function() {
   }));
 
   it('should support watching parent theme by default', function() {
-    $mdThemingProvider.alwaysWatchTheme(true);
-    inject(function($rootScope, $compile, $mdTheming) {
+    $md083forkThemingProvider.alwaysWatchTheme(true);
+    inject(function($rootScope, $compile, $md083forkTheming) {
       $rootScope.themey = 'red';
       var el = $compile('<div md-theme="{{themey}}"><span md-themable></span></div>')($rootScope);
       $rootScope.$apply();

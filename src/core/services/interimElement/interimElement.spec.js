@@ -1,15 +1,15 @@
-describe('$$interimElement service', function() {
+describe('$$083forkInterimElement service', function() {
   beforeEach(module('material.083fork.core'));
   var $compilerSpy, $themingSpy, resolvingPromise;
 
   function setup() {
     module('material.083fork.core', 'ngAnimateMock', function($provide) {
-      var $mdCompiler = { compile: angular.noop };
-      $compilerSpy = spyOn($mdCompiler, 'compile');
-      $themingSpy = jasmine.createSpy('$mdTheming');
+      var $md083forkCompiler = { compile: angular.noop };
+      $compilerSpy = spyOn($md083forkCompiler, 'compile');
+      $themingSpy = jasmine.createSpy('$md083forkTheming');
 
-      $provide.value('$mdCompiler', $mdCompiler);
-      $provide.value('$mdTheming', $themingSpy);
+      $provide.value('$md083forkCompiler', $md083forkCompiler);
+      $provide.value('$md083forkTheming', $themingSpy);
     });
     inject(function($q, $compile, $rootScope) {
       $compilerSpy.andCallFake(function(opts) {
@@ -27,8 +27,8 @@ describe('$$interimElement service', function() {
 
   function createInterimProvider(providerName) {
     var interimProvider;
-    module(function($$interimElementProvider, $provide) {
-      interimProvider = $$interimElementProvider(providerName);
+    module(function($$083forkInterimElementProvider, $provide) {
+      interimProvider = $$083forkInterimElementProvider(providerName);
       $provide.provider(providerName, interimProvider);
     });
 
@@ -290,25 +290,25 @@ describe('$$interimElement service', function() {
     var Service;
     beforeEach(function() {
       setup();
-      inject(function($$interimElement) {
-        Service = $$interimElement();
+      inject(function($$083forkInterimElement) {
+        Service = $$083forkInterimElement();
       });
     });
 
     describe('instance#show', function() {
-      it('inherits default options', inject(function($$interimElement) {
+      it('inherits default options', inject(function($$083forkInterimElement) {
         var defaults = { templateUrl: 'testing.html' };
         Service.show(defaults);
         expect($compilerSpy.mostRecentCall.args[0].templateUrl).toBe('testing.html');
       }));
 
-      it('forwards options to $mdCompiler', inject(function($$interimElement) {
+      it('forwards options to $md083forkCompiler', inject(function($$083forkInterimElement) {
         var options = {template: '<testing />'};
         Service.show(options);
         expect($compilerSpy.mostRecentCall.args[0].template).toBe('<testing />');
       }));
 
-      it('supports theming', inject(function($$interimElement, $rootScope) {
+      it('supports theming', inject(function($$083forkInterimElement, $rootScope) {
         Service.show({themable: true});
         $rootScope.$digest();
         expect($themingSpy).toHaveBeenCalled();
@@ -344,7 +344,7 @@ describe('$$interimElement service', function() {
         }
       }));
 
-      it('returns a promise', inject(function($$interimElement) {
+      it('returns a promise', inject(function($$083forkInterimElement) {
         expect(typeof Service.show().then).toBe('function');
       }));
 

@@ -58,13 +58,13 @@ angular.module('material.083fork.components.toolbar', [
  * shrinking by. For example, if 0.25 is given then the toolbar will shrink
  * at one fourth the rate at which the user scrolls down. Default 0.5.
  */
-function mdToolbarDirective($$rAF, $mdConstant, $mdUtil, $mdTheming) {
+function mdToolbarDirective($$rAF, $md083forkConstant, $md083forkUtil, $md083forkTheming) {
 
   return {
     restrict: 'E',
     controller: angular.noop,
     link: function(scope, element, attr) {
-      $mdTheming(element);
+      $md083forkTheming(element);
 
       if (angular.isDefined(attr.mdScrollShrink)) {
         setupScrollShrink();
@@ -82,7 +82,7 @@ function mdToolbarDirective($$rAF, $mdConstant, $mdUtil, $mdTheming) {
         var contentElement;
 
         var debouncedContentScroll = $$rAF.throttle(onContentScroll);
-        var debouncedUpdateHeight = $mdUtil.debounce(updateToolbarHeight, 5 * 1000);
+        var debouncedUpdateHeight = $md083forkUtil.debounce(updateToolbarHeight, 5 * 1000);
 
         // Wait for $mdContentLoaded event from mdContent directive.
         // If the mdContent element is a sibling of our toolbar, hook it up
@@ -131,11 +131,11 @@ function mdToolbarDirective($$rAF, $mdConstant, $mdUtil, $mdTheming) {
           );
 
           element.css(
-            $mdConstant.CSS.TRANSFORM,
+            $md083forkConstant.CSS.TRANSFORM,
             'translate3d(0,' + (-y * shrinkSpeedFactor) + 'px,0)'
           );
           contentElement.css(
-            $mdConstant.CSS.TRANSFORM,
+            $md083forkConstant.CSS.TRANSFORM,
             'translate3d(0,' + ((toolbarHeight - y) * shrinkSpeedFactor) + 'px,0)'
           );
 

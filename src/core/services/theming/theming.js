@@ -4,26 +4,26 @@
 angular.module('material.083fork.core.theming', ['material.083fork.core.theming.palette'])
   .directive('mdTheme', ThemingDirective)
   .directive('mdThemable', ThemableDirective)
-  .provider('$mdTheming', ThemingProvider)
+  .provider('$md083forkTheming', ThemingProvider)
   .run(generateThemes);
 
 /**
  * @ngdoc provider
- * @name $mdThemingProvider
+ * @name $md083forkThemingProvider
  * @module material.core
  *
- * @description Provider to configure the `$mdTheming` service.
+ * @description Provider to configure the `$md083forkTheming` service.
  */
 
 /**
  * @ngdoc method
- * @name $mdThemingProvider#setDefaultTheme
+ * @name $md083forkThemingProvider#setDefaultTheme
  * @param {string} themeName Default theme name to be applied to elements. Default value is `default`.
  */
 
 /**
  * @ngdoc method
- * @name $mdThemingProvider#alwaysWatchTheme
+ * @name $md083forkThemingProvider#alwaysWatchTheme
  * @param {boolean} watch Whether or not to always watch themes for changes and re-apply
  * classes when they change. Default is `false`. Enabling can reduce performance.
  */
@@ -124,7 +124,7 @@ function ThemingProvider($mdColorPalette) {
     _rgba: rgba
   };
 
-  // Example: $mdThemingProvider.definePalette('neonRed', { 50: '#f5fafa', ... });
+  // Example: $md083forkThemingProvider.definePalette('neonRed', { 50: '#f5fafa', ... });
   function definePalette(name, map) {
     map = map || {};
     PALETTES[name] = checkPaletteValid(name, map);
@@ -133,7 +133,7 @@ function ThemingProvider($mdColorPalette) {
 
   // Returns an new object which is a copy of a given palette `name` with variables from
   // `map` overwritten
-  // Example: var neonRedMap = $mdThemingProvider.extendPalette('red', { 50: '#f5fafafa' });
+  // Example: var neonRedMap = $md083forkThemingProvider.extendPalette('red', { 50: '#f5fafafa' });
   function extendPalette(name, map) {
     return checkPaletteValid(name,  angular.extend({}, PALETTES[name] || {}, map) );
   }
@@ -155,7 +155,7 @@ function ThemingProvider($mdColorPalette) {
   // Register a theme (which is a collection of color palettes to use with various states
   // ie. warn, accent, primary )
   // Optionally inherit from an existing theme
-  // $mdThemingProvider.theme('custom-theme').primaryPalette('red');
+  // $md083forkThemingProvider.theme('custom-theme').primaryPalette('red');
   function registerTheme(name, inheritFrom) {
     inheritFrom = inheritFrom || 'default';
     if (THEMES[name]) return THEMES[name];
@@ -254,8 +254,8 @@ function ThemingProvider($mdColorPalette) {
 
       self[colorType + 'Color'] = function() {
         var args = Array.prototype.slice.call(arguments);
-        console.warn('$mdThemingProviderTheme.' + colorType + 'Color() has been deprecated. ' +
-                     'Use $mdThemingProviderTheme.' + colorType + 'Palette() instead.');
+        console.warn('$md083forkThemingProviderTheme.' + colorType + 'Color() has been deprecated. ' +
+                     'Use $md083forkThemingProviderTheme.' + colorType + 'Palette() instead.');
         return self[colorType + 'Palette'].apply(self, args);
       };
     });
@@ -263,18 +263,18 @@ function ThemingProvider($mdColorPalette) {
 
   /**
    * @ngdoc service
-   * @name $mdTheming
+   * @name $md083forkTheming
    *
    * @description
    *
    * Service that makes an element apply theming related classes to itself.
    *
    * ```js
-   * app.directive('myFancyDirective', function($mdTheming) {
+   * app.directive('myFancyDirective', function($md083forkTheming) {
    *   return {
    *     restrict: 'e',
    *     link: function(scope, el, attrs) {
-   *       $mdTheming(el);
+   *       $md083forkTheming(el);
    *     }
    *   };
    * });
@@ -300,7 +300,7 @@ function ThemingProvider($mdColorPalette) {
       function changeTheme(theme) {
         if (!registered(theme)) {
           $log.warn('Attempted to use unregistered theme \'' + theme + '\'. ' +
-                    'Register it with $mdThemingProvider.theme().');
+                    'Register it with $md083forkThemingProvider.theme().');
         }
         var oldTheme = el.data('$mdThemeName');
         if (oldTheme) el.removeClass('md-' + oldTheme +'-theme');
@@ -335,14 +335,14 @@ function ThemingProvider($mdColorPalette) {
   }
 }
 
-function ThemingDirective($mdTheming, $interpolate, $log) {
+function ThemingDirective($md083forkTheming, $interpolate, $log) {
   return {
     priority: 100,
     link: {
       pre: function(scope, el, attrs) {
         var ctrl = {
           $setTheme: function(theme) {
-            if (!$mdTheming.registered(theme)) {
+            if (!$md083forkTheming.registered(theme)) {
               $log.warn('attempted to use unregistered theme \'' + theme + '\'');
             }
             ctrl.$mdTheme = theme;
@@ -356,8 +356,8 @@ function ThemingDirective($mdTheming, $interpolate, $log) {
   };
 }
 
-function ThemableDirective($mdTheming) {
-  return $mdTheming;
+function ThemableDirective($md083forkTheming) {
+  return $md083forkTheming;
 }
 
 function parseRules(theme, colorType, rules) {
@@ -457,7 +457,7 @@ function generateThemes($injector) {
       styleString += parseRules(theme, colorType, rulesByType[colorType] + '');
     });
     if (theme.colors.primary.name == theme.colors.accent.name) {
-      console.warn("$mdThemingProvider: Using the same palette for primary and" +
+      console.warn("$md083forkThemingProvider: Using the same palette for primary and" +
                    " accent. This violates the material design spec.");
     }
   });

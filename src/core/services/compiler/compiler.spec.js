@@ -1,10 +1,10 @@
-describe('$mdCompiler service', function() {
+describe('$md083forkCompiler service', function() {
   beforeEach(module('material.083fork.core'));
 
   function compile(options) {
     var compileData;
-    inject(function($mdCompiler, $rootScope) {
-      $mdCompiler.compile(options).then(function(data) {
+    inject(function($md083forkCompiler, $rootScope) {
+      $md083forkCompiler.compile(options).then(function(data) {
         compileData = data;
       });
       $rootScope.$apply();

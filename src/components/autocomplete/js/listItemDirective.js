@@ -4,7 +4,7 @@
       .module('material.083fork.components.autocomplete')
       .directive('mdAutocompleteListItem', MdAutocompleteListItem);
 
-  function MdAutocompleteListItem ($compile, $mdUtil) {
+  function MdAutocompleteListItem ($compile, $md083forkUtil) {
     return {
       require: '^?mdAutocomplete',
       terminal: true,
@@ -16,7 +16,7 @@
           itemName = ctrl.scope.$eval(attr.mdAutocompleteListItem);
       newScope[itemName] = scope.item;
       $compile(element.contents())(newScope);
-      element.attr({ 'role': 'option', 'id': 'item_' + $mdUtil.nextUid() });
+      element.attr({ 'role': 'option', 'id': 'item_' + $md083forkUtil.nextUid() });
     }
   }
 })();

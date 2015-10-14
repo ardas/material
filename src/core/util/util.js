@@ -10,7 +10,7 @@
 var nextUniqueId = ['0','0','0'];
 
 angular.module('material.083fork.core')
-.factory('$mdUtil', function($cacheFactory, $document, $timeout, $q, $window, $mdConstant) {
+.factory('$md083forkUtil', function($cacheFactory, $document, $timeout, $q, $window, $md083forkConstant) {
   var Util;
 
   function getNode(el) {
@@ -77,11 +77,11 @@ angular.module('material.083fork.core')
     transitionEndPromise: function(element, opts) {
       opts = opts || {};
       var deferred = $q.defer();
-      element.on($mdConstant.CSS.TRANSITIONEND, finished);
+      element.on($md083forkConstant.CSS.TRANSITIONEND, finished);
       function finished(ev) {
         // Make sure this transitionend didn't bubble up from a child
         if (!ev || ev.target === element[0]) {
-          element.off($mdConstant.CSS.TRANSITIONEND, finished);
+          element.off($md083forkConstant.CSS.TRANSITIONEND, finished);
           deferred.resolve();
         }
       }

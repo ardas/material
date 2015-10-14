@@ -36,14 +36,14 @@ angular.module('material.083fork.components.content', [
  *
  */
 
-function mdContentDirective($mdTheming) {
+function mdContentDirective($md083forkTheming) {
   return {
     restrict: 'E',
     controller: ['$scope', '$element', ContentController],
     link: function(scope, element, attr) {
       var node = element[0];
 
-      $mdTheming(element);
+      $md083forkTheming(element);
       scope.$broadcast('$mdContentLoaded', element);
 
       iosScrollFix(element[0]);

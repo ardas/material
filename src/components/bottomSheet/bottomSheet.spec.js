@@ -2,7 +2,7 @@ describe('$mdBottomSheet service', function() {
   beforeEach(module('material.083fork.components.bottomSheet', 'ngAnimateMock'));
 
   describe('#build()', function() {
-    it('should escapeToClose == true', inject(function($mdBottomSheet, $rootScope, $rootElement, $timeout, $animate, $mdConstant) {
+    it('should escapeToClose == true', inject(function($mdBottomSheet, $rootScope, $rootElement, $timeout, $animate, $md083forkConstant) {
       var parent = angular.element('<div>');
       $mdBottomSheet.show({
         template: '<md-bottom-sheet>',
@@ -16,14 +16,14 @@ describe('$mdBottomSheet service', function() {
       expect(parent.find('md-bottom-sheet').length).toBe(1);
 
       $rootElement.triggerHandler({type: 'keyup',
-        keyCode: $mdConstant.KEY_CODE.ESCAPE
+        keyCode: $md083forkConstant.KEY_CODE.ESCAPE
       });
 
       $timeout.flush();
       expect(parent.find('md-bottom-sheet').length).toBe(0);
     }));
 
-    it('should escapeToClose == false', inject(function($mdBottomSheet, $rootScope, $rootElement, $timeout, $animate, $mdConstant) {
+    it('should escapeToClose == false', inject(function($mdBottomSheet, $rootScope, $rootElement, $timeout, $animate, $md083forkConstant) {
       var parent = angular.element('<div>');
       $mdBottomSheet.show({
         template: '<md-bottom-sheet>',
@@ -36,7 +36,7 @@ describe('$mdBottomSheet service', function() {
 
       expect(parent.find('md-bottom-sheet').length).toBe(1);
 
-      $rootElement.triggerHandler({ type: 'keyup', keyCode: $mdConstant.KEY_CODE.ESCAPE });
+      $rootElement.triggerHandler({ type: 'keyup', keyCode: $md083forkConstant.KEY_CODE.ESCAPE });
 
       expect(parent.find('md-bottom-sheet').length).toBe(1);
     }));

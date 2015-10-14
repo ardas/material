@@ -53,7 +53,7 @@ angular.module('material.083fork.components.tabs')
  * </hljs>
  *
  */
-function MdTabDirective($mdInkRipple, $compile, $mdUtil, $mdConstant, $timeout) {
+function MdTabDirective($md083forkInkRipple$mdInkRipple, $compile, $md083forkUtil, $md083forkConstant, $timeout) {
   return {
     restrict: 'E',
     require: ['mdTab', '^mdTabs'],
@@ -101,7 +101,7 @@ function MdTabDirective($mdInkRipple, $compile, $mdUtil, $mdConstant, $timeout) 
       transcludeTabContent();
       configureAria();
 
-      $mdInkRipple.attachTabBehavior(scope, element, {
+      $md083forkInkRipple$mdInkRipple.attachTabBehavior(scope, element, {
         colorElement: tabsCtrl.inkBarElement
       });
       tabsCtrl.add(tabItemCtrl);
@@ -147,15 +147,15 @@ function MdTabDirective($mdInkRipple, $compile, $mdUtil, $mdConstant, $timeout) 
         });
       }
       function keydownListener(ev) {
-        if (ev.keyCode == $mdConstant.KEY_CODE.SPACE || ev.keyCode == $mdConstant.KEY_CODE.ENTER ) {
+        if (ev.keyCode == $md083forkConstant.KEY_CODE.SPACE || ev.keyCode == $md083forkConstant.KEY_CODE.ENTER ) {
           // Fire the click handler to do normal selection if space is pressed
           element.triggerHandler('click');
           ev.preventDefault();
-        } else if (ev.keyCode === $mdConstant.KEY_CODE.LEFT_ARROW) {
+        } else if (ev.keyCode === $md083forkConstant.KEY_CODE.LEFT_ARROW) {
           scope.$evalAsync(function() {
             tabsCtrl.focus(tabsCtrl.previous(tabItemCtrl));
           });
-        } else if (ev.keyCode === $mdConstant.KEY_CODE.RIGHT_ARROW) {
+        } else if (ev.keyCode === $md083forkConstant.KEY_CODE.RIGHT_ARROW) {
           scope.$evalAsync(function() {
             tabsCtrl.focus(tabsCtrl.next(tabItemCtrl));
           });
@@ -203,7 +203,7 @@ function MdTabDirective($mdInkRipple, $compile, $mdUtil, $mdConstant, $timeout) 
 
       function configureAria() {
         // Link together the content area and tabItemCtrl with an id
-        var tabId = attr.id || ('tab_' + $mdUtil.nextUid());
+        var tabId = attr.id || ('tab_' + $md083forkUtil.nextUid());
 
         element.attr({
           id: tabId,

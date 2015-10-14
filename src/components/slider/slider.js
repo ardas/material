@@ -8,15 +8,15 @@
   angular.module('material.083fork.components.slider', [
     'material.083fork.core'
   ])
-  .directive('mdSlider', SliderDirective);
+  .directive('md083forkSlider', SliderDirective);
 
 /**
  * @ngdoc directive
- * @name mdSlider
+ * @name md083forkSlider
  * @module material.components.slider
  * @restrict E
  * @description
- * The `<md-slider>` component allows the user to choose from a range of
+ * The `<md083fork-slider>` component allows the user to choose from a range of
  * values.
  *
  * As per the [material design spec](http://www.google.com/design/spec/style/color.html#color-ui-color-application)
@@ -34,13 +34,13 @@
  * @usage
  * <h4>Normal Mode</h4>
  * <hljs lang="html">
- * <md-slider ng-model="myValue" min="5" max="500">
- * </md-slider>
+ * <md083fork-slider ng-model="myValue" min="5" max="500">
+ * </md083fork-slider>
  * </hljs>
  * <h4>Discrete Mode</h4>
  * <hljs lang="html">
- * <md-slider md-discrete ng-model="myDiscreteValue" step="10" min="10" max="130">
- * </md-slider>
+ * <md083fork-slider md-discrete ng-model="myDiscreteValue" step="10" min="10" max="130">
+ * </md083fork-slider>
  * </hljs>
  *
  * @param {boolean=} md-discrete Whether to enable discrete mode.
@@ -48,7 +48,7 @@
  * @param {number=} min The minimum value the user is allowed to pick. Default 0.
  * @param {number=} max The maximum value the user is allowed to pick. Default 100.
  */
-function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdTheming, $mdGesture, $parse) {
+function SliderDirective($$rAF, $window, $md083forkAria, $md083forkUtil, $md083forkConstant, $md083forkTheming, $md083forkGesture, $parse) {
   return {
     scope: {},
     require: '?ngModel',
@@ -82,13 +82,13 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
       role: 'slider'
     });
 
-    $mdAria.expect(tElement, 'aria-label');
+    $md083forkAria.expect(tElement, 'aria-label');
 
     return postLink;
   }
 
   function postLink(scope, element, attr, ngModelCtrl) {
-    $mdTheming(element);
+    $md083forkTheming(element);
     ngModelCtrl = ngModelCtrl || {
       // Mock ngModelController if it doesn't exist to give us
       // the minimum functionality needed
@@ -111,7 +111,7 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
     var trackContainer = angular.element(element[0].querySelector('.md-track-container'));
     var activeTrack = angular.element(element[0].querySelector('.md-track-fill'));
     var tickContainer = angular.element(element[0].querySelector('.md-track-ticks'));
-    var throttledRefreshDimensions = $mdUtil.throttle(refreshSliderDimensions, 5000);
+    var throttledRefreshDimensions = $md083forkUtil.throttle(refreshSliderDimensions, 5000);
 
     // Default values, overridable by attrs
     attr.min ? attr.$observe('min', updateMin) : updateMin(0);
@@ -126,7 +126,7 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
       stopDisabledWatch = scope.$parent.$watch(attr.ngDisabled, updateAriaDisabled);
     }
 
-    $mdGesture.register(element, 'drag');
+    $md083forkGesture.register(element, 'drag');
 
     element
       .on('keydown', keydownListener)
@@ -230,9 +230,9 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
       }
 
       var changeAmount;
-      if (ev.keyCode === $mdConstant.KEY_CODE.LEFT_ARROW) {
+      if (ev.keyCode === $md083forkConstant.KEY_CODE.LEFT_ARROW) {
         changeAmount = -step;
-      } else if (ev.keyCode === $mdConstant.KEY_CODE.RIGHT_ARROW) {
+      } else if (ev.keyCode === $md083forkConstant.KEY_CODE.RIGHT_ARROW) {
         changeAmount = step;
       }
       if (changeAmount) {

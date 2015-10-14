@@ -25,7 +25,7 @@ angular.module('material.083fork.components.backdrop', [
 ])
   .directive('mdBackdrop', BackdropDirective);
 
-function BackdropDirective($mdTheming) {
-  return $mdTheming;
+function BackdropDirective($md083forkTheming) {
+  return $md083forkTheming;
 }
 })();

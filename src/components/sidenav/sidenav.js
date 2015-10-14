@@ -50,14 +50,14 @@ angular.module('material.083fork.components.sidenav', [
  * $mdSidenav(componentId).isLockedOpen();
  * </hljs>
  */
-function SidenavService($mdComponentRegistry, $q) {
+function SidenavService($md083forkComponentRegistry, $q) {
   return function(handle) {
     var errorMsg = "SideNav '" + handle + "' is not available!";
 
     // Lookup the controller instance for the specified sidNav instance
-    var instance = $mdComponentRegistry.get(handle);
+    var instance = $md083forkComponentRegistry.get(handle);
     if(!instance) {
-      $mdComponentRegistry.notFoundError(handle);
+      $md083forkComponentRegistry.notFoundError(handle);
     }
 
     return {
@@ -107,7 +107,7 @@ function SidenavService($mdComponentRegistry, $q) {
  *   </md-content>
  *
  *   <md-sidenav md-component-id="right"
- *     md-is-locked-open="$mdMedia('min-width: 333px')"
+ *     md-is-locked-open="$md083forkMedia('min-width: 333px')"
  *     class="md-sidenav-right">
  *     Right Nav!
  *   </md-sidenav>
@@ -129,15 +129,15 @@ function SidenavService($mdComponentRegistry, $q) {
  * the sidenav 'locks open': it falls into the content's flow instead
  * of appearing over it. This overrides the `is-open` attribute.
  *
- * The $mdMedia() service is exposed to the is-locked-open attribute, which
+ * The $md083forkMedia() service is exposed to the is-locked-open attribute, which
  * can be given a media query or one of the `sm`, `gt-sm`, `md`, `gt-md`, `lg` or `gt-lg` presets.
  * Examples:
  *
  *   - `<md-sidenav md-is-locked-open="shouldLockOpen"></md-sidenav>`
- *   - `<md-sidenav md-is-locked-open="$mdMedia('min-width: 1000px')"></md-sidenav>`
- *   - `<md-sidenav md-is-locked-open="$mdMedia('sm')"></md-sidenav>` (locks open on small screens)
+ *   - `<md-sidenav md-is-locked-open="$md083forkMedia('min-width: 1000px')"></md-sidenav>`
+ *   - `<md-sidenav md-is-locked-open="$md083forkMedia('sm')"></md-sidenav>` (locks open on small screens)
  */
-function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstant, $compile, $mdTheming, $q, $document) {
+function SidenavDirective($timeout, $animate, $parse, $log, $md083forkMedia, $md083forkConstant, $compile, $md083forkTheming, $q, $document) {
   return {
     restrict: 'E',
     scope: {
@@ -161,8 +161,8 @@ function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstan
     var isLockedOpenParsed = $parse(attr.mdIsLockedOpen);
     var isLocked = function() {
       return isLockedOpenParsed(scope.$parent, {
-        $media: function(arg) { $log.warn("$media is deprecated for is-locked-open. Use $mdMedia instead."); return $mdMedia(arg); },
-        $mdMedia: $mdMedia
+        $media: function(arg) { $log.warn("$media is deprecated for is-locked-open. Use $md083forkMedia instead."); return $md083forkMedia(arg); },
+        $md083forkMedia: $md083forkMedia
       });
     };
     var backdrop = $compile(
@@ -170,7 +170,7 @@ function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstan
     )(scope);
 
     element.on('$destroy', sidenavCtrl.destroy);
-    $mdTheming.inherit(backdrop, element);
+    $md083forkTheming.inherit(backdrop, element);
 
     scope.$watch(isLocked, updateIsLocked);
     scope.$watch('isOpen', updateIsOpen);
@@ -262,7 +262,7 @@ function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstan
      * @param evt
      */
     function onKeyDown(ev) {
-      var isEscape = (ev.keyCode === $mdConstant.KEY_CODE.ESCAPE);
+      var isEscape = (ev.keyCode === $md083forkConstant.KEY_CODE.ESCAPE);
       return isEscape ? close(ev) : $q.when(true);
     }
 
@@ -288,7 +288,7 @@ function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstan
  * @module material.components.sidenav
  *
  */
-function SidenavController($scope, $element, $attrs, $mdComponentRegistry, $q) {
+function SidenavController($scope, $element, $attrs, $md083forkComponentRegistry, $q) {
 
   var self = this;
 
@@ -301,7 +301,7 @@ function SidenavController($scope, $element, $attrs, $mdComponentRegistry, $q) {
   self.close  = function() { return self.$toggleOpen( false ); };
   self.toggle = function() { return self.$toggleOpen( !$scope.isOpen );  };
 
-  self.destroy = $mdComponentRegistry.register(self, $attrs.mdComponentId);
+  self.destroy = $md083forkComponentRegistry.register(self, $attrs.mdComponentId);
 }
 
 

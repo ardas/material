@@ -29,14 +29,14 @@ describe('mdSidenav', function() {
       expect(el.parent().find('md-backdrop').length).toBe(0);
     }));
 
-    it('should close on escape', inject(function($rootScope, $animate, $mdConstant, $timeout) {
+    it('should close on escape', inject(function($rootScope, $animate, $md083forkConstant, $timeout) {
       var el = setup('md-is-open="show"');
       $rootScope.$apply('show = true');
 
       $animate.triggerCallbacks();
       el.parent().triggerHandler({
         type: 'keydown',
-        keyCode: $mdConstant.KEY_CODE.ESCAPE
+        keyCode: $md083forkConstant.KEY_CODE.ESCAPE
       });
       $timeout.flush();
       expect($rootScope.show).toBe(false);
@@ -71,14 +71,14 @@ describe('mdSidenav', function() {
       expect(el.parent().find('md-backdrop').hasClass('md-locked-open')).toBe(true);
     }));
 
-    it('should expose $mdMedia service as $media local in is-locked-open attribute', function() {
-      var mdMediaSpy = jasmine.createSpy('$mdMedia');
+    it('should expose $md083forkMedia service as $media local in is-locked-open attribute', function() {
+      var mdMediaSpy = jasmine.createSpy('$md083forkMedia');
       module(function($provide) {
-        $provide.value('$mdMedia', mdMediaSpy);
+        $provide.value('$md083forkMedia', mdMediaSpy);
       });
-      inject(function($rootScope, $animate, $document, $mdMedia) {
-        var el = setup('md-is-locked-open="$mdMedia(123)"');
-        expect($mdMedia).toHaveBeenCalledWith(123);
+      inject(function($rootScope, $animate, $document, $md083forkMedia) {
+        var el = setup('md-is-locked-open="$md083forkMedia(123)"');
+        expect($md083forkMedia).toHaveBeenCalledWith(123);
       });
     });
 

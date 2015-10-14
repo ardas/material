@@ -40,11 +40,11 @@ angular.module('material.083fork.components.card', [
  * </hljs>
  *
  */
-function mdCardDirective($mdTheming) {
+function mdCardDirective($md083forkTheming) {
   return {
     restrict: 'E',
     link: function($scope, $element, $attr) {
-      $mdTheming($element);
+      $md083forkTheming($element);
     }
   };
 }

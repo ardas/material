@@ -39,7 +39,7 @@ angular.module('material.083fork.components.progressCircular', [
  * <md-progress-circular md-mode="indeterminate"></md-progress-circular>
  * </hljs>
  */
-function MdProgressCircularDirective($$rAF, $mdConstant, $mdTheming) {
+function MdProgressCircularDirective($$rAF, $md083forkConstant, $md083forkTheming) {
   var fillRotations = new Array(101),
     fixRotations = new Array(101);
 
@@ -77,7 +77,7 @@ function MdProgressCircularDirective($$rAF, $mdConstant, $mdTheming) {
   }
 
   function postLink(scope, element, attr) {
-    $mdTheming(element);
+    $md083forkTheming(element);
     var circle = element[0],
       fill = circle.querySelectorAll('.md-fill, .md-mask.md-full'),
       fix = circle.querySelectorAll('.md-fill.md-fix'),
@@ -86,7 +86,7 @@ function MdProgressCircularDirective($$rAF, $mdConstant, $mdTheming) {
     var diameter = attr.mdDiameter || 48;
     var scale = diameter/48;
 
-    circle.style[$mdConstant.CSS.TRANSFORM] = 'scale(' + scale.toString() + ')';
+    circle.style[$md083forkConstant.CSS.TRANSFORM] = 'scale(' + scale.toString() + ')';
 
     attr.$observe('value', function(value) {
       clamped = clamp(value);
@@ -96,11 +96,11 @@ function MdProgressCircularDirective($$rAF, $mdConstant, $mdTheming) {
       element.attr('aria-valuenow', clamped);
 
       for (i = 0; i < fill.length; i++) {
-        fill[i].style[$mdConstant.CSS.TRANSFORM] = fillRotation;
+        fill[i].style[$md083forkConstant.CSS.TRANSFORM] = fillRotation;
       }
 
       for (i = 0; i < fix.length; i++) {
-        fix[i].style[$mdConstant.CSS.TRANSFORM] = fixRotation;
+        fix[i].style[$md083forkConstant.CSS.TRANSFORM] = fixRotation;
       }
     });
   }

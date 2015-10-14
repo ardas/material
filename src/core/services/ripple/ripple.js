@@ -2,20 +2,20 @@
 'use strict';
 
 angular.module('material.083fork.core')
-  .factory('$mdInkRipple', InkRippleService)
+  .factory('$md083forkInkRipple$mdInkRipple', InkRippleService)
   .directive('mdInkRipple', InkRippleDirective)
   .directive('mdNoInk', attrNoDirective())
   .directive('mdNoBar', attrNoDirective())
   .directive('mdNoStretch', attrNoDirective());
 
-function InkRippleDirective($mdInkRipple) {
+function InkRippleDirective($md083forkInkRipple$mdInkRipple) {
   return {
     controller: angular.noop,
     link: function (scope, element, attr) {
       if (attr.hasOwnProperty('mdInkRippleCheckbox')) {
-        $mdInkRipple.attachCheckboxBehavior(scope, element);
+        $md083forkInkRipple$mdInkRipple.attachCheckboxBehavior(scope, element);
       } else {
-        $mdInkRipple.attachButtonBehavior(scope, element);
+        $md083forkInkRipple$mdInkRipple.attachButtonBehavior(scope, element);
       }
     }
   };

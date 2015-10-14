@@ -19,7 +19,7 @@ describe('$mdDialog', function() {
       'ok', 'targetEvent', 'theme'
     ]);
 
-    it('shows a basic alert dialog', inject(function($animate, $rootScope, $mdDialog, $mdConstant) {
+    it('shows a basic alert dialog', inject(function($animate, $rootScope, $mdDialog, $md083forkConstant) {
       var parent = angular.element('<div>');
       var resolved = false;
       $mdDialog.show(
@@ -65,7 +65,7 @@ describe('$mdDialog', function() {
       'ok', 'cancel', 'targetEvent', 'theme'
     ]);
 
-    it('shows a basic confirm dialog', inject(function($rootScope, $mdDialog, $animate, $mdConstant) {
+    it('shows a basic confirm dialog', inject(function($rootScope, $mdDialog, $animate, $md083forkConstant) {
       var parent = angular.element('<div>');
       var rejected = false;
       $mdDialog.show(
@@ -108,7 +108,7 @@ describe('$mdDialog', function() {
   });
 
   describe('#build()', function() {
-    it('should support onComplete callbacks within `show()`', inject(function($mdDialog, $rootScope, $timeout, $mdConstant) {
+    it('should support onComplete callbacks within `show()`', inject(function($mdDialog, $rootScope, $timeout, $md083forkConstant) {
 
       var template = '<md-dialog>Hello</md-dialog>';
       var parent = angular.element('<div>');
@@ -151,7 +151,7 @@ describe('$mdDialog', function() {
       expect(container.length).toBe(1);
     }));
 
-    it('should escapeToClose == true', inject(function($mdDialog, $rootScope, $rootElement, $timeout, $animate, $mdConstant) {
+    it('should escapeToClose == true', inject(function($mdDialog, $rootScope, $rootElement, $timeout, $animate, $md083forkConstant) {
       var parent = angular.element('<div>');
       $mdDialog.show({
         template: '<md-dialog>',
@@ -167,7 +167,7 @@ describe('$mdDialog', function() {
       expect(parent.find('md-dialog').length).toBe(1);
 
       $rootElement.triggerHandler({type: 'keyup',
-        keyCode: $mdConstant.KEY_CODE.ESCAPE
+        keyCode: $md083forkConstant.KEY_CODE.ESCAPE
       });
 
       $timeout.flush();
@@ -176,7 +176,7 @@ describe('$mdDialog', function() {
       expect(parent.find('md-dialog').length).toBe(0);
     }));
 
-    it('should escapeToClose == false', inject(function($mdDialog, $rootScope, $rootElement, $timeout, $animate, $mdConstant) {
+    it('should escapeToClose == false', inject(function($mdDialog, $rootScope, $rootElement, $timeout, $animate, $md083forkConstant) {
       var parent = angular.element('<div>');
       $mdDialog.show({
         template: '<md-dialog>',
@@ -191,14 +191,14 @@ describe('$mdDialog', function() {
 
       expect(parent.find('md-dialog').length).toBe(1);
 
-      $rootElement.triggerHandler({ type: 'keyup', keyCode: $mdConstant.KEY_CODE.ESCAPE });
+      $rootElement.triggerHandler({ type: 'keyup', keyCode: $md083forkConstant.KEY_CODE.ESCAPE });
 
       $timeout.flush();
       $animate.triggerCallbacks();
       expect(parent.find('md-dialog').length).toBe(1);
     }));
 
-    it('should clickOutsideToClose == true', inject(function($mdDialog, $rootScope, $timeout, $animate, $mdConstant) {
+    it('should clickOutsideToClose == true', inject(function($mdDialog, $rootScope, $timeout, $animate, $md083forkConstant) {
 
       var parent = angular.element('<div>');
       $mdDialog.show({
@@ -287,7 +287,7 @@ describe('$mdDialog', function() {
       expect(parent[0].querySelectorAll('md-backdrop').length).toBe(0);
     }));
 
-    it('should focus `md-button.dialog-close` on open', inject(function($mdDialog, $rootScope, $document, $timeout, $mdConstant) {
+    it('should focus `md-button.dialog-close` on open', inject(function($mdDialog, $rootScope, $document, $timeout, $md083forkConstant) {
       TestUtil.mockElementFocus(this);
 
       var parent = angular.element('<div>');
@@ -313,7 +313,7 @@ describe('$mdDialog', function() {
       expect($document.activeElement).toBe(parent[0].querySelector('.dialog-close'));
     }));
 
-    it('should focus the last `md-button` in md-actions open if no `.dialog-close`', inject(function($mdDialog, $rootScope, $document, $timeout, $mdConstant) {
+    it('should focus the last `md-button` in md-actions open if no `.dialog-close`', inject(function($mdDialog, $rootScope, $document, $timeout, $md083forkConstant) {
       TestUtil.mockElementFocus(this);
 
       var parent = angular.element('<div>');

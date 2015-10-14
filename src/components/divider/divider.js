@@ -31,10 +31,10 @@ function MdDividerController(){}
  * </hljs>
  *
  */
-function MdDividerDirective($mdTheming) {
+function MdDividerDirective($md083forkTheming) {
   return {
     restrict: 'E',
-    link: $mdTheming,
+    link: $md083forkTheming,
     controller: [MdDividerController]
   };
 }

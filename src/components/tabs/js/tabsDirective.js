@@ -93,7 +93,7 @@ angular.module('material.083fork.components.tabs')
  * </hljs>
  *
  */
-function TabsDirective($mdTheming) {
+function TabsDirective($md083forkTheming) {
   return {
     restrict: 'E',
     controller: '$mdTabs',
@@ -137,7 +137,7 @@ function TabsDirective($mdTheming) {
 
     scope.stretchTabs = attr.hasOwnProperty('mdStretchTabs') ? attr.mdStretchTabs || 'always' : 'auto';
 
-    $mdTheming(element);
+    $md083forkTheming(element);
     configureAria();
     watchSelected();
 

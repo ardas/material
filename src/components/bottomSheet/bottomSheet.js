@@ -115,19 +115,19 @@ function MdBottomSheetDirective() {
  *
  */
 
-function MdBottomSheetProvider($$interimElementProvider) {
+function MdBottomSheetProvider($$083forkInterimElementProvider) {
   // how fast we need to flick down to close the sheet, pixels/ms
   var CLOSING_VELOCITY = 0.5;
   var PADDING = 80; // same as css
 
-  return $$interimElementProvider('$mdBottomSheet')
+  return $$083forkInterimElementProvider('$mdBottomSheet')
     .setDefaults({
       methods: ['disableParentScroll', 'escapeToClose', 'targetEvent'],
       options: bottomSheetDefaults
     });
 
   /* @ngInject */
-  function bottomSheetDefaults($animate, $mdConstant, $timeout, $$rAF, $compile, $mdTheming, $mdBottomSheet, $rootElement, $rootScope, $mdGesture) {
+  function bottomSheetDefaults($animate, $md083forkConstant, $timeout, $$rAF, $compile, $md083forkTheming, $mdBottomSheet, $rootElement, $rootScope, $md083forkGesture) {
     var backdrop;
 
     return {
@@ -146,7 +146,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
         $timeout($mdBottomSheet.cancel);
       });
 
-      $mdTheming.inherit(backdrop, options.parent);
+      $md083forkTheming.inherit(backdrop, options.parent);
 
       $animate.enter(backdrop, options.parent, null);
 
@@ -155,7 +155,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
 
       // Give up focus on calling item
       options.targetEvent && angular.element(options.targetEvent.target).blur();
-      $mdTheming.inherit(bottomSheet.element, options.parent);
+      $md083forkTheming.inherit(bottomSheet.element, options.parent);
 
       if (options.disableParentScroll) {
         options.lastOverflow = options.parent.css('overflow');
@@ -173,7 +173,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
 
           if (options.escapeToClose) {
             options.rootElementKeyupCallback = function(e) {
-              if (e.keyCode === $mdConstant.KEY_CODE.ESCAPE) {
+              if (e.keyCode === $md083forkConstant.KEY_CODE.ESCAPE) {
                 $timeout($mdBottomSheet.cancel);
               }
             };
@@ -205,7 +205,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
      * BottomSheet class to apply bottom-sheet behavior to an element
      */
     function BottomSheet(element, parent) {
-      var deregister = $mdGesture.register(parent, 'drag', { horizontal: false });
+      var deregister = $md083forkGesture.register(parent, 'drag', { horizontal: false });
       parent.on('$md.dragstart', onDragStart)
         .on('$md.drag', onDrag)
         .on('$md.dragend', onDragEnd);
@@ -222,7 +222,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
 
       function onDragStart(ev) {
         // Disable transitions on transform so that it feels fast
-        element.css($mdConstant.CSS.TRANSITION_DURATION, '0ms');
+        element.css($md083forkConstant.CSS.TRANSITION_DURATION, '0ms');
       }
 
       function onDrag(ev) {
@@ -231,7 +231,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
           // Slow down drag when trying to drag up, and stop after PADDING
           transform = Math.max(-PADDING, transform / 2);
         }
-        element.css($mdConstant.CSS.TRANSFORM, 'translate3d(0,' + (PADDING + transform) + 'px,0)');
+        element.css($md083forkConstant.CSS.TRANSFORM, 'translate3d(0,' + (PADDING + transform) + 'px,0)');
       }
 
       function onDragEnd(ev) {
@@ -239,11 +239,11 @@ function MdBottomSheetProvider($$interimElementProvider) {
             (ev.pointer.distanceY > 20 || Math.abs(ev.pointer.velocityY) > CLOSING_VELOCITY)) {
           var distanceRemaining = element.prop('offsetHeight') - ev.pointer.distanceY;
           var transitionDuration = Math.min(distanceRemaining / ev.pointer.velocityY * 0.75, 500);
-          element.css($mdConstant.CSS.TRANSITION_DURATION, transitionDuration + 'ms');
+          element.css($md083forkConstant.CSS.TRANSITION_DURATION, transitionDuration + 'ms');
           $timeout($mdBottomSheet.cancel);
         } else {
-          element.css($mdConstant.CSS.TRANSITION_DURATION, '');
-          element.css($mdConstant.CSS.TRANSFORM, '');
+          element.css($md083forkConstant.CSS.TRANSITION_DURATION, '');
+          element.css($md083forkConstant.CSS.TRANSFORM, '');
         }
       }
     }

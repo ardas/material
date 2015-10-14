@@ -25,9 +25,9 @@ angular
 
 
   })
-  .config(function($mdThemingProvider){
+  .config(function($md083forkThemingProvider){
     // Update the theme colors to use themes on font-icons
-    $mdThemingProvider.theme('default')
+    $md083forkThemingProvider.theme('default')
           .primaryPalette("red")
           .accentPalette('green')
           .warnPalette('blue');

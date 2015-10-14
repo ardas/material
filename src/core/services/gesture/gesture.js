@@ -37,7 +37,7 @@ angular.element(document)
   .on(MOVE_EVENTS, gestureMove)
   .on(END_EVENTS, gestureEnd)
   // For testing
-  .on('$$mdGestureReset', function() {
+  .on('$$md083forkGestureReset', function() {
     lastPointer = pointer = null;
   });
 
@@ -138,8 +138,8 @@ function makeStartPointer(ev) {
 }
 
 angular.module('material.083fork.core')
-.run(function($mdGesture) {}) // make sure $mdGesture is always instantiated
-.factory('$mdGesture', function($$MdGestureHandler, $$rAF, $timeout) {
+.run(function($md083forkGesture) {}) // make sure $md083forkGesture is always instantiated
+.factory('$md083forkGesture', function($$md083forkGestureHandler, $$rAF, $timeout) {
   HANDLERS = {};
 
   if (shouldHijackClicks) {
@@ -176,7 +176,7 @@ angular.module('material.083fork.core')
       $timeout.cancel(this.state.timeout);
     },
     onStart: function(ev, pointer) {
-      // For hold, require a parent to be registered with $mdGesture.register()
+      // For hold, require a parent to be registered with $md083forkGesture.register()
       // Because we prevent scroll events, this is necessary.
       if (!this.state.registeredParent) return this.cancel();
 
@@ -204,7 +204,7 @@ angular.module('material.083fork.core')
       horizontal: true
     },
     onStart: function(ev) {
-      // For drag, require a parent to be registered with $mdGesture.register()
+      // For drag, require a parent to be registered with $md083forkGesture.register()
       if (!this.state.registeredParent) this.cancel();
     },
     onMove: function(ev, pointer) {
@@ -272,7 +272,7 @@ angular.module('material.083fork.core')
   };
 
   function addHandler(name, definition) {
-    var handler = new $$MdGestureHandler(name);
+    var handler = new $$md083forkGestureHandler(name);
     angular.extend(handler, definition);
     HANDLERS[name] = handler;
     return self;
@@ -287,7 +287,7 @@ angular.module('material.083fork.core')
     return handler.registerElement(element, options);
   }
 })
-.factory('$$MdGestureHandler', function($$rAF) {
+.factory('$$md083forkGestureHandler', function($$rAF) {
 
   function GestureHandler(name) {
     this.name = name;
@@ -307,7 +307,7 @@ angular.module('material.083fork.core')
     start: function(ev, pointer) {
       if (this.state.isRunning) return;
       var parentTarget = this.getNearestParent(ev.target);
-      var parentTargetOptions = parentTarget && parentTarget.$mdGesture[this.name] || {};
+      var parentTargetOptions = parentTarget && parentTarget.$md083forkGesture[this.name] || {};
 
       this.state = {
         isRunning: true,
@@ -331,11 +331,11 @@ angular.module('material.083fork.core')
     },
 
     // Find and return the nearest parent element that has been registered via
-    // $mdGesture.register(element, 'handlerName').
+    // $md083forkGesture.register(element, 'handlerName').
     getNearestParent: function(node) {
       var current = node;
       while (current) {
-        if ( (current.$mdGesture || {})[this.name] ) {
+        if ( (current.$md083forkGesture || {})[this.name] ) {
           return current;
         }
         current = current.parentNode;
@@ -344,14 +344,14 @@ angular.module('material.083fork.core')
 
     registerElement: function(element, options) {
       var self = this;
-      element[0].$mdGesture = element[0].$mdGesture || {};
-      element[0].$mdGesture[this.name] = options || {};
+      element[0].$md083forkGesture = element[0].$md083forkGesture || {};
+      element[0].$md083forkGesture[this.name] = options || {};
       element.on('$destroy', onDestroy);
 
       return onDestroy;
 
       function onDestroy() {
-        delete element[0].$mdGesture[self.name];
+        delete element[0].$md083forkGesture[self.name];
         element.off('$destroy', onDestroy);
       }
     }

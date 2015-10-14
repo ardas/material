@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('material.083fork.core')
-.factory('$mdConstant', MdConstantFactory);
+.factory('$md083forkConstant', MdConstantFactory);
 
 function MdConstantFactory($$rAF, $sniffer) {
 

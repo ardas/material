@@ -2,9 +2,9 @@ describe('util', function() {
   beforeEach(module('material.083fork.core'));
 
   var disconnectScope, reconnectScope;
-  beforeEach(inject(function($mdUtil) {
-    disconnectScope = $mdUtil.disconnectScope;
-    reconnectScope = $mdUtil.reconnectScope;
+  beforeEach(inject(function($md083forkUtil) {
+    disconnectScope = $md083forkUtil.disconnectScope;
+    reconnectScope = $md083forkUtil.reconnectScope;
   }));
 
   it('disconnectScope events', inject(function($rootScope) {
@@ -30,10 +30,10 @@ describe('util', function() {
     var originalFn;
     var throttledFn;
 
-    beforeEach(inject(function($mdUtil) {
-      $mdUtil.now = function () { return nowMockValue; };
+    beforeEach(inject(function($md083forkUtil) {
+      $md083forkUtil.now = function () { return nowMockValue; };
       originalFn = jasmine.createSpy('originalFn');
-      throttledFn = $mdUtil.throttle(originalFn, delay);
+      throttledFn = $md083forkUtil.throttle(originalFn, delay);
       nowMockValue = 1;    // Not 0, to prevent `!recent` inside `throttle()` to
                            // evaluate to true even after `recent` has been set
     }));
@@ -60,12 +60,12 @@ describe('util', function() {
       expect(originalFn.callCount).toBe(2);
     });
 
-    it('should pass the context to the original function', inject(function($mdUtil) {
+    it('should pass the context to the original function', inject(function($md083forkUtil) {
       var obj = {
         called: false,
         fn: function() { this.called = true; }
       };
-      var throttled = $mdUtil.throttle(obj.fn, delay);
+      var throttled = $md083forkUtil.throttle(obj.fn, delay);
 
       expect(obj.called).toBeFalsy();
       throttled.call(obj);

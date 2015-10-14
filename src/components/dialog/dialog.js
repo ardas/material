@@ -12,11 +12,11 @@ angular.module('material.083fork.components.dialog', [
   .directive('mdDialog', MdDialogDirective)
   .provider('$mdDialog', MdDialogProvider);
 
-function MdDialogDirective($$rAF, $mdTheming) {
+function MdDialogDirective($$rAF, $md083forkTheming) {
   return {
     restrict: 'E',
     link: function(scope, element, attr) {
-      $mdTheming(element);
+      $md083forkTheming(element);
       $$rAF(function() {
         var content = element[0].querySelector('md-content');
         if (content && content.scrollHeight > content.clientHeight) {
@@ -325,11 +325,11 @@ function MdDialogDirective($$rAF, $mdTheming) {
  * @param {*=} response An argument for the rejected promise.
  */
 
-function MdDialogProvider($$interimElementProvider) {
+function MdDialogProvider($$083forkInterimElementProvider) {
 
   var alertDialogMethods = ['title', 'content', 'ariaLabel', 'ok'];
 
-  return $$interimElementProvider('$mdDialog')
+  return $$083forkInterimElementProvider('$mdDialog')
     .setDefaults({
       methods: ['disableParentScroll', 'hasBackdrop', 'clickOutsideToClose', 'escapeToClose', 'targetEvent'],
       options: dialogDefaultOptions
@@ -344,7 +344,7 @@ function MdDialogProvider($$interimElementProvider) {
     });
 
   /* @ngInject */
-  function advancedDialogOptions($mdDialog, $mdTheming) {
+  function advancedDialogOptions($mdDialog, $md083forkTheming) {
     return {
       template: [
         '<md-dialog md-theme="{{ dialog.theme }}" aria-label="{{ dialog.ariaLabel }}">',
@@ -372,13 +372,13 @@ function MdDialogProvider($$interimElementProvider) {
       },
       controllerAs: 'dialog',
       bindToController: true,
-      theme: $mdTheming.defaultTheme()
+      theme: $md083forkTheming.defaultTheme()
     };
   }
 
   /* @ngInject */
-  function dialogDefaultOptions($timeout, $rootElement, $compile, $animate, $mdAria, $document,
-                                $mdUtil, $mdConstant, $mdTheming, $$rAF, $q, $mdDialog) {
+  function dialogDefaultOptions($timeout, $rootElement, $compile, $animate, $md083forkAria, $document,
+                                $md083forkUtil, $md083forkConstant, $md083forkTheming, $$rAF, $q, $mdDialog) {
     return {
       hasBackdrop: true,
       isolateScope: true,
@@ -410,7 +410,7 @@ function MdDialogProvider($$interimElementProvider) {
                            && $document[0].scrollTop) ? angular.element($document[0].documentElement) : options.parent;
         var parentOffset = computeFrom.prop('scrollTop');
         options.backdrop = angular.element('<md-backdrop class="md-dialog-backdrop md-opaque">');
-        $mdTheming.inherit(options.backdrop, options.parent);
+        $md083forkTheming.inherit(options.backdrop, options.parent);
         $animate.enter(options.backdrop, options.parent);
         element.css('top', parentOffset +'px');
       }
@@ -428,7 +428,7 @@ function MdDialogProvider($$interimElementProvider) {
       .then(function() {
         if (options.escapeToClose) {
           options.rootElementKeyupCallback = function(e) {
-            if (e.keyCode === $mdConstant.KEY_CODE.ESCAPE) {
+            if (e.keyCode === $md083forkConstant.KEY_CODE.ESCAPE) {
               $timeout($mdDialog.cancel);
             }
           };
@@ -501,7 +501,7 @@ function MdDialogProvider($$interimElementProvider) {
       if (dialogContent.length === 0){
         dialogContent = element;
       }
-      $mdAria.expectAsync(element, 'aria-label', function() {
+      $md083forkAria.expectAsync(element, 'aria-label', function() {
         var words = dialogContent.text().split(/\s+/);
         if (words.length > 3) words = words.slice(0,3).concat('...');
         return words.join(' ');
@@ -516,10 +516,10 @@ function MdDialogProvider($$interimElementProvider) {
 
       $$rAF(function() {
         dialogEl.addClass('transition-in')
-          .css($mdConstant.CSS.TRANSFORM, '');
+          .css($md083forkConstant.CSS.TRANSFORM, '');
       });
 
-      return $mdUtil.transitionEndPromise(dialogEl);
+      return $md083forkUtil.transitionEndPromise(dialogEl);
     }
 
     function dialogPopOut(container, parentElement, clickElement) {
@@ -528,7 +528,7 @@ function MdDialogProvider($$interimElementProvider) {
       dialogEl.addClass('transition-out').removeClass('transition-in');
       transformToClickElement(dialogEl, clickElement);
 
-      return $mdUtil.transitionEndPromise(dialogEl);
+      return $md083forkUtil.transitionEndPromise(dialogEl);
     }
 
     function transformToClickElement(dialogEl, clickElement) {
@@ -539,7 +539,7 @@ function MdDialogProvider($$interimElementProvider) {
         var scaleX = Math.min(0.5, clickRect.width / dialogRect.width);
         var scaleY = Math.min(0.5, clickRect.height / dialogRect.height);
 
-        dialogEl.css($mdConstant.CSS.TRANSFORM, 'translate3d(' +
+        dialogEl.css($md083forkConstant.CSS.TRANSFORM, 'translate3d(' +
           (-dialogRect.left + clickRect.left + clickRect.width/2 - dialogRect.width/2) + 'px,' +
           (-dialogRect.top + clickRect.top + clickRect.height/2 - dialogRect.height/2) + 'px,' +
           '0) scale(' + scaleX + ',' + scaleY + ')'
@@ -549,11 +549,11 @@ function MdDialogProvider($$interimElementProvider) {
 
     function dialogTransitionEnd(dialogEl) {
       var deferred = $q.defer();
-      dialogEl.on($mdConstant.CSS.TRANSITIONEND, finished);
+      dialogEl.on($md083forkConstant.CSS.TRANSITIONEND, finished);
       function finished(ev) {
         //Make sure this transitionend didn't bubble up from a child
         if (ev.target === dialogEl[0]) {
-          dialogEl.off($mdConstant.CSS.TRANSITIONEND, finished);
+          dialogEl.off($md083forkConstant.CSS.TRANSITIONEND, finished);
           deferred.resolve();
         }
       }

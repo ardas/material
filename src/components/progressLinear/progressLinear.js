@@ -42,7 +42,7 @@ angular.module('material.083fork.components.progressLinear', [
  * <md-progress-linear md-mode="query"></md-progress-linear>
  * </hljs>
  */
-function MdProgressLinearDirective($$rAF, $mdConstant, $mdTheming) {
+function MdProgressLinearDirective($$rAF, $md083forkConstant, $md083forkTheming) {
 
   return {
     restrict: 'E',
@@ -62,7 +62,7 @@ function MdProgressLinearDirective($$rAF, $mdConstant, $mdTheming) {
     return postLink;
   }
   function postLink(scope, element, attr) {
-    $mdTheming(element);
+    $md083forkTheming(element);
     var bar1Style = element[0].querySelector('.md-bar1').style,
       bar2Style = element[0].querySelector('.md-bar2').style,
       container = angular.element(element[0].querySelector('.md-container'));
@@ -74,11 +74,11 @@ function MdProgressLinearDirective($$rAF, $mdConstant, $mdTheming) {
 
       var clamped = clamp(value);
       element.attr('aria-valuenow', clamped);
-      bar2Style[$mdConstant.CSS.TRANSFORM] = transforms[clamped];
+      bar2Style[$md083forkConstant.CSS.TRANSFORM] = transforms[clamped];
     });
 
     attr.$observe('mdBufferValue', function(value) {
-      bar1Style[$mdConstant.CSS.TRANSFORM] = transforms[clamp(value)];
+      bar1Style[$md083forkConstant.CSS.TRANSFORM] = transforms[clamp(value)];
     });
 
     $$rAF(function() {

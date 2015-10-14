@@ -41,7 +41,7 @@ angular.module('material.083fork.components.subheader', [
  * </hljs>
  */
 
-function MdSubheaderDirective($mdSticky, $compile, $mdTheming) {
+function MdSubheaderDirective($mdSticky, $compile, $md083forkTheming) {
   return {
     restrict: 'E',
     replace: true,
@@ -53,7 +53,7 @@ function MdSubheaderDirective($mdSticky, $compile, $mdTheming) {
     compile: function(element, attr, transclude) {
       var outerHTML = element[0].outerHTML;
       return function postLink(scope, element, attr) {
-        $mdTheming(element);
+        $md083forkTheming(element);
         function getContent(el) {
           return angular.element(el[0].querySelector('.md-subheader-content'));
         }
@@ -68,7 +68,7 @@ function MdSubheaderDirective($mdSticky, $compile, $mdTheming) {
         // of the element, that will be 'stickied' as the user scrolls.
         transclude(scope, function(clone) {
           var stickyClone = $compile(angular.element(outerHTML))(scope);
-          $mdTheming(stickyClone);
+          $md083forkTheming(stickyClone);
           getContent(stickyClone).append(clone);
           $mdSticky(scope, element, stickyClone);
         });

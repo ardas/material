@@ -5,15 +5,15 @@ describe('iterator', function() {
 
     var list, iter;
 
-    beforeEach(inject(function ($mdUtil) {
+    beforeEach(inject(function ($md083forkUtil) {
       list = [ 13, 14, 'Marcy', 15, 'Andrew', 16, 21, 'Adam', 37, 'Max', 99 ];
-      iter = $mdUtil.iterator(list);
+      iter = $md083forkUtil.iterator(list);
     }));
 
-    it('should construct properly', inject(function($mdUtil) {
+    it('should construct properly', inject(function($md083forkUtil) {
       expect(iter.count()).toEqual(11);
 
-      var iter2 = $mdUtil.iterator();
+      var iter2 = $md083forkUtil.iterator();
       expect(iter2.count()).toEqual(0);
     }));
 
@@ -77,9 +77,9 @@ describe('iterator', function() {
   describe('use to provide mutator API ', function () {
     var list, iter;
 
-    beforeEach(inject(function ($mdUtil) {
+    beforeEach(inject(function ($md083forkUtil) {
       list = [ 13, 14, 'Marcy', 15, 'Andrew', 16, 21, 'Adam', 37, 'Max', 99 ];
-      iter = $mdUtil.iterator(list);
+      iter = $md083forkUtil.iterator(list);
     }));
 
     it('should use add() to append or insert items properly', function () {
@@ -132,9 +132,9 @@ describe('iterator', function() {
   describe('use to provide navigation API ', function () {
     var list, iter;
 
-    beforeEach(inject(function ($mdUtil) {
+    beforeEach(inject(function ($md083forkUtil) {
       list = [ 13, 14, 'Marcy', 15, 'Andrew', 16, 21, 'Adam', 37, 'Max', 99 ];
-      iter = $mdUtil.iterator(list);
+      iter = $md083forkUtil.iterator(list);
     }));
 
     it('should use first() properly', function () {
@@ -154,7 +154,7 @@ describe('iterator', function() {
       expect(iter.first()).toBe(14);
     });
 
-    it('should last() items properly', inject(function ($mdUtil) {
+    it('should last() items properly', inject(function ($md083forkUtil) {
 
       expect(iter.last()).toBe(99);
 
@@ -175,7 +175,7 @@ describe('iterator', function() {
       expect(iter.last()).toBe('Max');
       expect(iter.first()).toBe(13);
 
-      iter = $mdUtil.iterator([ 2, 5 ]);
+      iter = $md083forkUtil.iterator([ 2, 5 ]);
       iter.remove(2);
       expect(iter.last()).toBe(iter.first());
 
@@ -195,7 +195,7 @@ describe('iterator', function() {
 
     });
 
-    it('should use hasPrevious() properly', inject(function ($mdUtil) {
+    it('should use hasPrevious() properly', inject(function ($md083forkUtil) {
 
       expect( iter.hasPrevious( iter.first()) ).toBe(false);
       expect( iter.hasPrevious( iter.last()) ).toBe(true);
@@ -211,7 +211,7 @@ describe('iterator', function() {
       iter.remove(13);
       expect( iter.hasPrevious(iter.first()) ).toBe(false);
 
-      iter =  $mdUtil.iterator(list = [ 2, 3 ]);
+      iter =  $md083forkUtil.iterator(list = [ 2, 3 ]);
       expect( iter.hasPrevious(iter.last()) ).toBe(true);
       iter.remove(2);
       expect( iter.hasPrevious(iter.last()) ).toBe(false);
@@ -260,9 +260,9 @@ describe('iterator', function() {
     var list, iter;
     var validate = function(item) { return (item !== 14) && (item !== 'Andrew'); };
 
-    beforeEach(inject(function ($mdUtil) {
+    beforeEach(inject(function ($md083forkUtil) {
       list = [ 13, 14, 'Marcy', 15, 'Andrew', 16, 21, 'Adam', 37, 'Max', 99 ];
-      iter = $mdUtil.iterator(list);
+      iter = $md083forkUtil.iterator(list);
     }));
 
     it('should use next() properly', function () {
@@ -286,12 +286,12 @@ describe('iterator', function() {
   describe('use to provide navigation API with relooping', function () {
     var list, iter;
 
-    beforeEach(inject(function ($mdUtil) {
+    beforeEach(inject(function ($md083forkUtil) {
       list = [13, 14, 'Marcy', 15, 'Andrew', 16, 21, 'Adam', 37, 'Max', 99];
-      iter = $mdUtil.iterator(list, true);
+      iter = $md083forkUtil.iterator(list, true);
     }));
 
-    it('should use first() properly', inject(function ($mdUtil) {
+    it('should use first() properly', inject(function ($md083forkUtil) {
       expect(iter.first()).toBe(13);
 
       iter.add("47");
@@ -306,12 +306,12 @@ describe('iterator', function() {
       iter.remove(iter.first());
       expect(iter.first()).toBe(14);
 
-      iter = $mdUtil.iterator([2, 5]);
+      iter = $md083forkUtil.iterator([2, 5]);
       iter.remove(5);
       expect(iter.first()).toBe(iter.last());
     }));
 
-    it('should last() items properly', inject(function ($mdUtil) {
+    it('should last() items properly', inject(function ($md083forkUtil) {
       expect(iter.last()).toBe(99);
 
       iter.add("47");
@@ -331,12 +331,12 @@ describe('iterator', function() {
       expect(iter.last()).toBe('Max');
       expect(iter.first()).toBe(13);
 
-      iter = $mdUtil.iterator([2, 5]);
+      iter = $md083forkUtil.iterator([2, 5]);
       iter.remove(2);
       expect(iter.last()).toBe(iter.first());
     }));
 
-    it('should use hasNext() properly', inject(function ($mdUtil) {
+    it('should use hasNext() properly', inject(function ($md083forkUtil) {
       expect(iter.hasNext(iter.first())).toBe(true);
       expect(iter.hasNext(iter.last())).toBe(false);
       expect(iter.hasNext(99)).toBe(false);
@@ -347,7 +347,7 @@ describe('iterator', function() {
       iter.remove(100);
       expect(iter.hasNext(99)).toBe(false);
 
-      iter = $mdUtil.iterator(list = [2, 3]);
+      iter = $md083forkUtil.iterator(list = [2, 3]);
       expect(iter.hasNext(iter.first())).toBe(true);
       iter.remove(3);
       expect(iter.hasNext(iter.first())).toBe(false);
@@ -360,7 +360,7 @@ describe('iterator', function() {
       expect(iter.hasNext(null)).toBe(false);
     }));
 
-    it('should use hasPrevious() properly', inject(function ($mdUtil) {
+    it('should use hasPrevious() properly', inject(function ($md083forkUtil) {
       expect(iter.hasPrevious(iter.first())).toBe(false);
       expect(iter.hasPrevious(iter.last())).toBe(true);
       expect(iter.hasPrevious(99)).toBe(true);
@@ -375,7 +375,7 @@ describe('iterator', function() {
       iter.remove(13);
       expect(iter.hasPrevious(iter.first())).toBe(false);
 
-      iter = $mdUtil.iterator(list = [2, 3]);
+      iter = $md083forkUtil.iterator(list = [2, 3]);
       expect(iter.hasPrevious(iter.last())).toBe(true);
       iter.remove(2);
       expect(iter.hasPrevious(iter.last())).toBe(false);
@@ -421,9 +421,9 @@ describe('iterator', function() {
     var validate1 = function (item) { return (item !== 14) && (item !== 'Andrew'); };
     var validate2 = function () { return false; };
 
-    beforeEach(inject(function ($mdUtil) {
+    beforeEach(inject(function ($md083forkUtil) {
       list = [13, 14, 'Marcy', 15, 'Andrew', 16, 21, 'Adam', 37, 'Max', 99];
-      iter = $mdUtil.iterator(list, true);
+      iter = $md083forkUtil.iterator(list, true);
     }));
 
     it('should use next() properly', function () {
@@ -450,7 +450,7 @@ describe('iterator', function() {
   describe('use to provide a search API ', function () {
     var list, iter;
 
-    beforeEach(inject(function ($mdUtil) {
+    beforeEach(inject(function ($md083forkUtil) {
       list = [
         { gender:"male", name:'Thomas' },
         { gender:"male", name:'Andrew' },
@@ -459,7 +459,7 @@ describe('iterator', function() {
         { gender:"male", name:'Adam' },
         { gender:"male", name:'Max' }
       ];
-      iter = $mdUtil.iterator(list);
+      iter = $md083forkUtil.iterator(list);
     }));
 
     it('should use findBy() properly', function () {

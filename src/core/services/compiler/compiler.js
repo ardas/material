@@ -2,22 +2,22 @@
 'use strict';
 
 angular.module('material.083fork.core')
-  .service('$mdCompiler', mdCompilerService);
+  .service('$md083forkCompiler', mdCompilerService);
 
 function mdCompilerService($q, $http, $injector, $compile, $controller, $templateCache) {
   /* jshint validthis: true */
 
   /*
    * @ngdoc service
-   * @name $mdCompiler
+   * @name $md083forkCompiler
    * @module material.core
    * @description
-   * The $mdCompiler service is an abstraction of angular's compiler, that allows the developer
+   * The $md083forkCompiler service is an abstraction of angular's compiler, that allows the developer
    * to easily compile an element with a templateUrl, controller, and locals.
    *
    * @usage
    * <hljs lang="js">
-   * $mdCompiler.compile({
+   * $md083forkCompiler.compile({
    *   templateUrl: 'modal.html',
    *   controller: 'ModalCtrl',
    *   locals: {
@@ -32,7 +32,7 @@ function mdCompilerService($q, $http, $injector, $compile, $controller, $templat
 
    /*
     * @ngdoc method
-    * @name $mdCompiler#compile
+    * @name $md083forkCompiler#compile
     * @description A helper to compile an HTML template/templateUrl with a given controller,
     * locals, and scope.
     * @param {object} options An options object, with the following properties:

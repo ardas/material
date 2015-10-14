@@ -1,4 +1,4 @@
-describe('$mdMedia', function() {
+describe('$md083forkMedia', function() {
   var matchMediaResult;
   var listeners;
 
@@ -11,7 +11,7 @@ describe('$mdMedia', function() {
 
   beforeEach(module('material.083fork.core'));
 
-  beforeEach(inject(function($mdMedia, $window) {
+  beforeEach(inject(function($md083forkMedia, $window) {
     matchMediaResult = false;
     listeners = [];
 
@@ -27,47 +27,47 @@ describe('$mdMedia', function() {
     });
   }));
 
-  it('should look up queries in `$mdConstant.MEDIA`', inject(
-    function($mdConstant, $mdMedia, $window) {
-      $mdConstant.MEDIA.somePreset = 'someQuery';
+  it('should look up queries in `$md083forkConstant.MEDIA`', inject(
+    function($md083forkConstant, $md083forkMedia, $window) {
+      $md083forkConstant.MEDIA.somePreset = 'someQuery';
 
-      $mdMedia('somePreset');
+      $md083forkMedia('somePreset');
       expect($window.matchMedia).toHaveBeenCalledWith('someQuery');
 
-      delete $mdConstant.MEDIA.somePreset;
+      delete $md083forkConstant.MEDIA.somePreset;
     }
   ));
 
-  it('should validate queries', inject(function($mdMedia, $window) {
-    $mdMedia('something');
+  it('should validate queries', inject(function($md083forkMedia, $window) {
+    $md083forkMedia('something');
     expect($window.matchMedia).toHaveBeenCalledWith('(something)');
   }));
 
-  it('should return cached results if available', inject(function($mdMedia, $window) {
+  it('should return cached results if available', inject(function($md083forkMedia, $window) {
     expect($window.matchMedia.callCount).toBe(0);
 
-    expect($mdMedia('query')).toBe(false);
+    expect($md083forkMedia('query')).toBe(false);
     expect($window.matchMedia.callCount).toBe(1);
 
-    expect($mdMedia('query')).toBe(false);
+    expect($md083forkMedia('query')).toBe(false);
     expect($window.matchMedia.callCount).toBe(1);
   }));
 
-  it('should change result when listener is called', inject(function($mdMedia, $window, $timeout) {
+  it('should change result when listener is called', inject(function($md083forkMedia, $window, $timeout) {
     matchMediaResult = true;
-    expect($mdMedia('query')).toBe(true);
+    expect($md083forkMedia('query')).toBe(true);
     expect($window.matchMedia.callCount).toBe(1);
 
-    expect($mdMedia('query')).toBe(true);
+    expect($md083forkMedia('query')).toBe(true);
     expect($window.matchMedia.callCount).toBe(1);
 
     matchMediaResult = false;
-    expect($mdMedia('query')).toBe(true);
+    expect($md083forkMedia('query')).toBe(true);
     expect($window.matchMedia.callCount).toBe(1);
 
     runListeners();
     $timeout.flush();
 
-    expect($mdMedia('query')).toBe(false);
+    expect($md083forkMedia('query')).toBe(false);
   }));
 });

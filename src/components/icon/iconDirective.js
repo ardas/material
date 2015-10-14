@@ -42,7 +42,7 @@ angular.module('material.083fork.components.icon', [
  *  <md-icon md-svg-src="{{ getAndroid() }}" alt="android " ></md-icon>
  * </hljs>
  */
-function mdIconDirective($mdIcon, $mdTheming, $mdAria ) {
+function mdIconDirective($mdIcon, $md083forkTheming, $md083forkAria ) {
   return {
     scope: {
       fontIcon: '@mdFontIcon',
@@ -63,17 +63,17 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria ) {
    * Supports embedded SVGs, font-icons, & external SVGs
    */
   function postLink(scope, element, attr) {
-    $mdTheming(element);
+    $md083forkTheming(element);
 
     var ariaLabel = attr.alt || scope.fontIcon || scope.svgIcon;
     var attrName = attr.$normalize(attr.$attr.mdSvgIcon || attr.$attr.mdSvgSrc || '');
 
     if (attr.alt != '' && !parentsHaveText()) {
-      $mdAria.expect(element, 'aria-label', ariaLabel);
-      $mdAria.expect(element, 'role', 'img');
+      $md083forkAria.expect(element, 'aria-label', ariaLabel);
+      $md083forkAria.expect(element, 'role', 'img');
     } else {
       // Hide from the accessibility layer.
-      $mdAria.expect(element, 'aria-hidden', 'true');
+      $md083forkAria.expect(element, 'aria-hidden', 'true');
     }
 
     if (attrName) {

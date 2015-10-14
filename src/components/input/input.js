@@ -46,7 +46,7 @@ angular.module('material.083fork.components.input', [
  *
  * </hljs>
  */
-function mdInputContainerDirective($mdTheming, $parse) {
+function mdInputContainerDirective($md083forkTheming, $parse) {
   return {
     restrict: 'E',
     link: postLink,
@@ -54,7 +54,7 @@ function mdInputContainerDirective($mdTheming, $parse) {
   };
 
   function postLink(scope, element, attr) {
-    $mdTheming(element);
+    $md083forkTheming(element);
   }
   function ContainerCtrl($scope, $element, $attrs) {
     var self = this;
@@ -142,7 +142,7 @@ function labelDirective() {
  *
  */
 
-function inputTextareaDirective($mdUtil, $window) {
+function inputTextareaDirective($md083forkUtil, $window) {
   return {
     restrict: 'E',
     require: ['^?mdInputContainer', '?ngModel'],
@@ -152,7 +152,7 @@ function inputTextareaDirective($mdUtil, $window) {
   function postLink(scope, element, attr, ctrls) {
 
     var containerCtrl = ctrls[0];
-    var ngModelCtrl = ctrls[1] || $mdUtil.fakeNgModel();
+    var ngModelCtrl = ctrls[1] || $md083forkUtil.fakeNgModel();
     var isReadonly = angular.isDefined(attr.readonly);
 
     if ( !containerCtrl ) return;
@@ -163,7 +163,7 @@ function inputTextareaDirective($mdUtil, $window) {
 
     element.addClass('md-input');
     if (!element.attr('id')) {
-      element.attr('id', 'input_' + $mdUtil.nextUid());
+      element.attr('id', 'input_' + $md083forkUtil.nextUid());
     }
 
     if (element[0].tagName.toLowerCase() === 'textarea') {
@@ -216,7 +216,7 @@ function inputTextareaDirective($mdUtil, $window) {
 
     function setupTextarea() {
       var node = element[0];
-      var onChangeTextarea = $mdUtil.debounce(growTextarea, 1);
+      var onChangeTextarea = $md083forkUtil.debounce(growTextarea, 1);
 
       function pipelineListener(value) {
         onChangeTextarea();

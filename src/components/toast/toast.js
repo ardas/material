@@ -80,7 +80,7 @@ function MdToastDirective() {
  * - $mdToastPreset#action(string) - adds an action button, which resolves the promise returned from `show()` if clicked.
  * - $mdToastPreset#highlightAction(boolean) - sets action button to be highlighted
  * - $mdToastPreset#capsule(boolean) - adds 'md-capsule' class to the toast (curved corners)
- * - $mdToastPreset#theme(boolean) - sets the theme on the toast to theme (default is `$mdThemingProvider`'s default theme)
+ * - $mdToastPreset#theme(boolean) - sets the theme on the toast to theme (default is `$md083forkThemingProvider`'s default theme)
  */
 
 /**
@@ -169,9 +169,9 @@ function MdToastDirective() {
  *
  */
 
-function MdToastProvider($$interimElementProvider) {
+function MdToastProvider($$083forkInterimElementProvider) {
   var activeToastContent;
-  var $mdToast = $$interimElementProvider('$mdToast')
+  var $mdToast = $$083forkInterimElementProvider('$mdToast')
     .setDefaults({
       methods: ['position', 'hideDelay', 'capsule'],
       options: toastDefaultOptions
@@ -179,7 +179,7 @@ function MdToastProvider($$interimElementProvider) {
     .addPreset('simple', {
       argOption: 'content',
       methods: ['content', 'action', 'highlightAction', 'theme'],
-      options: /* @ngInject */ function($mdToast, $mdTheming) {
+      options: /* @ngInject */ function($mdToast, $md083forkTheming) {
         var opts = {
           template: [
             '<md-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">',
@@ -198,7 +198,7 @@ function MdToastProvider($$interimElementProvider) {
               $mdToast.hide();
             };
           },
-          theme: $mdTheming.defaultTheme(),
+          theme: $md083forkTheming.defaultTheme(),
           controllerAs: 'toast',
           bindToController: true
         };

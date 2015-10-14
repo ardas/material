@@ -2,29 +2,29 @@
 'use strict';
 
 angular.module('material.083fork.core')
-  .provider('$$interimElement', InterimElementProvider);
+  .provider('$$083forkInterimElement', InterimElementProvider);
 
 /*
  * @ngdoc service
- * @name $$interimElement
+ * @name $$083forkInterimElement
  * @module material.core
  *
  * @description
  *
- * Factory that contructs `$$interimElement.$service` services.
+ * Factory that contructs `$$083forkInterimElement.$service` services.
  * Used internally in material design for elements that appear on screen temporarily.
  * The service provides a promise-like API for interacting with the temporary
  * elements.
  *
  * ```js
- * app.service('$mdToast', function($$interimElement) {
- *   var $mdToast = $$interimElement(toastDefaultOptions);
+ * app.service('$mdToast', function($$083forkInterimElement) {
+ *   var $mdToast = $$083forkInterimElement(toastDefaultOptions);
  *   return $mdToast;
  * });
  * ```
  * @param {object=} defaultOptions Options used by default for the `show` method on the service.
  *
- * @returns {$$interimElement.$service}
+ * @returns {$$083forkInterimElement.$service}
  *
  */
 
@@ -106,10 +106,10 @@ function InterimElementProvider() {
      * Create a factory that has the given methods & defaults implementing interimElement
      */
     /* @ngInject */
-    function factory($$interimElement, $animate, $injector) {
+    function factory($$083forkInterimElement, $animate, $injector) {
       var defaultMethods;
       var defaultOptions;
-      var interimElementService = $$interimElement();
+      var interimElementService = $$083forkInterimElement();
 
       /*
        * publicService is what the developer will be using.
@@ -221,7 +221,7 @@ function InterimElementProvider() {
 
   /* @ngInject */
   function InterimElementFactory($document, $q, $rootScope, $timeout, $rootElement, $animate,
-                                 $interpolate, $mdCompiler, $mdTheming ) {
+                                 $interpolate, $md083forkCompiler, $md083forkTheming ) {
     var startSymbol = $interpolate.startSymbol(),
         endSymbol = $interpolate.endSymbol(),
         usesStandardSymbols = ((startSymbol === '{{') && (endSymbol === '}}')),
@@ -230,7 +230,7 @@ function InterimElementProvider() {
     return function createInterimElementService() {
       /*
        * @ngdoc service
-       * @name $$interimElement.$service
+       * @name $$083forkInterimElement.$service
        *
        * @description
        * A service used to control inserting and removing an element into the DOM.
@@ -246,7 +246,7 @@ function InterimElementProvider() {
 
       /*
        * @ngdoc method
-       * @name $$interimElement.$service#show
+       * @name $$083forkInterimElement.$service#show
        * @kind function
        *
        * @description
@@ -273,7 +273,7 @@ function InterimElementProvider() {
 
       /*
        * @ngdoc method
-       * @name $$interimElement.$service#hide
+       * @name $$083forkInterimElement.$service#hide
        * @kind function
        *
        * @description
@@ -292,7 +292,7 @@ function InterimElementProvider() {
 
       /*
        * @ngdoc method
-       * @name $$interimElement.$service#cancel
+       * @name $$083forkInterimElement.$service#cancel
        * @kind function
        *
        * @description
@@ -349,7 +349,7 @@ function InterimElementProvider() {
                 });
               });
             } else {
-              compilePromise = $mdCompiler.compile(options);
+              compilePromise = $md083forkCompiler.compile(options);
             }
 
             return showDone = compilePromise.then(function(compileData) {
@@ -371,7 +371,7 @@ function InterimElementProvider() {
                 if (!options.parent.length) options.parent = $rootElement;
               }
 
-              if (options.themable) $mdTheming(element);
+              if (options.themable) $md083forkTheming(element);
               var ret = options.onShow(options.scope, element, options);
               return $q.when(ret)
                 .then(function(){

@@ -1,5 +1,5 @@
 angular.module('progressLinearDemo1', ['ngMaterial'])
-  .config(function($mdThemingProvider) {
+  .config(function($md083forkThemingProvider) {
   })
   .controller('AppCtrl', ['$scope', '$interval', function($scope, $interval) {
     $scope.mode = 'query';

@@ -4,7 +4,7 @@
       .module('material.083fork.components.autocomplete')
       .controller('MdAutocompleteCtrl', MdAutocompleteCtrl);
 
-  function MdAutocompleteCtrl ($scope, $element, $q, $mdUtil, $mdConstant) {
+  function MdAutocompleteCtrl ($scope, $element, $q, $md083forkUtil, $md083forkConstant) {
 
     //-- private variables
     var self = this,
@@ -32,7 +32,7 @@
     self.clear = clearValue;
     self.select = select;
     self.getCurrentDisplayValue = getCurrentDisplayValue;
-    self.fetch = $mdUtil.debounce(fetchResults);
+    self.fetch = $md083forkUtil.debounce(fetchResults);
     self.messages = [];
     self.update = handleSearchText;
     //-- While the mouse is inside of the dropdown, we don't want to handle input blur
@@ -52,7 +52,7 @@
     function configureAria () {
       var ul = angular.element(elements.ul),
           input = angular.element(elements.input),
-          id = ul.attr('id') || 'ul_' + $mdUtil.nextUid();
+          id = ul.attr('id') || 'ul_' + $md083forkUtil.nextUid();
       ul.attr('id', id);
       input.attr('aria-owns', id);
     }
@@ -67,7 +67,7 @@
     function configureWatchers () {
       var wait = parseInt($scope.delay, 10) || 0;
       $scope.$watch('searchText', wait
-          ? $mdUtil.debounce(handleSearchText, wait)
+          ? $md083forkUtil.debounce(handleSearchText, wait)
           : handleSearchText);
       $scope.$watch('selectedItem', function (selectedItem, previousSelectedItem) {
         if ($scope.itemChange && selectedItem !== previousSelectedItem)
@@ -141,31 +141,31 @@
 
     function keydown (event) {
       switch (event.keyCode) {
-        case $mdConstant.KEY_CODE.DOWN_ARROW:
+        case $md083forkConstant.KEY_CODE.DOWN_ARROW:
             if (self.loading) return;
             event.preventDefault();
             self.index = Math.min(self.index + 1, self.matches.length - 1);
             updateScroll();
             updateSelectionMessage();
             break;
-        case $mdConstant.KEY_CODE.UP_ARROW:
+        case $md083forkConstant.KEY_CODE.UP_ARROW:
             if (self.loading) return;
             event.preventDefault();
             self.index = Math.max(0, self.index - 1);
             updateScroll();
             updateSelectionMessage();
             break;
-        case $mdConstant.KEY_CODE.ENTER:
+        case $md083forkConstant.KEY_CODE.ENTER:
             if (self.loading || self.index < 0) return;
             event.preventDefault();
             select(self.index);
             break;
-        case $mdConstant.KEY_CODE.ESCAPE:
+        case $md083forkConstant.KEY_CODE.ESCAPE:
             self.matches = [];
             self.hidden = true;
             self.index = -1;
             break;
-        case $mdConstant.KEY_CODE.TAB:
+        case $md083forkConstant.KEY_CODE.TAB:
             break;
         default:
       }

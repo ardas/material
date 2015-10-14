@@ -3,7 +3,7 @@
   angular
     .module('material.083fork.core')
     .config( function($provide){
-       $provide.decorator('$mdUtil', ['$delegate', function ($delegate){
+       $provide.decorator('$md083forkUtil', ['$delegate', function ($delegate){
            /**
             * Inject the iterator facade to easily support iteration and accessors
             * @see iterator below

@@ -1,50 +1,50 @@
 (function(){
 
 angular.module('material.083fork.core')
-.factory('$mdMedia', mdMediaFactory);
+.factory('$md083forkMedia', mdMediaFactory);
 
 /**
  * @ngdoc service
- * @name $mdMedia
+ * @name $md083forkMedia
  * @module material.core
  *
  * @description
- * `$mdMedia` is used to evaluate whether a given media query is true or false given the
+ * `$md083forkMedia` is used to evaluate whether a given media query is true or false given the
  * current device's screen / window size. The media query will be re-evaluated on resize, allowing
  * you to register a watch.
  *
- * `$mdMedia` also has pre-programmed support for media queries that match the layout breakpoints.
+ * `$md083forkMedia` also has pre-programmed support for media queries that match the layout breakpoints.
  *  (`sm`, `gt-sm`, `md`, `gt-md`, `lg`, `gt-lg`).
  *
  * @returns {boolean} a boolean representing whether or not the given media query is true or false.
  *
  * @usage
  * <hljs lang="js">
- * app.controller('MyController', function($mdMedia, $scope) {
- *   $scope.$watch(function() { return $mdMedia('lg'); }, function(big) {
+ * app.controller('MyController', function($md083forkMedia, $scope) {
+ *   $scope.$watch(function() { return $md083forkMedia('lg'); }, function(big) {
  *     $scope.bigScreen = big;
  *   });
  *
- *   $scope.screenIsSmall = $mdMedia('sm');
- *   $scope.customQuery = $mdMedia('(min-width: 1234px)');
- *   $scope.anotherCustom = $mdMedia('max-width: 300px');
+ *   $scope.screenIsSmall = $md083forkMedia('sm');
+ *   $scope.customQuery = $md083forkMedia('(min-width: 1234px)');
+ *   $scope.anotherCustom = $md083forkMedia('max-width: 300px');
  * });
  * </hljs>
  */
 
-function mdMediaFactory($mdConstant, $rootScope, $window) {
+function mdMediaFactory($md083forkConstant, $rootScope, $window) {
   var queries = {};
   var mqls = {};
   var results = {};
   var normalizeCache = {};
 
-  $mdMedia.getResponsiveAttribute = getResponsiveAttribute;
-  $mdMedia.getQuery = getQuery;
-  $mdMedia.watchResponsiveAttributes = watchResponsiveAttributes;
+  $md083forkMedia.getResponsiveAttribute = getResponsiveAttribute;
+  $md083forkMedia.getQuery = getQuery;
+  $md083forkMedia.watchResponsiveAttributes = watchResponsiveAttributes;
 
-  return $mdMedia;
+  return $md083forkMedia;
 
-  function $mdMedia(query) {
+  function $md083forkMedia(query) {
     var validated = queries[query];
     if (angular.isUndefined(validated)) {
       validated = queries[query] = validate(query);
@@ -59,7 +59,7 @@ function mdMediaFactory($mdConstant, $rootScope, $window) {
   }
 
   function validate(query) {
-    return $mdConstant.MEDIA[query] ||
+    return $md083forkConstant.MEDIA[query] ||
            ((query.charAt(0) !== '(') ? ('(' + query + ')') : query);
   }
 
@@ -80,8 +80,8 @@ function mdMediaFactory($mdConstant, $rootScope, $window) {
   }
 
   function getResponsiveAttribute(attrs, attrName) {
-    for (var i = 0; i < $mdConstant.MEDIA_PRIORITY.length; i++) {
-      var mediaName = $mdConstant.MEDIA_PRIORITY[i];
+    for (var i = 0; i < $md083forkConstant.MEDIA_PRIORITY.length; i++) {
+      var mediaName = $md083forkConstant.MEDIA_PRIORITY[i];
       if (!mqls[queries[mediaName]].matches) {
         continue;
       }
@@ -105,7 +105,7 @@ function mdMediaFactory($mdConstant, $rootScope, $window) {
             attrs.$observe(normalizedName, angular.bind(void 0, watchFn, null)));
       }
 
-      for (var mediaName in $mdConstant.MEDIA) {
+      for (var mediaName in $md083forkConstant.MEDIA) {
         normalizedName = getNormalizedName(attrs, attrName + '-' + mediaName);
         if (!attrs[normalizedName]) {
           return;

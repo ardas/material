@@ -66,7 +66,7 @@ angular.module('material.083fork.components.select', [
  *   </md-select>
  * </hljs>
  */
-function SelectDirective($mdSelect, $mdUtil, $mdTheming, $interpolate, $compile, $parse) {
+function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpolate, $compile, $parse) {
   var intStart = $interpolate.startSymbol();
   var intEnd = $interpolate.endSymbol();
 
@@ -87,7 +87,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $interpolate, $compile,
     }
     labelEl.append('<span class="md-select-icon" aria-hidden="true"></span>');
     labelEl.addClass('md-select-label');
-    labelEl.attr('id', 'select_label_' + $mdUtil.nextUid());
+    labelEl.attr('id', 'select_label_' + $md083forkUtil.nextUid());
 
     // There's got to be an md-content inside. If there's not one, let's add it.
     if (!element.find('md-content').length) {
@@ -114,7 +114,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $interpolate, $compile,
 
     element.empty().append(labelEl);
 
-    $mdTheming(element);
+    $md083forkTheming(element);
 
     return function postLink(scope, element, attr, ctrls) {
       var isOpen;
@@ -176,7 +176,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $interpolate, $compile,
 
       element.attr({
         'role': 'combobox',
-        'id': 'select_' + $mdUtil.nextUid(),
+        'id': 'select_' + $md083forkUtil.nextUid(),
         'aria-haspopup': true,
         'aria-expanded': 'false',
         'aria-labelledby': labelEl.attr('id')
@@ -232,7 +232,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $interpolate, $compile,
   }
 }
 
-function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
+function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
 
   return {
     restrict: 'E',
@@ -247,7 +247,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
     var selectCtrl = ctrls[0];
     var ngModel = ctrls[1];
 
-    $mdTheming(element);
+    $md083forkTheming(element);
     element.on('click', clickListener);
     element.on('keypress', keyListener);
     if (ngModel) selectCtrl.init(ngModel);
@@ -255,7 +255,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
 
     function configureAria() {
       element.attr({
-        'id': 'select_menu_' + $mdUtil.nextUid(),
+        'id': 'select_menu_' + $md083forkUtil.nextUid(),
         'role': 'listbox',
         'aria-multiselectable': (selectCtrl.isMultiple ? 'true' : 'false')
       });
@@ -268,7 +268,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
     }
 
     function clickListener(ev) {
-      var option = $mdUtil.getClosest(ev.target, 'md-option');
+      var option = $md083forkUtil.getClosest(ev.target, 'md-option');
       var optionCtrl = option && angular.element(option).data('$mdOptionController');
       if (!option || !optionCtrl) return;
 
@@ -431,7 +431,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
 
 }
 
-function OptionDirective($mdInkRipple, $mdUtil) {
+function OptionDirective($md083forkInkRipple$mdInkRipple, $md083forkUtil) {
 
   return {
     restrict: 'E',
@@ -473,7 +473,7 @@ function OptionDirective($mdInkRipple, $mdUtil) {
       selectCtrl.ngModel.$render();
     });
 
-    $mdInkRipple.attachButtonBehavior(scope, element);
+    $md083forkInkRipple$mdInkRipple.attachButtonBehavior(scope, element);
     configureAria();
 
     function setOptionValue(newValue, oldValue) {
@@ -495,7 +495,7 @@ function OptionDirective($mdInkRipple, $mdUtil) {
       element.attr({
         'role': 'option',
         'aria-selected': 'false',
-        'id': 'select_option_'+ $mdUtil.nextUid()
+        'id': 'select_option_'+ $md083forkUtil.nextUid()
       });
     }
   }
@@ -533,21 +533,21 @@ function OptgroupDirective() {
   }
 }
 
-function SelectProvider($$interimElementProvider) {
-  return $$interimElementProvider('$mdSelect')
+function SelectProvider($$083forkInterimElementProvider) {
+  return $$083forkInterimElementProvider('$mdSelect')
     .setDefaults({
       methods: ['target'],
       options: selectDefaultOptions
     });
 
   /* @ngInject */
-  function selectDefaultOptions($mdSelect, $mdConstant, $$rAF, $mdUtil, $mdTheming, $timeout) {
+  function selectDefaultOptions($mdSelect, $md083forkConstant, $$rAF, $md083forkUtil, $md083forkTheming, $timeout) {
     return {
       parent: 'body',
       onShow: onShow,
       onRemove: onRemove,
       hasBackdrop: true,
-      disableParentScroll: $mdUtil.floatingScrollbars(),
+      disableParentScroll: $md083forkUtil.floatingScrollbars(),
       themable: true
     };
 
@@ -597,7 +597,7 @@ function SelectProvider($$interimElementProvider) {
       $timeout(activateInteraction, 75, false);
 
       if (opts.backdrop) {
-        $mdTheming.inherit(opts.backdrop, opts.parent);
+        $md083forkTheming.inherit(opts.backdrop, opts.parent);
         opts.parent.append(opts.backdrop);
       }
       opts.parent.append(element);
@@ -611,7 +611,7 @@ function SelectProvider($$interimElementProvider) {
         });
       });
 
-      return $mdUtil.transitionEndPromise(opts.selectEl, {timeout: 350});
+      return $md083forkUtil.transitionEndPromise(opts.selectEl, {timeout: 350});
 
       function configureAria() {
         opts.selectEl.attr('aria-labelledby', opts.target.attr('id'));
@@ -634,9 +634,9 @@ function SelectProvider($$interimElementProvider) {
         // Escape to close
         opts.selectEl.on('keydown', function(ev) {
           switch (ev.keyCode) {
-            case $mdConstant.KEY_CODE.SPACE:
-            case $mdConstant.KEY_CODE.ENTER:
-              var option = $mdUtil.getClosest(ev.target, 'md-option');
+            case $md083forkConstant.KEY_CODE.SPACE:
+            case $md083forkConstant.KEY_CODE.ENTER:
+              var option = $md083forkUtil.getClosest(ev.target, 'md-option');
               if (option) {
                 opts.selectEl.triggerHandler({
                   type: 'click',
@@ -645,8 +645,8 @@ function SelectProvider($$interimElementProvider) {
                 ev.preventDefault();
               }
               break;
-            case $mdConstant.KEY_CODE.TAB:
-            case $mdConstant.KEY_CODE.ESCAPE:
+            case $md083forkConstant.KEY_CODE.TAB:
+            case $md083forkConstant.KEY_CODE.ESCAPE:
               ev.preventDefault();
               opts.restoreFocus = true;
               scope.$apply($mdSelect.cancel);
@@ -656,8 +656,8 @@ function SelectProvider($$interimElementProvider) {
         // Cycling of options, and closing on enter
         opts.selectEl.on('keydown', function(ev) {
           switch (ev.keyCode) {
-            case $mdConstant.KEY_CODE.UP_ARROW: return focusPrevOption();
-            case $mdConstant.KEY_CODE.DOWN_ARROW: return focusNextOption();
+            case $md083forkConstant.KEY_CODE.UP_ARROW: return focusPrevOption();
+            case $md083forkConstant.KEY_CODE.DOWN_ARROW: return focusNextOption();
           }
         });
 
@@ -706,7 +706,7 @@ function SelectProvider($$interimElementProvider) {
         .removeClass('md-clickable');
       opts.target.attr('aria-expanded', 'false');
 
-      if (opts.disableParentScroll && $mdUtil.floatingScrollbars()) {
+      if (opts.disableParentScroll && $md083forkUtil.floatingScrollbars()) {
         opts.disableTarget.css('overflow', opts.lastOverflow);
         delete opts.lastOverflow;
         delete opts.disableTarget;
@@ -717,7 +717,7 @@ function SelectProvider($$interimElementProvider) {
         mdSelect.setLabelText(opts.selectEl.controller('mdSelectMenu').selectedLabels());
       }
 
-      return $mdUtil.transitionEndPromise(element, { timeout: 350 }).then(function() {
+      return $md083forkUtil.transitionEndPromise(element, { timeout: 350 }).then(function() {
         element.removeClass('md-active');
         opts.parent[0].removeChild(element[0]); // use browser to avoid $destroy event
         opts.backdrop && opts.backdrop.remove();
@@ -732,7 +732,7 @@ function SelectProvider($$interimElementProvider) {
           selectNode = opts.selectEl[0],
           contentNode = opts.contentEl[0],
           parentRect = parentNode.getBoundingClientRect(),
-          targetRect = $mdUtil.clientRect(targetNode, parentNode),
+          targetRect = $md083forkUtil.clientRect(targetNode, parentNode),
           shouldOpenAroundTarget = false,
           bounds = {
             left: parentNode.scrollLeft + SELECT_EDGE_MARGIN,
@@ -841,16 +841,16 @@ function SelectProvider($$interimElementProvider) {
       var containerRect = containerNode.getBoundingClientRect();
       containerNode.style.left = clamp(bounds.left, left, bounds.right - containerRect.width) + 'px';
       containerNode.style.top = clamp(bounds.top, top, bounds.bottom - containerRect.height) + 'px';
-      selectNode.style[$mdConstant.CSS.TRANSFORM_ORIGIN] = transformOrigin;
+      selectNode.style[$md083forkConstant.CSS.TRANSFORM_ORIGIN] = transformOrigin;
 
-      selectNode.style[$mdConstant.CSS.TRANSFORM] = 'scale(' +
+      selectNode.style[$md083forkConstant.CSS.TRANSFORM] = 'scale(' +
         Math.min(targetRect.width / selectMenuRect.width, 1.0) + ',' +
         Math.min(targetRect.height / selectMenuRect.height, 1.0) +
       ')';
 
       $$rAF(function() {
         element.addClass('md-active');
-        selectNode.style[$mdConstant.CSS.TRANSFORM] = '';
+        selectNode.style[$md083forkConstant.CSS.TRANSFORM] = '';
       });
     }
 

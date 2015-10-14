@@ -4,7 +4,7 @@
  * @license MIT
  * v0.8.3
  */
-angular.module('ngMaterial083Fork', ["ng","ngAnimate","ngAria","material.083fork.core","material.083fork.core.theming.palette","material.083fork.core.theming","material.083fork.components.autocomplete","material.083fork.components.backdrop","material.083fork.components.button","material.083fork.components.bottomSheet","material.083fork.components.card","material.083fork.components.checkbox","material.083fork.components.content","material.083fork.components.dialog","material.083fork.components.divider","material.083fork.components.gridList","material.083fork.components.icon","material.083fork.components.input","material.083fork.components.list","material.083fork.components.progressCircular","material.083fork.components.progressLinear","material.083fork.components.radioButton","material.083fork.components.select","material.083fork.components.sidenav","material.083fork.components.slider","material.083fork.components.sticky","material.083fork.components.subheader","material.083fork.components.swipe","material.083fork.components.switch","material.083fork.components.tabs","material.083fork.components.textField","material.083fork.components.toast","material.083fork.components.toolbar","material.083fork.components.tooltip","material.083fork.components.whiteframe"]);
+angular.module('ngMaterial083Fork', ["ng","ngAnimate","ngAria","material.083fork.core","material.083fork.core.theming.palette","material.083fork.core.theming","material.083fork.components.autocomplete","material.083fork.components.backdrop","material.083fork.components.bottomSheet","material.083fork.components.button","material.083fork.components.card","material.083fork.components.checkbox","material.083fork.components.content","material.083fork.components.dialog","material.083fork.components.divider","material.083fork.components.gridList","material.083fork.components.icon","material.083fork.components.input","material.083fork.components.progressCircular","material.083fork.components.list","material.083fork.components.progressLinear","material.083fork.components.radioButton","material.083fork.components.select","material.083fork.components.sidenav","material.083fork.components.slider","material.083fork.components.sticky","material.083fork.components.subheader","material.083fork.components.swipe","material.083fork.components.switch","material.083fork.components.tabs","material.083fork.components.textField","material.083fork.components.toast","material.083fork.components.toolbar","material.083fork.components.tooltip","material.083fork.components.whiteframe"]);
 /*!
  * Angular Material Design
  * https://github.com/angular/material
@@ -23,17 +23,17 @@ angular
   .config( MdCoreConfigure );
 
 
-function MdCoreConfigure($provide, $mdThemingProvider) {
+function MdCoreConfigure($provide, $md083forkThemingProvider) {
 
   $provide.decorator('$$rAF', ["$delegate", rAFDecorator]);
 
-  $mdThemingProvider.theme('default')
+  $md083forkThemingProvider.theme('default')
     .primaryPalette('indigo')
     .accentPalette('pink')
     .warnPalette('red')
     .backgroundPalette('grey');
 }
-MdCoreConfigure.$inject = ["$provide", "$mdThemingProvider"];
+MdCoreConfigure.$inject = ["$provide", "$md083forkThemingProvider"];
 
 function rAFDecorator( $delegate ) {
   /**
@@ -78,7 +78,7 @@ function rAFDecorator( $delegate ) {
 'use strict';
 
 angular.module('material.083fork.core')
-.factory('$mdConstant', MdConstantFactory);
+.factory('$md083forkConstant', MdConstantFactory);
 
 function MdConstantFactory($$rAF, $sniffer) {
 
@@ -146,7 +146,7 @@ MdConstantFactory.$inject = ["$$rAF", "$sniffer"];
   angular
     .module('material.083fork.core')
     .config( ["$provide", function($provide){
-       $provide.decorator('$mdUtil', ['$delegate', function ($delegate){
+       $provide.decorator('$md083forkUtil', ['$delegate', function ($delegate){
            /**
             * Inject the iterator facade to easily support iteration and accessors
             * @see iterator below
@@ -381,50 +381,50 @@ MdConstantFactory.$inject = ["$$rAF", "$sniffer"];
 (function(){
 
 angular.module('material.083fork.core')
-.factory('$mdMedia', mdMediaFactory);
+.factory('$md083forkMedia', mdMediaFactory);
 
 /**
  * @ngdoc service
- * @name $mdMedia
+ * @name $md083forkMedia
  * @module material.core
  *
  * @description
- * `$mdMedia` is used to evaluate whether a given media query is true or false given the
+ * `$md083forkMedia` is used to evaluate whether a given media query is true or false given the
  * current device's screen / window size. The media query will be re-evaluated on resize, allowing
  * you to register a watch.
  *
- * `$mdMedia` also has pre-programmed support for media queries that match the layout breakpoints.
+ * `$md083forkMedia` also has pre-programmed support for media queries that match the layout breakpoints.
  *  (`sm`, `gt-sm`, `md`, `gt-md`, `lg`, `gt-lg`).
  *
  * @returns {boolean} a boolean representing whether or not the given media query is true or false.
  *
  * @usage
  * <hljs lang="js">
- * app.controller('MyController', function($mdMedia, $scope) {
- *   $scope.$watch(function() { return $mdMedia('lg'); }, function(big) {
+ * app.controller('MyController', function($md083forkMedia, $scope) {
+ *   $scope.$watch(function() { return $md083forkMedia('lg'); }, function(big) {
  *     $scope.bigScreen = big;
  *   });
  *
- *   $scope.screenIsSmall = $mdMedia('sm');
- *   $scope.customQuery = $mdMedia('(min-width: 1234px)');
- *   $scope.anotherCustom = $mdMedia('max-width: 300px');
+ *   $scope.screenIsSmall = $md083forkMedia('sm');
+ *   $scope.customQuery = $md083forkMedia('(min-width: 1234px)');
+ *   $scope.anotherCustom = $md083forkMedia('max-width: 300px');
  * });
  * </hljs>
  */
 
-function mdMediaFactory($mdConstant, $rootScope, $window) {
+function mdMediaFactory($md083forkConstant, $rootScope, $window) {
   var queries = {};
   var mqls = {};
   var results = {};
   var normalizeCache = {};
 
-  $mdMedia.getResponsiveAttribute = getResponsiveAttribute;
-  $mdMedia.getQuery = getQuery;
-  $mdMedia.watchResponsiveAttributes = watchResponsiveAttributes;
+  $md083forkMedia.getResponsiveAttribute = getResponsiveAttribute;
+  $md083forkMedia.getQuery = getQuery;
+  $md083forkMedia.watchResponsiveAttributes = watchResponsiveAttributes;
 
-  return $mdMedia;
+  return $md083forkMedia;
 
-  function $mdMedia(query) {
+  function $md083forkMedia(query) {
     var validated = queries[query];
     if (angular.isUndefined(validated)) {
       validated = queries[query] = validate(query);
@@ -439,7 +439,7 @@ function mdMediaFactory($mdConstant, $rootScope, $window) {
   }
 
   function validate(query) {
-    return $mdConstant.MEDIA[query] ||
+    return $md083forkConstant.MEDIA[query] ||
            ((query.charAt(0) !== '(') ? ('(' + query + ')') : query);
   }
 
@@ -460,8 +460,8 @@ function mdMediaFactory($mdConstant, $rootScope, $window) {
   }
 
   function getResponsiveAttribute(attrs, attrName) {
-    for (var i = 0; i < $mdConstant.MEDIA_PRIORITY.length; i++) {
-      var mediaName = $mdConstant.MEDIA_PRIORITY[i];
+    for (var i = 0; i < $md083forkConstant.MEDIA_PRIORITY.length; i++) {
+      var mediaName = $md083forkConstant.MEDIA_PRIORITY[i];
       if (!mqls[queries[mediaName]].matches) {
         continue;
       }
@@ -485,7 +485,7 @@ function mdMediaFactory($mdConstant, $rootScope, $window) {
             attrs.$observe(normalizedName, angular.bind(void 0, watchFn, null)));
       }
 
-      for (var mediaName in $mdConstant.MEDIA) {
+      for (var mediaName in $md083forkConstant.MEDIA) {
         normalizedName = getNormalizedName(attrs, attrName + '-' + mediaName);
         if (!attrs[normalizedName]) {
           return;
@@ -506,7 +506,7 @@ function mdMediaFactory($mdConstant, $rootScope, $window) {
         (normalizeCache[attrName] = attrs.$normalize(attrName));
   }
 }
-mdMediaFactory.$inject = ["$mdConstant", "$rootScope", "$window"];
+mdMediaFactory.$inject = ["$md083forkConstant", "$rootScope", "$window"];
 
 
 })();
@@ -529,7 +529,7 @@ mdMediaFactory.$inject = ["$mdConstant", "$rootScope", "$window"];
 var nextUniqueId = ['0','0','0'];
 
 angular.module('material.083fork.core')
-.factory('$mdUtil', ["$cacheFactory", "$document", "$timeout", "$q", "$window", "$mdConstant", function($cacheFactory, $document, $timeout, $q, $window, $mdConstant) {
+.factory('$md083forkUtil', ["$cacheFactory", "$document", "$timeout", "$q", "$window", "$md083forkConstant", function($cacheFactory, $document, $timeout, $q, $window, $md083forkConstant) {
   var Util;
 
   function getNode(el) {
@@ -596,11 +596,11 @@ angular.module('material.083fork.core')
     transitionEndPromise: function(element, opts) {
       opts = opts || {};
       var deferred = $q.defer();
-      element.on($mdConstant.CSS.TRANSITIONEND, finished);
+      element.on($md083forkConstant.CSS.TRANSITIONEND, finished);
       function finished(ev) {
         // Make sure this transitionend didn't bubble up from a child
         if (!ev || ev.target === element[0]) {
-          element.off($mdConstant.CSS.TRANSITIONEND, finished);
+          element.off($md083forkConstant.CSS.TRANSITIONEND, finished);
           deferred.resolve();
         }
       }
@@ -802,7 +802,7 @@ angular.element.prototype.blur = angular.element.prototype.blur || function() {
 'use strict';
 
 angular.module('material.083fork.core')
-  .service('$mdAria', AriaService);
+  .service('$md083forkAria', AriaService);
 
 function AriaService($$rAF, $log, $window) {
 
@@ -888,22 +888,22 @@ AriaService.$inject = ["$$rAF", "$log", "$window"];
 'use strict';
 
 angular.module('material.083fork.core')
-  .service('$mdCompiler', mdCompilerService);
+  .service('$md083forkCompiler', mdCompilerService);
 
 function mdCompilerService($q, $http, $injector, $compile, $controller, $templateCache) {
   /* jshint validthis: true */
 
   /*
    * @ngdoc service
-   * @name $mdCompiler
+   * @name $md083forkCompiler
    * @module material.core
    * @description
-   * The $mdCompiler service is an abstraction of angular's compiler, that allows the developer
+   * The $md083forkCompiler service is an abstraction of angular's compiler, that allows the developer
    * to easily compile an element with a templateUrl, controller, and locals.
    *
    * @usage
    * <hljs lang="js">
-   * $mdCompiler.compile({
+   * $md083forkCompiler.compile({
    *   templateUrl: 'modal.html',
    *   controller: 'ModalCtrl',
    *   locals: {
@@ -918,7 +918,7 @@ function mdCompilerService($q, $http, $injector, $compile, $controller, $templat
 
    /*
     * @ngdoc method
-    * @name $mdCompiler#compile
+    * @name $md083forkCompiler#compile
     * @description A helper to compile an HTML template/templateUrl with a given controller,
     * locals, and scope.
     * @param {object} options An options object, with the following properties:
@@ -1480,7 +1480,7 @@ angular.module('material.083fork.core')
 
 function InterimElementProvider() {
   createInterimElementProvider.$get = InterimElementFactory;
-  InterimElementFactory.$inject = ["$document", "$q", "$rootScope", "$timeout", "$rootElement", "$animate", "$interpolate", "$mdCompiler", "$mdTheming"];
+  InterimElementFactory.$inject = ["$document", "$q", "$rootScope", "$timeout", "$rootElement", "$animate", "$interpolate", "$md083forkCompiler", "$md083forkTheming"];
   return createInterimElementProvider;
 
   /**
@@ -1673,7 +1673,7 @@ function InterimElementProvider() {
 
   /* @ngInject */
   function InterimElementFactory($document, $q, $rootScope, $timeout, $rootElement, $animate,
-                                 $interpolate, $mdCompiler, $mdTheming ) {
+                                 $interpolate, $md083forkCompiler, $md083forkTheming ) {
     var startSymbol = $interpolate.startSymbol(),
         endSymbol = $interpolate.endSymbol(),
         usesStandardSymbols = ((startSymbol === '{{') && (endSymbol === '}}')),
@@ -1801,7 +1801,7 @@ function InterimElementProvider() {
                 });
               });
             } else {
-              compilePromise = $mdCompiler.compile(options);
+              compilePromise = $md083forkCompiler.compile(options);
             }
 
             return showDone = compilePromise.then(function(compileData) {
@@ -1823,7 +1823,7 @@ function InterimElementProvider() {
                 if (!options.parent.length) options.parent = $rootElement;
               }
 
-              if (options.themable) $mdTheming(element);
+              if (options.themable) $md083forkTheming(element);
               var ret = options.onShow(options.scope, element, options);
               return $q.when(ret)
                 .then(function(){
@@ -2007,965 +2007,6 @@ function InterimElementProvider() {
   }
   ComponentRegistry.$inject = ["$log", "$q"];
 
-
-})();
-
-/*!
- * Angular Material Design
- * https://github.com/angular/material
- * @license MIT
- * v0.8.3
- */
-(function() {
-'use strict';
-
-angular.module('material.083fork.core.theming.palette', [])
-.constant('$mdColorPalette', {
-  'red': {
-    '50': '#ffebee',
-    '100': '#ffcdd2',
-    '200': '#ef9a9a',
-    '300': '#e57373',
-    '400': '#ef5350',
-    '500': '#f44336',
-    '600': '#e53935',
-    '700': '#d32f2f',
-    '800': '#c62828',
-    '900': '#b71c1c',
-    'A100': '#ff8a80',
-    'A200': '#ff5252',
-    'A400': '#ff1744',
-    'A700': '#d50000',
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': '50 100 200 300 400 A100',
-    'contrastStrongLightColors': '500 600 700 A200 A400 A700'
-  },
-  'pink': {
-    '50': '#fce4ec',
-    '100': '#f8bbd0',
-    '200': '#f48fb1',
-    '300': '#f06292',
-    '400': '#ec407a',
-    '500': '#e91e63',
-    '600': '#d81b60',
-    '700': '#c2185b',
-    '800': '#ad1457',
-    '900': '#880e4f',
-    'A100': '#ff80ab',
-    'A200': '#ff4081',
-    'A400': '#f50057',
-    'A700': '#c51162',
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': '50 100 200 300 400 A100',
-    'contrastStrongLightColors': '500 600 A200 A400 A700'
-  },
-  'purple': {
-    '50': '#f3e5f5',
-    '100': '#e1bee7',
-    '200': '#ce93d8',
-    '300': '#ba68c8',
-    '400': '#ab47bc',
-    '500': '#9c27b0',
-    '600': '#8e24aa',
-    '700': '#7b1fa2',
-    '800': '#6a1b9a',
-    '900': '#4a148c',
-    'A100': '#ea80fc',
-    'A200': '#e040fb',
-    'A400': '#d500f9',
-    'A700': '#aa00ff',
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': '50 100 200 A100',
-    'contrastStrongLightColors': '300 400 A200 A400 A700'
-  },
-  'deep-purple': {
-    '50': '#ede7f6',
-    '100': '#d1c4e9',
-    '200': '#b39ddb',
-    '300': '#9575cd',
-    '400': '#7e57c2',
-    '500': '#673ab7',
-    '600': '#5e35b1',
-    '700': '#512da8',
-    '800': '#4527a0',
-    '900': '#311b92',
-    'A100': '#b388ff',
-    'A200': '#7c4dff',
-    'A400': '#651fff',
-    'A700': '#6200ea',
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': '50 100 200 A100',
-    'contrastStrongLightColors': '300 400 A200'
-  },
-  'indigo': {
-    '50': '#e8eaf6',
-    '100': '#c5cae9',
-    '200': '#9fa8da',
-    '300': '#7986cb',
-    '400': '#5c6bc0',
-    '500': '#3f51b5',
-    '600': '#3949ab',
-    '700': '#303f9f',
-    '800': '#283593',
-    '900': '#1a237e',
-    'A100': '#8c9eff',
-    'A200': '#536dfe',
-    'A400': '#3d5afe',
-    'A700': '#304ffe',
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': '50 100 200 A100',
-    'contrastStrongLightColors': '300 400 A200 A400'
-  },
-  'blue': {
-    '50': '#e3f2fd',
-    '100': '#bbdefb',
-    '200': '#90caf9',
-    '300': '#64b5f6',
-    '400': '#42a5f5',
-    '500': '#2196f3',
-    '600': '#1e88e5',
-    '700': '#1976d2',
-    '800': '#1565c0',
-    '900': '#0d47a1',
-    'A100': '#82b1ff',
-    'A200': '#448aff',
-    'A400': '#2979ff',
-    'A700': '#2962ff',
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': '100 200 300 400 A100',
-    'contrastStrongLightColors': '500 600 700 A200 A400 A700'
-  },
-  'light-blue': {
-    '50': '#e1f5fe',
-    '100': '#b3e5fc',
-    '200': '#81d4fa',
-    '300': '#4fc3f7',
-    '400': '#29b6f6',
-    '500': '#03a9f4',
-    '600': '#039be5',
-    '700': '#0288d1',
-    '800': '#0277bd',
-    '900': '#01579b',
-    'A100': '#80d8ff',
-    'A200': '#40c4ff',
-    'A400': '#00b0ff',
-    'A700': '#0091ea',
-    'contrastDefaultColor': 'dark',
-    'contrastLightColors': '500 600 700 800 900 A700',
-    'contrastStrongLightColors': '500 600 700 800 A700'
-  },
-  'cyan': {
-    '50': '#e0f7fa',
-    '100': '#b2ebf2',
-    '200': '#80deea',
-    '300': '#4dd0e1',
-    '400': '#26c6da',
-    '500': '#00bcd4',
-    '600': '#00acc1',
-    '700': '#0097a7',
-    '800': '#00838f',
-    '900': '#006064',
-    'A100': '#84ffff',
-    'A200': '#18ffff',
-    'A400': '#00e5ff',
-    'A700': '#00b8d4',
-    'contrastDefaultColor': 'dark',
-    'contrastLightColors': '500 600 700 800 900',
-    'contrastStrongLightColors': '500 600 700 800'
-  },
-  'teal': {
-    '50': '#e0f2f1',
-    '100': '#b2dfdb',
-    '200': '#80cbc4',
-    '300': '#4db6ac',
-    '400': '#26a69a',
-    '500': '#009688',
-    '600': '#00897b',
-    '700': '#00796b',
-    '800': '#00695c',
-    '900': '#004d40',
-    'A100': '#a7ffeb',
-    'A200': '#64ffda',
-    'A400': '#1de9b6',
-    'A700': '#00bfa5',
-    'contrastDefaultColor': 'dark',
-    'contrastLightColors': '500 600 700 800 900',
-    'contrastStrongLightColors': '500 600 700'
-  },
-  'green': {
-    '50': '#e8f5e9',
-    '100': '#c8e6c9',
-    '200': '#a5d6a7',
-    '300': '#81c784',
-    '400': '#66bb6a',
-    '500': '#4caf50',
-    '600': '#43a047',
-    '700': '#388e3c',
-    '800': '#2e7d32',
-    '900': '#1b5e20',
-    'A100': '#b9f6ca',
-    'A200': '#69f0ae',
-    'A400': '#00e676',
-    'A700': '#00c853',
-    'contrastDefaultColor': 'dark',
-    'contrastLightColors': '500 600 700 800 900',
-    'contrastStrongLightColors': '500 600 700'
-  },
-  'light-green': {
-    '50': '#f1f8e9',
-    '100': '#dcedc8',
-    '200': '#c5e1a5',
-    '300': '#aed581',
-    '400': '#9ccc65',
-    '500': '#8bc34a',
-    '600': '#7cb342',
-    '700': '#689f38',
-    '800': '#558b2f',
-    '900': '#33691e',
-    'A100': '#ccff90',
-    'A200': '#b2ff59',
-    'A400': '#76ff03',
-    'A700': '#64dd17',
-    'contrastDefaultColor': 'dark',
-    'contrastLightColors': '800 900',
-    'contrastStrongLightColors': '800 900'
-  },
-  'lime': {
-    '50': '#f9fbe7',
-    '100': '#f0f4c3',
-    '200': '#e6ee9c',
-    '300': '#dce775',
-    '400': '#d4e157',
-    '500': '#cddc39',
-    '600': '#c0ca33',
-    '700': '#afb42b',
-    '800': '#9e9d24',
-    '900': '#827717',
-    'A100': '#f4ff81',
-    'A200': '#eeff41',
-    'A400': '#c6ff00',
-    'A700': '#aeea00',
-    'contrastDefaultColor': 'dark',
-    'contrastLightColors': '900',
-    'contrastStrongLightColors': '900'
-  },
-  'yellow': {
-    '50': '#fffde7',
-    '100': '#fff9c4',
-    '200': '#fff59d',
-    '300': '#fff176',
-    '400': '#ffee58',
-    '500': '#ffeb3b',
-    '600': '#fdd835',
-    '700': '#fbc02d',
-    '800': '#f9a825',
-    '900': '#f57f17',
-    'A100': '#ffff8d',
-    'A200': '#ffff00',
-    'A400': '#ffea00',
-    'A700': '#ffd600',
-    'contrastDefaultColor': 'dark'
-  },
-  'amber': {
-    '50': '#fff8e1',
-    '100': '#ffecb3',
-    '200': '#ffe082',
-    '300': '#ffd54f',
-    '400': '#ffca28',
-    '500': '#ffc107',
-    '600': '#ffb300',
-    '700': '#ffa000',
-    '800': '#ff8f00',
-    '900': '#ff6f00',
-    'A100': '#ffe57f',
-    'A200': '#ffd740',
-    'A400': '#ffc400',
-    'A700': '#ffab00',
-    'contrastDefaultColor': 'dark'
-  },
-  'orange': {
-    '50': '#fff3e0',
-    '100': '#ffe0b2',
-    '200': '#ffcc80',
-    '300': '#ffb74d',
-    '400': '#ffa726',
-    '500': '#ff9800',
-    '600': '#fb8c00',
-    '700': '#f57c00',
-    '800': '#ef6c00',
-    '900': '#e65100',
-    'A100': '#ffd180',
-    'A200': '#ffab40',
-    'A400': '#ff9100',
-    'A700': '#ff6d00',
-    'contrastDefaultColor': 'dark',
-    'contrastLightColors': '800 900',
-    'contrastStrongLightColors': '800 900'
-  },
-  'deep-orange': {
-    '50': '#fbe9e7',
-    '100': '#ffccbc',
-    '200': '#ffab91',
-    '300': '#ff8a65',
-    '400': '#ff7043',
-    '500': '#ff5722',
-    '600': '#f4511e',
-    '700': '#e64a19',
-    '800': '#d84315',
-    '900': '#bf360c',
-    'A100': '#ff9e80',
-    'A200': '#ff6e40',
-    'A400': '#ff3d00',
-    'A700': '#dd2c00',
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': '50 100 200 300 400 A100 A200',
-    'contrastStrongLightColors': '500 600 700 800 900 A400 A700'
-  },
-  'brown': {
-    '50': '#efebe9',
-    '100': '#d7ccc8',
-    '200': '#bcaaa4',
-    '300': '#a1887f',
-    '400': '#8d6e63',
-    '500': '#795548',
-    '600': '#6d4c41',
-    '700': '#5d4037',
-    '800': '#4e342e',
-    '900': '#3e2723',
-    'A100': '#d7ccc8',
-    'A200': '#bcaaa4',
-    'A400': '#8d6e63',
-    'A700': '#5d4037',
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': '50 100 200',
-    'contrastStrongLightColors': '300 400'
-  },
-  'grey': {
-    '0': '#ffffff',
-    '50': '#fafafa',
-    '100': '#f5f5f5',
-    '200': '#eeeeee',
-    '300': '#e0e0e0',
-    '400': '#bdbdbd',
-    '500': '#9e9e9e',
-    '600': '#757575',
-    '700': '#616161',
-    '800': '#424242',
-    '900': '#212121',
-    '1000': '#000000',
-    'A100': '#ffffff',
-    'A200': '#eeeeee',
-    'A400': '#bdbdbd',
-    'A700': '#616161',
-    'contrastDefaultColor': 'dark',
-    'contrastLightColors': '600 700 800 900'
-  },
-  'blue-grey': {
-    '50': '#eceff1',
-    '100': '#cfd8dc',
-    '200': '#b0bec5',
-    '300': '#90a4ae',
-    '400': '#78909c',
-    '500': '#607d8b',
-    '600': '#546e7a',
-    '700': '#455a64',
-    '800': '#37474f',
-    '900': '#263238',
-    'A100': '#cfd8dc',
-    'A200': '#b0bec5',
-    'A400': '#78909c',
-    'A700': '#455a64',
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': '50 100 200 300',
-    'contrastStrongLightColors': '400 500'
-  }
-});
-})();
-
-/*!
- * Angular Material Design
- * https://github.com/angular/material
- * @license MIT
- * v0.8.3
- */
-(function() {
-'use strict';
-
-angular.module('material.083fork.core.theming', ['material.083fork.core.theming.palette'])
-  .directive('mdTheme', ThemingDirective)
-  .directive('mdThemable', ThemableDirective)
-  .provider('$mdTheming', ThemingProvider)
-  .run(generateThemes);
-
-/**
- * @ngdoc provider
- * @name $mdThemingProvider
- * @module material.core
- *
- * @description Provider to configure the `$mdTheming` service.
- */
-
-/**
- * @ngdoc method
- * @name $mdThemingProvider#setDefaultTheme
- * @param {string} themeName Default theme name to be applied to elements. Default value is `default`.
- */
-
-/**
- * @ngdoc method
- * @name $mdThemingProvider#alwaysWatchTheme
- * @param {boolean} watch Whether or not to always watch themes for changes and re-apply
- * classes when they change. Default is `false`. Enabling can reduce performance.
- */
-
-// In memory storage of defined themes and color palettes (both loaded by CSS, and user specified)
-var PALETTES;
-var THEMES;
-var themingProvider;
-var generationIsDone;
-
-var DARK_FOREGROUND = {
-  name: 'dark',
-  '1': 'rgba(0,0,0,0.87)',
-  '2': 'rgba(0,0,0,0.54)',
-  '3': 'rgba(0,0,0,0.26)',
-  '4': 'rgba(0,0,0,0.12)'
-};
-var LIGHT_FOREGROUND = {
-  name: 'light',
-  '1': 'rgba(255,255,255,1.0)',
-  '2': 'rgba(255,255,255,0.7)',
-  '3': 'rgba(255,255,255,0.3)',
-  '4': 'rgba(255,255,255,0.12)'
-};
-
-var DARK_SHADOW = '1px 1px 0px rgba(0,0,0,0.4), -1px -1px 0px rgba(0,0,0,0.4)';
-var LIGHT_SHADOW = '';
-
-var DARK_CONTRAST_COLOR = colorToRgbaArray('rgba(0,0,0,0.87)');
-var LIGHT_CONTRAST_COLOR = colorToRgbaArray('rgba(255,255,255,0.87');
-var STRONG_LIGHT_CONTRAST_COLOR = colorToRgbaArray('rgb(255,255,255)');
-
-var THEME_COLOR_TYPES = ['primary', 'accent', 'warn', 'background'];
-var DEFAULT_COLOR_TYPE = 'primary';
-
-// A color in a theme will use these hues by default, if not specified by user.
-var LIGHT_DEFAULT_HUES = {
-  'accent': {
-    'default': 'A200',
-    'hue-1': 'A100',
-    'hue-2': 'A400',
-    'hue-3': 'A700'
-  }
-};
-var DARK_DEFAULT_HUES = {
-  'background': {
-    'default': '500',
-    'hue-1': '300',
-    'hue-2': '600',
-    'hue-3': '800'
-  }
-};
-THEME_COLOR_TYPES.forEach(function(colorType) {
-  // Color types with unspecified default hues will use these default hue values
-  var defaultDefaultHues = {
-    'default': '500',
-    'hue-1': '300',
-    'hue-2': '800',
-    'hue-3': 'A100'
-  };
-  if (!LIGHT_DEFAULT_HUES[colorType]) LIGHT_DEFAULT_HUES[colorType] = defaultDefaultHues;
-  if (!DARK_DEFAULT_HUES[colorType]) DARK_DEFAULT_HUES[colorType] = defaultDefaultHues;
-});
-
-var VALID_HUE_VALUES = [
-  '50', '100', '200', '300', '400', '500', '600',
-  '700', '800', '900', 'A100', 'A200', 'A400', 'A700'
-];
-
-function ThemingProvider($mdColorPalette) {
-  PALETTES = {};
-  THEMES = {};
-  var defaultTheme = 'default';
-  var alwaysWatchTheme = false;
-
-  // Load JS Defined Palettes
-  angular.extend(PALETTES, $mdColorPalette);
-
-  // Default theme defined in core.js
-
-  ThemingService.$inject = ["$rootScope", "$log"];
-  return themingProvider = {
-    definePalette: definePalette,
-    extendPalette: extendPalette,
-    theme: registerTheme,
-
-    setDefaultTheme: function(theme) {
-      defaultTheme = theme;
-    },
-    alwaysWatchTheme: function(alwaysWatch) {
-      alwaysWatchTheme = alwaysWatch;
-    },
-    $get: ThemingService,
-    _LIGHT_DEFAULT_HUES: LIGHT_DEFAULT_HUES,
-    _DARK_DEFAULT_HUES: DARK_DEFAULT_HUES,
-    _PALETTES: PALETTES,
-    _THEMES: THEMES,
-    _parseRules: parseRules,
-    _rgba: rgba
-  };
-
-  // Example: $mdThemingProvider.definePalette('neonRed', { 50: '#f5fafa', ... });
-  function definePalette(name, map) {
-    map = map || {};
-    PALETTES[name] = checkPaletteValid(name, map);
-    return themingProvider;
-  }
-
-  // Returns an new object which is a copy of a given palette `name` with variables from
-  // `map` overwritten
-  // Example: var neonRedMap = $mdThemingProvider.extendPalette('red', { 50: '#f5fafafa' });
-  function extendPalette(name, map) {
-    return checkPaletteValid(name,  angular.extend({}, PALETTES[name] || {}, map) );
-  }
-
-  // Make sure that palette has all required hues
-  function checkPaletteValid(name, map) {
-    var missingColors = VALID_HUE_VALUES.filter(function(field) {
-      return !map[field];
-    });
-    if (missingColors.length) {
-      throw new Error("Missing colors %1 in palette %2!"
-                      .replace('%1', missingColors.join(', '))
-                      .replace('%2', name));
-    }
-
-    return map;
-  }
-
-  // Register a theme (which is a collection of color palettes to use with various states
-  // ie. warn, accent, primary )
-  // Optionally inherit from an existing theme
-  // $mdThemingProvider.theme('custom-theme').primaryPalette('red');
-  function registerTheme(name, inheritFrom) {
-    inheritFrom = inheritFrom || 'default';
-    if (THEMES[name]) return THEMES[name];
-
-    var parentTheme = typeof inheritFrom === 'string' ? THEMES[inheritFrom] : inheritFrom;
-    var theme = new Theme(name);
-
-    if (parentTheme) {
-      angular.forEach(parentTheme.colors, function(color, colorType) {
-        theme.colors[colorType] = {
-          name: color.name,
-          // Make sure a COPY of the hues is given to the child color,
-          // not the same reference.
-          hues: angular.extend({}, color.hues)
-        };
-      });
-    }
-    THEMES[name] = theme;
-
-    return theme;
-  }
-
-  function Theme(name) {
-    var self = this;
-    self.name = name;
-    self.colors = {};
-
-    self.dark = setDark;
-    setDark(false);
-
-    function setDark(isDark) {
-      isDark = arguments.length === 0 ? true : !!isDark;
-
-      // If no change, abort
-      if (isDark === self.isDark) return;
-
-      self.isDark = isDark;
-
-      self.foregroundPalette = self.isDark ? LIGHT_FOREGROUND : DARK_FOREGROUND;
-      self.foregroundShadow = self.isDark ? DARK_SHADOW : LIGHT_SHADOW;
-      
-      // Light and dark themes have different default hues.
-      // Go through each existing color type for this theme, and for every
-      // hue value that is still the default hue value from the previous light/dark setting,
-      // set it to the default hue value from the new light/dark setting.
-      var newDefaultHues = self.isDark ? DARK_DEFAULT_HUES : LIGHT_DEFAULT_HUES;
-      var oldDefaultHues = self.isDark ? LIGHT_DEFAULT_HUES : DARK_DEFAULT_HUES;
-      angular.forEach(newDefaultHues, function(newDefaults, colorType) {
-        var color = self.colors[colorType];
-        var oldDefaults = oldDefaultHues[colorType];
-        if (color) {
-          for (var hueName in color.hues) {
-            if (color.hues[hueName] === oldDefaults[hueName]) {
-              color.hues[hueName] = newDefaults[hueName];
-            }
-          }
-        }
-      });
-
-      return self;
-    }
-
-    THEME_COLOR_TYPES.forEach(function(colorType) {
-      var defaultHues = (self.isDark ? DARK_DEFAULT_HUES : LIGHT_DEFAULT_HUES)[colorType];
-      self[colorType + 'Palette'] = function setPaletteType(paletteName, hues) {
-        var color = self.colors[colorType] = {
-          name: paletteName,
-          hues: angular.extend({}, defaultHues, hues)
-        };
-
-        Object.keys(color.hues).forEach(function(name) {
-          if (!defaultHues[name]) {
-            throw new Error("Invalid hue name '%1' in theme %2's %3 color %4. Available hue names: %4"
-              .replace('%1', name)
-              .replace('%2', self.name)
-              .replace('%3', paletteName)
-              .replace('%4', Object.keys(defaultHues).join(', '))
-            );
-          }
-        });
-        Object.keys(color.hues).map(function(key) {
-          return color.hues[key];
-        }).forEach(function(hueValue) {
-          if (VALID_HUE_VALUES.indexOf(hueValue) == -1) {
-            throw new Error("Invalid hue value '%1' in theme %2's %3 color %4. Available hue values: %5"
-              .replace('%1', hueValue)
-              .replace('%2', self.name)
-              .replace('%3', colorType)
-              .replace('%4', paletteName)
-              .replace('%5', VALID_HUE_VALUES.join(', '))
-            );
-          }
-        });
-        return self;
-      };
-
-      self[colorType + 'Color'] = function() {
-        var args = Array.prototype.slice.call(arguments);
-        console.warn('$mdThemingProviderTheme.' + colorType + 'Color() has been deprecated. ' +
-                     'Use $mdThemingProviderTheme.' + colorType + 'Palette() instead.');
-        return self[colorType + 'Palette'].apply(self, args);
-      };
-    });
-  }
-
-  /**
-   * @ngdoc service
-   * @name $mdTheming
-   *
-   * @description
-   *
-   * Service that makes an element apply theming related classes to itself.
-   *
-   * ```js
-   * app.directive('myFancyDirective', function($mdTheming) {
-   *   return {
-   *     restrict: 'e',
-   *     link: function(scope, el, attrs) {
-   *       $mdTheming(el);
-   *     }
-   *   };
-   * });
-   * ```
-   * @param {el=} element to apply theming to
-   */
-  /* @ngInject */
-  function ThemingService($rootScope, $log) {
-    applyTheme.inherit = function(el, parent) {
-      var ctrl = parent.controller('mdTheme');
-
-      var attrThemeValue = el.attr('md-theme-watch');
-      if ( (alwaysWatchTheme || angular.isDefined(attrThemeValue)) && attrThemeValue != 'false') {
-        var deregisterWatch = $rootScope.$watch(function() {
-          return ctrl && ctrl.$mdTheme || defaultTheme;
-        }, changeTheme);
-        el.on('$destroy', deregisterWatch);
-      } else {
-        var theme = ctrl && ctrl.$mdTheme || defaultTheme;
-        changeTheme(theme);
-      }
-
-      function changeTheme(theme) {
-        if (!registered(theme)) {
-          $log.warn('Attempted to use unregistered theme \'' + theme + '\'. ' +
-                    'Register it with $mdThemingProvider.theme().');
-        }
-        var oldTheme = el.data('$mdThemeName');
-        if (oldTheme) el.removeClass('md-' + oldTheme +'-theme');
-        el.addClass('md-' + theme + '-theme');
-        el.data('$mdThemeName', theme);
-      }
-    };
-
-    applyTheme.registered = registered;
-    applyTheme.defaultTheme = function() {
-      return defaultTheme;
-    };
-
-    return applyTheme;
-
-    function registered(theme) {
-      if (theme === undefined || theme === '') return true;
-      return THEMES[theme] !== undefined;
-    }
-
-    function applyTheme(scope, el) {
-      // Allow us to be invoked via a linking function signature.
-      if (el === undefined) {
-        el = scope;
-        scope = undefined;
-      }
-      if (scope === undefined) {
-        scope = $rootScope;
-      }
-      applyTheme.inherit(el, el);
-    }
-  }
-}
-ThemingProvider.$inject = ["$mdColorPalette"];
-
-function ThemingDirective($mdTheming, $interpolate, $log) {
-  return {
-    priority: 100,
-    link: {
-      pre: function(scope, el, attrs) {
-        var ctrl = {
-          $setTheme: function(theme) {
-            if (!$mdTheming.registered(theme)) {
-              $log.warn('attempted to use unregistered theme \'' + theme + '\'');
-            }
-            ctrl.$mdTheme = theme;
-          }
-        };
-        el.data('$mdThemeController', ctrl);
-        ctrl.$setTheme($interpolate(attrs.mdTheme)(scope));
-        attrs.$observe('mdTheme', ctrl.$setTheme);
-      }
-    }
-  };
-}
-ThemingDirective.$inject = ["$mdTheming", "$interpolate", "$log"];
-
-function ThemableDirective($mdTheming) {
-  return $mdTheming;
-}
-ThemableDirective.$inject = ["$mdTheming"];
-
-function parseRules(theme, colorType, rules) {
-  checkValidPalette(theme, colorType);
-
-  rules = rules.replace(/THEME_NAME/g, theme.name);
-  var generatedRules = [];
-  var color = theme.colors[colorType];
-
-  var themeNameRegex = new RegExp('.md-' + theme.name + '-theme', 'g');
-  // Matches '{{ primary-color }}', etc
-  var hueRegex = new RegExp('(\'|")?{{\\s*(' + colorType + ')-(color|contrast)-?(\\d\\.?\\d*)?\\s*}}(\"|\')?','g');
-  var simpleVariableRegex = /'?"?\{\{\s*([a-zA-Z]+)-(A?\d+|hue\-[0-3]|shadow)-?(\d\.?\d*)?\s*\}\}'?"?/g;
-  var palette = PALETTES[color.name];
-
-  // find and replace simple variables where we use a specific hue, not angentire palette
-  // eg. "{{primary-100}}"
-  //\(' + THEME_COLOR_TYPES.join('\|') + '\)'
-  rules = rules.replace(simpleVariableRegex, function(match, colorType, hue, opacity) {
-    if (colorType === 'foreground') {
-      if (hue == 'shadow') {
-        return theme.foregroundShadow;
-      } else {
-        return theme.foregroundPalette[hue] || theme.foregroundPalette['1'];
-      }
-    }
-    if (hue.indexOf('hue') === 0) {
-      hue = theme.colors[colorType].hues[hue];
-    }
-    return rgba( (PALETTES[ theme.colors[colorType].name ][hue] || '').value, opacity );
-  });
-
-  // For each type, generate rules for each hue (ie. default, md-hue-1, md-hue-2, md-hue-3)
-  angular.forEach(color.hues, function(hueValue, hueName) {
-    var newRule = rules
-      .replace(hueRegex, function(match, _, colorType, hueType, opacity) {
-        return rgba(palette[hueValue][hueType === 'color' ? 'value' : 'contrast'], opacity);
-      });
-    if (hueName !== 'default') {
-      newRule = newRule.replace(themeNameRegex, '.md-' + theme.name + '-theme.md-' + hueName);
-    }
-    generatedRules.push(newRule);
-  });
-
-  return generatedRules.join('');
-}
-
-// Generate our themes at run time given the state of THEMES and PALETTES
-function generateThemes($injector) {
-  var themeCss = $injector.has('$MD_THEME_CSS') ? $injector.get('$MD_THEME_CSS') : '';
-
-  // MD_THEME_CSS is a string generated by the build process that includes all the themable
-  // components as templates
-
-  // Expose contrast colors for palettes to ensure that text is always readable
-  angular.forEach(PALETTES, sanitizePalette);
-
-  // Break the CSS into individual rules
-  var rules = themeCss.split(/\}(?!(\}|'|"|;))/)
-    .filter(function(rule) { return rule && rule.length; })
-    .map(function(rule) { return rule.trim() + '}'; });
-
-  var rulesByType = {};
-  THEME_COLOR_TYPES.forEach(function(type) {
-    rulesByType[type] = '';
-  });
-  var ruleMatchRegex = new RegExp('md-(' + THEME_COLOR_TYPES.join('|') + ')', 'g');
-
-  // Sort the rules based on type, allowing us to do color substitution on a per-type basis
-  rules.forEach(function(rule) {
-    var match = rule.match(ruleMatchRegex);
-    // First: test that if the rule has '.md-accent', it goes into the accent set of rules
-    for (var i = 0, type; type = THEME_COLOR_TYPES[i]; i++) {
-      if (rule.indexOf('.md-' + type) > -1) {
-        return rulesByType[type] += rule;
-      }
-    }
-
-    // If no eg 'md-accent' class is found, try to just find 'accent' in the rule and guess from
-    // there
-    for (i = 0; type = THEME_COLOR_TYPES[i]; i++) {
-      if (rule.indexOf(type) > -1) {
-        return rulesByType[type] += rule;
-      }
-    }
-
-    // Default to the primary array
-    return rulesByType[DEFAULT_COLOR_TYPE] += rule;
-  });
-
-  var styleString = '';
-
-  // For each theme, use the color palettes specified for `primary`, `warn` and `accent`
-  // to generate CSS rules.
-  angular.forEach(THEMES, function(theme) {
-    THEME_COLOR_TYPES.forEach(function(colorType) {
-      styleString += parseRules(theme, colorType, rulesByType[colorType] + '');
-    });
-    if (theme.colors.primary.name == theme.colors.accent.name) {
-      console.warn("$mdThemingProvider: Using the same palette for primary and" +
-                   " accent. This violates the material design spec.");
-    }
-  });
-
-  // Insert our newly minted styles into the DOM
-  if (!generationIsDone) {
-    var style = document.createElement('style');
-    style.innerHTML = styleString;
-    var head = document.getElementsByTagName('head')[0];
-    head.insertBefore(style, head.firstElementChild);
-    generationIsDone = true;
-  }
-
-  // The user specifies a 'default' contrast color as either light or dark,
-  // then explicitly lists which hues are the opposite contrast (eg. A100 has dark, A200 has light)
-  function sanitizePalette(palette) {
-    var defaultContrast = palette.contrastDefaultColor;
-    var lightColors = palette.contrastLightColors || [];
-    var strongLightColors = palette.contrastStrongLightColors || [];
-    var darkColors = palette.contrastDarkColors || [];
-
-    // These colors are provided as space-separated lists
-    if (typeof lightColors === 'string') lightColors = lightColors.split(' ');
-    if (typeof strongLightColors === 'string') strongLightColors = strongLightColors.split(' ');
-    if (typeof darkColors === 'string') darkColors = darkColors.split(' ');
-
-    // Cleanup after ourselves
-    delete palette.contrastDefaultColor;
-    delete palette.contrastLightColors;
-    delete palette.contrastStrongLightColors;
-    delete palette.contrastDarkColors;
-
-    // Change { 'A100': '#fffeee' } to { 'A100': { value: '#fffeee', contrast:DARK_CONTRAST_COLOR }
-    angular.forEach(palette, function(hueValue, hueName) {
-      if (angular.isObject(hueValue)) return; // Already converted
-      // Map everything to rgb colors
-      var rgbValue = colorToRgbaArray(hueValue);
-      if (!rgbValue) {
-        throw new Error("Color %1, in palette %2's hue %3, is invalid. Hex or rgb(a) color expected."
-                        .replace('%1', hueValue)
-                        .replace('%2', palette.name)
-                        .replace('%3', hueName));
-      }
-
-      palette[hueName] = {
-        value: rgbValue,
-        contrast: getContrastColor()
-      };
-      function getContrastColor() {
-        if (defaultContrast === 'light') {
-          if (darkColors.indexOf(hueName) > -1) {
-            return DARK_CONTRAST_COLOR;
-          } else {
-            return strongLightColors.indexOf(hueName) > -1 ? STRONG_LIGHT_CONTRAST_COLOR 
-              : LIGHT_CONTRAST_COLOR;
-          }
-        } else {
-          if (lightColors.indexOf(hueName) > -1) {
-            return strongLightColors.indexOf(hueName) > -1 ? STRONG_LIGHT_CONTRAST_COLOR 
-              : LIGHT_CONTRAST_COLOR;
-          } else {
-            return DARK_CONTRAST_COLOR;
-          }
-        }
-      }
-    });
-  }
-
-}
-generateThemes.$inject = ["$injector"];
-
-function checkValidPalette(theme, colorType) {
-  // If theme attempts to use a palette that doesnt exist, throw error
-  if (!PALETTES[ (theme.colors[colorType] || {}).name ]) {
-    throw new Error(
-      "You supplied an invalid color palette for theme %1's %2 palette. Available palettes: %3"
-                    .replace('%1', theme.name)
-                    .replace('%2', colorType)
-                    .replace('%3', Object.keys(PALETTES).join(', '))
-    );
-  }
-}
-
-function colorToRgbaArray(clr) {
-  if (angular.isArray(clr) && clr.length == 3) return clr;
-  if (/^rgb/.test(clr)) {
-    return clr.replace(/(^\s*rgba?\(|\)\s*$)/g, '').split(',').map(function(value, i) {
-      return i == 3 ? parseFloat(value, 10) : parseInt(value, 10);
-    });
-  }
-  if (clr.charAt(0) == '#') clr = clr.substring(1);
-  if (!/^([a-fA-F0-9]{3}){1,2}$/g.test(clr)) return;
-
-  var dig = clr.length / 3;
-  var red = clr.substr(0, dig);
-  var grn = clr.substr(dig, dig);
-  var blu = clr.substr(dig * 2);
-  if (dig === 1) {
-    red += red;
-    grn += grn;
-    blu += blu;
-  }
-  return [parseInt(red, 16), parseInt(grn, 16), parseInt(blu, 16)];
-}
-
-function rgba(rgbArray, opacity) {
-  if (rgbArray.length == 4) {
-    rgbArray = angular.copy(rgbArray);
-    opacity ? rgbArray.pop() : opacity = rgbArray.pop();
-  }
-  return opacity && (typeof opacity == 'number' || (typeof opacity == 'string' && opacity.length)) ?
-    'rgba(' + rgbArray.join(',') + ',' + opacity + ')' :
-    'rgb(' + rgbArray.join(',') + ')';
-}
 
 })();
 
@@ -3400,6 +2441,965 @@ function attrNoDirective() {
  * @license MIT
  * v0.8.3
  */
+(function() {
+'use strict';
+
+angular.module('material.083fork.core.theming.palette', [])
+.constant('$mdColorPalette', {
+  'red': {
+    '50': '#ffebee',
+    '100': '#ffcdd2',
+    '200': '#ef9a9a',
+    '300': '#e57373',
+    '400': '#ef5350',
+    '500': '#f44336',
+    '600': '#e53935',
+    '700': '#d32f2f',
+    '800': '#c62828',
+    '900': '#b71c1c',
+    'A100': '#ff8a80',
+    'A200': '#ff5252',
+    'A400': '#ff1744',
+    'A700': '#d50000',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': '50 100 200 300 400 A100',
+    'contrastStrongLightColors': '500 600 700 A200 A400 A700'
+  },
+  'pink': {
+    '50': '#fce4ec',
+    '100': '#f8bbd0',
+    '200': '#f48fb1',
+    '300': '#f06292',
+    '400': '#ec407a',
+    '500': '#e91e63',
+    '600': '#d81b60',
+    '700': '#c2185b',
+    '800': '#ad1457',
+    '900': '#880e4f',
+    'A100': '#ff80ab',
+    'A200': '#ff4081',
+    'A400': '#f50057',
+    'A700': '#c51162',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': '50 100 200 300 400 A100',
+    'contrastStrongLightColors': '500 600 A200 A400 A700'
+  },
+  'purple': {
+    '50': '#f3e5f5',
+    '100': '#e1bee7',
+    '200': '#ce93d8',
+    '300': '#ba68c8',
+    '400': '#ab47bc',
+    '500': '#9c27b0',
+    '600': '#8e24aa',
+    '700': '#7b1fa2',
+    '800': '#6a1b9a',
+    '900': '#4a148c',
+    'A100': '#ea80fc',
+    'A200': '#e040fb',
+    'A400': '#d500f9',
+    'A700': '#aa00ff',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': '50 100 200 A100',
+    'contrastStrongLightColors': '300 400 A200 A400 A700'
+  },
+  'deep-purple': {
+    '50': '#ede7f6',
+    '100': '#d1c4e9',
+    '200': '#b39ddb',
+    '300': '#9575cd',
+    '400': '#7e57c2',
+    '500': '#673ab7',
+    '600': '#5e35b1',
+    '700': '#512da8',
+    '800': '#4527a0',
+    '900': '#311b92',
+    'A100': '#b388ff',
+    'A200': '#7c4dff',
+    'A400': '#651fff',
+    'A700': '#6200ea',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': '50 100 200 A100',
+    'contrastStrongLightColors': '300 400 A200'
+  },
+  'indigo': {
+    '50': '#e8eaf6',
+    '100': '#c5cae9',
+    '200': '#9fa8da',
+    '300': '#7986cb',
+    '400': '#5c6bc0',
+    '500': '#3f51b5',
+    '600': '#3949ab',
+    '700': '#303f9f',
+    '800': '#283593',
+    '900': '#1a237e',
+    'A100': '#8c9eff',
+    'A200': '#536dfe',
+    'A400': '#3d5afe',
+    'A700': '#304ffe',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': '50 100 200 A100',
+    'contrastStrongLightColors': '300 400 A200 A400'
+  },
+  'blue': {
+    '50': '#e3f2fd',
+    '100': '#bbdefb',
+    '200': '#90caf9',
+    '300': '#64b5f6',
+    '400': '#42a5f5',
+    '500': '#2196f3',
+    '600': '#1e88e5',
+    '700': '#1976d2',
+    '800': '#1565c0',
+    '900': '#0d47a1',
+    'A100': '#82b1ff',
+    'A200': '#448aff',
+    'A400': '#2979ff',
+    'A700': '#2962ff',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': '100 200 300 400 A100',
+    'contrastStrongLightColors': '500 600 700 A200 A400 A700'
+  },
+  'light-blue': {
+    '50': '#e1f5fe',
+    '100': '#b3e5fc',
+    '200': '#81d4fa',
+    '300': '#4fc3f7',
+    '400': '#29b6f6',
+    '500': '#03a9f4',
+    '600': '#039be5',
+    '700': '#0288d1',
+    '800': '#0277bd',
+    '900': '#01579b',
+    'A100': '#80d8ff',
+    'A200': '#40c4ff',
+    'A400': '#00b0ff',
+    'A700': '#0091ea',
+    'contrastDefaultColor': 'dark',
+    'contrastLightColors': '500 600 700 800 900 A700',
+    'contrastStrongLightColors': '500 600 700 800 A700'
+  },
+  'cyan': {
+    '50': '#e0f7fa',
+    '100': '#b2ebf2',
+    '200': '#80deea',
+    '300': '#4dd0e1',
+    '400': '#26c6da',
+    '500': '#00bcd4',
+    '600': '#00acc1',
+    '700': '#0097a7',
+    '800': '#00838f',
+    '900': '#006064',
+    'A100': '#84ffff',
+    'A200': '#18ffff',
+    'A400': '#00e5ff',
+    'A700': '#00b8d4',
+    'contrastDefaultColor': 'dark',
+    'contrastLightColors': '500 600 700 800 900',
+    'contrastStrongLightColors': '500 600 700 800'
+  },
+  'teal': {
+    '50': '#e0f2f1',
+    '100': '#b2dfdb',
+    '200': '#80cbc4',
+    '300': '#4db6ac',
+    '400': '#26a69a',
+    '500': '#009688',
+    '600': '#00897b',
+    '700': '#00796b',
+    '800': '#00695c',
+    '900': '#004d40',
+    'A100': '#a7ffeb',
+    'A200': '#64ffda',
+    'A400': '#1de9b6',
+    'A700': '#00bfa5',
+    'contrastDefaultColor': 'dark',
+    'contrastLightColors': '500 600 700 800 900',
+    'contrastStrongLightColors': '500 600 700'
+  },
+  'green': {
+    '50': '#e8f5e9',
+    '100': '#c8e6c9',
+    '200': '#a5d6a7',
+    '300': '#81c784',
+    '400': '#66bb6a',
+    '500': '#4caf50',
+    '600': '#43a047',
+    '700': '#388e3c',
+    '800': '#2e7d32',
+    '900': '#1b5e20',
+    'A100': '#b9f6ca',
+    'A200': '#69f0ae',
+    'A400': '#00e676',
+    'A700': '#00c853',
+    'contrastDefaultColor': 'dark',
+    'contrastLightColors': '500 600 700 800 900',
+    'contrastStrongLightColors': '500 600 700'
+  },
+  'light-green': {
+    '50': '#f1f8e9',
+    '100': '#dcedc8',
+    '200': '#c5e1a5',
+    '300': '#aed581',
+    '400': '#9ccc65',
+    '500': '#8bc34a',
+    '600': '#7cb342',
+    '700': '#689f38',
+    '800': '#558b2f',
+    '900': '#33691e',
+    'A100': '#ccff90',
+    'A200': '#b2ff59',
+    'A400': '#76ff03',
+    'A700': '#64dd17',
+    'contrastDefaultColor': 'dark',
+    'contrastLightColors': '800 900',
+    'contrastStrongLightColors': '800 900'
+  },
+  'lime': {
+    '50': '#f9fbe7',
+    '100': '#f0f4c3',
+    '200': '#e6ee9c',
+    '300': '#dce775',
+    '400': '#d4e157',
+    '500': '#cddc39',
+    '600': '#c0ca33',
+    '700': '#afb42b',
+    '800': '#9e9d24',
+    '900': '#827717',
+    'A100': '#f4ff81',
+    'A200': '#eeff41',
+    'A400': '#c6ff00',
+    'A700': '#aeea00',
+    'contrastDefaultColor': 'dark',
+    'contrastLightColors': '900',
+    'contrastStrongLightColors': '900'
+  },
+  'yellow': {
+    '50': '#fffde7',
+    '100': '#fff9c4',
+    '200': '#fff59d',
+    '300': '#fff176',
+    '400': '#ffee58',
+    '500': '#ffeb3b',
+    '600': '#fdd835',
+    '700': '#fbc02d',
+    '800': '#f9a825',
+    '900': '#f57f17',
+    'A100': '#ffff8d',
+    'A200': '#ffff00',
+    'A400': '#ffea00',
+    'A700': '#ffd600',
+    'contrastDefaultColor': 'dark'
+  },
+  'amber': {
+    '50': '#fff8e1',
+    '100': '#ffecb3',
+    '200': '#ffe082',
+    '300': '#ffd54f',
+    '400': '#ffca28',
+    '500': '#ffc107',
+    '600': '#ffb300',
+    '700': '#ffa000',
+    '800': '#ff8f00',
+    '900': '#ff6f00',
+    'A100': '#ffe57f',
+    'A200': '#ffd740',
+    'A400': '#ffc400',
+    'A700': '#ffab00',
+    'contrastDefaultColor': 'dark'
+  },
+  'orange': {
+    '50': '#fff3e0',
+    '100': '#ffe0b2',
+    '200': '#ffcc80',
+    '300': '#ffb74d',
+    '400': '#ffa726',
+    '500': '#ff9800',
+    '600': '#fb8c00',
+    '700': '#f57c00',
+    '800': '#ef6c00',
+    '900': '#e65100',
+    'A100': '#ffd180',
+    'A200': '#ffab40',
+    'A400': '#ff9100',
+    'A700': '#ff6d00',
+    'contrastDefaultColor': 'dark',
+    'contrastLightColors': '800 900',
+    'contrastStrongLightColors': '800 900'
+  },
+  'deep-orange': {
+    '50': '#fbe9e7',
+    '100': '#ffccbc',
+    '200': '#ffab91',
+    '300': '#ff8a65',
+    '400': '#ff7043',
+    '500': '#ff5722',
+    '600': '#f4511e',
+    '700': '#e64a19',
+    '800': '#d84315',
+    '900': '#bf360c',
+    'A100': '#ff9e80',
+    'A200': '#ff6e40',
+    'A400': '#ff3d00',
+    'A700': '#dd2c00',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': '50 100 200 300 400 A100 A200',
+    'contrastStrongLightColors': '500 600 700 800 900 A400 A700'
+  },
+  'brown': {
+    '50': '#efebe9',
+    '100': '#d7ccc8',
+    '200': '#bcaaa4',
+    '300': '#a1887f',
+    '400': '#8d6e63',
+    '500': '#795548',
+    '600': '#6d4c41',
+    '700': '#5d4037',
+    '800': '#4e342e',
+    '900': '#3e2723',
+    'A100': '#d7ccc8',
+    'A200': '#bcaaa4',
+    'A400': '#8d6e63',
+    'A700': '#5d4037',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': '50 100 200',
+    'contrastStrongLightColors': '300 400'
+  },
+  'grey': {
+    '0': '#ffffff',
+    '50': '#fafafa',
+    '100': '#f5f5f5',
+    '200': '#eeeeee',
+    '300': '#e0e0e0',
+    '400': '#bdbdbd',
+    '500': '#9e9e9e',
+    '600': '#757575',
+    '700': '#616161',
+    '800': '#424242',
+    '900': '#212121',
+    '1000': '#000000',
+    'A100': '#ffffff',
+    'A200': '#eeeeee',
+    'A400': '#bdbdbd',
+    'A700': '#616161',
+    'contrastDefaultColor': 'dark',
+    'contrastLightColors': '600 700 800 900'
+  },
+  'blue-grey': {
+    '50': '#eceff1',
+    '100': '#cfd8dc',
+    '200': '#b0bec5',
+    '300': '#90a4ae',
+    '400': '#78909c',
+    '500': '#607d8b',
+    '600': '#546e7a',
+    '700': '#455a64',
+    '800': '#37474f',
+    '900': '#263238',
+    'A100': '#cfd8dc',
+    'A200': '#b0bec5',
+    'A400': '#78909c',
+    'A700': '#455a64',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': '50 100 200 300',
+    'contrastStrongLightColors': '400 500'
+  }
+});
+})();
+
+/*!
+ * Angular Material Design
+ * https://github.com/angular/material
+ * @license MIT
+ * v0.8.3
+ */
+(function() {
+'use strict';
+
+angular.module('material.083fork.core.theming', ['material.083fork.core.theming.palette'])
+  .directive('mdTheme', ThemingDirective)
+  .directive('mdThemable', ThemableDirective)
+  .provider('$md083forkTheming', ThemingProvider)
+  .run(generateThemes);
+
+/**
+ * @ngdoc provider
+ * @name $md083forkThemingProvider
+ * @module material.core
+ *
+ * @description Provider to configure the `$md083forkTheming` service.
+ */
+
+/**
+ * @ngdoc method
+ * @name $md083forkThemingProvider#setDefaultTheme
+ * @param {string} themeName Default theme name to be applied to elements. Default value is `default`.
+ */
+
+/**
+ * @ngdoc method
+ * @name $md083forkThemingProvider#alwaysWatchTheme
+ * @param {boolean} watch Whether or not to always watch themes for changes and re-apply
+ * classes when they change. Default is `false`. Enabling can reduce performance.
+ */
+
+// In memory storage of defined themes and color palettes (both loaded by CSS, and user specified)
+var PALETTES;
+var THEMES;
+var themingProvider;
+var generationIsDone;
+
+var DARK_FOREGROUND = {
+  name: 'dark',
+  '1': 'rgba(0,0,0,0.87)',
+  '2': 'rgba(0,0,0,0.54)',
+  '3': 'rgba(0,0,0,0.26)',
+  '4': 'rgba(0,0,0,0.12)'
+};
+var LIGHT_FOREGROUND = {
+  name: 'light',
+  '1': 'rgba(255,255,255,1.0)',
+  '2': 'rgba(255,255,255,0.7)',
+  '3': 'rgba(255,255,255,0.3)',
+  '4': 'rgba(255,255,255,0.12)'
+};
+
+var DARK_SHADOW = '1px 1px 0px rgba(0,0,0,0.4), -1px -1px 0px rgba(0,0,0,0.4)';
+var LIGHT_SHADOW = '';
+
+var DARK_CONTRAST_COLOR = colorToRgbaArray('rgba(0,0,0,0.87)');
+var LIGHT_CONTRAST_COLOR = colorToRgbaArray('rgba(255,255,255,0.87');
+var STRONG_LIGHT_CONTRAST_COLOR = colorToRgbaArray('rgb(255,255,255)');
+
+var THEME_COLOR_TYPES = ['primary', 'accent', 'warn', 'background'];
+var DEFAULT_COLOR_TYPE = 'primary';
+
+// A color in a theme will use these hues by default, if not specified by user.
+var LIGHT_DEFAULT_HUES = {
+  'accent': {
+    'default': 'A200',
+    'hue-1': 'A100',
+    'hue-2': 'A400',
+    'hue-3': 'A700'
+  }
+};
+var DARK_DEFAULT_HUES = {
+  'background': {
+    'default': '500',
+    'hue-1': '300',
+    'hue-2': '600',
+    'hue-3': '800'
+  }
+};
+THEME_COLOR_TYPES.forEach(function(colorType) {
+  // Color types with unspecified default hues will use these default hue values
+  var defaultDefaultHues = {
+    'default': '500',
+    'hue-1': '300',
+    'hue-2': '800',
+    'hue-3': 'A100'
+  };
+  if (!LIGHT_DEFAULT_HUES[colorType]) LIGHT_DEFAULT_HUES[colorType] = defaultDefaultHues;
+  if (!DARK_DEFAULT_HUES[colorType]) DARK_DEFAULT_HUES[colorType] = defaultDefaultHues;
+});
+
+var VALID_HUE_VALUES = [
+  '50', '100', '200', '300', '400', '500', '600',
+  '700', '800', '900', 'A100', 'A200', 'A400', 'A700'
+];
+
+function ThemingProvider($mdColorPalette) {
+  PALETTES = {};
+  THEMES = {};
+  var defaultTheme = 'default';
+  var alwaysWatchTheme = false;
+
+  // Load JS Defined Palettes
+  angular.extend(PALETTES, $mdColorPalette);
+
+  // Default theme defined in core.js
+
+  ThemingService.$inject = ["$rootScope", "$log"];
+  return themingProvider = {
+    definePalette: definePalette,
+    extendPalette: extendPalette,
+    theme: registerTheme,
+
+    setDefaultTheme: function(theme) {
+      defaultTheme = theme;
+    },
+    alwaysWatchTheme: function(alwaysWatch) {
+      alwaysWatchTheme = alwaysWatch;
+    },
+    $get: ThemingService,
+    _LIGHT_DEFAULT_HUES: LIGHT_DEFAULT_HUES,
+    _DARK_DEFAULT_HUES: DARK_DEFAULT_HUES,
+    _PALETTES: PALETTES,
+    _THEMES: THEMES,
+    _parseRules: parseRules,
+    _rgba: rgba
+  };
+
+  // Example: $md083forkThemingProvider.definePalette('neonRed', { 50: '#f5fafa', ... });
+  function definePalette(name, map) {
+    map = map || {};
+    PALETTES[name] = checkPaletteValid(name, map);
+    return themingProvider;
+  }
+
+  // Returns an new object which is a copy of a given palette `name` with variables from
+  // `map` overwritten
+  // Example: var neonRedMap = $md083forkThemingProvider.extendPalette('red', { 50: '#f5fafafa' });
+  function extendPalette(name, map) {
+    return checkPaletteValid(name,  angular.extend({}, PALETTES[name] || {}, map) );
+  }
+
+  // Make sure that palette has all required hues
+  function checkPaletteValid(name, map) {
+    var missingColors = VALID_HUE_VALUES.filter(function(field) {
+      return !map[field];
+    });
+    if (missingColors.length) {
+      throw new Error("Missing colors %1 in palette %2!"
+                      .replace('%1', missingColors.join(', '))
+                      .replace('%2', name));
+    }
+
+    return map;
+  }
+
+  // Register a theme (which is a collection of color palettes to use with various states
+  // ie. warn, accent, primary )
+  // Optionally inherit from an existing theme
+  // $md083forkThemingProvider.theme('custom-theme').primaryPalette('red');
+  function registerTheme(name, inheritFrom) {
+    inheritFrom = inheritFrom || 'default';
+    if (THEMES[name]) return THEMES[name];
+
+    var parentTheme = typeof inheritFrom === 'string' ? THEMES[inheritFrom] : inheritFrom;
+    var theme = new Theme(name);
+
+    if (parentTheme) {
+      angular.forEach(parentTheme.colors, function(color, colorType) {
+        theme.colors[colorType] = {
+          name: color.name,
+          // Make sure a COPY of the hues is given to the child color,
+          // not the same reference.
+          hues: angular.extend({}, color.hues)
+        };
+      });
+    }
+    THEMES[name] = theme;
+
+    return theme;
+  }
+
+  function Theme(name) {
+    var self = this;
+    self.name = name;
+    self.colors = {};
+
+    self.dark = setDark;
+    setDark(false);
+
+    function setDark(isDark) {
+      isDark = arguments.length === 0 ? true : !!isDark;
+
+      // If no change, abort
+      if (isDark === self.isDark) return;
+
+      self.isDark = isDark;
+
+      self.foregroundPalette = self.isDark ? LIGHT_FOREGROUND : DARK_FOREGROUND;
+      self.foregroundShadow = self.isDark ? DARK_SHADOW : LIGHT_SHADOW;
+      
+      // Light and dark themes have different default hues.
+      // Go through each existing color type for this theme, and for every
+      // hue value that is still the default hue value from the previous light/dark setting,
+      // set it to the default hue value from the new light/dark setting.
+      var newDefaultHues = self.isDark ? DARK_DEFAULT_HUES : LIGHT_DEFAULT_HUES;
+      var oldDefaultHues = self.isDark ? LIGHT_DEFAULT_HUES : DARK_DEFAULT_HUES;
+      angular.forEach(newDefaultHues, function(newDefaults, colorType) {
+        var color = self.colors[colorType];
+        var oldDefaults = oldDefaultHues[colorType];
+        if (color) {
+          for (var hueName in color.hues) {
+            if (color.hues[hueName] === oldDefaults[hueName]) {
+              color.hues[hueName] = newDefaults[hueName];
+            }
+          }
+        }
+      });
+
+      return self;
+    }
+
+    THEME_COLOR_TYPES.forEach(function(colorType) {
+      var defaultHues = (self.isDark ? DARK_DEFAULT_HUES : LIGHT_DEFAULT_HUES)[colorType];
+      self[colorType + 'Palette'] = function setPaletteType(paletteName, hues) {
+        var color = self.colors[colorType] = {
+          name: paletteName,
+          hues: angular.extend({}, defaultHues, hues)
+        };
+
+        Object.keys(color.hues).forEach(function(name) {
+          if (!defaultHues[name]) {
+            throw new Error("Invalid hue name '%1' in theme %2's %3 color %4. Available hue names: %4"
+              .replace('%1', name)
+              .replace('%2', self.name)
+              .replace('%3', paletteName)
+              .replace('%4', Object.keys(defaultHues).join(', '))
+            );
+          }
+        });
+        Object.keys(color.hues).map(function(key) {
+          return color.hues[key];
+        }).forEach(function(hueValue) {
+          if (VALID_HUE_VALUES.indexOf(hueValue) == -1) {
+            throw new Error("Invalid hue value '%1' in theme %2's %3 color %4. Available hue values: %5"
+              .replace('%1', hueValue)
+              .replace('%2', self.name)
+              .replace('%3', colorType)
+              .replace('%4', paletteName)
+              .replace('%5', VALID_HUE_VALUES.join(', '))
+            );
+          }
+        });
+        return self;
+      };
+
+      self[colorType + 'Color'] = function() {
+        var args = Array.prototype.slice.call(arguments);
+        console.warn('$md083forkThemingProviderTheme.' + colorType + 'Color() has been deprecated. ' +
+                     'Use $md083forkThemingProviderTheme.' + colorType + 'Palette() instead.');
+        return self[colorType + 'Palette'].apply(self, args);
+      };
+    });
+  }
+
+  /**
+   * @ngdoc service
+   * @name $md083forkTheming
+   *
+   * @description
+   *
+   * Service that makes an element apply theming related classes to itself.
+   *
+   * ```js
+   * app.directive('myFancyDirective', function($md083forkTheming) {
+   *   return {
+   *     restrict: 'e',
+   *     link: function(scope, el, attrs) {
+   *       $md083forkTheming(el);
+   *     }
+   *   };
+   * });
+   * ```
+   * @param {el=} element to apply theming to
+   */
+  /* @ngInject */
+  function ThemingService($rootScope, $log) {
+    applyTheme.inherit = function(el, parent) {
+      var ctrl = parent.controller('mdTheme');
+
+      var attrThemeValue = el.attr('md-theme-watch');
+      if ( (alwaysWatchTheme || angular.isDefined(attrThemeValue)) && attrThemeValue != 'false') {
+        var deregisterWatch = $rootScope.$watch(function() {
+          return ctrl && ctrl.$mdTheme || defaultTheme;
+        }, changeTheme);
+        el.on('$destroy', deregisterWatch);
+      } else {
+        var theme = ctrl && ctrl.$mdTheme || defaultTheme;
+        changeTheme(theme);
+      }
+
+      function changeTheme(theme) {
+        if (!registered(theme)) {
+          $log.warn('Attempted to use unregistered theme \'' + theme + '\'. ' +
+                    'Register it with $md083forkThemingProvider.theme().');
+        }
+        var oldTheme = el.data('$mdThemeName');
+        if (oldTheme) el.removeClass('md-' + oldTheme +'-theme');
+        el.addClass('md-' + theme + '-theme');
+        el.data('$mdThemeName', theme);
+      }
+    };
+
+    applyTheme.registered = registered;
+    applyTheme.defaultTheme = function() {
+      return defaultTheme;
+    };
+
+    return applyTheme;
+
+    function registered(theme) {
+      if (theme === undefined || theme === '') return true;
+      return THEMES[theme] !== undefined;
+    }
+
+    function applyTheme(scope, el) {
+      // Allow us to be invoked via a linking function signature.
+      if (el === undefined) {
+        el = scope;
+        scope = undefined;
+      }
+      if (scope === undefined) {
+        scope = $rootScope;
+      }
+      applyTheme.inherit(el, el);
+    }
+  }
+}
+ThemingProvider.$inject = ["$mdColorPalette"];
+
+function ThemingDirective($md083forkTheming, $interpolate, $log) {
+  return {
+    priority: 100,
+    link: {
+      pre: function(scope, el, attrs) {
+        var ctrl = {
+          $setTheme: function(theme) {
+            if (!$md083forkTheming.registered(theme)) {
+              $log.warn('attempted to use unregistered theme \'' + theme + '\'');
+            }
+            ctrl.$mdTheme = theme;
+          }
+        };
+        el.data('$mdThemeController', ctrl);
+        ctrl.$setTheme($interpolate(attrs.mdTheme)(scope));
+        attrs.$observe('mdTheme', ctrl.$setTheme);
+      }
+    }
+  };
+}
+ThemingDirective.$inject = ["$md083forkTheming", "$interpolate", "$log"];
+
+function ThemableDirective($md083forkTheming) {
+  return $md083forkTheming;
+}
+ThemableDirective.$inject = ["$md083forkTheming"];
+
+function parseRules(theme, colorType, rules) {
+  checkValidPalette(theme, colorType);
+
+  rules = rules.replace(/THEME_NAME/g, theme.name);
+  var generatedRules = [];
+  var color = theme.colors[colorType];
+
+  var themeNameRegex = new RegExp('.md-' + theme.name + '-theme', 'g');
+  // Matches '{{ primary-color }}', etc
+  var hueRegex = new RegExp('(\'|")?{{\\s*(' + colorType + ')-(color|contrast)-?(\\d\\.?\\d*)?\\s*}}(\"|\')?','g');
+  var simpleVariableRegex = /'?"?\{\{\s*([a-zA-Z]+)-(A?\d+|hue\-[0-3]|shadow)-?(\d\.?\d*)?\s*\}\}'?"?/g;
+  var palette = PALETTES[color.name];
+
+  // find and replace simple variables where we use a specific hue, not angentire palette
+  // eg. "{{primary-100}}"
+  //\(' + THEME_COLOR_TYPES.join('\|') + '\)'
+  rules = rules.replace(simpleVariableRegex, function(match, colorType, hue, opacity) {
+    if (colorType === 'foreground') {
+      if (hue == 'shadow') {
+        return theme.foregroundShadow;
+      } else {
+        return theme.foregroundPalette[hue] || theme.foregroundPalette['1'];
+      }
+    }
+    if (hue.indexOf('hue') === 0) {
+      hue = theme.colors[colorType].hues[hue];
+    }
+    return rgba( (PALETTES[ theme.colors[colorType].name ][hue] || '').value, opacity );
+  });
+
+  // For each type, generate rules for each hue (ie. default, md-hue-1, md-hue-2, md-hue-3)
+  angular.forEach(color.hues, function(hueValue, hueName) {
+    var newRule = rules
+      .replace(hueRegex, function(match, _, colorType, hueType, opacity) {
+        return rgba(palette[hueValue][hueType === 'color' ? 'value' : 'contrast'], opacity);
+      });
+    if (hueName !== 'default') {
+      newRule = newRule.replace(themeNameRegex, '.md-' + theme.name + '-theme.md-' + hueName);
+    }
+    generatedRules.push(newRule);
+  });
+
+  return generatedRules.join('');
+}
+
+// Generate our themes at run time given the state of THEMES and PALETTES
+function generateThemes($injector) {
+  var themeCss = $injector.has('$MD_THEME_CSS') ? $injector.get('$MD_THEME_CSS') : '';
+
+  // MD_THEME_CSS is a string generated by the build process that includes all the themable
+  // components as templates
+
+  // Expose contrast colors for palettes to ensure that text is always readable
+  angular.forEach(PALETTES, sanitizePalette);
+
+  // Break the CSS into individual rules
+  var rules = themeCss.split(/\}(?!(\}|'|"|;))/)
+    .filter(function(rule) { return rule && rule.length; })
+    .map(function(rule) { return rule.trim() + '}'; });
+
+  var rulesByType = {};
+  THEME_COLOR_TYPES.forEach(function(type) {
+    rulesByType[type] = '';
+  });
+  var ruleMatchRegex = new RegExp('md-(' + THEME_COLOR_TYPES.join('|') + ')', 'g');
+
+  // Sort the rules based on type, allowing us to do color substitution on a per-type basis
+  rules.forEach(function(rule) {
+    var match = rule.match(ruleMatchRegex);
+    // First: test that if the rule has '.md-accent', it goes into the accent set of rules
+    for (var i = 0, type; type = THEME_COLOR_TYPES[i]; i++) {
+      if (rule.indexOf('.md-' + type) > -1) {
+        return rulesByType[type] += rule;
+      }
+    }
+
+    // If no eg 'md-accent' class is found, try to just find 'accent' in the rule and guess from
+    // there
+    for (i = 0; type = THEME_COLOR_TYPES[i]; i++) {
+      if (rule.indexOf(type) > -1) {
+        return rulesByType[type] += rule;
+      }
+    }
+
+    // Default to the primary array
+    return rulesByType[DEFAULT_COLOR_TYPE] += rule;
+  });
+
+  var styleString = '';
+
+  // For each theme, use the color palettes specified for `primary`, `warn` and `accent`
+  // to generate CSS rules.
+  angular.forEach(THEMES, function(theme) {
+    THEME_COLOR_TYPES.forEach(function(colorType) {
+      styleString += parseRules(theme, colorType, rulesByType[colorType] + '');
+    });
+    if (theme.colors.primary.name == theme.colors.accent.name) {
+      console.warn("$md083forkThemingProvider: Using the same palette for primary and" +
+                   " accent. This violates the material design spec.");
+    }
+  });
+
+  // Insert our newly minted styles into the DOM
+  if (!generationIsDone) {
+    var style = document.createElement('style');
+    style.innerHTML = styleString;
+    var head = document.getElementsByTagName('head')[0];
+    head.insertBefore(style, head.firstElementChild);
+    generationIsDone = true;
+  }
+
+  // The user specifies a 'default' contrast color as either light or dark,
+  // then explicitly lists which hues are the opposite contrast (eg. A100 has dark, A200 has light)
+  function sanitizePalette(palette) {
+    var defaultContrast = palette.contrastDefaultColor;
+    var lightColors = palette.contrastLightColors || [];
+    var strongLightColors = palette.contrastStrongLightColors || [];
+    var darkColors = palette.contrastDarkColors || [];
+
+    // These colors are provided as space-separated lists
+    if (typeof lightColors === 'string') lightColors = lightColors.split(' ');
+    if (typeof strongLightColors === 'string') strongLightColors = strongLightColors.split(' ');
+    if (typeof darkColors === 'string') darkColors = darkColors.split(' ');
+
+    // Cleanup after ourselves
+    delete palette.contrastDefaultColor;
+    delete palette.contrastLightColors;
+    delete palette.contrastStrongLightColors;
+    delete palette.contrastDarkColors;
+
+    // Change { 'A100': '#fffeee' } to { 'A100': { value: '#fffeee', contrast:DARK_CONTRAST_COLOR }
+    angular.forEach(palette, function(hueValue, hueName) {
+      if (angular.isObject(hueValue)) return; // Already converted
+      // Map everything to rgb colors
+      var rgbValue = colorToRgbaArray(hueValue);
+      if (!rgbValue) {
+        throw new Error("Color %1, in palette %2's hue %3, is invalid. Hex or rgb(a) color expected."
+                        .replace('%1', hueValue)
+                        .replace('%2', palette.name)
+                        .replace('%3', hueName));
+      }
+
+      palette[hueName] = {
+        value: rgbValue,
+        contrast: getContrastColor()
+      };
+      function getContrastColor() {
+        if (defaultContrast === 'light') {
+          if (darkColors.indexOf(hueName) > -1) {
+            return DARK_CONTRAST_COLOR;
+          } else {
+            return strongLightColors.indexOf(hueName) > -1 ? STRONG_LIGHT_CONTRAST_COLOR 
+              : LIGHT_CONTRAST_COLOR;
+          }
+        } else {
+          if (lightColors.indexOf(hueName) > -1) {
+            return strongLightColors.indexOf(hueName) > -1 ? STRONG_LIGHT_CONTRAST_COLOR 
+              : LIGHT_CONTRAST_COLOR;
+          } else {
+            return DARK_CONTRAST_COLOR;
+          }
+        }
+      }
+    });
+  }
+
+}
+generateThemes.$inject = ["$injector"];
+
+function checkValidPalette(theme, colorType) {
+  // If theme attempts to use a palette that doesnt exist, throw error
+  if (!PALETTES[ (theme.colors[colorType] || {}).name ]) {
+    throw new Error(
+      "You supplied an invalid color palette for theme %1's %2 palette. Available palettes: %3"
+                    .replace('%1', theme.name)
+                    .replace('%2', colorType)
+                    .replace('%3', Object.keys(PALETTES).join(', '))
+    );
+  }
+}
+
+function colorToRgbaArray(clr) {
+  if (angular.isArray(clr) && clr.length == 3) return clr;
+  if (/^rgb/.test(clr)) {
+    return clr.replace(/(^\s*rgba?\(|\)\s*$)/g, '').split(',').map(function(value, i) {
+      return i == 3 ? parseFloat(value, 10) : parseInt(value, 10);
+    });
+  }
+  if (clr.charAt(0) == '#') clr = clr.substring(1);
+  if (!/^([a-fA-F0-9]{3}){1,2}$/g.test(clr)) return;
+
+  var dig = clr.length / 3;
+  var red = clr.substr(0, dig);
+  var grn = clr.substr(dig, dig);
+  var blu = clr.substr(dig * 2);
+  if (dig === 1) {
+    red += red;
+    grn += grn;
+    blu += blu;
+  }
+  return [parseInt(red, 16), parseInt(grn, 16), parseInt(blu, 16)];
+}
+
+function rgba(rgbArray, opacity) {
+  if (rgbArray.length == 4) {
+    rgbArray = angular.copy(rgbArray);
+    opacity ? rgbArray.pop() : opacity = rgbArray.pop();
+  }
+  return opacity && (typeof opacity == 'number' || (typeof opacity == 'string' && opacity.length)) ?
+    'rgba(' + rgbArray.join(',') + ',' + opacity + ')' :
+    'rgb(' + rgbArray.join(',') + ')';
+}
+
+})();
+
+/*!
+ * Angular Material Design
+ * https://github.com/angular/material
+ * @license MIT
+ * v0.8.3
+ */
 (function () {
   'use strict';
   /**
@@ -3448,110 +3448,10 @@ angular.module('material.083fork.components.backdrop', [
 ])
   .directive('mdBackdrop', BackdropDirective);
 
-function BackdropDirective($mdTheming) {
-  return $mdTheming;
+function BackdropDirective($md083forkTheming) {
+  return $md083forkTheming;
 }
-BackdropDirective.$inject = ["$mdTheming"];
-})();
-
-/*!
- * Angular Material Design
- * https://github.com/angular/material
- * @license MIT
- * v0.8.3
- */
-(function() {
-'use strict';
-
-/**
- * @ngdoc module
- * @name material.components.button
- * @description
- *
- * Button
- */
-angular.module('material.083fork.components.button', [
-  'material.083fork.core'
-])
-  .directive('mdButton', MdButtonDirective);
-
-/**
- * @ngdoc directive
- * @name mdButton
- * @module material.components.button
- *
- * @restrict E
- *
- * @description
- * `<md-button>` is a button directive with optional ink ripples (default enabled).
- *
- * If you supply a `href` or `ng-href` attribute, it will become an `<a>` element. Otherwise, it will
- * become a `<button>` element.
- *
- * As per the [material design spec](http://www.google.com/design/spec/style/color.html#color-ui-color-application)
- * the FAB button is in the accent color by default. The primary color palette may be used with
- * the `md-primary` class.
- *
- * @param {boolean=} md-no-ink If present, disable ripple ink effects.
- * @param {expression=} ng-disabled En/Disable based on the expression
- * @param {string=} md-ripple-size Overrides the default ripple size logic. Options: `full`, `partial`, `auto`
- * @param {string=} aria-label Adds alternative text to button for accessibility, useful for icon buttons.
- * If no default text is found, a warning will be logged.
- *
- * @usage
- * <hljs lang="html">
- *  <md-button>
- *    Button
- *  </md-button>
- *  <md-button href="http://google.com" class="md-button-colored">
- *    I'm a link
- *  </md-button>
- *  <md-button ng-disabled="true" class="md-colored">
- *    I'm a disabled button
- *  </md-button>
- * </hljs>
- */
-function MdButtonDirective($mdInkRipple, $mdTheming, $mdAria) {
-
-  return {
-    restrict: 'EA',
-    replace: true,
-    transclude: true,
-    template: getTemplate,
-    link: postLink
-  };
-
-  function isAnchor(attr) {
-    return angular.isDefined(attr.href) || angular.isDefined(attr.ngHref);
-  }
-  
-  function getTemplate(element, attr) {
-    return isAnchor(attr) ?
-           '<a class="md-button" ng-transclude></a>' :
-           '<button class="md-button" ng-transclude></button>';
-  }
-
-  function postLink(scope, element, attr) {
-    var node = element[0];
-    $mdTheming(element);
-    $mdInkRipple.attachButtonBehavior(scope, element);
-
-    var elementHasText = node.textContent.trim();
-    if (!elementHasText) {
-      $mdAria.expect(element, 'aria-label');
-    }
-
-    // For anchor elements, we have to set tabindex manually when the 
-    // element is disabled
-    if (isAnchor(attr) && angular.isDefined(attr.ngDisabled) ) {
-      scope.$watch(attr.ngDisabled, function(isDisabled) {
-        element.attr('tabindex', isDisabled ? -1 : 0);
-      });
-    }
-  }
-
-}
-MdButtonDirective.$inject = ["$mdInkRipple", "$mdTheming", "$mdAria"];
+BackdropDirective.$inject = ["$md083forkTheming"];
 })();
 
 /*!
@@ -3682,7 +3582,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
   var CLOSING_VELOCITY = 0.5;
   var PADDING = 80; // same as css
 
-  bottomSheetDefaults.$inject = ["$animate", "$mdConstant", "$timeout", "$$rAF", "$compile", "$mdTheming", "$mdBottomSheet", "$rootElement", "$rootScope", "$mdGesture"];
+  bottomSheetDefaults.$inject = ["$animate", "$md083forkConstant", "$timeout", "$$rAF", "$compile", "$md083forkTheming", "$mdBottomSheet", "$rootElement", "$rootScope", "$mdGesture"];
   return $$interimElementProvider('$mdBottomSheet')
     .setDefaults({
       methods: ['disableParentScroll', 'escapeToClose', 'targetEvent'],
@@ -3690,7 +3590,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
     });
 
   /* @ngInject */
-  function bottomSheetDefaults($animate, $mdConstant, $timeout, $$rAF, $compile, $mdTheming, $mdBottomSheet, $rootElement, $rootScope, $mdGesture) {
+  function bottomSheetDefaults($animate, $md083forkConstant, $timeout, $$rAF, $compile, $md083forkTheming, $mdBottomSheet, $rootElement, $rootScope, $mdGesture) {
     var backdrop;
 
     return {
@@ -3709,7 +3609,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
         $timeout($mdBottomSheet.cancel);
       });
 
-      $mdTheming.inherit(backdrop, options.parent);
+      $md083forkTheming.inherit(backdrop, options.parent);
 
       $animate.enter(backdrop, options.parent, null);
 
@@ -3718,7 +3618,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
 
       // Give up focus on calling item
       options.targetEvent && angular.element(options.targetEvent.target).blur();
-      $mdTheming.inherit(bottomSheet.element, options.parent);
+      $md083forkTheming.inherit(bottomSheet.element, options.parent);
 
       if (options.disableParentScroll) {
         options.lastOverflow = options.parent.css('overflow');
@@ -3736,7 +3636,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
 
           if (options.escapeToClose) {
             options.rootElementKeyupCallback = function(e) {
-              if (e.keyCode === $mdConstant.KEY_CODE.ESCAPE) {
+              if (e.keyCode === $md083forkConstant.KEY_CODE.ESCAPE) {
                 $timeout($mdBottomSheet.cancel);
               }
             };
@@ -3785,7 +3685,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
 
       function onDragStart(ev) {
         // Disable transitions on transform so that it feels fast
-        element.css($mdConstant.CSS.TRANSITION_DURATION, '0ms');
+        element.css($md083forkConstant.CSS.TRANSITION_DURATION, '0ms');
       }
 
       function onDrag(ev) {
@@ -3794,7 +3694,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
           // Slow down drag when trying to drag up, and stop after PADDING
           transform = Math.max(-PADDING, transform / 2);
         }
-        element.css($mdConstant.CSS.TRANSFORM, 'translate3d(0,' + (PADDING + transform) + 'px,0)');
+        element.css($md083forkConstant.CSS.TRANSFORM, 'translate3d(0,' + (PADDING + transform) + 'px,0)');
       }
 
       function onDragEnd(ev) {
@@ -3802,11 +3702,11 @@ function MdBottomSheetProvider($$interimElementProvider) {
             (ev.pointer.distanceY > 20 || Math.abs(ev.pointer.velocityY) > CLOSING_VELOCITY)) {
           var distanceRemaining = element.prop('offsetHeight') - ev.pointer.distanceY;
           var transitionDuration = Math.min(distanceRemaining / ev.pointer.velocityY * 0.75, 500);
-          element.css($mdConstant.CSS.TRANSITION_DURATION, transitionDuration + 'ms');
+          element.css($md083forkConstant.CSS.TRANSITION_DURATION, transitionDuration + 'ms');
           $timeout($mdBottomSheet.cancel);
         } else {
-          element.css($mdConstant.CSS.TRANSITION_DURATION, '');
-          element.css($mdConstant.CSS.TRANSFORM, '');
+          element.css($md083forkConstant.CSS.TRANSITION_DURATION, '');
+          element.css($md083forkConstant.CSS.TRANSFORM, '');
         }
       }
     }
@@ -3816,6 +3716,106 @@ function MdBottomSheetProvider($$interimElementProvider) {
 }
 MdBottomSheetProvider.$inject = ["$$interimElementProvider"];
 
+})();
+
+/*!
+ * Angular Material Design
+ * https://github.com/angular/material
+ * @license MIT
+ * v0.8.3
+ */
+(function() {
+'use strict';
+
+/**
+ * @ngdoc module
+ * @name material.components.button
+ * @description
+ *
+ * Button
+ */
+angular.module('material.083fork.components.button', [
+  'material.083fork.core'
+])
+  .directive('mdButton', MdButtonDirective);
+
+/**
+ * @ngdoc directive
+ * @name mdButton
+ * @module material.components.button
+ *
+ * @restrict E
+ *
+ * @description
+ * `<md-button>` is a button directive with optional ink ripples (default enabled).
+ *
+ * If you supply a `href` or `ng-href` attribute, it will become an `<a>` element. Otherwise, it will
+ * become a `<button>` element.
+ *
+ * As per the [material design spec](http://www.google.com/design/spec/style/color.html#color-ui-color-application)
+ * the FAB button is in the accent color by default. The primary color palette may be used with
+ * the `md-primary` class.
+ *
+ * @param {boolean=} md-no-ink If present, disable ripple ink effects.
+ * @param {expression=} ng-disabled En/Disable based on the expression
+ * @param {string=} md-ripple-size Overrides the default ripple size logic. Options: `full`, `partial`, `auto`
+ * @param {string=} aria-label Adds alternative text to button for accessibility, useful for icon buttons.
+ * If no default text is found, a warning will be logged.
+ *
+ * @usage
+ * <hljs lang="html">
+ *  <md-button>
+ *    Button
+ *  </md-button>
+ *  <md-button href="http://google.com" class="md-button-colored">
+ *    I'm a link
+ *  </md-button>
+ *  <md-button ng-disabled="true" class="md-colored">
+ *    I'm a disabled button
+ *  </md-button>
+ * </hljs>
+ */
+function MdButtonDirective($mdInkRipple, $md083forkTheming, $md083forkAria) {
+
+  return {
+    restrict: 'EA',
+    replace: true,
+    transclude: true,
+    template: getTemplate,
+    link: postLink
+  };
+
+  function isAnchor(attr) {
+    return angular.isDefined(attr.href) || angular.isDefined(attr.ngHref);
+  }
+  
+  function getTemplate(element, attr) {
+    return isAnchor(attr) ?
+           '<a class="md-button" ng-transclude></a>' :
+           '<button class="md-button" ng-transclude></button>';
+  }
+
+  function postLink(scope, element, attr) {
+    var node = element[0];
+    $md083forkTheming(element);
+    $mdInkRipple.attachButtonBehavior(scope, element);
+
+    var elementHasText = node.textContent.trim();
+    if (!elementHasText) {
+      $md083forkAria.expect(element, 'aria-label');
+    }
+
+    // For anchor elements, we have to set tabindex manually when the 
+    // element is disabled
+    if (isAnchor(attr) && angular.isDefined(attr.ngDisabled) ) {
+      scope.$watch(attr.ngDisabled, function(isDisabled) {
+        element.attr('tabindex', isDisabled ? -1 : 0);
+      });
+    }
+  }
+
+}
+MdButtonDirective.$inject = ["$mdInkRipple", "$md083forkTheming", "$md083forkAria"];
 })();
 
 /*!
@@ -3866,15 +3866,15 @@ angular.module('material.083fork.components.card', [
  * </hljs>
  *
  */
-function mdCardDirective($mdTheming) {
+function mdCardDirective($md083forkTheming) {
   return {
     restrict: 'E',
     link: function($scope, $element, $attr) {
-      $mdTheming($element);
+      $md083forkTheming($element);
     }
   };
 }
-mdCardDirective.$inject = ["$mdTheming"];
+mdCardDirective.$inject = ["$md083forkTheming"];
 })();
 
 /*!
@@ -3935,7 +3935,7 @@ angular.module('material.083fork.components.checkbox', [
  * </hljs>
  *
  */
-function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant, $mdTheming, $mdUtil) {
+function MdCheckboxDirective(inputDirective, $mdInkRipple, $md083forkAria, $md083forkConstant, $md083forkTheming, $md083forkUtil) {
   inputDirective = inputDirective[0];
   var CHECKED_CSS = 'md-checked';
 
@@ -3962,9 +3962,9 @@ function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant,
     tElement.attr('role', tAttrs.type);
 
     return function postLink(scope, element, attr, ngModelCtrl) {
-      ngModelCtrl = ngModelCtrl || $mdUtil.fakeNgModel();
+      ngModelCtrl = ngModelCtrl || $md083forkUtil.fakeNgModel();
       var checked = false;
-      $mdTheming(element);
+      $md083forkTheming(element);
 
       if (attr.ngChecked) {
         scope.$watch(
@@ -3973,7 +3973,7 @@ function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant,
         );
       }
 
-      $mdAria.expectWithText(element, 'aria-label');
+      $md083forkAria.expectWithText(element, 'aria-label');
 
       // Reuse the original input[type=checkbox] directive from Angular core.
       // This is a bit hacky as we need our own event listener and own render
@@ -3988,7 +3988,7 @@ function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant,
       ngModelCtrl.$render = render;
 
       function keypressHandler(ev) {
-        if(ev.which === $mdConstant.KEY_CODE.SPACE) {
+        if(ev.which === $md083forkConstant.KEY_CODE.SPACE) {
           ev.preventDefault();
           listener(ev);
         }
@@ -4014,7 +4014,7 @@ function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant,
     };
   }
 }
-MdCheckboxDirective.$inject = ["inputDirective", "$mdInkRipple", "$mdAria", "$mdConstant", "$mdTheming", "$mdUtil"];
+MdCheckboxDirective.$inject = ["inputDirective", "$mdInkRipple", "$md083forkAria", "$md083forkConstant", "$md083forkTheming", "$md083forkUtil"];
 
 })();
 
@@ -4062,14 +4062,14 @@ angular.module('material.083fork.components.content', [
  *
  */
 
-function mdContentDirective($mdTheming) {
+function mdContentDirective($md083forkTheming) {
   return {
     restrict: 'E',
     controller: ['$scope', '$element', ContentController],
     link: function(scope, element, attr) {
       var node = element[0];
 
-      $mdTheming(element);
+      $md083forkTheming(element);
       scope.$broadcast('$mdContentLoaded', element);
 
       iosScrollFix(element[0]);
@@ -4081,7 +4081,7 @@ function mdContentDirective($mdTheming) {
     this.$element = $element;
   }
 }
-mdContentDirective.$inject = ["$mdTheming"];
+mdContentDirective.$inject = ["$md083forkTheming"];
 
 function iosScrollFix(node) {
   // IOS FIX:
@@ -4124,11 +4124,11 @@ angular.module('material.083fork.components.dialog', [
   .directive('mdDialog', MdDialogDirective)
   .provider('$mdDialog', MdDialogProvider);
 
-function MdDialogDirective($$rAF, $mdTheming) {
+function MdDialogDirective($$rAF, $md083forkTheming) {
   return {
     restrict: 'E',
     link: function(scope, element, attr) {
-      $mdTheming(element);
+      $md083forkTheming(element);
       $$rAF(function() {
         var content = element[0].querySelector('md-content');
         if (content && content.scrollHeight > content.clientHeight) {
@@ -4138,7 +4138,7 @@ function MdDialogDirective($$rAF, $mdTheming) {
     }
   };
 }
-MdDialogDirective.$inject = ["$$rAF", "$mdTheming"];
+MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
 
 /**
  * @ngdoc service
@@ -4442,8 +4442,8 @@ function MdDialogProvider($$interimElementProvider) {
 
   var alertDialogMethods = ['title', 'content', 'ariaLabel', 'ok'];
 
-  advancedDialogOptions.$inject = ["$mdDialog", "$mdTheming"];
-  dialogDefaultOptions.$inject = ["$timeout", "$rootElement", "$compile", "$animate", "$mdAria", "$document", "$mdUtil", "$mdConstant", "$mdTheming", "$$rAF", "$q", "$mdDialog"];
+  advancedDialogOptions.$inject = ["$mdDialog", "$md083forkTheming"];
+  dialogDefaultOptions.$inject = ["$timeout", "$rootElement", "$compile", "$animate", "$md083forkAria", "$document", "$md083forkUtil", "$md083forkConstant", "$md083forkTheming", "$$rAF", "$q", "$mdDialog"];
   return $$interimElementProvider('$mdDialog')
     .setDefaults({
       methods: ['disableParentScroll', 'hasBackdrop', 'clickOutsideToClose', 'escapeToClose', 'targetEvent'],
@@ -4459,7 +4459,7 @@ function MdDialogProvider($$interimElementProvider) {
     });
 
   /* @ngInject */
-  function advancedDialogOptions($mdDialog, $mdTheming) {
+  function advancedDialogOptions($mdDialog, $md083forkTheming) {
     return {
       template: [
         '<md-dialog md-theme="{{ dialog.theme }}" aria-label="{{ dialog.ariaLabel }}">',
@@ -4487,13 +4487,13 @@ function MdDialogProvider($$interimElementProvider) {
       },
       controllerAs: 'dialog',
       bindToController: true,
-      theme: $mdTheming.defaultTheme()
+      theme: $md083forkTheming.defaultTheme()
     };
   }
 
   /* @ngInject */
-  function dialogDefaultOptions($timeout, $rootElement, $compile, $animate, $mdAria, $document,
-                                $mdUtil, $mdConstant, $mdTheming, $$rAF, $q, $mdDialog) {
+  function dialogDefaultOptions($timeout, $rootElement, $compile, $animate, $md083forkAria, $document,
+                                $md083forkUtil, $md083forkConstant, $md083forkTheming, $$rAF, $q, $mdDialog) {
     return {
       hasBackdrop: true,
       isolateScope: true,
@@ -4525,7 +4525,7 @@ function MdDialogProvider($$interimElementProvider) {
                            && $document[0].scrollTop) ? angular.element($document[0].documentElement) : options.parent;
         var parentOffset = computeFrom.prop('scrollTop');
         options.backdrop = angular.element('<md-backdrop class="md-dialog-backdrop md-opaque">');
-        $mdTheming.inherit(options.backdrop, options.parent);
+        $md083forkTheming.inherit(options.backdrop, options.parent);
         $animate.enter(options.backdrop, options.parent);
         element.css('top', parentOffset +'px');
       }
@@ -4543,7 +4543,7 @@ function MdDialogProvider($$interimElementProvider) {
       .then(function() {
         if (options.escapeToClose) {
           options.rootElementKeyupCallback = function(e) {
-            if (e.keyCode === $mdConstant.KEY_CODE.ESCAPE) {
+            if (e.keyCode === $md083forkConstant.KEY_CODE.ESCAPE) {
               $timeout($mdDialog.cancel);
             }
           };
@@ -4616,7 +4616,7 @@ function MdDialogProvider($$interimElementProvider) {
       if (dialogContent.length === 0){
         dialogContent = element;
       }
-      $mdAria.expectAsync(element, 'aria-label', function() {
+      $md083forkAria.expectAsync(element, 'aria-label', function() {
         var words = dialogContent.text().split(/\s+/);
         if (words.length > 3) words = words.slice(0,3).concat('...');
         return words.join(' ');
@@ -4631,10 +4631,10 @@ function MdDialogProvider($$interimElementProvider) {
 
       $$rAF(function() {
         dialogEl.addClass('transition-in')
-          .css($mdConstant.CSS.TRANSFORM, '');
+          .css($md083forkConstant.CSS.TRANSFORM, '');
       });
 
-      return $mdUtil.transitionEndPromise(dialogEl);
+      return $md083forkUtil.transitionEndPromise(dialogEl);
     }
 
     function dialogPopOut(container, parentElement, clickElement) {
@@ -4643,7 +4643,7 @@ function MdDialogProvider($$interimElementProvider) {
       dialogEl.addClass('transition-out').removeClass('transition-in');
       transformToClickElement(dialogEl, clickElement);
 
-      return $mdUtil.transitionEndPromise(dialogEl);
+      return $md083forkUtil.transitionEndPromise(dialogEl);
     }
 
     function transformToClickElement(dialogEl, clickElement) {
@@ -4654,7 +4654,7 @@ function MdDialogProvider($$interimElementProvider) {
         var scaleX = Math.min(0.5, clickRect.width / dialogRect.width);
         var scaleY = Math.min(0.5, clickRect.height / dialogRect.height);
 
-        dialogEl.css($mdConstant.CSS.TRANSFORM, 'translate3d(' +
+        dialogEl.css($md083forkConstant.CSS.TRANSFORM, 'translate3d(' +
           (-dialogRect.left + clickRect.left + clickRect.width/2 - dialogRect.width/2) + 'px,' +
           (-dialogRect.top + clickRect.top + clickRect.height/2 - dialogRect.height/2) + 'px,' +
           '0) scale(' + scaleX + ',' + scaleY + ')'
@@ -4664,11 +4664,11 @@ function MdDialogProvider($$interimElementProvider) {
 
     function dialogTransitionEnd(dialogEl) {
       var deferred = $q.defer();
-      dialogEl.on($mdConstant.CSS.TRANSITIONEND, finished);
+      dialogEl.on($md083forkConstant.CSS.TRANSITIONEND, finished);
       function finished(ev) {
         //Make sure this transitionend didn't bubble up from a child
         if (ev.target === dialogEl[0]) {
-          dialogEl.off($mdConstant.CSS.TRANSITIONEND, finished);
+          dialogEl.off($md083forkConstant.CSS.TRANSITIONEND, finished);
           deferred.resolve();
         }
       }
@@ -4720,14 +4720,14 @@ function MdDividerController(){}
  * </hljs>
  *
  */
-function MdDividerDirective($mdTheming) {
+function MdDividerDirective($md083forkTheming) {
   return {
     restrict: 'E',
-    link: $mdTheming,
+    link: $md083forkTheming,
     controller: [MdDividerController]
   };
 }
-MdDividerDirective.$inject = ["$mdTheming"];
+MdDividerDirective.$inject = ["$md083forkTheming"];
 })();
 
 /*!
@@ -4779,7 +4779,7 @@ angular.module('material.083fork.components.gridList', ['material.083fork.core']
  *
  * The `md-grid-list` directive supports "responsive" attributes, which allow
  * different `md-cols`, `md-gutter` and `md-row-height` values depending on the
- * currently matching media query (as defined in `$mdConstant.MEDIA`).
+ * currently matching media query (as defined in `$md083forkConstant.MEDIA`).
  *
  * In order to set a responsive attribute, first define the fallback value with
  * the standard attribute name, then add additional attributes with the
@@ -4834,7 +4834,7 @@ angular.module('material.083fork.components.gridList', ['material.083fork.core']
  * </md-grid-list>
  * </hljs>
  */
-function GridListDirective($interpolate, $mdConstant, $mdGridLayout, $mdMedia, $mdUtil) {
+function GridListDirective($interpolate, $md083forkConstant, $mdGridLayout, $md083forkMedia, $md083forkUtil) {
   return {
     restrict: 'E',
     controller: GridListController,
@@ -4859,19 +4859,19 @@ function GridListDirective($interpolate, $mdConstant, $mdGridLayout, $mdMedia, $
      * Watches for changes in media, invalidating layout as necessary.
      */
     function watchMedia() {
-      for (var mediaName in $mdConstant.MEDIA) {
-        $mdMedia(mediaName); // initialize
-        $mdMedia.getQuery($mdConstant.MEDIA[mediaName])
+      for (var mediaName in $md083forkConstant.MEDIA) {
+        $md083forkMedia(mediaName); // initialize
+        $md083forkMedia.getQuery($md083forkConstant.MEDIA[mediaName])
             .addListener(invalidateLayout);
       }
-      return $mdMedia.watchResponsiveAttributes(
+      return $md083forkMedia.watchResponsiveAttributes(
           ['md-cols', 'md-row-height'], attrs, layoutIfMediaMatch);;
     }
 
     function unwatchMedia() {
       unwatchAttrs();
-      for (var mediaName in $mdConstant.MEDIA) {
-        $mdMedia.getQuery($mdConstant.MEDIA[mediaName])
+      for (var mediaName in $md083forkConstant.MEDIA) {
+        $md083forkMedia.getQuery($md083forkConstant.MEDIA[mediaName])
             .removeListener(invalidateLayout);
       }
     }
@@ -4885,7 +4885,7 @@ function GridListDirective($interpolate, $mdConstant, $mdGridLayout, $mdMedia, $
         // TODO(shyndman): It would be nice to only layout if we have
         // instances of attributes using this media type
         ctrl.invalidateLayout();
-      } else if ($mdMedia(mediaName)) {
+      } else if ($md083forkMedia(mediaName)) {
         ctrl.invalidateLayout();
       }
     }
@@ -5015,15 +5015,15 @@ function GridListDirective($interpolate, $mdConstant, $mdGridLayout, $mdMedia, $
       return ctrl.tiles.map(function(tile) {
         return {
           row: parseInt(
-              $mdMedia.getResponsiveAttribute(tile.attrs, 'md-rowspan'), 10) || 1,
+              $md083forkMedia.getResponsiveAttribute(tile.attrs, 'md-rowspan'), 10) || 1,
           col: parseInt(
-              $mdMedia.getResponsiveAttribute(tile.attrs, 'md-colspan'), 10) || 1
+              $md083forkMedia.getResponsiveAttribute(tile.attrs, 'md-colspan'), 10) || 1
         };
       });
     }
 
     function getColumnCount() {
-      var colCount = parseInt($mdMedia.getResponsiveAttribute(attrs, 'md-cols'), 10);
+      var colCount = parseInt($md083forkMedia.getResponsiveAttribute(attrs, 'md-cols'), 10);
       if (isNaN(colCount)) {
         throw 'md-grid-list: md-cols attribute was not found, or contained a non-numeric value';
       }
@@ -5031,11 +5031,11 @@ function GridListDirective($interpolate, $mdConstant, $mdGridLayout, $mdMedia, $
     }
 
     function getGutter() {
-      return applyDefaultUnit($mdMedia.getResponsiveAttribute(attrs, 'md-gutter') || 1);
+      return applyDefaultUnit($md083forkMedia.getResponsiveAttribute(attrs, 'md-gutter') || 1);
     }
 
     function getRowHeight() {
-      var rowHeight = $mdMedia.getResponsiveAttribute(attrs, 'md-row-height');
+      var rowHeight = $md083forkMedia.getResponsiveAttribute(attrs, 'md-row-height');
       switch (getRowMode()) {
         case 'fixed':
           return applyDefaultUnit(rowHeight);
@@ -5048,7 +5048,7 @@ function GridListDirective($interpolate, $mdConstant, $mdGridLayout, $mdMedia, $
     }
 
     function getRowMode() {
-      var rowHeight = $mdMedia.getResponsiveAttribute(attrs, 'md-row-height');
+      var rowHeight = $md083forkMedia.getResponsiveAttribute(attrs, 'md-row-height');
       if (rowHeight == 'fit') {
         return 'fit';
       } else if (rowHeight.indexOf(':') !== -1) {
@@ -5063,7 +5063,7 @@ function GridListDirective($interpolate, $mdConstant, $mdGridLayout, $mdMedia, $
     }
   }
 }
-GridListDirective.$inject = ["$interpolate", "$mdConstant", "$mdGridLayout", "$mdMedia", "$mdUtil"];
+GridListDirective.$inject = ["$interpolate", "$md083forkConstant", "$mdGridLayout", "$md083forkMedia", "$md083forkUtil"];
 
   /* @ngInject */
 function GridListController($timeout) {
@@ -5122,7 +5122,7 @@ GridListController.prototype = {
 
 
 /* @ngInject */
-function GridLayoutFactory($mdUtil) {
+function GridLayoutFactory($md083forkUtil) {
   var defaultAnimator = GridTileAnimator;
 
   /**
@@ -5140,7 +5140,7 @@ function GridLayoutFactory($mdUtil) {
   function GridLayout(colCount, tileSpans) {
       var self, layoutInfo, gridStyles, layoutTime, mapTime, reflowTime, layoutInfo;
 
-      layoutTime = $mdUtil.time(function() {
+      layoutTime = $md083forkUtil.time(function() {
         layoutInfo = calculateGridFor(colCount, tileSpans);
       });
 
@@ -5158,7 +5158,7 @@ function GridLayoutFactory($mdUtil) {
          * provided updateFn.
          */
         map: function(updateFn) {
-          mapTime = $mdUtil.time(function() {
+          mapTime = $md083forkUtil.time(function() {
             var info = self.layoutInfo();
             gridStyles = updateFn(info.positioning, info.rowCount);
           });
@@ -5173,7 +5173,7 @@ function GridLayoutFactory($mdUtil) {
          *    function({grid: {element: JQLite, style: Object}, tiles: Array<{element: JQLite, style: Object}>)
          */
         reflow: function(animatorFn) {
-          reflowTime = $mdUtil.time(function() {
+          reflowTime = $md083forkUtil.time(function() {
             var animator = animatorFn || defaultAnimator;
             animator(gridStyles.grid, gridStyles.tiles);
           });
@@ -5317,7 +5317,7 @@ function GridLayoutFactory($mdUtil) {
     }
   }
 }
-GridLayoutFactory.$inject = ["$mdUtil"];
+GridLayoutFactory.$inject = ["$md083forkUtil"];
 
 /**
  * @ngdoc directive
@@ -5333,7 +5333,7 @@ GridLayoutFactory.$inject = ["$mdUtil"];
  *
  * The `md-grid-tile` directive supports "responsive" attributes, which allow
  * different `md-rowspan` and `md-colspan` values depending on the currently
- * matching media query (as defined in `$mdConstant.MEDIA`).
+ * matching media query (as defined in `$md083forkConstant.MEDIA`).
  *
  * In order to set a responsive attribute, first define the fallback value with
  * the standard attribute name, then add additional attributes with the
@@ -5376,7 +5376,7 @@ GridLayoutFactory.$inject = ["$mdUtil"];
  * </md-grid-tile>
  * </hljs>
  */
-function GridTileDirective($mdMedia) {
+function GridTileDirective($md083forkMedia) {
   return {
     restrict: 'E',
     require: '^mdGridList',
@@ -5391,7 +5391,7 @@ function GridTileDirective($mdMedia) {
     element.attr('role', 'listitem');
 
     // If our colspan or rowspan changes, trigger a layout
-    var unwatchAttrs = $mdMedia.watchResponsiveAttributes(['md-colspan', 'md-rowspan'],
+    var unwatchAttrs = $md083forkMedia.watchResponsiveAttributes(['md-colspan', 'md-rowspan'],
         attrs, angular.bind(gridCtrl, gridCtrl.invalidateLayout));
 
     // Tile registration/deregistration
@@ -5404,7 +5404,7 @@ function GridTileDirective($mdMedia) {
     });
   }
 }
-GridTileDirective.$inject = ["$mdMedia"];
+GridTileDirective.$inject = ["$md083forkMedia"];
 
 function GridTileCaptionDirective() {
   return {
@@ -5465,7 +5465,7 @@ angular.module('material.083fork.components.icon', [
  *  <md-icon md-svg-src="{{ getAndroid() }}" alt="android " ></md-icon>
  * </hljs>
  */
-function mdIconDirective($mdIcon, $mdTheming, $mdAria ) {
+function mdIconDirective($mdIcon, $md083forkTheming, $md083forkAria ) {
   return {
     scope: {
       fontIcon: '@mdFontIcon',
@@ -5486,17 +5486,17 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria ) {
    * Supports embedded SVGs, font-icons, & external SVGs
    */
   function postLink(scope, element, attr) {
-    $mdTheming(element);
+    $md083forkTheming(element);
 
     var ariaLabel = attr.alt || scope.fontIcon || scope.svgIcon;
     var attrName = attr.$normalize(attr.$attr.mdSvgIcon || attr.$attr.mdSvgSrc || '');
 
     if (attr.alt != '' && !parentsHaveText()) {
-      $mdAria.expect(element, 'aria-label', ariaLabel);
-      $mdAria.expect(element, 'role', 'img');
+      $md083forkAria.expect(element, 'aria-label', ariaLabel);
+      $md083forkAria.expect(element, 'role', 'img');
     } else {
       // Hide from the accessibility layer.
-      $mdAria.expect(element, 'aria-hidden', 'true');
+      $md083forkAria.expect(element, 'aria-hidden', 'true');
     }
 
     if (attrName) {
@@ -5524,7 +5524,7 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria ) {
     }
   }
 }
-mdIconDirective.$inject = ["$mdIcon", "$mdTheming", "$mdAria"];
+mdIconDirective.$inject = ["$mdIcon", "$md083forkTheming", "$md083forkAria"];
 
 })();
 
@@ -6051,7 +6051,7 @@ angular.module('material.083fork.components.input', [
  *
  * </hljs>
  */
-function mdInputContainerDirective($mdTheming, $parse) {
+function mdInputContainerDirective($md083forkTheming, $parse) {
   ContainerCtrl.$inject = ["$scope", "$element", "$attrs"];
   return {
     restrict: 'E',
@@ -6060,7 +6060,7 @@ function mdInputContainerDirective($mdTheming, $parse) {
   };
 
   function postLink(scope, element, attr) {
-    $mdTheming(element);
+    $md083forkTheming(element);
   }
   function ContainerCtrl($scope, $element, $attrs) {
     var self = this;
@@ -6086,7 +6086,7 @@ function mdInputContainerDirective($mdTheming, $parse) {
     });
   }
 }
-mdInputContainerDirective.$inject = ["$mdTheming", "$parse"];
+mdInputContainerDirective.$inject = ["$md083forkTheming", "$parse"];
 
 function labelDirective() {
   return {
@@ -6149,7 +6149,7 @@ function labelDirective() {
  *
  */
 
-function inputTextareaDirective($mdUtil, $window) {
+function inputTextareaDirective($md083forkUtil, $window) {
   return {
     restrict: 'E',
     require: ['^?mdInputContainer', '?ngModel'],
@@ -6159,7 +6159,7 @@ function inputTextareaDirective($mdUtil, $window) {
   function postLink(scope, element, attr, ctrls) {
 
     var containerCtrl = ctrls[0];
-    var ngModelCtrl = ctrls[1] || $mdUtil.fakeNgModel();
+    var ngModelCtrl = ctrls[1] || $md083forkUtil.fakeNgModel();
     var isReadonly = angular.isDefined(attr.readonly);
 
     if ( !containerCtrl ) return;
@@ -6170,7 +6170,7 @@ function inputTextareaDirective($mdUtil, $window) {
 
     element.addClass('md-input');
     if (!element.attr('id')) {
-      element.attr('id', 'input_' + $mdUtil.nextUid());
+      element.attr('id', 'input_' + $md083forkUtil.nextUid());
     }
 
     if (element[0].tagName.toLowerCase() === 'textarea') {
@@ -6223,7 +6223,7 @@ function inputTextareaDirective($mdUtil, $window) {
 
     function setupTextarea() {
       var node = element[0];
-      var onChangeTextarea = $mdUtil.debounce(growTextarea, 1);
+      var onChangeTextarea = $md083forkUtil.debounce(growTextarea, 1);
 
       function pipelineListener(value) {
         onChangeTextarea();
@@ -6266,7 +6266,7 @@ function inputTextareaDirective($mdUtil, $window) {
     }
   }
 }
-inputTextareaDirective.$inject = ["$mdUtil", "$window"];
+inputTextareaDirective.$inject = ["$md083forkUtil", "$window"];
 
 function mdMaxlengthDirective($animate) {
   return {
@@ -6338,6 +6338,134 @@ function placeholderDirective() {
   }
 }
 
+})();
+
+/*!
+ * Angular Material Design
+ * https://github.com/angular/material
+ * @license MIT
+ * v0.8.3
+ */
+(function() {
+'use strict';
+
+/**
+ * @ngdoc module
+ * @name material.components.progressCircular
+ * @description Circular Progress module!
+ */
+angular.module('material.083fork.components.progressCircular', [
+  'material.083fork.core'
+])
+  .directive('mdProgressCircular', MdProgressCircularDirective);
+
+/**
+ * @ngdoc directive
+ * @name mdProgressCircular
+ * @module material.components.progressCircular
+ * @restrict E
+ *
+* @description
+ * The circular progress directive is used to make loading content in your app as delightful and painless as possible by minimizing the amount of visual change a user sees before they can view and interact with content.
+ *
+ * For operations where the percentage of the operation completed can be determined, use a determinate indicator. They give users a quick sense of how long an operation will take.
+ *
+ * For operations where the user is asked to wait a moment while something finishes up, and it’s not necessary to expose what's happening behind the scenes and how long it will take, use an indeterminate indicator.
+ *
+ * @param {string} md-mode Select from one of two modes: determinate and indeterminate.
+ * @param {number=} value In determinate mode, this number represents the percentage of the circular progress. Default: 0
+ * @param {number=} md-diameter This specifies the diamter of the circular progress. Default: 48
+ *
+ * @usage
+ * <hljs lang="html">
+ * <md-progress-circular md-mode="determinate" value="..."></md-progress-circular>
+ *
+ * <md-progress-circular md-mode="determinate" ng-value="..."></md-progress-circular>
+ *
+ * <md-progress-circular md-mode="determinate" value="..." md-diameter="100"></md-progress-circular>
+ *
+ * <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+ * </hljs>
+ */
+function MdProgressCircularDirective($$rAF, $md083forkConstant, $md083forkTheming) {
+  var fillRotations = new Array(101),
+    fixRotations = new Array(101);
+
+  for (var i = 0; i < 101; i++) {
+    var percent = i / 100;
+    var rotation = Math.floor(percent * 180);
+
+    fillRotations[i] = 'rotate(' + rotation.toString() + 'deg)';
+    fixRotations[i] = 'rotate(' + (rotation * 2).toString() + 'deg)';
+  }
+
+  return {
+    restrict: 'E',
+    template:
+        '<div class="md-spinner-wrapper">' +
+          '<div class="md-inner">' +
+            '<div class="md-gap"></div>' +
+            '<div class="md-left">' +
+              '<div class="md-half-circle"></div>' +
+            '</div>' +
+            '<div class="md-right">' +
+              '<div class="md-half-circle"></div>' +
+            '</div>' +
+          '</div>' +
+        '</div>',
+    compile: compile
+  };
+
+  function compile(tElement, tAttrs, transclude) {
+    tElement.attr('aria-valuemin', 0);
+    tElement.attr('aria-valuemax', 100);
+    tElement.attr('role', 'progressbar');
+
+    return postLink;
+  }
+
+  function postLink(scope, element, attr) {
+    $md083forkTheming(element);
+    var circle = element[0],
+      fill = circle.querySelectorAll('.md-fill, .md-mask.md-full'),
+      fix = circle.querySelectorAll('.md-fill.md-fix'),
+      i, clamped, fillRotation, fixRotation;
+
+    var diameter = attr.mdDiameter || 48;
+    var scale = diameter/48;
+
+    circle.style[$md083forkConstant.CSS.TRANSFORM] = 'scale(' + scale.toString() + ')';
+
+    attr.$observe('value', function(value) {
+      clamped = clamp(value);
+      fillRotation = fillRotations[clamped];
+      fixRotation = fixRotations[clamped];
+
+      element.attr('aria-valuenow', clamped);
+
+      for (i = 0; i < fill.length; i++) {
+        fill[i].style[$md083forkConstant.CSS.TRANSFORM] = fillRotation;
+      }
+
+      for (i = 0; i < fix.length; i++) {
+        fix[i].style[$md083forkConstant.CSS.TRANSFORM] = fixRotation;
+      }
+    });
+  }
+
+  function clamp(value) {
+    if (value > 100) {
+      return 100;
+    }
+
+    if (value < 0) {
+      return 0;
+    }
+
+    return Math.ceil(value || 0);
+  }
+}
+MdProgressCircularDirective.$inject = ["$$rAF", "$md083forkConstant", "$md083forkTheming"];
 })();
 
 /*!
@@ -6445,134 +6573,6 @@ function mdItemDirective() {
 (function() {
 'use strict';
 
-/**
- * @ngdoc module
- * @name material.components.progressCircular
- * @description Circular Progress module!
- */
-angular.module('material.083fork.components.progressCircular', [
-  'material.083fork.core'
-])
-  .directive('mdProgressCircular', MdProgressCircularDirective);
-
-/**
- * @ngdoc directive
- * @name mdProgressCircular
- * @module material.components.progressCircular
- * @restrict E
- *
-* @description
- * The circular progress directive is used to make loading content in your app as delightful and painless as possible by minimizing the amount of visual change a user sees before they can view and interact with content.
- *
- * For operations where the percentage of the operation completed can be determined, use a determinate indicator. They give users a quick sense of how long an operation will take.
- *
- * For operations where the user is asked to wait a moment while something finishes up, and it’s not necessary to expose what's happening behind the scenes and how long it will take, use an indeterminate indicator.
- *
- * @param {string} md-mode Select from one of two modes: determinate and indeterminate.
- * @param {number=} value In determinate mode, this number represents the percentage of the circular progress. Default: 0
- * @param {number=} md-diameter This specifies the diamter of the circular progress. Default: 48
- *
- * @usage
- * <hljs lang="html">
- * <md-progress-circular md-mode="determinate" value="..."></md-progress-circular>
- *
- * <md-progress-circular md-mode="determinate" ng-value="..."></md-progress-circular>
- *
- * <md-progress-circular md-mode="determinate" value="..." md-diameter="100"></md-progress-circular>
- *
- * <md-progress-circular md-mode="indeterminate"></md-progress-circular>
- * </hljs>
- */
-function MdProgressCircularDirective($$rAF, $mdConstant, $mdTheming) {
-  var fillRotations = new Array(101),
-    fixRotations = new Array(101);
-
-  for (var i = 0; i < 101; i++) {
-    var percent = i / 100;
-    var rotation = Math.floor(percent * 180);
-
-    fillRotations[i] = 'rotate(' + rotation.toString() + 'deg)';
-    fixRotations[i] = 'rotate(' + (rotation * 2).toString() + 'deg)';
-  }
-
-  return {
-    restrict: 'E',
-    template:
-        '<div class="md-spinner-wrapper">' +
-          '<div class="md-inner">' +
-            '<div class="md-gap"></div>' +
-            '<div class="md-left">' +
-              '<div class="md-half-circle"></div>' +
-            '</div>' +
-            '<div class="md-right">' +
-              '<div class="md-half-circle"></div>' +
-            '</div>' +
-          '</div>' +
-        '</div>',
-    compile: compile
-  };
-
-  function compile(tElement, tAttrs, transclude) {
-    tElement.attr('aria-valuemin', 0);
-    tElement.attr('aria-valuemax', 100);
-    tElement.attr('role', 'progressbar');
-
-    return postLink;
-  }
-
-  function postLink(scope, element, attr) {
-    $mdTheming(element);
-    var circle = element[0],
-      fill = circle.querySelectorAll('.md-fill, .md-mask.md-full'),
-      fix = circle.querySelectorAll('.md-fill.md-fix'),
-      i, clamped, fillRotation, fixRotation;
-
-    var diameter = attr.mdDiameter || 48;
-    var scale = diameter/48;
-
-    circle.style[$mdConstant.CSS.TRANSFORM] = 'scale(' + scale.toString() + ')';
-
-    attr.$observe('value', function(value) {
-      clamped = clamp(value);
-      fillRotation = fillRotations[clamped];
-      fixRotation = fixRotations[clamped];
-
-      element.attr('aria-valuenow', clamped);
-
-      for (i = 0; i < fill.length; i++) {
-        fill[i].style[$mdConstant.CSS.TRANSFORM] = fillRotation;
-      }
-
-      for (i = 0; i < fix.length; i++) {
-        fix[i].style[$mdConstant.CSS.TRANSFORM] = fixRotation;
-      }
-    });
-  }
-
-  function clamp(value) {
-    if (value > 100) {
-      return 100;
-    }
-
-    if (value < 0) {
-      return 0;
-    }
-
-    return Math.ceil(value || 0);
-  }
-}
-MdProgressCircularDirective.$inject = ["$$rAF", "$mdConstant", "$mdTheming"];
-})();
-
-/*!
- * Angular Material Design
- * https://github.com/angular/material
- * @license MIT
- * v0.8.3
- */
-(function() {
-'use strict';
-
 
 /**
  * @ngdoc module
@@ -6614,7 +6614,7 @@ angular.module('material.083fork.components.progressLinear', [
  * <md-progress-linear md-mode="query"></md-progress-linear>
  * </hljs>
  */
-function MdProgressLinearDirective($$rAF, $mdConstant, $mdTheming) {
+function MdProgressLinearDirective($$rAF, $md083forkConstant, $md083forkTheming) {
 
   return {
     restrict: 'E',
@@ -6634,7 +6634,7 @@ function MdProgressLinearDirective($$rAF, $mdConstant, $mdTheming) {
     return postLink;
   }
   function postLink(scope, element, attr) {
-    $mdTheming(element);
+    $md083forkTheming(element);
     var bar1Style = element[0].querySelector('.md-bar1').style,
       bar2Style = element[0].querySelector('.md-bar2').style,
       container = angular.element(element[0].querySelector('.md-container'));
@@ -6646,11 +6646,11 @@ function MdProgressLinearDirective($$rAF, $mdConstant, $mdTheming) {
 
       var clamped = clamp(value);
       element.attr('aria-valuenow', clamped);
-      bar2Style[$mdConstant.CSS.TRANSFORM] = transforms[clamped];
+      bar2Style[$md083forkConstant.CSS.TRANSFORM] = transforms[clamped];
     });
 
     attr.$observe('mdBufferValue', function(value) {
-      bar1Style[$mdConstant.CSS.TRANSFORM] = transforms[clamp(value)];
+      bar1Style[$md083forkConstant.CSS.TRANSFORM] = transforms[clamp(value)];
     });
 
     $$rAF(function() {
@@ -6670,7 +6670,7 @@ function MdProgressLinearDirective($$rAF, $mdConstant, $mdTheming) {
     return Math.ceil(value || 0);
   }
 }
-MdProgressLinearDirective.$inject = ["$$rAF", "$mdConstant", "$mdTheming"];
+MdProgressLinearDirective.$inject = ["$$rAF", "$md083forkConstant", "$md083forkTheming"];
 
 
 // **********************************************************
@@ -6754,7 +6754,7 @@ angular.module('material.083fork.components.radioButton', [
  * </hljs>
  *
  */
-function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
+function mdRadioGroupDirective($md083forkUtil, $md083forkConstant, $md083forkTheming) {
   RadioGroupController.prototype = createRadioGroupControllerProto();
 
   return {
@@ -6765,26 +6765,26 @@ function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
   };
 
   function linkRadioGroup(scope, element, attr, ctrls) {
-    $mdTheming(element);
+    $md083forkTheming(element);
     var rgCtrl = ctrls[0];
-    var ngModelCtrl = ctrls[1] || $mdUtil.fakeNgModel();
+    var ngModelCtrl = ctrls[1] || $md083forkUtil.fakeNgModel();
 
     function keydownListener(ev) {
       switch(ev.keyCode) {
-        case $mdConstant.KEY_CODE.LEFT_ARROW:
-        case $mdConstant.KEY_CODE.UP_ARROW:
+        case $md083forkConstant.KEY_CODE.LEFT_ARROW:
+        case $md083forkConstant.KEY_CODE.UP_ARROW:
           ev.preventDefault();
           rgCtrl.selectPrevious();
           break;
 
-        case $mdConstant.KEY_CODE.RIGHT_ARROW:
-        case $mdConstant.KEY_CODE.DOWN_ARROW:
+        case $md083forkConstant.KEY_CODE.RIGHT_ARROW:
+        case $md083forkConstant.KEY_CODE.DOWN_ARROW:
           ev.preventDefault();
           rgCtrl.selectNext();
           break;
 
-        case $mdConstant.KEY_CODE.ENTER:
-          var form = angular.element($mdUtil.getClosest(element[0], 'form'));
+        case $md083forkConstant.KEY_CODE.ENTER:
+          var form = angular.element($md083forkUtil.getClosest(element[0], 'form'));
           if (form.length > 0) {
             form.triggerHandler('submit');
           }
@@ -6852,7 +6852,7 @@ function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
    */
   function changeSelectedButton(parent, increment) {
     // Coerce all child radio buttons into an array, then wrap then in an iterator
-    var buttons = $mdUtil.iterator(parent[0].querySelectorAll('md-radio-button'), true);
+    var buttons = $md083forkUtil.iterator(parent[0].querySelectorAll('md-radio-button'), true);
 
     if (buttons.count()) {
       var validate = function (button) {
@@ -6869,7 +6869,7 @@ function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
   }
 
 }
-mdRadioGroupDirective.$inject = ["$mdUtil", "$mdConstant", "$mdTheming"];
+mdRadioGroupDirective.$inject = ["$md083forkUtil", "$md083forkConstant", "$md083forkTheming"];
 
 /**
  * @ngdoc directive
@@ -6909,7 +6909,7 @@ mdRadioGroupDirective.$inject = ["$mdUtil", "$mdConstant", "$mdTheming"];
  * </hljs>
  *
  */
-function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
+function mdRadioButtonDirective($md083forkAria, $md083forkUtil, $md083forkTheming) {
 
   var CHECKED_CSS = 'md-checked';
 
@@ -6928,7 +6928,7 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
   function link(scope, element, attr, rgCtrl) {
     var lastChecked;
 
-    $mdTheming(element);
+    $md083forkTheming(element);
     configureAria(element, scope);
 
     rgCtrl.add(render);
@@ -6974,7 +6974,7 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
         'aria-checked' : 'false'
       });
 
-      $mdAria.expectWithText(element, 'aria-label');
+      $md083forkAria.expectWithText(element, 'aria-label');
 
       /**
        * Build a unique ID for each radio button that will be used with aria-activedescendant.
@@ -6982,12 +6982,12 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
        * @returns {*|string}
        */
       function buildAriaID() {
-        return attr.id || ( 'radio' + "_" + $mdUtil.nextUid() );
+        return attr.id || ( 'radio' + "_" + $md083forkUtil.nextUid() );
       }
     }
   }
 }
-mdRadioButtonDirective.$inject = ["$mdAria", "$mdUtil", "$mdTheming"];
+mdRadioButtonDirective.$inject = ["$md083forkAria", "$md083forkUtil", "$md083forkTheming"];
 
 })();
 
@@ -7065,7 +7065,7 @@ angular.module('material.083fork.components.select', [
  *   </md-select>
  * </hljs>
  */
-function SelectDirective($mdSelect, $mdUtil, $mdTheming, $interpolate, $compile, $parse) {
+function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpolate, $compile, $parse) {
   var intStart = $interpolate.startSymbol();
   var intEnd = $interpolate.endSymbol();
 
@@ -7086,7 +7086,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $interpolate, $compile,
     }
     labelEl.append('<span class="md-select-icon" aria-hidden="true"></span>');
     labelEl.addClass('md-select-label');
-    labelEl.attr('id', 'select_label_' + $mdUtil.nextUid());
+    labelEl.attr('id', 'select_label_' + $md083forkUtil.nextUid());
 
     // There's got to be an md-content inside. If there's not one, let's add it.
     if (!element.find('md-content').length) {
@@ -7113,7 +7113,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $interpolate, $compile,
 
     element.empty().append(labelEl);
 
-    $mdTheming(element);
+    $md083forkTheming(element);
 
     return function postLink(scope, element, attr, ctrls) {
       var isOpen;
@@ -7175,7 +7175,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $interpolate, $compile,
 
       element.attr({
         'role': 'combobox',
-        'id': 'select_' + $mdUtil.nextUid(),
+        'id': 'select_' + $md083forkUtil.nextUid(),
         'aria-haspopup': true,
         'aria-expanded': 'false',
         'aria-labelledby': labelEl.attr('id')
@@ -7230,9 +7230,9 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $interpolate, $compile,
     };
   }
 }
-SelectDirective.$inject = ["$mdSelect", "$mdUtil", "$mdTheming", "$interpolate", "$compile", "$parse"];
+SelectDirective.$inject = ["$mdSelect", "$md083forkUtil", "$md083forkTheming", "$interpolate", "$compile", "$parse"];
 
-function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
+function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
 
   SelectMenuController.$inject = ["$scope", "$attrs", "$element"];
   return {
@@ -7248,7 +7248,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
     var selectCtrl = ctrls[0];
     var ngModel = ctrls[1];
 
-    $mdTheming(element);
+    $md083forkTheming(element);
     element.on('click', clickListener);
     element.on('keypress', keyListener);
     if (ngModel) selectCtrl.init(ngModel);
@@ -7256,7 +7256,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
 
     function configureAria() {
       element.attr({
-        'id': 'select_menu_' + $mdUtil.nextUid(),
+        'id': 'select_menu_' + $md083forkUtil.nextUid(),
         'role': 'listbox',
         'aria-multiselectable': (selectCtrl.isMultiple ? 'true' : 'false')
       });
@@ -7269,7 +7269,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
     }
 
     function clickListener(ev) {
-      var option = $mdUtil.getClosest(ev.target, 'md-option');
+      var option = $md083forkUtil.getClosest(ev.target, 'md-option');
       var optionCtrl = option && angular.element(option).data('$mdOptionController');
       if (!option || !optionCtrl) return;
 
@@ -7431,9 +7431,9 @@ function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
   }
 
 }
-SelectMenuDirective.$inject = ["$parse", "$mdUtil", "$mdTheming"];
+SelectMenuDirective.$inject = ["$parse", "$md083forkUtil", "$md083forkTheming"];
 
-function OptionDirective($mdInkRipple, $mdUtil) {
+function OptionDirective($mdInkRipple, $md083forkUtil) {
 
   OptionController.$inject = ["$element"];
   return {
@@ -7498,7 +7498,7 @@ function OptionDirective($mdInkRipple, $mdUtil) {
       element.attr({
         'role': 'option',
         'aria-selected': 'false',
-        'id': 'select_option_'+ $mdUtil.nextUid()
+        'id': 'select_option_'+ $md083forkUtil.nextUid()
       });
     }
   }
@@ -7520,7 +7520,7 @@ function OptionDirective($mdInkRipple, $mdUtil) {
   }
 
 }
-OptionDirective.$inject = ["$mdInkRipple", "$mdUtil"];
+OptionDirective.$inject = ["$mdInkRipple", "$md083forkUtil"];
 
 function OptgroupDirective() {
   return {
@@ -7538,7 +7538,7 @@ function OptgroupDirective() {
 }
 
 function SelectProvider($$interimElementProvider) {
-  selectDefaultOptions.$inject = ["$mdSelect", "$mdConstant", "$$rAF", "$mdUtil", "$mdTheming", "$timeout"];
+  selectDefaultOptions.$inject = ["$mdSelect", "$md083forkConstant", "$$rAF", "$md083forkUtil", "$md083forkTheming", "$timeout"];
   return $$interimElementProvider('$mdSelect')
     .setDefaults({
       methods: ['target'],
@@ -7546,13 +7546,13 @@ function SelectProvider($$interimElementProvider) {
     });
 
   /* @ngInject */
-  function selectDefaultOptions($mdSelect, $mdConstant, $$rAF, $mdUtil, $mdTheming, $timeout) {
+  function selectDefaultOptions($mdSelect, $md083forkConstant, $$rAF, $md083forkUtil, $md083forkTheming, $timeout) {
     return {
       parent: 'body',
       onShow: onShow,
       onRemove: onRemove,
       hasBackdrop: true,
-      disableParentScroll: $mdUtil.floatingScrollbars(),
+      disableParentScroll: $md083forkUtil.floatingScrollbars(),
       themable: true
     };
 
@@ -7602,7 +7602,7 @@ function SelectProvider($$interimElementProvider) {
       $timeout(activateInteraction, 75, false);
 
       if (opts.backdrop) {
-        $mdTheming.inherit(opts.backdrop, opts.parent);
+        $md083forkTheming.inherit(opts.backdrop, opts.parent);
         opts.parent.append(opts.backdrop);
       }
       opts.parent.append(element);
@@ -7616,7 +7616,7 @@ function SelectProvider($$interimElementProvider) {
         });
       });
 
-      return $mdUtil.transitionEndPromise(opts.selectEl, {timeout: 350});
+      return $md083forkUtil.transitionEndPromise(opts.selectEl, {timeout: 350});
 
       function configureAria() {
         opts.selectEl.attr('aria-labelledby', opts.target.attr('id'));
@@ -7639,9 +7639,9 @@ function SelectProvider($$interimElementProvider) {
         // Escape to close
         opts.selectEl.on('keydown', function(ev) {
           switch (ev.keyCode) {
-            case $mdConstant.KEY_CODE.SPACE:
-            case $mdConstant.KEY_CODE.ENTER:
-              var option = $mdUtil.getClosest(ev.target, 'md-option');
+            case $md083forkConstant.KEY_CODE.SPACE:
+            case $md083forkConstant.KEY_CODE.ENTER:
+              var option = $md083forkUtil.getClosest(ev.target, 'md-option');
               if (option) {
                 opts.selectEl.triggerHandler({
                   type: 'click',
@@ -7650,8 +7650,8 @@ function SelectProvider($$interimElementProvider) {
                 ev.preventDefault();
               }
               break;
-            case $mdConstant.KEY_CODE.TAB:
-            case $mdConstant.KEY_CODE.ESCAPE:
+            case $md083forkConstant.KEY_CODE.TAB:
+            case $md083forkConstant.KEY_CODE.ESCAPE:
               ev.preventDefault();
               opts.restoreFocus = true;
               scope.$apply($mdSelect.cancel);
@@ -7661,8 +7661,8 @@ function SelectProvider($$interimElementProvider) {
         // Cycling of options, and closing on enter
         opts.selectEl.on('keydown', function(ev) {
           switch (ev.keyCode) {
-            case $mdConstant.KEY_CODE.UP_ARROW: return focusPrevOption();
-            case $mdConstant.KEY_CODE.DOWN_ARROW: return focusNextOption();
+            case $md083forkConstant.KEY_CODE.UP_ARROW: return focusPrevOption();
+            case $md083forkConstant.KEY_CODE.DOWN_ARROW: return focusNextOption();
           }
         });
 
@@ -7711,7 +7711,7 @@ function SelectProvider($$interimElementProvider) {
         .removeClass('md-clickable');
       opts.target.attr('aria-expanded', 'false');
 
-      if (opts.disableParentScroll && $mdUtil.floatingScrollbars()) {
+      if (opts.disableParentScroll && $md083forkUtil.floatingScrollbars()) {
         opts.disableTarget.css('overflow', opts.lastOverflow);
         delete opts.lastOverflow;
         delete opts.disableTarget;
@@ -7722,7 +7722,7 @@ function SelectProvider($$interimElementProvider) {
         mdSelect.setLabelText(opts.selectEl.controller('mdSelectMenu').selectedLabels());
       }
 
-      return $mdUtil.transitionEndPromise(element, { timeout: 350 }).then(function() {
+      return $md083forkUtil.transitionEndPromise(element, { timeout: 350 }).then(function() {
         element.removeClass('md-active');
         opts.parent[0].removeChild(element[0]); // use browser to avoid $destroy event
         opts.backdrop && opts.backdrop.remove();
@@ -7737,7 +7737,7 @@ function SelectProvider($$interimElementProvider) {
           selectNode = opts.selectEl[0],
           contentNode = opts.contentEl[0],
           parentRect = parentNode.getBoundingClientRect(),
-          targetRect = $mdUtil.clientRect(targetNode, parentNode),
+          targetRect = $md083forkUtil.clientRect(targetNode, parentNode),
           shouldOpenAroundTarget = false,
           bounds = {
             left: parentNode.scrollLeft + SELECT_EDGE_MARGIN,
@@ -7846,16 +7846,16 @@ function SelectProvider($$interimElementProvider) {
       var containerRect = containerNode.getBoundingClientRect();
       containerNode.style.left = clamp(bounds.left, left, bounds.right - containerRect.width) + 'px';
       containerNode.style.top = clamp(bounds.top, top, bounds.bottom - containerRect.height) + 'px';
-      selectNode.style[$mdConstant.CSS.TRANSFORM_ORIGIN] = transformOrigin;
+      selectNode.style[$md083forkConstant.CSS.TRANSFORM_ORIGIN] = transformOrigin;
 
-      selectNode.style[$mdConstant.CSS.TRANSFORM] = 'scale(' +
+      selectNode.style[$md083forkConstant.CSS.TRANSFORM] = 'scale(' +
         Math.min(targetRect.width / selectMenuRect.width, 1.0) + ',' +
         Math.min(targetRect.height / selectMenuRect.height, 1.0) +
       ')';
 
       $$rAF(function() {
         element.addClass('md-active');
-        selectNode.style[$mdConstant.CSS.TRANSFORM] = '';
+        selectNode.style[$md083forkConstant.CSS.TRANSFORM] = '';
       });
     }
 
@@ -8003,7 +8003,7 @@ SidenavService.$inject = ["$mdComponentRegistry", "$q"];
  *   </md-content>
  *
  *   <md-sidenav md-component-id="right"
- *     md-is-locked-open="$mdMedia('min-width: 333px')"
+ *     md-is-locked-open="$md083forkMedia('min-width: 333px')"
  *     class="md-sidenav-right">
  *     Right Nav!
  *   </md-sidenav>
@@ -8025,15 +8025,15 @@ SidenavService.$inject = ["$mdComponentRegistry", "$q"];
  * the sidenav 'locks open': it falls into the content's flow instead
  * of appearing over it. This overrides the `is-open` attribute.
  *
- * The $mdMedia() service is exposed to the is-locked-open attribute, which
+ * The $md083forkMedia() service is exposed to the is-locked-open attribute, which
  * can be given a media query or one of the `sm`, `gt-sm`, `md`, `gt-md`, `lg` or `gt-lg` presets.
  * Examples:
  *
  *   - `<md-sidenav md-is-locked-open="shouldLockOpen"></md-sidenav>`
- *   - `<md-sidenav md-is-locked-open="$mdMedia('min-width: 1000px')"></md-sidenav>`
- *   - `<md-sidenav md-is-locked-open="$mdMedia('sm')"></md-sidenav>` (locks open on small screens)
+ *   - `<md-sidenav md-is-locked-open="$md083forkMedia('min-width: 1000px')"></md-sidenav>`
+ *   - `<md-sidenav md-is-locked-open="$md083forkMedia('sm')"></md-sidenav>` (locks open on small screens)
  */
-function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstant, $compile, $mdTheming, $q, $document) {
+function SidenavDirective($timeout, $animate, $parse, $log, $md083forkMedia, $md083forkConstant, $compile, $md083forkTheming, $q, $document) {
   return {
     restrict: 'E',
     scope: {
@@ -8057,8 +8057,8 @@ function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstan
     var isLockedOpenParsed = $parse(attr.mdIsLockedOpen);
     var isLocked = function() {
       return isLockedOpenParsed(scope.$parent, {
-        $media: function(arg) { $log.warn("$media is deprecated for is-locked-open. Use $mdMedia instead."); return $mdMedia(arg); },
-        $mdMedia: $mdMedia
+        $media: function(arg) { $log.warn("$media is deprecated for is-locked-open. Use $md083forkMedia instead."); return $md083forkMedia(arg); },
+        $md083forkMedia: $md083forkMedia
       });
     };
     var backdrop = $compile(
@@ -8066,7 +8066,7 @@ function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstan
     )(scope);
 
     element.on('$destroy', sidenavCtrl.destroy);
-    $mdTheming.inherit(backdrop, element);
+    $md083forkTheming.inherit(backdrop, element);
 
     scope.$watch(isLocked, updateIsLocked);
     scope.$watch('isOpen', updateIsOpen);
@@ -8158,7 +8158,7 @@ function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstan
      * @param evt
      */
     function onKeyDown(ev) {
-      var isEscape = (ev.keyCode === $mdConstant.KEY_CODE.ESCAPE);
+      var isEscape = (ev.keyCode === $md083forkConstant.KEY_CODE.ESCAPE);
       return isEscape ? close(ev) : $q.when(true);
     }
 
@@ -8176,7 +8176,7 @@ function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstan
 
   }
 }
-SidenavDirective.$inject = ["$timeout", "$animate", "$parse", "$log", "$mdMedia", "$mdConstant", "$compile", "$mdTheming", "$q", "$document"];
+SidenavDirective.$inject = ["$timeout", "$animate", "$parse", "$log", "$md083forkMedia", "$md083forkConstant", "$compile", "$md083forkTheming", "$q", "$document"];
 
 /*
  * @private
@@ -8262,7 +8262,7 @@ SidenavController.$inject = ["$scope", "$element", "$attrs", "$mdComponentRegist
  * @param {number=} min The minimum value the user is allowed to pick. Default 0.
  * @param {number=} max The maximum value the user is allowed to pick. Default 100.
  */
-function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdTheming, $mdGesture, $parse) {
+function SliderDirective($$rAF, $window, $md083forkAria, $md083forkUtil, $md083forkConstant, $md083forkTheming, $mdGesture, $parse) {
   return {
     scope: {},
     require: '?ngModel',
@@ -8296,13 +8296,13 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
       role: 'slider'
     });
 
-    $mdAria.expect(tElement, 'aria-label');
+    $md083forkAria.expect(tElement, 'aria-label');
 
     return postLink;
   }
 
   function postLink(scope, element, attr, ngModelCtrl) {
-    $mdTheming(element);
+    $md083forkTheming(element);
     ngModelCtrl = ngModelCtrl || {
       // Mock ngModelController if it doesn't exist to give us
       // the minimum functionality needed
@@ -8325,7 +8325,7 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
     var trackContainer = angular.element(element[0].querySelector('.md-track-container'));
     var activeTrack = angular.element(element[0].querySelector('.md-track-fill'));
     var tickContainer = angular.element(element[0].querySelector('.md-track-ticks'));
-    var throttledRefreshDimensions = $mdUtil.throttle(refreshSliderDimensions, 5000);
+    var throttledRefreshDimensions = $md083forkUtil.throttle(refreshSliderDimensions, 5000);
 
     // Default values, overridable by attrs
     attr.min ? attr.$observe('min', updateMin) : updateMin(0);
@@ -8444,9 +8444,9 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
       }
 
       var changeAmount;
-      if (ev.keyCode === $mdConstant.KEY_CODE.LEFT_ARROW) {
+      if (ev.keyCode === $md083forkConstant.KEY_CODE.LEFT_ARROW) {
         changeAmount = -step;
-      } else if (ev.keyCode === $mdConstant.KEY_CODE.RIGHT_ARROW) {
+      } else if (ev.keyCode === $md083forkConstant.KEY_CODE.RIGHT_ARROW) {
         changeAmount = step;
       }
       if (changeAmount) {
@@ -8605,7 +8605,7 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
     }
   }
 }
-SliderDirective.$inject = ["$$rAF", "$window", "$mdAria", "$mdUtil", "$mdConstant", "$mdTheming", "$mdGesture", "$parse"];
+SliderDirective.$inject = ["$$rAF", "$window", "$md083forkAria", "$md083forkUtil", "$md083forkConstant", "$md083forkTheming", "$mdGesture", "$parse"];
 
 })();
 
@@ -8648,7 +8648,7 @@ angular.module('material.083fork.components.sticky', [
  *     If not provided, it will use the result of `element.clone()`.
  */
 
-function MdSticky($document, $mdConstant, $compile, $$rAF, $mdUtil) {
+function MdSticky($document, $md083forkConstant, $compile, $$rAF, $md083forkUtil) {
 
   var browserStickySupport = checkStickySupport();
 
@@ -8857,12 +8857,12 @@ function MdSticky($document, $mdConstant, $compile, $$rAF, $mdUtil) {
      if (amount === null || amount === undefined) {
        if (item.translateY) {
          item.translateY = null;
-         item.clone.css($mdConstant.CSS.TRANSFORM, '');
+         item.clone.css($md083forkConstant.CSS.TRANSFORM, '');
        }
      } else {
        item.translateY = amount;
        item.clone.css(
-         $mdConstant.CSS.TRANSFORM, 
+         $md083forkConstant.CSS.TRANSFORM,
          'translate3d(' + item.left + 'px,' + amount + 'px,0)'
        );
      }
@@ -8903,11 +8903,11 @@ function MdSticky($document, $mdConstant, $compile, $$rAF, $mdUtil) {
         element.triggerHandler('$scrollstart');
       }
       element.triggerHandler('$scroll');
-      lastScrollTime = +$mdUtil.now();
+      lastScrollTime = +$md083forkUtil.now();
     });
 
     function loopScrollEvent() {
-      if (+$mdUtil.now() - lastScrollTime > SCROLL_END_DELAY) {
+      if (+$md083forkUtil.now() - lastScrollTime > SCROLL_END_DELAY) {
         isScrolling = false;
         element.triggerHandler('$scrollend');
       } else {
@@ -8918,7 +8918,7 @@ function MdSticky($document, $mdConstant, $compile, $$rAF, $mdUtil) {
   }
 
 }
-MdSticky.$inject = ["$document", "$mdConstant", "$compile", "$$rAF", "$mdUtil"];
+MdSticky.$inject = ["$document", "$md083forkConstant", "$compile", "$$rAF", "$md083forkUtil"];
 })();
 
 /*!
@@ -8970,7 +8970,7 @@ angular.module('material.083fork.components.subheader', [
  * </hljs>
  */
 
-function MdSubheaderDirective($mdSticky, $compile, $mdTheming) {
+function MdSubheaderDirective($mdSticky, $compile, $md083forkTheming) {
   return {
     restrict: 'E',
     replace: true,
@@ -8982,7 +8982,7 @@ function MdSubheaderDirective($mdSticky, $compile, $mdTheming) {
     compile: function(element, attr, transclude) {
       var outerHTML = element[0].outerHTML;
       return function postLink(scope, element, attr) {
-        $mdTheming(element);
+        $md083forkTheming(element);
         function getContent(el) {
           return angular.element(el[0].querySelector('.md-subheader-content'));
         }
@@ -8997,7 +8997,7 @@ function MdSubheaderDirective($mdSticky, $compile, $mdTheming) {
         // of the element, that will be 'stickied' as the user scrolls.
         transclude(scope, function(clone) {
           var stickyClone = $compile(angular.element(outerHTML))(scope);
-          $mdTheming(stickyClone);
+          $md083forkTheming(stickyClone);
           getContent(stickyClone).append(clone);
           $mdSticky(scope, element, stickyClone);
         });
@@ -9005,7 +9005,7 @@ function MdSubheaderDirective($mdSticky, $compile, $mdTheming) {
     }
   };
 }
-MdSubheaderDirective.$inject = ["$mdSticky", "$compile", "$mdTheming"];
+MdSubheaderDirective.$inject = ["$mdSticky", "$compile", "$md083forkTheming"];
 })();
 
 /*!
@@ -9144,7 +9144,7 @@ angular.module('material.083fork.components.switch', [
  *
  * </hljs>
  */
-function MdSwitch(mdCheckboxDirective, $mdTheming, $mdUtil, $document, $mdConstant, $parse, $$rAF, $mdGesture) {
+function MdSwitch(mdCheckboxDirective, $md083forkTheming, $md083forkUtil, $document, $md083forkConstant, $parse, $$rAF, $mdGesture) {
   var checkboxDirective = mdCheckboxDirective[0];
 
   return {
@@ -9169,7 +9169,7 @@ function MdSwitch(mdCheckboxDirective, $mdTheming, $mdUtil, $document, $mdConsta
     element.addClass('md-dragging');
 
     return function (scope, element, attr, ngModel) {
-      ngModel = ngModel || $mdUtil.fakeNgModel();
+      ngModel = ngModel || $md083forkUtil.fakeNgModel();
       var disabledGetter = $parse(attr.ngDisabled);
       var thumbContainer = angular.element(element[0].querySelector('.md-thumb-container'));
       var switchContainer = angular.element(element[0].querySelector('.md-container'));
@@ -9219,7 +9219,7 @@ function MdSwitch(mdCheckboxDirective, $mdTheming, $mdUtil, $document, $mdConsta
         // Make sure the switch stays inside its bounds, 0-1%
         translate = Math.max(0, Math.min(1, translate));
 
-        thumbContainer.css($mdConstant.CSS.TRANSFORM, 'translate3d(' + (100*translate) + '%,0,0)');
+        thumbContainer.css($md083forkConstant.CSS.TRANSFORM, 'translate3d(' + (100*translate) + '%,0,0)');
         drag.translate = translate;
       }
 
@@ -9228,7 +9228,7 @@ function MdSwitch(mdCheckboxDirective, $mdTheming, $mdUtil, $document, $mdConsta
         ev.stopPropagation();
 
         element.removeClass('md-dragging');
-        thumbContainer.css($mdConstant.CSS.TRANSFORM, '');
+        thumbContainer.css($md083forkConstant.CSS.TRANSFORM, '');
 
         // We changed if there is no distance (this is a click a click),
         // or if the drag distance is >50% of the total.
@@ -9251,7 +9251,7 @@ function MdSwitch(mdCheckboxDirective, $mdTheming, $mdUtil, $document, $mdConsta
 
 
 }
-MdSwitch.$inject = ["mdCheckboxDirective", "$mdTheming", "$mdUtil", "$document", "$mdConstant", "$parse", "$$rAF", "$mdGesture"];
+MdSwitch.$inject = ["mdCheckboxDirective", "$md083forkTheming", "$md083forkUtil", "$document", "$md083forkConstant", "$parse", "$$rAF", "$mdGesture"];
 
 })();
 
@@ -9317,7 +9317,7 @@ angular.module('material.083fork.components.textField', [
   .directive('mdTextFloat', mdTextFloatDirective);
 
 
-function mdTextFloatDirective($mdTheming, $mdUtil, $parse, $log) {
+function mdTextFloatDirective($md083forkTheming, $md083forkUtil, $parse, $log) {
   return {
     restrict: 'E',
     replace: true,
@@ -9332,7 +9332,7 @@ function mdTextFloatDirective($mdTheming, $mdUtil, $parse, $log) {
                 'More information at http://material.angularjs.org/#/api/material.components.input/directive/mdInputContainer');
 
       if ( angular.isUndefined(attr.mdFid) ) {
-        attr.mdFid = $mdUtil.nextUid();
+        attr.mdFid = $md083forkUtil.nextUid();
       }
 
       return {
@@ -9344,7 +9344,7 @@ function mdTextFloatDirective($mdTheming, $mdUtil, $parse, $log) {
 
           scope.inputType = attrs.type || "text";
         },
-        post: $mdTheming
+        post: $md083forkTheming
       };
     },
     template:
@@ -9354,7 +9354,7 @@ function mdTextFloatDirective($mdTheming, $mdUtil, $parse, $log) {
     '</md-input-group>'
   };
 }
-mdTextFloatDirective.$inject = ["$mdTheming", "$mdUtil", "$parse", "$log"];
+mdTextFloatDirective.$inject = ["$md083forkTheming", "$md083forkUtil", "$parse", "$log"];
 
 function mdInputGroupDirective($log) {
   return {
@@ -9375,7 +9375,7 @@ function mdInputGroupDirective($log) {
 }
 mdInputGroupDirective.$inject = ["$log"];
 
-function mdInputDirective($mdUtil, $log) {
+function mdInputDirective($md083forkUtil, $log) {
   return {
     restrict: 'E',
     replace: true,
@@ -9434,7 +9434,7 @@ function mdInputDirective($mdUtil, $log) {
     }
   };
 }
-mdInputDirective.$inject = ["$mdUtil", "$log"];
+mdInputDirective.$inject = ["$md083forkUtil", "$log"];
 
 })();
 
@@ -9526,7 +9526,7 @@ function MdToastDirective() {
  * - $mdToastPreset#action(string) - adds an action button, which resolves the promise returned from `show()` if clicked.
  * - $mdToastPreset#highlightAction(boolean) - sets action button to be highlighted
  * - $mdToastPreset#capsule(boolean) - adds 'md-capsule' class to the toast (curved corners)
- * - $mdToastPreset#theme(boolean) - sets the theme on the toast to theme (default is `$mdThemingProvider`'s default theme)
+ * - $mdToastPreset#theme(boolean) - sets the theme on the toast to theme (default is `$md083forkThemingProvider`'s default theme)
  */
 
 /**
@@ -9625,7 +9625,7 @@ function MdToastProvider($$interimElementProvider) {
     .addPreset('simple', {
       argOption: 'content',
       methods: ['content', 'action', 'highlightAction', 'theme'],
-      options: /* @ngInject */ ["$mdToast", "$mdTheming", function($mdToast, $mdTheming) {
+      options: /* @ngInject */ ["$mdToast", "$md083forkTheming", function($mdToast, $md083forkTheming) {
         var opts = {
           template: [
             '<md-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">',
@@ -9644,7 +9644,7 @@ function MdToastProvider($$interimElementProvider) {
               $mdToast.hide();
             };
           }],
-          theme: $mdTheming.defaultTheme(),
+          theme: $md083forkTheming.defaultTheme(),
           controllerAs: 'toast',
           bindToController: true
         };
@@ -9768,13 +9768,13 @@ angular.module('material.083fork.components.toolbar', [
  * shrinking by. For example, if 0.25 is given then the toolbar will shrink
  * at one fourth the rate at which the user scrolls down. Default 0.5.
  */
-function mdToolbarDirective($$rAF, $mdConstant, $mdUtil, $mdTheming) {
+function mdToolbarDirective($$rAF, $md083forkConstant, $md083forkUtil, $md083forkTheming) {
 
   return {
     restrict: 'E',
     controller: angular.noop,
     link: function(scope, element, attr) {
-      $mdTheming(element);
+      $md083forkTheming(element);
 
       if (angular.isDefined(attr.mdScrollShrink)) {
         setupScrollShrink();
@@ -9792,7 +9792,7 @@ function mdToolbarDirective($$rAF, $mdConstant, $mdUtil, $mdTheming) {
         var contentElement;
 
         var debouncedContentScroll = $$rAF.throttle(onContentScroll);
-        var debouncedUpdateHeight = $mdUtil.debounce(updateToolbarHeight, 5 * 1000);
+        var debouncedUpdateHeight = $md083forkUtil.debounce(updateToolbarHeight, 5 * 1000);
 
         // Wait for $mdContentLoaded event from mdContent directive.
         // If the mdContent element is a sibling of our toolbar, hook it up
@@ -9841,11 +9841,11 @@ function mdToolbarDirective($$rAF, $mdConstant, $mdUtil, $mdTheming) {
           );
 
           element.css(
-            $mdConstant.CSS.TRANSFORM,
+            $md083forkConstant.CSS.TRANSFORM,
             'translate3d(0,' + (-y * shrinkSpeedFactor) + 'px,0)'
           );
           contentElement.css(
-            $mdConstant.CSS.TRANSFORM,
+            $md083forkConstant.CSS.TRANSFORM,
             'translate3d(0,' + ((toolbarHeight - y) * shrinkSpeedFactor) + 'px,0)'
           );
 
@@ -9858,7 +9858,7 @@ function mdToolbarDirective($$rAF, $mdConstant, $mdUtil, $mdTheming) {
   };
 
 }
-mdToolbarDirective.$inject = ["$$rAF", "$mdConstant", "$mdUtil", "$mdTheming"];
+mdToolbarDirective.$inject = ["$$rAF", "$md083forkConstant", "$md083forkUtil", "$md083forkTheming"];
 })();
 
 /*!
@@ -9904,7 +9904,7 @@ angular.module('material.083fork.components.tooltip', [
  * @param {number=} md-delay How many milliseconds to wait to show the tooltip after the user focuses, hovers, or touches the parent. Defaults to 400ms.
  * @param {string=} md-direction Which direction would you like the tooltip to go?  Supports left, right, top, and bottom.  Defaults to bottom.
  */
-function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdTheming, $rootElement, $animate, $q) {
+function MdTooltipDirective($timeout, $window, $$rAF, $document, $md083forkUtil, $md083forkTheming, $rootElement, $animate, $q) {
 
   var TOOLTIP_SHOW_DELAY = 0;
   var TOOLTIP_WINDOW_EDGE_SPACE = 8;
@@ -9923,7 +9923,7 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
   };
 
   function postLink(scope, element, attr, contentCtrl) {
-    $mdTheming(element);
+    $md083forkTheming(element);
     var parent = element.parent();
     var background = angular.element(element[0].getElementsByClassName('md-background')[0]);
     var content = angular.element(element[0].getElementsByClassName('md-content')[0]);
@@ -9949,7 +9949,7 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
     // We will re-attach tooltip when visible
     element.detach();
     element.attr('role', 'tooltip');
-    element.attr('id', attr.id || ('tooltip_' + $mdUtil.nextUid()));
+    element.attr('id', attr.id || ('tooltip_' + $md083forkUtil.nextUid()));
 
     parent.on('focus mouseenter touchstart', function() { setVisible(true); });
     parent.on('blur mouseleave touchend touchcancel', function() { if ($document[0].activeElement !== parent[0]) setVisible(false); });
@@ -10016,8 +10016,8 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
     }
 
     function positionTooltip() {
-      var tipRect = $mdUtil.offsetRect(element, tooltipParent);
-      var parentRect = $mdUtil.offsetRect(parent, tooltipParent);
+      var tipRect = $md083forkUtil.offsetRect(element, tooltipParent);
+      var parentRect = $md083forkUtil.offsetRect(parent, tooltipParent);
       var newPosition = getPosition(direction);
 
       // If the user provided a direction, just nudge the tooltip onto the screen
@@ -10075,7 +10075,7 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
   }
 
 }
-MdTooltipDirective.$inject = ["$timeout", "$window", "$$rAF", "$document", "$mdUtil", "$mdTheming", "$rootElement", "$animate", "$q"];
+MdTooltipDirective.$inject = ["$timeout", "$window", "$$rAF", "$document", "$md083forkUtil", "$md083forkTheming", "$rootElement", "$animate", "$q"];
 })();
 
 /*!
@@ -10106,7 +10106,7 @@ angular.module('material.083fork.components.whiteframe', []);
       .module('material.083fork.components.autocomplete')
       .controller('MdAutocompleteCtrl', MdAutocompleteCtrl);
 
-  function MdAutocompleteCtrl ($scope, $element, $q, $mdUtil, $mdConstant) {
+  function MdAutocompleteCtrl ($scope, $element, $q, $md083forkUtil, $md083forkConstant) {
 
     //-- private variables
     var self = this,
@@ -10134,7 +10134,7 @@ angular.module('material.083fork.components.whiteframe', []);
     self.clear = clearValue;
     self.select = select;
     self.getCurrentDisplayValue = getCurrentDisplayValue;
-    self.fetch = $mdUtil.debounce(fetchResults);
+    self.fetch = $md083forkUtil.debounce(fetchResults);
     self.messages = [];
     self.update = handleSearchText;
     //-- While the mouse is inside of the dropdown, we don't want to handle input blur
@@ -10154,7 +10154,7 @@ angular.module('material.083fork.components.whiteframe', []);
     function configureAria () {
       var ul = angular.element(elements.ul),
           input = angular.element(elements.input),
-          id = ul.attr('id') || 'ul_' + $mdUtil.nextUid();
+          id = ul.attr('id') || 'ul_' + $md083forkUtil.nextUid();
       ul.attr('id', id);
       input.attr('aria-owns', id);
     }
@@ -10169,7 +10169,7 @@ angular.module('material.083fork.components.whiteframe', []);
     function configureWatchers () {
       var wait = parseInt($scope.delay, 10) || 0;
       $scope.$watch('searchText', wait
-          ? $mdUtil.debounce(handleSearchText, wait)
+          ? $md083forkUtil.debounce(handleSearchText, wait)
           : handleSearchText);
       $scope.$watch('selectedItem', function (selectedItem, previousSelectedItem) {
         if ($scope.itemChange && selectedItem !== previousSelectedItem)
@@ -10243,31 +10243,31 @@ angular.module('material.083fork.components.whiteframe', []);
 
     function keydown (event) {
       switch (event.keyCode) {
-        case $mdConstant.KEY_CODE.DOWN_ARROW:
+        case $md083forkConstant.KEY_CODE.DOWN_ARROW:
             if (self.loading) return;
             event.preventDefault();
             self.index = Math.min(self.index + 1, self.matches.length - 1);
             updateScroll();
             updateSelectionMessage();
             break;
-        case $mdConstant.KEY_CODE.UP_ARROW:
+        case $md083forkConstant.KEY_CODE.UP_ARROW:
             if (self.loading) return;
             event.preventDefault();
             self.index = Math.max(0, self.index - 1);
             updateScroll();
             updateSelectionMessage();
             break;
-        case $mdConstant.KEY_CODE.ENTER:
+        case $md083forkConstant.KEY_CODE.ENTER:
             if (self.loading || self.index < 0) return;
             event.preventDefault();
             select(self.index);
             break;
-        case $mdConstant.KEY_CODE.ESCAPE:
+        case $md083forkConstant.KEY_CODE.ESCAPE:
             self.matches = [];
             self.hidden = true;
             self.index = -1;
             break;
-        case $mdConstant.KEY_CODE.TAB:
+        case $md083forkConstant.KEY_CODE.TAB:
             break;
         default:
       }
@@ -10311,7 +10311,7 @@ angular.module('material.083fork.components.whiteframe', []);
     }
 
   }
-  MdAutocompleteCtrl.$inject = ["$scope", "$element", "$q", "$mdUtil", "$mdConstant"];
+  MdAutocompleteCtrl.$inject = ["$scope", "$element", "$q", "$md083forkUtil", "$md083forkConstant"];
 })();
 
 /*!
@@ -10510,7 +10510,7 @@ angular.module('material.083fork.components.whiteframe', []);
       .module('material.083fork.components.autocomplete')
       .directive('mdAutocompleteListItem', MdAutocompleteListItem);
 
-  function MdAutocompleteListItem ($compile, $mdUtil) {
+  function MdAutocompleteListItem ($compile, $md083forkUtil) {
     return {
       require: '^?mdAutocomplete',
       terminal: true,
@@ -10522,10 +10522,10 @@ angular.module('material.083fork.components.whiteframe', []);
           itemName = ctrl.scope.$eval(attr.mdAutocompleteListItem);
       newScope[itemName] = scope.item;
       $compile(element.contents())(newScope);
-      element.attr({ 'role': 'option', 'id': 'item_' + $mdUtil.nextUid() });
+      element.attr({ 'role': 'option', 'id': 'item_' + $md083forkUtil.nextUid() });
     }
   }
-  MdAutocompleteListItem.$inject = ["$compile", "$mdUtil"];
+  MdAutocompleteListItem.$inject = ["$compile", "$md083forkUtil"];
 })();
 
 /*!
@@ -10605,7 +10605,7 @@ MdTabInkDirective.$inject = ["$$rAF"];
 angular.module('material.083fork.components.tabs')
     .directive('mdTabsPagination', TabPaginationDirective);
 
-function TabPaginationDirective($mdConstant, $window, $$rAF, $$q, $timeout, $mdMedia) {
+function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeout, $md083forkMedia) {
 
   // Must match (2 * width of paginators) in scss
   var PAGINATORS_WIDTH = (8 * 4) * 2;
@@ -10729,15 +10729,15 @@ function TabPaginationDirective($mdConstant, $window, $$rAF, $$q, $timeout, $mdM
       var deferred = $$q.defer();
 
       tabsCtrl.$$pagingOffset = x;
-      tabsParent.css($mdConstant.CSS.TRANSFORM, 'translate3d(' + x + 'px,0,0)');
-      tabsParent.on($mdConstant.CSS.TRANSITIONEND, onTabsParentTransitionEnd);
+      tabsParent.css($md083forkConstant.CSS.TRANSFORM, 'translate3d(' + x + 'px,0,0)');
+      tabsParent.on($md083forkConstant.CSS.TRANSITIONEND, onTabsParentTransitionEnd);
 
       return deferred.promise;
 
       function onTabsParentTransitionEnd(ev) {
         // Make sure this event didn't bubble up from an animation in a child element.
         if (ev.target === tabsParent[0]) {
-          tabsParent.off($mdConstant.CSS.TRANSITIONEND, onTabsParentTransitionEnd);
+          tabsParent.off($md083forkConstant.CSS.TRANSITIONEND, onTabsParentTransitionEnd);
           deferred.resolve();
         }
       }
@@ -10747,7 +10747,7 @@ function TabPaginationDirective($mdConstant, $window, $$rAF, $$q, $timeout, $mdM
       switch (scope.stretchTabs) {
         case 'never':  return false;
         case 'always': return true;
-        default:       return $mdMedia('sm');
+        default:       return $md083forkMedia('sm');
       }
     }
 
@@ -10849,7 +10849,7 @@ function TabPaginationDirective($mdConstant, $window, $$rAF, $$q, $timeout, $mdM
   }
 
 }
-TabPaginationDirective.$inject = ["$mdConstant", "$window", "$$rAF", "$$q", "$timeout", "$mdMedia"];
+TabPaginationDirective.$inject = ["$md083forkConstant", "$window", "$$rAF", "$$q", "$timeout", "$md083forkMedia"];
 })();
 
 /*!
@@ -10865,7 +10865,7 @@ TabPaginationDirective.$inject = ["$mdConstant", "$window", "$$rAF", "$$q", "$ti
 angular.module('material.083fork.components.tabs')
   .controller('$mdTab', TabItemController);
 
-function TabItemController($scope, $element, $attrs, $compile, $animate, $mdUtil, $parse, $timeout) {
+function TabItemController($scope, $element, $attrs, $compile, $animate, $md083forkUtil, $parse, $timeout) {
   var self = this;
   var tabsCtrl = $element.controller('mdTabs');
 
@@ -10898,7 +10898,7 @@ function TabItemController($scope, $element, $attrs, $compile, $animate, $mdUtil
       $compile(self.contentContainer)(self.contentScope);
       if (shouldDisconnectScope === true) {
         $timeout(function () {
-          $mdUtil.disconnectScope(self.contentScope);
+          $md083forkUtil.disconnectScope(self.contentScope);
         }, 0, false);
       }
     }
@@ -10917,7 +10917,7 @@ function TabItemController($scope, $element, $attrs, $compile, $animate, $mdUtil
 
   function onSelect(rightToLeft) {
     // Resume watchers and events firing when tab is selected
-    $mdUtil.reconnectScope(self.contentScope);
+    $md083forkUtil.reconnectScope(self.contentScope);
 
     $element
       .addClass('active')
@@ -10935,7 +10935,7 @@ function TabItemController($scope, $element, $attrs, $compile, $animate, $mdUtil
 
   function onDeselect(rightToLeft) {
     // Stop watchers & events from firing while tab is deselected
-    $mdUtil.disconnectScope(self.contentScope);
+    $md083forkUtil.disconnectScope(self.contentScope);
 
     $element
       .removeClass('active')
@@ -10965,7 +10965,7 @@ function TabItemController($scope, $element, $attrs, $compile, $animate, $mdUtil
  
 
 }
-TabItemController.$inject = ["$scope", "$element", "$attrs", "$compile", "$animate", "$mdUtil", "$parse", "$timeout"];
+TabItemController.$inject = ["$scope", "$element", "$attrs", "$compile", "$animate", "$md083forkUtil", "$parse", "$timeout"];
 
 })();
 
@@ -11030,7 +11030,7 @@ angular.module('material.083fork.components.tabs')
  * </hljs>
  *
  */
-function MdTabDirective($mdInkRipple, $compile, $mdUtil, $mdConstant, $timeout) {
+function MdTabDirective($mdInkRipple, $compile, $md083forkUtil, $md083forkConstant, $timeout) {
   return {
     restrict: 'E',
     require: ['mdTab', '^mdTabs'],
@@ -11124,15 +11124,15 @@ function MdTabDirective($mdInkRipple, $compile, $mdUtil, $mdConstant, $timeout) 
         });
       }
       function keydownListener(ev) {
-        if (ev.keyCode == $mdConstant.KEY_CODE.SPACE || ev.keyCode == $mdConstant.KEY_CODE.ENTER ) {
+        if (ev.keyCode == $md083forkConstant.KEY_CODE.SPACE || ev.keyCode == $md083forkConstant.KEY_CODE.ENTER ) {
           // Fire the click handler to do normal selection if space is pressed
           element.triggerHandler('click');
           ev.preventDefault();
-        } else if (ev.keyCode === $mdConstant.KEY_CODE.LEFT_ARROW) {
+        } else if (ev.keyCode === $md083forkConstant.KEY_CODE.LEFT_ARROW) {
           scope.$evalAsync(function() {
             tabsCtrl.focus(tabsCtrl.previous(tabItemCtrl));
           });
-        } else if (ev.keyCode === $mdConstant.KEY_CODE.RIGHT_ARROW) {
+        } else if (ev.keyCode === $md083forkConstant.KEY_CODE.RIGHT_ARROW) {
           scope.$evalAsync(function() {
             tabsCtrl.focus(tabsCtrl.next(tabItemCtrl));
           });
@@ -11180,7 +11180,7 @@ function MdTabDirective($mdInkRipple, $compile, $mdUtil, $mdConstant, $timeout) 
 
       function configureAria() {
         // Link together the content area and tabItemCtrl with an id
-        var tabId = attr.id || ('tab_' + $mdUtil.nextUid());
+        var tabId = attr.id || ('tab_' + $md083forkUtil.nextUid());
 
         element.attr({
           id: tabId,
@@ -11207,7 +11207,7 @@ function MdTabDirective($mdInkRipple, $compile, $mdUtil, $mdConstant, $timeout) 
   }
 
 }
-MdTabDirective.$inject = ["$mdInkRipple", "$compile", "$mdUtil", "$mdConstant", "$timeout"];
+MdTabDirective.$inject = ["$mdInkRipple", "$compile", "$md083forkUtil", "$md083forkConstant", "$timeout"];
 
 })();
 
@@ -11223,9 +11223,9 @@ MdTabDirective.$inject = ["$mdInkRipple", "$compile", "$mdUtil", "$mdConstant", 
 angular.module('material.083fork.components.tabs')
   .controller('$mdTabs', MdTabsController);
 
-function MdTabsController($scope, $element, $mdUtil, $timeout) {
+function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
 
-  var tabsList = $mdUtil.iterator([], false);
+  var tabsList = $md083forkUtil.iterator([], false);
   var self = this;
 
   // Properties
@@ -11354,7 +11354,7 @@ function MdTabsController($scope, $element, $mdUtil, $timeout) {
   }
 
 }
-MdTabsController.$inject = ["$scope", "$element", "$mdUtil", "$timeout"];
+MdTabsController.$inject = ["$scope", "$element", "$md083forkUtil", "$timeout"];
 })();
 
 /*!
@@ -11458,7 +11458,7 @@ angular.module('material.083fork.components.tabs')
  * </hljs>
  *
  */
-function TabsDirective($mdTheming) {
+function TabsDirective($md083forkTheming) {
   return {
     restrict: 'E',
     controller: '$mdTabs',
@@ -11502,7 +11502,7 @@ function TabsDirective($mdTheming) {
 
     scope.stretchTabs = attr.hasOwnProperty('mdStretchTabs') ? attr.mdStretchTabs || 'always' : 'auto';
 
-    $mdTheming(element);
+    $md083forkTheming(element);
     configureAria();
     watchSelected();
 
@@ -11533,9 +11533,9 @@ function TabsDirective($mdTheming) {
     }
   }
 }
-TabsDirective.$inject = ["$mdTheming"];
+TabsDirective.$inject = ["$md083forkTheming"];
 })();
 
 (function(){ 
- angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete {  background: '{{background-50}}'; }  md-autocomplete button md-icon path {    fill: '{{background-600}}'; }  md-autocomplete button:after {    background: '{{background-600-0.3}}'; }  md-autocomplete ul {    background: '{{background-50}}'; }    md-autocomplete ul li {      border-top: 1px solid '{{background-400}}';      color: '{{background-900}}'; }      md-autocomplete ul li .highlight {        color: '{{background-600}}'; }      md-autocomplete ul li:hover, md-autocomplete ul li.selected {        background: '{{background-200}}'; }md-backdrop.md-opaque.md-THEME_NAME-theme {  background-color: '{{foreground-4-0.5}}'; }md-toolbar .md-button.md-THEME_NAME-theme.md-fab {  background-color: white; }.md-button.md-THEME_NAME-theme {  border-radius: 3px; }  .md-button.md-THEME_NAME-theme:not([disabled]):hover, .md-button.md-THEME_NAME-theme:not([disabled]):focus {    background-color: '{{background-500-0.2}}'; }  .md-button.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }    .md-button.md-THEME_NAME-theme.md-primary.md-raised, .md-button.md-THEME_NAME-theme.md-primary.md-fab {      color: '{{primary-contrast}}';      background-color: '{{primary-color}}'; }      .md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):focus {        background-color: '{{primary-600}}'; }  .md-button.md-THEME_NAME-theme.md-fab {    border-radius: 50%;    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }    .md-button.md-THEME_NAME-theme.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-fab:not([disabled]):focus {      background-color: '{{accent-A700}}'; }  .md-button.md-THEME_NAME-theme.md-raised {    color: '{{background-contrast}}';    background-color: '{{background-50}}'; }    .md-button.md-THEME_NAME-theme.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-raised:not([disabled]):focus {      background-color: '{{background-200}}'; }  .md-button.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }    .md-button.md-THEME_NAME-theme.md-warn.md-raised, .md-button.md-THEME_NAME-theme.md-warn.md-fab {      color: '{{warn-contrast}}';      background-color: '{{warn-color}}'; }      .md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):focus {        background-color: '{{warn-700}}'; }  .md-button.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }    .md-button.md-THEME_NAME-theme.md-accent.md-raised, .md-button.md-THEME_NAME-theme.md-accent.md-fab {      color: '{{accent-contrast}}';      background-color: '{{accent-color}}'; }      .md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):focus {        background-color: '{{accent-700}}'; }  .md-button.md-THEME_NAME-theme[disabled], .md-button.md-THEME_NAME-theme.md-raised[disabled], .md-button.md-THEME_NAME-theme.md-fab[disabled] {    color: '{{foreground-3}}';    background-color: transparent;    cursor: not-allowed; }md-bottom-sheet.md-THEME_NAME-theme {  background-color: '{{background-50}}';  border-top-color: '{{background-300}}'; }  md-bottom-sheet.md-THEME_NAME-theme.md-list md-item {    color: '{{foreground-1}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    background-color: '{{background-50}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    color: '{{foreground-1}}'; }md-card.md-THEME_NAME-theme {  border-radius: 2px; }  md-card.md-THEME_NAME-theme .md-card-image {    border-radius: 2px 2px 0 0; }md-checkbox.md-THEME_NAME-theme .md-ripple {  color: '{{accent-600}}'; }md-checkbox.md-THEME_NAME-theme.md-checked .md-ripple {  color: '{{background-600}}'; }md-checkbox.md-THEME_NAME-theme .md-icon {  border-color: '{{foreground-2}}'; }md-checkbox.md-THEME_NAME-theme.md-checked .md-icon {  background-color: '{{accent-color-0.87}}'; }md-checkbox.md-THEME_NAME-theme.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ripple {  color: '{{primary-600}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ripple {  color: '{{background-600}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-icon {  border-color: '{{foreground-2}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon {  background-color: '{{primary-color-0.87}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ripple {  color: '{{warn-600}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-icon {  border-color: '{{foreground-2}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon {  background-color: '{{warn-color-0.87}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md-checkbox.md-THEME_NAME-theme[disabled] .md-icon {  border-color: '{{foreground-3}}'; }md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon {  background-color: '{{foreground-3}}'; }md-content.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md-dialog.md-THEME_NAME-theme {  border-radius: 4px;  background-color: '{{background-hue-3}}'; }  md-dialog.md-THEME_NAME-theme.md-content-overflow .md-actions {    border-top-color: '{{foreground-4}}'; }md-divider.md-THEME_NAME-theme {  border-top-color: '{{foreground-4}}'; }md-icon.md-THEME_NAME-theme.md-primary {  color: '{{primary-color}}'; }md-icon.md-THEME_NAME-theme.md-accent {  color: '{{accent-color}}'; }md-icon.md-THEME_NAME-theme.md-warn {  color: '{{warn-color}}'; }md-icon.md-THEME_NAME-theme.md-danger {  color: '{{danger-color}}'; }md-input-container.md-THEME_NAME-theme .md-input {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}';  text-shadow: '{{foreground-shadow}}'; }  md-input-container.md-THEME_NAME-theme .md-input::-webkit-input-placeholder, md-input-container.md-THEME_NAME-theme .md-input::-moz-placeholder, md-input-container.md-THEME_NAME-theme .md-input:-moz-placeholder, md-input-container.md-THEME_NAME-theme .md-input:-ms-input-placeholder {    color: '{{foreground-3}}'; }md-input-container.md-THEME_NAME-theme > md-icon {  fill: '{{foreground-1}}'; }md-input-container.md-THEME_NAME-theme label, md-input-container.md-THEME_NAME-theme .md-placeholder {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-has-value label {  color: '{{foreground-2}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused .md-input {  border-color: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused label {  color: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused md-icon {  fill: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent .md-input {  border-color: '{{accent-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent label {  color: '{{accent-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn .md-input {  border-color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn label {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input {  border-color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid label {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid data-ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid x-ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid [ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid [data-ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid [x-ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid .md-char-counter {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme .md-input[disabled], [disabled] md-input-container.md-THEME_NAME-theme .md-input {  border-bottom-color: transparent;  color: '{{foreground-3}}';  background-image: linear-gradient(to right, '{{foreground-4}}' 0%, '{{foreground-4}}' 33%, transparent 0%);  background-image: -ms-linear-gradient(left, transparent 0%, '{{foreground-4}}' 100%); }md-progress-circular.md-THEME_NAME-theme {  background-color: transparent; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-gap {    border-top-color: '{{primary-color}}';    border-bottom-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-top-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-right-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle {    border-left-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-gap {    border-top-color: '{{warn-color}}';    border-bottom-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-top-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-right-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle {    border-left-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-gap {    border-top-color: '{{accent-color}}';    border-bottom-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-top-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-right-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle {    border-left-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme .md-container {  background-color: '{{primary-100}}'; }md-progress-linear.md-THEME_NAME-theme .md-bar {  background-color: '{{primary-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-container {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-bar {  background-color: '{{warn-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-container {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-bar {  background-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-bar1 {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-dashed:before {  background: radial-gradient('{{warn-100}}' 0%, '{{warn-100}}' 16%, transparent 42%); }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-bar1 {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-dashed:before {  background: radial-gradient('{{accent-100}}' 0%, '{{accent-100}}' 16%, transparent 42%); }md-radio-button.md-THEME_NAME-theme .md-off {  border-color: '{{foreground-2}}'; }md-radio-button.md-THEME_NAME-theme .md-on {  background-color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme.md-checked .md-off {  border-color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme.md-checked .md-ink-ripple {  color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme .md-container .md-ripple {  color: '{{accent-600}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-on {  background-color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off {  border-color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple {  color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple {  color: '{{primary-600}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-on {  background-color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off {  border-color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple {  color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple {  color: '{{warn-600}}'; }md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-off {  border-color: '{{foreground-3}}'; }md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-on {  border-color: '{{foreground-3}}'; }md-radio-group.md-THEME_NAME-theme:focus:not(:empty) {  border-color: '{{foreground-1}}'; }md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label {  border-bottom-color: '{{primary-color}}';  color: '{{ foreground-1 }}'; }  md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label.md-placeholder {    color: '{{ foreground-1 }}'; }md-select.md-THEME_NAME-theme:not([disabled]):focus.md-accent .md-select-label {  border-bottom-color: '{{accent-color}}'; }md-select.md-THEME_NAME-theme:not([disabled]):focus.md-warn .md-select-label {  border-bottom-color: '{{warn-color}}'; }md-select.md-THEME_NAME-theme[disabled] .md-select-label {  color: '{{foreground-3}}'; }  md-select.md-THEME_NAME-theme[disabled] .md-select-label.md-placeholder {    color: '{{foreground-3}}'; }md-select.md-THEME_NAME-theme .md-select-label {  border-bottom-color: '{{foreground-4}}'; }  md-select.md-THEME_NAME-theme .md-select-label.md-placeholder {    color: '{{foreground-2}}'; }md-select-menu.md-THEME_NAME-theme md-optgroup {  color: '{{foreground-2}}'; }  md-select-menu.md-THEME_NAME-theme md-optgroup md-option {    color: '{{foreground-1}}'; }md-select-menu.md-THEME_NAME-theme md-option[selected] {  background-color: '{{primary-50}}'; }  md-select-menu.md-THEME_NAME-theme md-option[selected]:focus {    background-color: '{{primary-100}}'; }  md-select-menu.md-THEME_NAME-theme md-option[selected].md-accent {    background-color: '{{accent-50}}'; }    md-select-menu.md-THEME_NAME-theme md-option[selected].md-accent:focus {      background-color: '{{accent-100}}'; }md-select-menu.md-THEME_NAME-theme md-option:focus:not([selected]) {  background: '{{background-200}}'; }md-sidenav.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md-slider.md-THEME_NAME-theme .md-track {  background-color: '{{foreground-3}}'; }md-slider.md-THEME_NAME-theme .md-track-ticks {  background-color: '{{foreground-4}}'; }md-slider.md-THEME_NAME-theme .md-focus-thumb {  background-color: '{{foreground-2}}'; }md-slider.md-THEME_NAME-theme .md-focus-ring {  border-color: '{{foreground-4}}'; }md-slider.md-THEME_NAME-theme .md-disabled-thumb {  border-color: '{{background-hue-3}}'; }md-slider.md-THEME_NAME-theme.md-min .md-thumb:after {  background-color: '{{background-hue-3}}'; }md-slider.md-THEME_NAME-theme .md-track.md-track-fill {  background-color: '{{accent-color}}'; }md-slider.md-THEME_NAME-theme .md-thumb:after {  border-color: '{{accent-color}}';  background-color: '{{accent-color}}'; }md-slider.md-THEME_NAME-theme .md-sign {  background-color: '{{accent-color}}'; }  md-slider.md-THEME_NAME-theme .md-sign:after {    border-top-color: '{{accent-color}}'; }md-slider.md-THEME_NAME-theme .md-thumb-text {  color: '{{accent-contrast}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-track.md-track-fill {  background-color: '{{warn-color}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-thumb:after {  border-color: '{{warn-color}}';  background-color: '{{warn-color}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-sign {  background-color: '{{warn-color}}'; }  md-slider.md-THEME_NAME-theme.md-warn .md-sign:after {    border-top-color: '{{warn-color}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-thumb-text {  color: '{{warn-contrast}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-track.md-track-fill {  background-color: '{{primary-color}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-thumb:after {  border-color: '{{primary-color}}';  background-color: '{{primary-color}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-sign {  background-color: '{{primary-color}}'; }  md-slider.md-THEME_NAME-theme.md-primary .md-sign:after {    border-top-color: '{{primary-color}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-thumb-text {  color: '{{primary-contrast}}'; }md-slider.md-THEME_NAME-theme[disabled] .md-thumb:after {  border-color: '{{foreground-3}}'; }md-slider.md-THEME_NAME-theme[disabled]:not(.md-min) .md-thumb:after {  background-color: '{{foreground-3}}'; }.md-subheader.md-THEME_NAME-theme {  color: '{{ foreground-2-0.23 }}';  background-color: '{{background-hue-3}}'; }  .md-subheader.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme .md-thumb {  background-color: '{{background-50}}'; }md-switch.md-THEME_NAME-theme .md-bar {  background-color: '{{background-500}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-thumb {  background-color: '{{accent-color}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-bar {  background-color: '{{accent-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-thumb {  background-color: '{{primary-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-bar {  background-color: '{{primary-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-thumb {  background-color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-bar {  background-color: '{{warn-color-0.5}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-thumb {  background-color: '{{background-400}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-bar {  background-color: '{{foreground-4}}'; }md-switch.md-THEME_NAME-theme:focus .md-label:not(:empty) {  border-color: '{{foreground-1}}';  border-style: dotted; }md-tabs.md-THEME_NAME-theme .md-header {  background-color: transparent; }md-tabs.md-THEME_NAME-theme .md-paginator md-icon {  color: '{{primary-color}}'; }md-tabs.md-THEME_NAME-theme.md-accent .md-header {  background-color: '{{accent-color}}'; }md-tabs.md-THEME_NAME-theme.md-accent md-tab:not([disabled]) {  color: '{{accent-100}}'; }  md-tabs.md-THEME_NAME-theme.md-accent md-tab:not([disabled]).active {    color: '{{accent-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-primary .md-header {  background-color: '{{primary-color}}'; }md-tabs.md-THEME_NAME-theme.md-primary md-tab:not([disabled]) {  color: '{{primary-100}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab:not([disabled]).active {    color: '{{primary-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-primary md-tab {  color: '{{primary-100}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab[disabled] {    color: '{{foreground-3}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab:focus {    color: '{{primary-contrast}}';    background-color: '{{primary-contrast-0.1}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab.active {    color: '{{primary-contrast}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab .md-ripple-container {    color: '{{primary-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-warn .md-header {  background-color: '{{warn-color}}'; }md-tabs.md-THEME_NAME-theme.md-warn md-tab:not([disabled]) {  color: '{{warn-100}}'; }  md-tabs.md-THEME_NAME-theme.md-warn md-tab:not([disabled]).active {    color: '{{warn-contrast}}'; }md-tabs.md-THEME_NAME-theme md-tabs-ink-bar {  color: '{{accent-color}}';  background: '{{accent-color}}'; }md-tabs.md-THEME_NAME-theme md-tab {  color: '{{foreground-2}}'; }  md-tabs.md-THEME_NAME-theme md-tab[disabled] {    color: '{{foreground-3}}'; }  md-tabs.md-THEME_NAME-theme md-tab:focus {    color: '{{foreground-1}}'; }  md-tabs.md-THEME_NAME-theme md-tab.active {    color: '{{primary-color}}'; }  md-tabs.md-THEME_NAME-theme md-tab .md-ripple-container {    color: '{{accent-100}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  text-shadow: '{{foreground-shadow}}'; }  md-input-group.md-THEME_NAME-theme input::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme input::-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-ms-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-ms-input-placeholder {    color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme label {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused input, md-input-group.md-THEME_NAME-theme.md-input-focused textarea {  border-color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused label {  color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent input, md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent textarea {  border-color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent label {  color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-has-value:not(.md-input-focused) label {  color: '{{foreground-2}}'; }md-input-group.md-THEME_NAME-theme .md-input[disabled] {  border-bottom-color: '{{foreground-4}}';  color: '{{foreground-3}}'; }md-toast.md-THEME_NAME-theme {  background-color: '{{foreground-1}}';  color: '{{background-50}}'; }  md-toast.md-THEME_NAME-theme .md-button {    color: '{{background-50}}'; }    md-toast.md-THEME_NAME-theme .md-button.md-highlight {      color: '{{primary-A200}}'; }      md-toast.md-THEME_NAME-theme .md-button.md-highlight.md-accent {        color: '{{accent-A200}}'; }      md-toast.md-THEME_NAME-theme .md-button.md-highlight.md-warn {        color: '{{warn-A200}}'; }md-toolbar.md-THEME_NAME-theme {  background-color: '{{primary-color}}';  color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme .md-button {    color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-accent {    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-warn {    background-color: '{{warn-color}}';    color: '{{warn-contrast}}'; }md-tooltip.md-THEME_NAME-theme {  color: '{{background-A100}}'; }  md-tooltip.md-THEME_NAME-theme .md-background {    background-color: '{{foreground-2}}'; }"); 
+ angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete {  background: '{{background-50}}'; }  md-autocomplete button md-icon path {    fill: '{{background-600}}'; }  md-autocomplete button:after {    background: '{{background-600-0.3}}'; }  md-autocomplete ul {    background: '{{background-50}}'; }    md-autocomplete ul li {      border-top: 1px solid '{{background-400}}';      color: '{{background-900}}'; }      md-autocomplete ul li .highlight {        color: '{{background-600}}'; }      md-autocomplete ul li:hover, md-autocomplete ul li.selected {        background: '{{background-200}}'; }md-backdrop.md-opaque.md-THEME_NAME-theme {  background-color: '{{foreground-4-0.5}}'; }md-bottom-sheet.md-THEME_NAME-theme {  background-color: '{{background-50}}';  border-top-color: '{{background-300}}'; }  md-bottom-sheet.md-THEME_NAME-theme.md-list md-item {    color: '{{foreground-1}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    background-color: '{{background-50}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    color: '{{foreground-1}}'; }md-toolbar .md-button.md-THEME_NAME-theme.md-fab {  background-color: white; }.md-button.md-THEME_NAME-theme {  border-radius: 3px; }  .md-button.md-THEME_NAME-theme:not([disabled]):hover, .md-button.md-THEME_NAME-theme:not([disabled]):focus {    background-color: '{{background-500-0.2}}'; }  .md-button.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }    .md-button.md-THEME_NAME-theme.md-primary.md-raised, .md-button.md-THEME_NAME-theme.md-primary.md-fab {      color: '{{primary-contrast}}';      background-color: '{{primary-color}}'; }      .md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):focus {        background-color: '{{primary-600}}'; }  .md-button.md-THEME_NAME-theme.md-fab {    border-radius: 50%;    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }    .md-button.md-THEME_NAME-theme.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-fab:not([disabled]):focus {      background-color: '{{accent-A700}}'; }  .md-button.md-THEME_NAME-theme.md-raised {    color: '{{background-contrast}}';    background-color: '{{background-50}}'; }    .md-button.md-THEME_NAME-theme.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-raised:not([disabled]):focus {      background-color: '{{background-200}}'; }  .md-button.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }    .md-button.md-THEME_NAME-theme.md-warn.md-raised, .md-button.md-THEME_NAME-theme.md-warn.md-fab {      color: '{{warn-contrast}}';      background-color: '{{warn-color}}'; }      .md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):focus {        background-color: '{{warn-700}}'; }  .md-button.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }    .md-button.md-THEME_NAME-theme.md-accent.md-raised, .md-button.md-THEME_NAME-theme.md-accent.md-fab {      color: '{{accent-contrast}}';      background-color: '{{accent-color}}'; }      .md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):focus {        background-color: '{{accent-700}}'; }  .md-button.md-THEME_NAME-theme[disabled], .md-button.md-THEME_NAME-theme.md-raised[disabled], .md-button.md-THEME_NAME-theme.md-fab[disabled] {    color: '{{foreground-3}}';    background-color: transparent;    cursor: not-allowed; }md-card.md-THEME_NAME-theme {  border-radius: 2px; }  md-card.md-THEME_NAME-theme .md-card-image {    border-radius: 2px 2px 0 0; }md-checkbox.md-THEME_NAME-theme .md-ripple {  color: '{{accent-600}}'; }md-checkbox.md-THEME_NAME-theme.md-checked .md-ripple {  color: '{{background-600}}'; }md-checkbox.md-THEME_NAME-theme .md-icon {  border-color: '{{foreground-2}}'; }md-checkbox.md-THEME_NAME-theme.md-checked .md-icon {  background-color: '{{accent-color-0.87}}'; }md-checkbox.md-THEME_NAME-theme.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ripple {  color: '{{primary-600}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ripple {  color: '{{background-600}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-icon {  border-color: '{{foreground-2}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon {  background-color: '{{primary-color-0.87}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ripple {  color: '{{warn-600}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-icon {  border-color: '{{foreground-2}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon {  background-color: '{{warn-color-0.87}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md-checkbox.md-THEME_NAME-theme[disabled] .md-icon {  border-color: '{{foreground-3}}'; }md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon {  background-color: '{{foreground-3}}'; }md-content.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md-dialog.md-THEME_NAME-theme {  border-radius: 4px;  background-color: '{{background-hue-3}}'; }  md-dialog.md-THEME_NAME-theme.md-content-overflow .md-actions {    border-top-color: '{{foreground-4}}'; }md-divider.md-THEME_NAME-theme {  border-top-color: '{{foreground-4}}'; }md-icon.md-THEME_NAME-theme.md-primary {  color: '{{primary-color}}'; }md-icon.md-THEME_NAME-theme.md-accent {  color: '{{accent-color}}'; }md-icon.md-THEME_NAME-theme.md-warn {  color: '{{warn-color}}'; }md-icon.md-THEME_NAME-theme.md-danger {  color: '{{danger-color}}'; }md-input-container.md-THEME_NAME-theme .md-input {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}';  text-shadow: '{{foreground-shadow}}'; }  md-input-container.md-THEME_NAME-theme .md-input::-webkit-input-placeholder, md-input-container.md-THEME_NAME-theme .md-input::-moz-placeholder, md-input-container.md-THEME_NAME-theme .md-input:-moz-placeholder, md-input-container.md-THEME_NAME-theme .md-input:-ms-input-placeholder {    color: '{{foreground-3}}'; }md-input-container.md-THEME_NAME-theme > md-icon {  fill: '{{foreground-1}}'; }md-input-container.md-THEME_NAME-theme label, md-input-container.md-THEME_NAME-theme .md-placeholder {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-has-value label {  color: '{{foreground-2}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused .md-input {  border-color: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused label {  color: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused md-icon {  fill: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent .md-input {  border-color: '{{accent-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent label {  color: '{{accent-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn .md-input {  border-color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn label {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input {  border-color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid label {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid data-ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid x-ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid [ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid [data-ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid [x-ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid .md-char-counter {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme .md-input[disabled], [disabled] md-input-container.md-THEME_NAME-theme .md-input {  border-bottom-color: transparent;  color: '{{foreground-3}}';  background-image: linear-gradient(to right, '{{foreground-4}}' 0%, '{{foreground-4}}' 33%, transparent 0%);  background-image: -ms-linear-gradient(left, transparent 0%, '{{foreground-4}}' 100%); }md-progress-circular.md-THEME_NAME-theme {  background-color: transparent; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-gap {    border-top-color: '{{primary-color}}';    border-bottom-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-top-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-right-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle {    border-left-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-gap {    border-top-color: '{{warn-color}}';    border-bottom-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-top-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-right-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle {    border-left-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-gap {    border-top-color: '{{accent-color}}';    border-bottom-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-top-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-right-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle {    border-left-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme .md-container {  background-color: '{{primary-100}}'; }md-progress-linear.md-THEME_NAME-theme .md-bar {  background-color: '{{primary-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-container {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-bar {  background-color: '{{warn-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-container {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-bar {  background-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-bar1 {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-dashed:before {  background: radial-gradient('{{warn-100}}' 0%, '{{warn-100}}' 16%, transparent 42%); }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-bar1 {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-dashed:before {  background: radial-gradient('{{accent-100}}' 0%, '{{accent-100}}' 16%, transparent 42%); }md-radio-button.md-THEME_NAME-theme .md-off {  border-color: '{{foreground-2}}'; }md-radio-button.md-THEME_NAME-theme .md-on {  background-color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme.md-checked .md-off {  border-color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme.md-checked .md-ink-ripple {  color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme .md-container .md-ripple {  color: '{{accent-600}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-on {  background-color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off {  border-color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple {  color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple {  color: '{{primary-600}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-on {  background-color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off {  border-color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple {  color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple {  color: '{{warn-600}}'; }md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-off {  border-color: '{{foreground-3}}'; }md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-on {  border-color: '{{foreground-3}}'; }md-radio-group.md-THEME_NAME-theme:focus:not(:empty) {  border-color: '{{foreground-1}}'; }md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label {  border-bottom-color: '{{primary-color}}';  color: '{{ foreground-1 }}'; }  md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label.md-placeholder {    color: '{{ foreground-1 }}'; }md-select.md-THEME_NAME-theme:not([disabled]):focus.md-accent .md-select-label {  border-bottom-color: '{{accent-color}}'; }md-select.md-THEME_NAME-theme:not([disabled]):focus.md-warn .md-select-label {  border-bottom-color: '{{warn-color}}'; }md-select.md-THEME_NAME-theme[disabled] .md-select-label {  color: '{{foreground-3}}'; }  md-select.md-THEME_NAME-theme[disabled] .md-select-label.md-placeholder {    color: '{{foreground-3}}'; }md-select.md-THEME_NAME-theme .md-select-label {  border-bottom-color: '{{foreground-4}}'; }  md-select.md-THEME_NAME-theme .md-select-label.md-placeholder {    color: '{{foreground-2}}'; }md-select-menu.md-THEME_NAME-theme md-optgroup {  color: '{{foreground-2}}'; }  md-select-menu.md-THEME_NAME-theme md-optgroup md-option {    color: '{{foreground-1}}'; }md-select-menu.md-THEME_NAME-theme md-option[selected] {  background-color: '{{primary-50}}'; }  md-select-menu.md-THEME_NAME-theme md-option[selected]:focus {    background-color: '{{primary-100}}'; }  md-select-menu.md-THEME_NAME-theme md-option[selected].md-accent {    background-color: '{{accent-50}}'; }    md-select-menu.md-THEME_NAME-theme md-option[selected].md-accent:focus {      background-color: '{{accent-100}}'; }md-select-menu.md-THEME_NAME-theme md-option:focus:not([selected]) {  background: '{{background-200}}'; }md-sidenav.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md-slider.md-THEME_NAME-theme .md-track {  background-color: '{{foreground-3}}'; }md-slider.md-THEME_NAME-theme .md-track-ticks {  background-color: '{{foreground-4}}'; }md-slider.md-THEME_NAME-theme .md-focus-thumb {  background-color: '{{foreground-2}}'; }md-slider.md-THEME_NAME-theme .md-focus-ring {  border-color: '{{foreground-4}}'; }md-slider.md-THEME_NAME-theme .md-disabled-thumb {  border-color: '{{background-hue-3}}'; }md-slider.md-THEME_NAME-theme.md-min .md-thumb:after {  background-color: '{{background-hue-3}}'; }md-slider.md-THEME_NAME-theme .md-track.md-track-fill {  background-color: '{{accent-color}}'; }md-slider.md-THEME_NAME-theme .md-thumb:after {  border-color: '{{accent-color}}';  background-color: '{{accent-color}}'; }md-slider.md-THEME_NAME-theme .md-sign {  background-color: '{{accent-color}}'; }  md-slider.md-THEME_NAME-theme .md-sign:after {    border-top-color: '{{accent-color}}'; }md-slider.md-THEME_NAME-theme .md-thumb-text {  color: '{{accent-contrast}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-track.md-track-fill {  background-color: '{{warn-color}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-thumb:after {  border-color: '{{warn-color}}';  background-color: '{{warn-color}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-sign {  background-color: '{{warn-color}}'; }  md-slider.md-THEME_NAME-theme.md-warn .md-sign:after {    border-top-color: '{{warn-color}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-thumb-text {  color: '{{warn-contrast}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-track.md-track-fill {  background-color: '{{primary-color}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-thumb:after {  border-color: '{{primary-color}}';  background-color: '{{primary-color}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-sign {  background-color: '{{primary-color}}'; }  md-slider.md-THEME_NAME-theme.md-primary .md-sign:after {    border-top-color: '{{primary-color}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-thumb-text {  color: '{{primary-contrast}}'; }md-slider.md-THEME_NAME-theme[disabled] .md-thumb:after {  border-color: '{{foreground-3}}'; }md-slider.md-THEME_NAME-theme[disabled]:not(.md-min) .md-thumb:after {  background-color: '{{foreground-3}}'; }.md-subheader.md-THEME_NAME-theme {  color: '{{ foreground-2-0.23 }}';  background-color: '{{background-hue-3}}'; }  .md-subheader.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme .md-thumb {  background-color: '{{background-50}}'; }md-switch.md-THEME_NAME-theme .md-bar {  background-color: '{{background-500}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-thumb {  background-color: '{{accent-color}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-bar {  background-color: '{{accent-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-thumb {  background-color: '{{primary-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-bar {  background-color: '{{primary-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-thumb {  background-color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-bar {  background-color: '{{warn-color-0.5}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-thumb {  background-color: '{{background-400}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-bar {  background-color: '{{foreground-4}}'; }md-switch.md-THEME_NAME-theme:focus .md-label:not(:empty) {  border-color: '{{foreground-1}}';  border-style: dotted; }md-tabs.md-THEME_NAME-theme .md-header {  background-color: transparent; }md-tabs.md-THEME_NAME-theme .md-paginator md-icon {  color: '{{primary-color}}'; }md-tabs.md-THEME_NAME-theme.md-accent .md-header {  background-color: '{{accent-color}}'; }md-tabs.md-THEME_NAME-theme.md-accent md-tab:not([disabled]) {  color: '{{accent-100}}'; }  md-tabs.md-THEME_NAME-theme.md-accent md-tab:not([disabled]).active {    color: '{{accent-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-primary .md-header {  background-color: '{{primary-color}}'; }md-tabs.md-THEME_NAME-theme.md-primary md-tab:not([disabled]) {  color: '{{primary-100}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab:not([disabled]).active {    color: '{{primary-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-primary md-tab {  color: '{{primary-100}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab[disabled] {    color: '{{foreground-3}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab:focus {    color: '{{primary-contrast}}';    background-color: '{{primary-contrast-0.1}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab.active {    color: '{{primary-contrast}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab .md-ripple-container {    color: '{{primary-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-warn .md-header {  background-color: '{{warn-color}}'; }md-tabs.md-THEME_NAME-theme.md-warn md-tab:not([disabled]) {  color: '{{warn-100}}'; }  md-tabs.md-THEME_NAME-theme.md-warn md-tab:not([disabled]).active {    color: '{{warn-contrast}}'; }md-tabs.md-THEME_NAME-theme md-tabs-ink-bar {  color: '{{accent-color}}';  background: '{{accent-color}}'; }md-tabs.md-THEME_NAME-theme md-tab {  color: '{{foreground-2}}'; }  md-tabs.md-THEME_NAME-theme md-tab[disabled] {    color: '{{foreground-3}}'; }  md-tabs.md-THEME_NAME-theme md-tab:focus {    color: '{{foreground-1}}'; }  md-tabs.md-THEME_NAME-theme md-tab.active {    color: '{{primary-color}}'; }  md-tabs.md-THEME_NAME-theme md-tab .md-ripple-container {    color: '{{accent-100}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  text-shadow: '{{foreground-shadow}}'; }  md-input-group.md-THEME_NAME-theme input::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme input::-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-ms-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-ms-input-placeholder {    color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme label {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused input, md-input-group.md-THEME_NAME-theme.md-input-focused textarea {  border-color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused label {  color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent input, md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent textarea {  border-color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent label {  color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-has-value:not(.md-input-focused) label {  color: '{{foreground-2}}'; }md-input-group.md-THEME_NAME-theme .md-input[disabled] {  border-bottom-color: '{{foreground-4}}';  color: '{{foreground-3}}'; }md-toast.md-THEME_NAME-theme {  background-color: '{{foreground-1}}';  color: '{{background-50}}'; }  md-toast.md-THEME_NAME-theme .md-button {    color: '{{background-50}}'; }    md-toast.md-THEME_NAME-theme .md-button.md-highlight {      color: '{{primary-A200}}'; }      md-toast.md-THEME_NAME-theme .md-button.md-highlight.md-accent {        color: '{{accent-A200}}'; }      md-toast.md-THEME_NAME-theme .md-button.md-highlight.md-warn {        color: '{{warn-A200}}'; }md-toolbar.md-THEME_NAME-theme {  background-color: '{{primary-color}}';  color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme .md-button {    color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-accent {    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-warn {    background-color: '{{warn-color}}';    color: '{{warn-contrast}}'; }md-tooltip.md-THEME_NAME-theme {  color: '{{background-A100}}'; }  md-tooltip.md-THEME_NAME-theme .md-background {    background-color: '{{foreground-2}}'; }"); 
 })();

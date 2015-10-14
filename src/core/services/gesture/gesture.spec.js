@@ -1,7 +1,7 @@
-describe('$mdGesture', function() {
+describe('$md083forkGesture', function() {
 
   beforeEach(module('material.083fork.core', function() {
-    angular.element(document).triggerHandler('$$mdGestureReset');
+    angular.element(document).triggerHandler('$$md083forkGestureReset');
   }));
 
   describe('custom gesture', function() {
@@ -10,14 +10,14 @@ describe('$mdGesture', function() {
     var startSpy2, moveSpy2, endSpy2;
     var childEl, middleEl, parentEl;
     beforeEach(function() {
-      inject(function($mdGesture, $document) {
+      inject(function($md083forkGesture, $document) {
         startSpy1 = jasmine.createSpy('start1');
         moveSpy1 = jasmine.createSpy('move1');
         endSpy1 = jasmine.createSpy('end1');
         startSpy2 = jasmine.createSpy('start2');
         moveSpy2 = jasmine.createSpy('move2');
         endSpy2 = jasmine.createSpy('end2');
-        $mdGesture.handler('gesture1', {
+        $md083forkGesture.handler('gesture1', {
           options: {
             defaultKey: 'defaultVal'
           },
@@ -25,7 +25,7 @@ describe('$mdGesture', function() {
           onMove: moveSpy1,
           onEnd: endSpy1
         });
-        $mdGesture.handler('gesture2', {
+        $md083forkGesture.handler('gesture2', {
           onStart: startSpy2,
           onMove: moveSpy2,
           onEnd: endSpy2
@@ -37,8 +37,8 @@ describe('$mdGesture', function() {
       });
     });
 
-    it('should pass provided options', inject(function($document, $mdGesture) {
-      $mdGesture.register(childEl, 'gesture1', { optKey: 'optValue' });
+    it('should pass provided options', inject(function($document, $md083forkGesture) {
+      $md083forkGesture.register(childEl, 'gesture1', { optKey: 'optValue' });
 
       startSpy1.andCallFake(function() {
         expect(this.state).toHaveFields({
@@ -187,7 +187,7 @@ describe('$mdGesture', function() {
       expect(spy).toHaveBeenCalled();
     }));
 
-    it('should not click if distance > options.maxDistance', inject(function($mdGesture, $document) {
+    it('should not click if distance > options.maxDistance', inject(function($md083forkGesture, $document) {
       var spy = jasmine.createSpy('click');
       var el = angular.element('<div>');
 
@@ -212,7 +212,7 @@ describe('$mdGesture', function() {
 
   describe('press', function() {
 
-    it('should pressdown/up on touchstart/end', inject(function($mdGesture, $document) {
+    it('should pressdown/up on touchstart/end', inject(function($md083forkGesture, $document) {
       var downSpy = jasmine.createSpy('pressdown');
       var upSpy = jasmine.createSpy('pressup');
       var el = angular.element('<div>');
@@ -248,10 +248,10 @@ describe('$mdGesture', function() {
 
   describe('hold', function() {
 
-    it('should call hold after options number of ms', inject(function($mdGesture, $document, $timeout) {
+    it('should call hold after options number of ms', inject(function($md083forkGesture, $document, $timeout) {
       var holdSpy = jasmine.createSpy('hold');
       var el = angular.element('<div>');
-      $mdGesture.register(el, 'hold', {
+      $md083forkGesture.register(el, 'hold', {
         delay: 333
       });
 
@@ -271,10 +271,10 @@ describe('$mdGesture', function() {
       $timeout.verifyNoPendingTasks();
     }));
 
-    it('should reset timeout if moving > options.maxDistance', inject(function($mdGesture, $document, $timeout) {
+    it('should reset timeout if moving > options.maxDistance', inject(function($md083forkGesture, $document, $timeout) {
       var holdSpy = jasmine.createSpy('hold');
       var el = angular.element('<div>');
-      $mdGesture.register(el, 'hold', {
+      $md083forkGesture.register(el, 'hold', {
         delay: 333,
         maxDistance: 10
       });
@@ -301,10 +301,10 @@ describe('$mdGesture', function() {
       $timeout.verifyNoPendingTasks();
     }));
 
-    it('should not reset timeout if moving < options.maxDistance', inject(function($mdGesture, $document, $timeout) {
+    it('should not reset timeout if moving < options.maxDistance', inject(function($md083forkGesture, $document, $timeout) {
       var holdSpy = jasmine.createSpy('hold');
       var el = angular.element('<div>');
-      $mdGesture.register(el, 'hold', {
+      $md083forkGesture.register(el, 'hold', {
         delay: 333,
         maxDistance: 10
       });
@@ -340,21 +340,21 @@ describe('$mdGesture', function() {
 
     var startSpy, el, moveSpy, endSpy, doc;
     beforeEach(function() {
-      inject(function($mdGesture, $document) {
+      inject(function($md083forkGesture, $document) {
         doc = $document;
         startSpy = jasmine.createSpy('dragstart');
         moveSpy = jasmine.createSpy('drag');
         endSpy = jasmine.createSpy('dragend');
         el = angular.element('<div>');
 
-        $mdGesture.register(el, 'drag');
+        $md083forkGesture.register(el, 'drag');
         el.on('$md.dragstart', startSpy)
           .on('$md.drag', moveSpy)
           .on('$md.dragend', endSpy);
       });
     });
 
-    it('should only start after distanceX > minDistance', inject(function($mdGesture, $document) {
+    it('should only start after distanceX > minDistance', inject(function($md083forkGesture, $document) {
 
       doc.triggerHandler({
         type: 'touchstart',
@@ -430,7 +430,7 @@ describe('$mdGesture', function() {
 
   describe('swipe', function() {
 
-    it('should swipeleft if velocity > minVelocity and distance > maxDistance', inject(function($mdGesture, $document) {
+    it('should swipeleft if velocity > minVelocity and distance > maxDistance', inject(function($md083forkGesture, $document) {
       var now = 0;
       spyOn(Date, 'now').andCallFake(function() { return now; });
 
@@ -459,7 +459,7 @@ describe('$mdGesture', function() {
       expect(rightSpy).not.toHaveBeenCalled();
     }));
 
-    it('should swiperight if velocity > minVelocity and distance > maxDistance', inject(function($mdGesture, $document) {
+    it('should swiperight if velocity > minVelocity and distance > maxDistance', inject(function($md083forkGesture, $document) {
       var now = 0;
       spyOn(Date, 'now').andCallFake(function() { return now; });
 

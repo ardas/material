@@ -14,11 +14,11 @@ angular
       postalCode : '94043'
     };
   })
-  .config( function($mdThemingProvider){
+  .config( function($md083forkThemingProvider){
 
     // Configure a dark theme with primary foreground yellow
 
-    $mdThemingProvider.theme('docs-dark', 'default')
+    $md083forkThemingProvider.theme('docs-dark', 'default')
         .primaryPalette('yellow')
         .dark();
 

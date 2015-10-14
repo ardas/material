@@ -10,7 +10,7 @@
    * Note: currently this as a private service in the SideNav component.
    */
   angular.module('material.083fork.core')
-    .factory('$mdComponentRegistry', ComponentRegistry);
+    .factory('$md083forkComponentRegistry', ComponentRegistry);
 
   /*
    * @private

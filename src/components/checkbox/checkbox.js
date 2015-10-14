@@ -50,7 +50,7 @@ angular.module('material.083fork.components.checkbox', [
  * </hljs>
  *
  */
-function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant, $mdTheming, $mdUtil) {
+function MdCheckboxDirective(inputDirective, $md083forkInkRipple$mdInkRipple, $md083forkAria, $md083forkConstant, $md083forkTheming, $md083forkUtil) {
   inputDirective = inputDirective[0];
   var CHECKED_CSS = 'md-checked';
 
@@ -77,9 +77,9 @@ function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant,
     tElement.attr('role', tAttrs.type);
 
     return function postLink(scope, element, attr, ngModelCtrl) {
-      ngModelCtrl = ngModelCtrl || $mdUtil.fakeNgModel();
+      ngModelCtrl = ngModelCtrl || $md083forkUtil.fakeNgModel();
       var checked = false;
-      $mdTheming(element);
+      $md083forkTheming(element);
 
       if (attr.ngChecked) {
         scope.$watch(
@@ -88,7 +88,7 @@ function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant,
         );
       }
 
-      $mdAria.expectWithText(element, 'aria-label');
+      $md083forkAria.expectWithText(element, 'aria-label');
 
       // Reuse the original input[type=checkbox] directive from Angular core.
       // This is a bit hacky as we need our own event listener and own render
@@ -103,7 +103,7 @@ function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant,
       ngModelCtrl.$render = render;
 
       function keypressHandler(ev) {
-        if(ev.which === $mdConstant.KEY_CODE.SPACE) {
+        if(ev.which === $md083forkConstant.KEY_CODE.SPACE) {
           ev.preventDefault();
           listener(ev);
         }

@@ -35,7 +35,7 @@ angular.module('material.083fork.components.tooltip', [
  * @param {number=} md-delay How many milliseconds to wait to show the tooltip after the user focuses, hovers, or touches the parent. Defaults to 400ms.
  * @param {string=} md-direction Which direction would you like the tooltip to go?  Supports left, right, top, and bottom.  Defaults to bottom.
  */
-function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdTheming, $rootElement, $animate, $q) {
+function MdTooltipDirective($timeout, $window, $$rAF, $document, $md083forkUtil, $md083forkTheming, $rootElement, $animate, $q) {
 
   var TOOLTIP_SHOW_DELAY = 0;
   var TOOLTIP_WINDOW_EDGE_SPACE = 8;
@@ -54,7 +54,7 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
   };
 
   function postLink(scope, element, attr, contentCtrl) {
-    $mdTheming(element);
+    $md083forkTheming(element);
     var parent = element.parent();
     var background = angular.element(element[0].getElementsByClassName('md-background')[0]);
     var content = angular.element(element[0].getElementsByClassName('md-content')[0]);
@@ -80,7 +80,7 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
     // We will re-attach tooltip when visible
     element.detach();
     element.attr('role', 'tooltip');
-    element.attr('id', attr.id || ('tooltip_' + $mdUtil.nextUid()));
+    element.attr('id', attr.id || ('tooltip_' + $md083forkUtil.nextUid()));
 
     parent.on('focus mouseenter touchstart', function() { setVisible(true); });
     parent.on('blur mouseleave touchend touchcancel', function() { if ($document[0].activeElement !== parent[0]) setVisible(false); });
@@ -147,8 +147,8 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
     }
 
     function positionTooltip() {
-      var tipRect = $mdUtil.offsetRect(element, tooltipParent);
-      var parentRect = $mdUtil.offsetRect(parent, tooltipParent);
+      var tipRect = $md083forkUtil.offsetRect(element, tooltipParent);
+      var parentRect = $md083forkUtil.offsetRect(parent, tooltipParent);
       var newPosition = getPosition(direction);
 
       // If the user provided a direction, just nudge the tooltip onto the screen

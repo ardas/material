@@ -69,7 +69,7 @@ describe('<md-tabs>', function() {
       expect($document.activeElement).toBe(tabItems[0]);
     }));
 
-    it('should focus tab on arrow if tab is enabled', inject(function($document, $mdConstant, $timeout) {
+    it('should focus tab on arrow if tab is enabled', inject(function($document, $md083forkConstant, $timeout) {
       var tabs = setup('<md-tabs>' +
                        '<md-tab></md-tab>' +
                        '<md-tab ng-disabled="true"></md-tab>' +
@@ -79,40 +79,40 @@ describe('<md-tabs>', function() {
       expect(tabItems.eq(0)).toBeActiveTab();
 
       // Boundary case, do nothing
-      triggerKeydown(tabItems.eq(0), $mdConstant.KEY_CODE.LEFT_ARROW);
+      triggerKeydown(tabItems.eq(0), $md083forkConstant.KEY_CODE.LEFT_ARROW);
       expect(tabItems.eq(0)).toBeActiveTab();
 
       // Tab 0 should still be active, but tab 2 focused (skip tab 1 it's disabled)
-      triggerKeydown(tabItems.eq(0), $mdConstant.KEY_CODE.RIGHT_ARROW);
+      triggerKeydown(tabItems.eq(0), $md083forkConstant.KEY_CODE.RIGHT_ARROW);
       expect(tabItems.eq(0)).toBeActiveTab();
       $timeout.flush();
       expect($document.activeElement).toBe(tabItems[2]);
 
       // Boundary case, do nothing
-      triggerKeydown(tabItems.eq(0), $mdConstant.KEY_CODE.RIGHT_ARROW);
+      triggerKeydown(tabItems.eq(0), $md083forkConstant.KEY_CODE.RIGHT_ARROW);
       expect(tabItems.eq(0)).toBeActiveTab();
       $timeout.flush();
       expect($document.activeElement).toBe(tabItems[2]);
 
       // Skip tab 1 again, it's disabled
-      triggerKeydown(tabItems.eq(2), $mdConstant.KEY_CODE.LEFT_ARROW);
+      triggerKeydown(tabItems.eq(2), $md083forkConstant.KEY_CODE.LEFT_ARROW);
       expect(tabItems.eq(0)).toBeActiveTab();
       $timeout.flush();
       expect($document.activeElement).toBe(tabItems[0]);
 
     }));
 
-    it('should select tab on space or enter', inject(function($mdConstant) {
+    it('should select tab on space or enter', inject(function($md083forkConstant) {
       var tabs = setup('<md-tabs>' +
                        '<md-tab></md-tab>' +
                        '<md-tab></md-tab>' +
                        '</md-tabs>');
       var tabItems = tabs.find('md-tab');
 
-      triggerKeydown(tabItems.eq(1), $mdConstant.KEY_CODE.ENTER);
+      triggerKeydown(tabItems.eq(1), $md083forkConstant.KEY_CODE.ENTER);
       expect(tabItems.eq(1)).toBeActiveTab();
 
-      triggerKeydown(tabItems.eq(0), $mdConstant.KEY_CODE.SPACE);
+      triggerKeydown(tabItems.eq(0), $md083forkConstant.KEY_CODE.SPACE);
       expect(tabItems.eq(0)).toBeActiveTab();
     }));
 

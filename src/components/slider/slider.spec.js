@@ -1,4 +1,4 @@
-describe('md-slider', function() {
+describe('md083fork-slider', function() {
 
   beforeEach(module('ngAria'));
   beforeEach(module('material.083fork.components.slider'));
@@ -6,7 +6,7 @@ describe('md-slider', function() {
   function setup(attrs, dimensions) {
     var slider;
     inject(function($compile, $rootScope) { 
-      slider = $compile('<md-slider ' + (attrs || '') + '>')($rootScope);
+      slider = $compile('<md083fork-slider ' + (attrs || '') + '>')($rootScope);
       spyOn(
         slider[0].querySelector('.md-track-container'), 
         'getBoundingClientRect'
@@ -38,20 +38,20 @@ describe('md-slider', function() {
     expect($rootScope.value).toBe(50);
   }));
 
-  it('should increment model on right arrow', inject(function($compile, $rootScope, $timeout, $mdConstant) {
+  it('should increment model on right arrow', inject(function($compile, $rootScope, $timeout, $md083forkConstant) {
     var slider = setup('min="100" max="104" step="2" ng-model="model"');
     $rootScope.$apply('model = 100');
 
     slider.triggerHandler({
       type: 'keydown',
-      keyCode: $mdConstant.KEY_CODE.RIGHT_ARROW
+      keyCode: $md083forkConstant.KEY_CODE.RIGHT_ARROW
     });
     $timeout.flush();
     expect($rootScope.model).toBe(102);
 
     slider.triggerHandler({
       type: 'keydown',
-      keyCode: $mdConstant.KEY_CODE.RIGHT_ARROW
+      keyCode: $md083forkConstant.KEY_CODE.RIGHT_ARROW
     });
     $timeout.flush();
     expect($rootScope.model).toBe(104);
@@ -59,26 +59,26 @@ describe('md-slider', function() {
     // Stays at max
     slider.triggerHandler({
       type: 'keydown',
-      keyCode: $mdConstant.KEY_CODE.RIGHT_ARROW
+      keyCode: $md083forkConstant.KEY_CODE.RIGHT_ARROW
     });
     $timeout.flush();
     expect($rootScope.model).toBe(104);
   }));
 
-  it('should decrement model on left arrow', inject(function($compile, $rootScope, $timeout, $mdConstant) {
+  it('should decrement model on left arrow', inject(function($compile, $rootScope, $timeout, $md083forkConstant) {
     var slider = setup('min="100" max="104" step="2" ng-model="model"');
     $rootScope.$apply('model = 104');
 
     slider.triggerHandler({
       type: 'keydown',
-      keyCode: $mdConstant.KEY_CODE.LEFT_ARROW
+      keyCode: $md083forkConstant.KEY_CODE.LEFT_ARROW
     });
     $timeout.flush();
     expect($rootScope.model).toBe(102);
 
     slider.triggerHandler({
       type: 'keydown',
-      keyCode: $mdConstant.KEY_CODE.LEFT_ARROW
+      keyCode: $md083forkConstant.KEY_CODE.LEFT_ARROW
     });
     $timeout.flush();
     expect($rootScope.model).toBe(100);
@@ -86,13 +86,13 @@ describe('md-slider', function() {
     // Stays at min
     slider.triggerHandler({
       type: 'keydown',
-      keyCode: $mdConstant.KEY_CODE.LEFT_ARROW
+      keyCode: $md083forkConstant.KEY_CODE.LEFT_ARROW
     });
     $timeout.flush();
     expect($rootScope.model).toBe(100);
   }));
 
-  it('should update the thumb text', inject(function($compile, $rootScope, $timeout, $mdConstant) {
+  it('should update the thumb text', inject(function($compile, $rootScope, $timeout, $md083forkConstant) {
     var slider = setup('ng-model="value" md-discrete min="0" max="100" step="1"');
 
     $rootScope.$apply('value = 30');
@@ -100,7 +100,7 @@ describe('md-slider', function() {
 
     slider.triggerHandler({
       type: 'keydown',
-      keyCode: $mdConstant.KEY_CODE.LEFT_ARROW
+      keyCode: $md083forkConstant.KEY_CODE.LEFT_ARROW
     });
     $timeout.flush();
     expect(slider[0].querySelector('.md-thumb-text').textContent).toBe('29');
@@ -119,7 +119,7 @@ describe('md-slider', function() {
     };
 
     var slider = setup('ng-model="value" min="0" max="100" ng-change="stayAt50()"');
-    var sliderCtrl = slider.controller('mdSlider');
+    var sliderCtrl = slider.controller('md083forkSlider');
 
     slider.triggerHandler({type: '$md.pressdown', pointer: { x: 30 }});
     $timeout.flush();
@@ -139,7 +139,7 @@ describe('md-slider', function() {
     expect($log.warn).not.toHaveBeenCalled();
   }));
 
-  it('should add aria attributes', inject(function($compile, $rootScope, $timeout, $mdConstant){
+  it('should add aria attributes', inject(function($compile, $rootScope, $timeout, $md083forkConstant){
     var slider = setup('min="100" max="104" step="2" ng-model="model"');
 
     $rootScope.$apply('model = 102');
@@ -151,7 +151,7 @@ describe('md-slider', function() {
 
     slider.triggerHandler({
       type: 'keydown',
-      keyCode: $mdConstant.KEY_CODE.LEFT_ARROW
+      keyCode: $md083forkConstant.KEY_CODE.LEFT_ARROW
     });
     $timeout.flush();
     expect(slider.attr('aria-valuenow')).toEqual('100');

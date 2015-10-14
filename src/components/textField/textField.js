@@ -15,7 +15,7 @@ angular.module('material.083fork.components.textField', [
   .directive('mdTextFloat', mdTextFloatDirective);
 
 
-function mdTextFloatDirective($mdTheming, $mdUtil, $parse, $log) {
+function mdTextFloatDirective($md083forkTheming, $md083forkUtil, $parse, $log) {
   return {
     restrict: 'E',
     replace: true,
@@ -30,7 +30,7 @@ function mdTextFloatDirective($mdTheming, $mdUtil, $parse, $log) {
                 'More information at http://material.angularjs.org/#/api/material.components.input/directive/mdInputContainer');
 
       if ( angular.isUndefined(attr.mdFid) ) {
-        attr.mdFid = $mdUtil.nextUid();
+        attr.mdFid = $md083forkUtil.nextUid();
       }
 
       return {
@@ -42,7 +42,7 @@ function mdTextFloatDirective($mdTheming, $mdUtil, $parse, $log) {
 
           scope.inputType = attrs.type || "text";
         },
-        post: $mdTheming
+        post: $md083forkTheming
       };
     },
     template:
@@ -71,7 +71,7 @@ function mdInputGroupDirective($log) {
 
 }
 
-function mdInputDirective($mdUtil, $log) {
+function mdInputDirective($md083forkUtil, $log) {
   return {
     restrict: 'E',
     replace: true,

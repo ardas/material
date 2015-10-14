@@ -31,7 +31,7 @@ angular.module('material.083fork.components.sticky', [
  *     If not provided, it will use the result of `element.clone()`.
  */
 
-function MdSticky($document, $mdConstant, $compile, $$rAF, $mdUtil) {
+function MdSticky($document, $md083forkConstant, $compile, $$rAF, $md083forkUtil) {
 
   var browserStickySupport = checkStickySupport();
 
@@ -240,12 +240,12 @@ function MdSticky($document, $mdConstant, $compile, $$rAF, $mdUtil) {
      if (amount === null || amount === undefined) {
        if (item.translateY) {
          item.translateY = null;
-         item.clone.css($mdConstant.CSS.TRANSFORM, '');
+         item.clone.css($md083forkConstant.CSS.TRANSFORM, '');
        }
      } else {
        item.translateY = amount;
        item.clone.css(
-         $mdConstant.CSS.TRANSFORM, 
+         $md083forkConstant.CSS.TRANSFORM,
          'translate3d(' + item.left + 'px,' + amount + 'px,0)'
        );
      }
@@ -286,11 +286,11 @@ function MdSticky($document, $mdConstant, $compile, $$rAF, $mdUtil) {
         element.triggerHandler('$scrollstart');
       }
       element.triggerHandler('$scroll');
-      lastScrollTime = +$mdUtil.now();
+      lastScrollTime = +$md083forkUtil.now();
     });
 
     function loopScrollEvent() {
-      if (+$mdUtil.now() - lastScrollTime > SCROLL_END_DELAY) {
+      if (+$md083forkUtil.now() - lastScrollTime > SCROLL_END_DELAY) {
         isScrolling = false;
         element.triggerHandler('$scrollend');
       } else {

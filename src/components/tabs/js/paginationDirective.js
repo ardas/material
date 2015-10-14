@@ -4,7 +4,7 @@
 angular.module('material.083fork.components.tabs')
     .directive('mdTabsPagination', TabPaginationDirective);
 
-function TabPaginationDirective($mdConstant, $window, $$rAF, $$q, $timeout, $mdMedia) {
+function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeout, $md083forkMedia) {
 
   // Must match (2 * width of paginators) in scss
   var PAGINATORS_WIDTH = (8 * 4) * 2;
@@ -128,15 +128,15 @@ function TabPaginationDirective($mdConstant, $window, $$rAF, $$q, $timeout, $mdM
       var deferred = $$q.defer();
 
       tabsCtrl.$$pagingOffset = x;
-      tabsParent.css($mdConstant.CSS.TRANSFORM, 'translate3d(' + x + 'px,0,0)');
-      tabsParent.on($mdConstant.CSS.TRANSITIONEND, onTabsParentTransitionEnd);
+      tabsParent.css($md083forkConstant.CSS.TRANSFORM, 'translate3d(' + x + 'px,0,0)');
+      tabsParent.on($md083forkConstant.CSS.TRANSITIONEND, onTabsParentTransitionEnd);
 
       return deferred.promise;
 
       function onTabsParentTransitionEnd(ev) {
         // Make sure this event didn't bubble up from an animation in a child element.
         if (ev.target === tabsParent[0]) {
-          tabsParent.off($mdConstant.CSS.TRANSITIONEND, onTabsParentTransitionEnd);
+          tabsParent.off($md083forkConstant.CSS.TRANSITIONEND, onTabsParentTransitionEnd);
           deferred.resolve();
         }
       }
@@ -146,7 +146,7 @@ function TabPaginationDirective($mdConstant, $window, $$rAF, $$q, $timeout, $mdM
       switch (scope.stretchTabs) {
         case 'never':  return false;
         case 'always': return true;
-        default:       return $mdMedia('sm');
+        default:       return $md083forkMedia('sm');
       }
     }
 

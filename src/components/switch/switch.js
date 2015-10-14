@@ -50,7 +50,7 @@ angular.module('material.083fork.components.switch', [
  *
  * </hljs>
  */
-function MdSwitch(mdCheckboxDirective, $mdTheming, $mdUtil, $document, $mdConstant, $parse, $$rAF, $mdGesture) {
+function MdSwitch(mdCheckboxDirective, $md083forkTheming, $md083forkUtil, $document, $md083forkConstant, $parse, $$rAF, $md083forkGesture) {
   var checkboxDirective = mdCheckboxDirective[0];
 
   return {
@@ -75,7 +75,7 @@ function MdSwitch(mdCheckboxDirective, $mdTheming, $mdUtil, $document, $mdConsta
     element.addClass('md-dragging');
 
     return function (scope, element, attr, ngModel) {
-      ngModel = ngModel || $mdUtil.fakeNgModel();
+      ngModel = ngModel || $md083forkUtil.fakeNgModel();
       var disabledGetter = $parse(attr.ngDisabled);
       var thumbContainer = angular.element(element[0].querySelector('.md-thumb-container'));
       var switchContainer = angular.element(element[0].querySelector('.md-container'));
@@ -94,7 +94,7 @@ function MdSwitch(mdCheckboxDirective, $mdTheming, $mdUtil, $document, $mdConsta
       }
 
       // These events are triggered by setup drag
-      $mdGesture.register(switchContainer, 'drag');
+      $md083forkGesture.register(switchContainer, 'drag');
       switchContainer
         .on('$md.dragstart', onDragStart)
         .on('$md.drag', onDrag)
@@ -125,7 +125,7 @@ function MdSwitch(mdCheckboxDirective, $mdTheming, $mdUtil, $document, $mdConsta
         // Make sure the switch stays inside its bounds, 0-1%
         translate = Math.max(0, Math.min(1, translate));
 
-        thumbContainer.css($mdConstant.CSS.TRANSFORM, 'translate3d(' + (100*translate) + '%,0,0)');
+        thumbContainer.css($md083forkConstant.CSS.TRANSFORM, 'translate3d(' + (100*translate) + '%,0,0)');
         drag.translate = translate;
       }
 
@@ -134,7 +134,7 @@ function MdSwitch(mdCheckboxDirective, $mdTheming, $mdUtil, $document, $mdConsta
         ev.stopPropagation();
 
         element.removeClass('md-dragging');
-        thumbContainer.css($mdConstant.CSS.TRANSFORM, '');
+        thumbContainer.css($md083forkConstant.CSS.TRANSFORM, '');
 
         // We changed if there is no distance (this is a click a click),
         // or if the drag distance is >50% of the total.

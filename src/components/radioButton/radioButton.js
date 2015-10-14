@@ -53,7 +53,7 @@ angular.module('material.083fork.components.radioButton', [
  * </hljs>
  *
  */
-function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
+function mdRadioGroupDirective($md083forkUtil, $md083forkConstant, $md083forkTheming) {
   RadioGroupController.prototype = createRadioGroupControllerProto();
 
   return {
@@ -64,26 +64,26 @@ function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
   };
 
   function linkRadioGroup(scope, element, attr, ctrls) {
-    $mdTheming(element);
+    $md083forkTheming(element);
     var rgCtrl = ctrls[0];
-    var ngModelCtrl = ctrls[1] || $mdUtil.fakeNgModel();
+    var ngModelCtrl = ctrls[1] || $md083forkUtil.fakeNgModel();
 
     function keydownListener(ev) {
       switch(ev.keyCode) {
-        case $mdConstant.KEY_CODE.LEFT_ARROW:
-        case $mdConstant.KEY_CODE.UP_ARROW:
+        case $md083forkConstant.KEY_CODE.LEFT_ARROW:
+        case $md083forkConstant.KEY_CODE.UP_ARROW:
           ev.preventDefault();
           rgCtrl.selectPrevious();
           break;
 
-        case $mdConstant.KEY_CODE.RIGHT_ARROW:
-        case $mdConstant.KEY_CODE.DOWN_ARROW:
+        case $md083forkConstant.KEY_CODE.RIGHT_ARROW:
+        case $md083forkConstant.KEY_CODE.DOWN_ARROW:
           ev.preventDefault();
           rgCtrl.selectNext();
           break;
 
-        case $mdConstant.KEY_CODE.ENTER:
-          var form = angular.element($mdUtil.getClosest(element[0], 'form'));
+        case $md083forkConstant.KEY_CODE.ENTER:
+          var form = angular.element($md083forkUtil.getClosest(element[0], 'form'));
           if (form.length > 0) {
             form.triggerHandler('submit');
           }
@@ -151,7 +151,7 @@ function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
    */
   function changeSelectedButton(parent, increment) {
     // Coerce all child radio buttons into an array, then wrap then in an iterator
-    var buttons = $mdUtil.iterator(parent[0].querySelectorAll('md-radio-button'), true);
+    var buttons = $md083forkUtil.iterator(parent[0].querySelectorAll('md-radio-button'), true);
 
     if (buttons.count()) {
       var validate = function (button) {
@@ -207,7 +207,7 @@ function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
  * </hljs>
  *
  */
-function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
+function mdRadioButtonDirective($md083forkAria, $md083forkUtil, $md083forkTheming) {
 
   var CHECKED_CSS = 'md-checked';
 
@@ -226,7 +226,7 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
   function link(scope, element, attr, rgCtrl) {
     var lastChecked;
 
-    $mdTheming(element);
+    $md083forkTheming(element);
     configureAria(element, scope);
 
     rgCtrl.add(render);
@@ -272,7 +272,7 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
         'aria-checked' : 'false'
       });
 
-      $mdAria.expectWithText(element, 'aria-label');
+      $md083forkAria.expectWithText(element, 'aria-label');
 
       /**
        * Build a unique ID for each radio button that will be used with aria-activedescendant.
@@ -280,7 +280,7 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
        * @returns {*|string}
        */
       function buildAriaID() {
-        return attr.id || ( 'radio' + "_" + $mdUtil.nextUid() );
+        return attr.id || ( 'radio' + "_" + $md083forkUtil.nextUid() );
       }
     }
   }

@@ -2,8 +2,8 @@ describe('<md-select-menu>', function() {
 
   beforeEach(module('material.083fork.components.select', 'ngAnimateMock'));
 
-  beforeEach(inject(function($mdUtil, $q) {
-    $mdUtil.transitionEndPromise = function() {
+  beforeEach(inject(function($md083forkUtil, $q) {
+    $md083forkUtil.transitionEndPromise = function() {
       var deferred = $q.defer();
       deferred.resolve();
       return deferred.promise;

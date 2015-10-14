@@ -49,7 +49,7 @@ angular.module('material.083fork.components.button', [
  *  </md-button>
  * </hljs>
  */
-function MdButtonDirective($mdInkRipple, $mdTheming, $mdAria) {
+function MdButtonDirective($md083forkInkRipple$mdInkRipple, $md083forkTheming, $md083forkAria) {
 
   return {
     restrict: 'EA',
@@ -71,12 +71,12 @@ function MdButtonDirective($mdInkRipple, $mdTheming, $mdAria) {
 
   function postLink(scope, element, attr) {
     var node = element[0];
-    $mdTheming(element);
-    $mdInkRipple.attachButtonBehavior(scope, element);
+    $md083forkTheming(element);
+    $md083forkInkRipple$mdInkRipple.attachButtonBehavior(scope, element);
 
     var elementHasText = node.textContent.trim();
     if (!elementHasText) {
-      $mdAria.expect(element, 'aria-label');
+      $md083forkAria.expect(element, 'aria-label');
     }
 
     // For anchor elements, we have to set tabindex manually when the 
