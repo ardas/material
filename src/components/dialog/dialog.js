@@ -9,8 +9,8 @@ angular.module('material.083fork.components.dialog', [
   'material.083fork.core',
   'material.083fork.components.backdrop'
 ])
-  .directive('mdDialog', MdDialogDirective)
-  .provider('$mdDialog', MdDialogProvider);
+  .directive('md083forkDialog', MdDialogDirective)
+  .provider('$md083forkDialog', MdDialogProvider);
 
 function MdDialogDirective($$rAF, $md083forkTheming) {
   return {
@@ -29,18 +29,18 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
 
 /**
  * @ngdoc service
- * @name $mdDialog
+ * @name $md083forkDialog
  * @module material.components.dialog
  *
  * @description
- * `$mdDialog` opens a dialog over the app to inform users about critical information or require
+ * `$md083forkDialog` opens a dialog over the app to inform users about critical information or require
  *  them to make decisions. There are two approaches for setup: a simple promise API
  *  and regular object syntax.
  *
  * ## Restrictions
  *
  * - The dialog is always given an isolate scope.
- * - The dialog's template must have an outer `<md-dialog>` element.
+ * - The dialog's template must have an outer `<md083fork-dialog>` element.
  *   Inside, use an `<md-content>` element for the dialog's content, and use
  *   an element with class `md-actions` for the dialog's actions.
  *
@@ -73,7 +73,7 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *    .module('demoApp', ['ngMaterial'])
  *    .controller('AppCtrl', AppController);
  *
- *   function AppController($scope, $mdDialog) {
+ *   function AppController($scope, $md083forkDialog) {
  *     var alert;
  *     $scope.showAlert = showAlert;
  *     $scope.showDialog = showDialog;
@@ -81,13 +81,13 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *
  *     // Internal method
  *     function showAlert() {
- *       alert = $mdDialog.alert({
+ *       alert = $md083forkDialog.alert({
  *         title: 'Attention',
  *         content: 'This is an example of how easy dialogs can be!',
  *         ok: 'Close'
  *       });
  *
- *       $mdDialog
+ *       $md083forkDialog
  *         .show( alert )
  *         .finally(function() {
  *           alert = undefined;
@@ -96,11 +96,11 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *
  *     function showDialog($event) {
  *        var parentEl = angular.element(document.body);
- *        $mdDialog.show({
+ *        $md083forkDialog.show({
  *          parent: parentEl,
  *          targetEvent: $event,
  *          template:
- *            '<md-dialog aria-label="List dialog">' +
+ *            '<md083fork-dialog aria-label="List dialog">' +
  *            '  <md-content>'+
  *            '    <md-list>'+
  *            '      <md-item ng-repeat="item in items">'+
@@ -113,16 +113,16 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *            '      Close Dialog' +
  *            '    </md083fork-button>' +
  *            '  </div>' +
- *            '</md-dialog>',
+ *            '</md083fork-dialog>',
  *          locals: {
  *            items: $scope.items
  *          },
  *          controller: DialogController
  *       });
- *       function DialogController(scope, $mdDialog, items) {
+ *       function DialogController(scope, $md083forkDialog, items) {
  *         scope.items = items;
  *         scope.closeDialog = function() {
- *           $mdDialog.hide();
+ *           $md083forkDialog.hide();
  *         }
  *       }
  *     }
@@ -142,7 +142,7 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *
  *   // Fictitious Employee Editor to show how to use simple and complex dialogs.
  *
- *   function EmployeeEditor($scope, $mdDialog) {
+ *   function EmployeeEditor($scope, $md083forkDialog) {
  *     var alert;
  *
  *     $scope.showAlert = showAlert;
@@ -156,12 +156,12 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *     // reference to dialog instance
  *
  *     function showAlert() {
- *       alert = $mdDialog.alert()
+ *       alert = $md083forkDialog.alert()
  *         .title('Attention, ' + $scope.userName)
  *         .content('This is an example of how easy dialogs can be!')
  *         .ok('Close');
  *
- *       $mdDialog
+ *       $md083forkDialog
  *           .show( alert )
  *           .finally(function() {
  *             alert = undefined;
@@ -169,21 +169,21 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *     }
  *
  *     // Close the specified dialog instance and resolve with 'finished' flag
- *     // Normally this is not needed, just use '$mdDialog.hide()' to close
+ *     // Normally this is not needed, just use '$md083forkDialog.hide()' to close
  *     // the most recent dialog popup.
  *
  *     function closeAlert() {
- *       $mdDialog.hide( alert, "finished" );
+ *       $md083forkDialog.hide( alert, "finished" );
  *       alert = undefined;
  *     }
  *
  *     // Dialog #2 - Demonstrate more complex dialogs construction and popup.
  *
  *     function showCustomGreeting($event) {
- *         $mdDialog.show({
+ *         $md083forkDialog.show({
  *           targetEvent: $event,
  *           template:
- *             '<md-dialog>' +
+ *             '<md083fork-dialog>' +
  *
  *             '  <md-content>Hello {{ employee }}!</md-content>' +
  *
@@ -193,7 +193,7 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *
  *             '    </md083fork-button>' +
  *             '  </div>' +
- *             '</md-dialog>',
+ *             '</md083fork-dialog>',
  *           controller: 'GreetingController',
  *           onComplete: afterShowAnimation,
  *           locals: { employee: $scope.userName }
@@ -209,14 +209,14 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *
  *   // Greeting controller used with the more complex 'showCustomGreeting()' custom dialog
  *
- *   function GreetingController($scope, $mdDialog, employee) {
+ *   function GreetingController($scope, $md083forkDialog, employee) {
  *     // Assigned from construction <code>locals</code> options...
  *     $scope.employee = employee;
  *
  *     $scope.closeDialog = function() {
  *       // Easily hides most recent dialog shown...
  *       // no specific instance reference is needed.
- *       $mdDialog.hide();
+ *       $md083forkDialog.hide();
  *     };
  *   }
  *
@@ -226,48 +226,48 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
 
  /**
  * @ngdoc method
- * @name $mdDialog#alert
+ * @name $md083forkDialog#alert
  *
  * @description
  * Builds a preconfigured dialog with the specified message.
  *
- * @returns {obj} an `$mdDialogPreset` with the chainable configuration methods:
+ * @returns {obj} an `$md083forkDialogPreset` with the chainable configuration methods:
  *
- * - $mdDialogPreset#title(string) - sets title to string
- * - $mdDialogPreset#content(string) - sets content / message to string
- * - $mdDialogPreset#ok(string) - sets okay button text to string
- * - $mdDialogPreset#theme(string) - sets the theme of the dialog
+ * - $md083forkDialogPreset#title(string) - sets title to string
+ * - $md083forkDialogPreset#content(string) - sets content / message to string
+ * - $md083forkDialogPreset#ok(string) - sets okay button text to string
+ * - $md083forkDialogPreset#theme(string) - sets the theme of the dialog
  *
  */
 
  /**
  * @ngdoc method
- * @name $mdDialog#confirm
+ * @name $md083forkDialog#confirm
  *
  * @description
  * Builds a preconfigured dialog with the specified message. You can call show and the promise returned
  * will be resolved only if the user clicks the confirm action on the dialog.
  *
- * @returns {obj} an `$mdDialogPreset` with the chainable configuration methods:
+ * @returns {obj} an `$md083forkDialogPreset` with the chainable configuration methods:
  *
  * Additionally, it supports the following methods:
  *
- * - $mdDialogPreset#title(string) - sets title to string
- * - $mdDialogPreset#content(string) - sets content / message to string
- * - $mdDialogPreset#ok(string) - sets okay button text to string
- * - $mdDialogPreset#cancel(string) - sets cancel button text to string
- * - $mdDialogPreset#theme(string) - sets the theme of the dialog
+ * - $md083forkDialogPreset#title(string) - sets title to string
+ * - $md083forkDialogPreset#content(string) - sets content / message to string
+ * - $md083forkDialogPreset#ok(string) - sets okay button text to string
+ * - $md083forkDialogPreset#cancel(string) - sets cancel button text to string
+ * - $md083forkDialogPreset#theme(string) - sets the theme of the dialog
  *
  */
 
 /**
  * @ngdoc method
- * @name $mdDialog#show
+ * @name $md083forkDialog#show
  *
  * @description
  * Show a dialog with the specified options.
  *
- * @param {object} optionsOrPreset Either provide an `$mdDialogPreset` returned from `alert()`, and
+ * @param {object} optionsOrPreset Either provide an `$md083forkDialogPreset` returned from `alert()`, and
  * `confirm()`, or an options object with the following properties:
  *   - `templateUrl` - `{string=}`: The url of a template that will be used as the content
  *   of the dialog.
@@ -287,7 +287,7 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *   - `escapeToClose` - `{boolean=}`: Whether the user can press escape to close the dialog.
  *     Default true.
  *   - `controller` - `{string=}`: The controller to associate with the dialog. The controller
- *     will be injected with the local `$mdDialog`, which passes along a scope for the dialog.
+ *     will be injected with the local `$md083forkDialog`, which passes along a scope for the dialog.
  *   - `locals` - `{object=}`: An object containing key/value pairs. The keys will be used as names
  *     of values to inject into the controller. For example, `locals: {three: 3}` would inject
  *     `three` into the controller, with the value 3. If `bindToController` is true, they will be
@@ -301,26 +301,26 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *   - `onComplete` `{function=}`: Callback function used to announce when the show() action is
  *     finished.
  *
- * @returns {promise} A promise that can be resolved with `$mdDialog.hide()` or
- * rejected with `$mdDialog.cancel()`.
+ * @returns {promise} A promise that can be resolved with `$md083forkDialog.hide()` or
+ * rejected with `$md083forkDialog.cancel()`.
  */
 
 /**
  * @ngdoc method
- * @name $mdDialog#hide
+ * @name $md083forkDialog#hide
  *
  * @description
- * Hide an existing dialog and resolve the promise returned from `$mdDialog.show()`.
+ * Hide an existing dialog and resolve the promise returned from `$md083forkDialog.show()`.
  *
  * @param {*=} response An argument for the resolved promise.
  */
 
 /**
  * @ngdoc method
- * @name $mdDialog#cancel
+ * @name $md083forkDialog#cancel
  *
  * @description
- * Hide an existing dialog and reject the promise returned from `$mdDialog.show()`.
+ * Hide an existing dialog and reject the promise returned from `$md083forkDialog.show()`.
  *
  * @param {*=} response An argument for the rejected promise.
  */
@@ -329,7 +329,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
 
   var alertDialogMethods = ['title', 'content', 'ariaLabel', 'ok'];
 
-  return $$083forkInterimElementProvider('$mdDialog')
+  return $$083forkInterimElementProvider('$md083forkDialog')
     .setDefaults({
       methods: ['disableParentScroll', 'hasBackdrop', 'clickOutsideToClose', 'escapeToClose', 'targetEvent'],
       options: dialogDefaultOptions
@@ -344,10 +344,10 @@ function MdDialogProvider($$083forkInterimElementProvider) {
     });
 
   /* @ngInject */
-  function advancedDialogOptions($mdDialog, $md083forkTheming) {
+  function advancedDialogOptions($md083forkDialog, $md083forkTheming) {
     return {
       template: [
-        '<md-dialog md-theme="{{ dialog.theme }}" aria-label="{{ dialog.ariaLabel }}">',
+        '<md083fork-dialog md-theme="{{ dialog.theme }}" aria-label="{{ dialog.ariaLabel }}">',
           '<md-content>',
             '<h2>{{ dialog.title }}</h2>',
             '<p>{{ dialog.content }}</p>',
@@ -360,14 +360,14 @@ function MdDialogProvider($$083forkInterimElementProvider) {
               '{{ dialog.ok }}',
             '</md083fork-button>',
           '</div>',
-        '</md-dialog>'
+        '</md083fork-dialog>'
       ].join(''),
       controller: function mdDialogCtrl() {
         this.hide = function() {
-          $mdDialog.hide(true);
+          $md083forkDialog.hide(true);
         };
         this.abort = function() {
-          $mdDialog.cancel();
+          $md083forkDialog.cancel();
         };
       },
       controllerAs: 'dialog',
@@ -378,7 +378,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
 
   /* @ngInject */
   function dialogDefaultOptions($timeout, $rootElement, $compile, $animate, $md083forkAria, $document,
-                                $md083forkUtil, $md083forkConstant, $md083forkTheming, $$rAF, $q, $mdDialog) {
+                                $md083forkUtil, $md083forkConstant, $md083forkTheming, $$rAF, $q, $md083forkDialog) {
     return {
       hasBackdrop: true,
       isolateScope: true,
@@ -402,7 +402,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
       options.popInTarget = angular.element((options.targetEvent || {}).target);
       var closeButton = findCloseButton();
 
-      configureAria(element.find('md-dialog'));
+      configureAria(element.find('md083fork-dialog'));
 
       if (options.hasBackdrop) {
         // Fix for IE 10
@@ -429,7 +429,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
         if (options.escapeToClose) {
           options.rootElementKeyupCallback = function(e) {
             if (e.keyCode === $md083forkConstant.KEY_CODE.ESCAPE) {
-              $timeout($mdDialog.cancel);
+              $timeout($md083forkDialog.cancel);
             }
           };
           $rootElement.on('keyup', options.rootElementKeyupCallback);
@@ -439,7 +439,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
           options.dialogClickOutsideCallback = function(ev) {
             // Only close if we click the flex container outside the backdrop
             if (ev.target === element[0]) {
-              $timeout($mdDialog.cancel);
+              $timeout($md083forkDialog.cancel);
             }
           };
           element.on('click', options.dialogClickOutsideCallback);
@@ -509,7 +509,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
     }
 
     function dialogPopIn(container, parentElement, clickElement) {
-      var dialogEl = container.find('md-dialog');
+      var dialogEl = container.find('md083fork-dialog');
 
       parentElement.append(container);
       transformToClickElement(dialogEl, clickElement);
@@ -523,7 +523,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
     }
 
     function dialogPopOut(container, parentElement, clickElement) {
-      var dialogEl = container.find('md-dialog');
+      var dialogEl = container.find('md083fork-dialog');
 
       dialogEl.addClass('transition-out').removeClass('transition-in');
       transformToClickElement(dialogEl, clickElement);

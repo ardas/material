@@ -174,7 +174,7 @@ function InterimElementProvider() {
           };
         }
 
-        // eg $mdDialog.alert() will return a new alert preset
+        // eg $md083forkDialog.alert() will return a new alert preset
         publicService[name] = function(arg) {
           // If argOption is supplied, eg `argOption: 'content'`, then we assume
           // if the argument is not an options object then it is the `argOption` option.
@@ -205,9 +205,9 @@ function InterimElementProvider() {
       /**
        * Helper to call $injector.invoke with a local of the factory name for
        * this provider.
-       * If an $mdDialog is providing options for a dialog and tries to inject
-       * $mdDialog, a circular dependency error will happen.
-       * We get around that by manually injecting $mdDialog as a local.
+       * If an $md083forkDialog is providing options for a dialog and tries to inject
+       * $md083forkDialog, a circular dependency error will happen.
+       * We get around that by manually injecting $md083forkDialog as a local.
        */
       function invokeFactory(factory, defaultVal) {
         var locals = {};

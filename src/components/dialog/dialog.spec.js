@@ -1,4 +1,4 @@
-describe('$mdDialog', function() {
+describe('$md083forkDialog', function() {
 
   beforeEach(module('material.083fork.components.dialog', 'ngAnimateMock'));
 
@@ -19,11 +19,11 @@ describe('$mdDialog', function() {
       'ok', 'targetEvent', 'theme'
     ]);
 
-    it('shows a basic alert dialog', inject(function($animate, $rootScope, $mdDialog, $md083forkConstant) {
+    it('shows a basic alert dialog', inject(function($animate, $rootScope, $md083forkDialog, $md083forkConstant) {
       var parent = angular.element('<div>');
       var resolved = false;
-      $mdDialog.show(
-        $mdDialog.alert({
+      $md083forkDialog.show(
+        $md083forkDialog.alert({
           parent: parent
         })
           .title('Title')
@@ -36,7 +36,7 @@ describe('$mdDialog', function() {
       $rootScope.$apply();
       $animate.triggerCallbacks();
       var container = angular.element(parent[0].querySelector('.md-dialog-container'));
-      container.find('md-dialog').triggerHandler('transitionend');
+      container.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
 
       var title = angular.element(parent[0].querySelector('h2'));
@@ -46,13 +46,13 @@ describe('$mdDialog', function() {
       var buttons = parent.find('md083fork-button');
       expect(buttons.length).toBe(1);
       expect(buttons.eq(0).text()).toBe('Next');
-      var theme = parent.find('md-dialog').attr('md-theme');
+      var theme = parent.find('md083fork-dialog').attr('md-theme');
       expect(theme).toBe('some-theme');
 
 
       buttons.eq(0).triggerHandler('click');
       $rootScope.$apply();
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
       expect(parent.find('h2').length).toBe(0);
       expect(resolved).toBe(true);
@@ -65,11 +65,11 @@ describe('$mdDialog', function() {
       'ok', 'cancel', 'targetEvent', 'theme'
     ]);
 
-    it('shows a basic confirm dialog', inject(function($rootScope, $mdDialog, $animate, $md083forkConstant) {
+    it('shows a basic confirm dialog', inject(function($rootScope, $md083forkDialog, $animate, $md083forkConstant) {
       var parent = angular.element('<div>');
       var rejected = false;
-      $mdDialog.show(
-        $mdDialog.confirm({
+      $md083forkDialog.show(
+        $md083forkDialog.confirm({
           parent: parent
         })
           .title('Title')
@@ -83,7 +83,7 @@ describe('$mdDialog', function() {
       $rootScope.$apply();
       $animate.triggerCallbacks();
       var container = angular.element(parent[0].querySelector('.md-dialog-container'));
-      container.find('md-dialog').triggerHandler('transitionend');
+      container.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
       $animate.triggerCallbacks();
 
@@ -99,7 +99,7 @@ describe('$mdDialog', function() {
       buttons.eq(1).triggerHandler('click');
       $rootScope.$digest();
       $animate.triggerCallbacks();
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$digest();
       $animate.triggerCallbacks();
       expect(parent.find('h2').length).toBe(0);
@@ -108,13 +108,13 @@ describe('$mdDialog', function() {
   });
 
   describe('#build()', function() {
-    it('should support onComplete callbacks within `show()`', inject(function($mdDialog, $rootScope, $timeout, $md083forkConstant) {
+    it('should support onComplete callbacks within `show()`', inject(function($md083forkDialog, $rootScope, $timeout, $md083forkConstant) {
 
-      var template = '<md-dialog>Hello</md-dialog>';
+      var template = '<md083fork-dialog>Hello</md083fork-dialog>';
       var parent = angular.element('<div>');
       var ready = false;
 
-      $mdDialog.show({
+      $md083forkDialog.show({
         template: template,
         parent: parent,
         onComplete: function(scope, element, options) {
@@ -127,7 +127,7 @@ describe('$mdDialog', function() {
       expect(ready).toBe( false );
 
       var container = angular.element(parent[0].querySelector('.md-dialog-container'));
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
 
       container = angular.element(parent[0].querySelector('.md-dialog-container'));
@@ -135,12 +135,12 @@ describe('$mdDialog', function() {
       expect(ready).toBe( true );
     }));
 
-    it('should append dialog with container', inject(function($mdDialog, $rootScope) {
+    it('should append dialog with container', inject(function($md083forkDialog, $rootScope) {
 
-      var template = '<md-dialog>Hello</md-dialog>';
+      var template = '<md083fork-dialog>Hello</md083fork-dialog>';
       var parent = angular.element('<div>');
 
-      $mdDialog.show({
+      $md083forkDialog.show({
         template: template,
         parent: parent
       });
@@ -151,35 +151,35 @@ describe('$mdDialog', function() {
       expect(container.length).toBe(1);
     }));
 
-    it('should escapeToClose == true', inject(function($mdDialog, $rootScope, $rootElement, $timeout, $animate, $md083forkConstant) {
+    it('should escapeToClose == true', inject(function($md083forkDialog, $rootScope, $rootElement, $timeout, $animate, $md083forkConstant) {
       var parent = angular.element('<div>');
-      $mdDialog.show({
-        template: '<md-dialog>',
+      $md083forkDialog.show({
+        template: '<md083fork-dialog>',
         parent: parent,
         escapeToClose: true
       });
       $rootScope.$apply();
 
       var container = angular.element(parent[0].querySelector('.md-dialog-container'));
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
 
-      expect(parent.find('md-dialog').length).toBe(1);
+      expect(parent.find('md083fork-dialog').length).toBe(1);
 
       $rootElement.triggerHandler({type: 'keyup',
         keyCode: $md083forkConstant.KEY_CODE.ESCAPE
       });
 
       $timeout.flush();
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
-      expect(parent.find('md-dialog').length).toBe(0);
+      expect(parent.find('md083fork-dialog').length).toBe(0);
     }));
 
-    it('should escapeToClose == false', inject(function($mdDialog, $rootScope, $rootElement, $timeout, $animate, $md083forkConstant) {
+    it('should escapeToClose == false', inject(function($md083forkDialog, $rootScope, $rootElement, $timeout, $animate, $md083forkConstant) {
       var parent = angular.element('<div>');
-      $mdDialog.show({
-        template: '<md-dialog>',
+      $md083forkDialog.show({
+        template: '<md083fork-dialog>',
         parent: parent,
         escapeToClose: false
       });
@@ -189,53 +189,53 @@ describe('$mdDialog', function() {
       container.triggerHandler('transitionend');
       $rootScope.$apply();
 
-      expect(parent.find('md-dialog').length).toBe(1);
+      expect(parent.find('md083fork-dialog').length).toBe(1);
 
       $rootElement.triggerHandler({ type: 'keyup', keyCode: $md083forkConstant.KEY_CODE.ESCAPE });
 
       $timeout.flush();
       $animate.triggerCallbacks();
-      expect(parent.find('md-dialog').length).toBe(1);
+      expect(parent.find('md083fork-dialog').length).toBe(1);
     }));
 
-    it('should clickOutsideToClose == true', inject(function($mdDialog, $rootScope, $timeout, $animate, $md083forkConstant) {
+    it('should clickOutsideToClose == true', inject(function($md083forkDialog, $rootScope, $timeout, $animate, $md083forkConstant) {
 
       var parent = angular.element('<div>');
-      $mdDialog.show({
-        template: '<md-dialog>',
+      $md083forkDialog.show({
+        template: '<md083fork-dialog>',
         parent: parent,
         clickOutsideToClose: true
       });
       $rootScope.$apply();
 
       var container = angular.element(parent[0].querySelector('.md-dialog-container'));
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
 
-      expect(parent.find('md-dialog').length).toBe(1);
+      expect(parent.find('md083fork-dialog').length).toBe(1);
 
       container.triggerHandler({
         type: 'click',
         target: container[0]
       });
       $timeout.flush();
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
 
-      expect(parent.find('md-dialog').length).toBe(0);
+      expect(parent.find('md083fork-dialog').length).toBe(0);
     }));
 
-    it('should clickOutsideToClose == false', inject(function($mdDialog, $rootScope, $timeout, $animate) {
+    it('should clickOutsideToClose == false', inject(function($md083forkDialog, $rootScope, $timeout, $animate) {
 
       var parent = angular.element('<div>');
-      $mdDialog.show({
-        template: '<md-dialog>',
+      $md083forkDialog.show({
+        template: '<md083fork-dialog>',
         parent: parent,
         clickOutsideToClose: false
       });
 
       $rootScope.$apply();
-      expect(parent.find('md-dialog').length).toBe(1);
+      expect(parent.find('md083fork-dialog').length).toBe(1);
 
       var container = angular.element(parent[0].querySelector('.md-dialog-container'));
 
@@ -243,13 +243,13 @@ describe('$mdDialog', function() {
       $timeout.flush();
       $animate.triggerCallbacks();
 
-      expect(parent[0].querySelectorAll('md-dialog').length).toBe(1);
+      expect(parent[0].querySelectorAll('md083fork-dialog').length).toBe(1);
     }));
 
-    it('should disableParentScroll == true', inject(function($mdDialog, $animate, $rootScope) {
+    it('should disableParentScroll == true', inject(function($md083forkDialog, $animate, $rootScope) {
       var parent = angular.element('<div>');
-      $mdDialog.show({
-        template: '<md-dialog>',
+      $md083forkDialog.show({
+        template: '<md083fork-dialog>',
         parent: parent,
         disableParentScroll: true
       });
@@ -259,10 +259,10 @@ describe('$mdDialog', function() {
       expect(parent.css('overflow')).toBe('hidden');
     }));
 
-    it('should hasBackdrop == true', inject(function($mdDialog, $animate, $rootScope) {
+    it('should hasBackdrop == true', inject(function($md083forkDialog, $animate, $rootScope) {
       var parent = angular.element('<div>');
-      $mdDialog.show({
-        template: '<md-dialog>',
+      $md083forkDialog.show({
+        template: '<md083fork-dialog>',
         parent: parent,
         hasBackdrop: true
       });
@@ -270,34 +270,34 @@ describe('$mdDialog', function() {
       $rootScope.$apply();
       $animate.triggerCallbacks();
       $rootScope.$apply();
-      expect(parent.find('md-dialog').length).toBe(1);
+      expect(parent.find('md083fork-dialog').length).toBe(1);
       expect(parent.find('md-backdrop').length).toBe(1);
     }));
 
-    it('should hasBackdrop == false', inject(function($mdDialog, $rootScope) {
+    it('should hasBackdrop == false', inject(function($md083forkDialog, $rootScope) {
       var parent = angular.element('<div>');
-      $mdDialog.show({
-        template: '<md-dialog>',
+      $md083forkDialog.show({
+        template: '<md083fork-dialog>',
         parent: parent,
         hasBackdrop: false
       });
 
       $rootScope.$apply();
-      expect(parent[0].querySelectorAll('md-dialog').length).toBe(1);
+      expect(parent[0].querySelectorAll('md083fork-dialog').length).toBe(1);
       expect(parent[0].querySelectorAll('md-backdrop').length).toBe(0);
     }));
 
-    it('should focus `md083fork-button.dialog-close` on open', inject(function($mdDialog, $rootScope, $document, $timeout, $md083forkConstant) {
+    it('should focus `md083fork-button.dialog-close` on open', inject(function($md083forkDialog, $rootScope, $document, $timeout, $md083forkConstant) {
       TestUtil.mockElementFocus(this);
 
       var parent = angular.element('<div>');
-      $mdDialog.show({
+      $md083forkDialog.show({
         template:
-          '<md-dialog>' +
+          '<md083fork-dialog>' +
             '<div class="md-actions">' +
               '<button class="dialog-close">Close</button>' +
             '</div>' +
-            '</md-dialog>',
+            '</md083fork-dialog>',
         parent: parent
       });
 
@@ -306,25 +306,25 @@ describe('$mdDialog', function() {
       var container = angular.element(parent[0].querySelector('.md-dialog-container'));
       container.triggerHandler('transitionend');
       $rootScope.$apply();
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
 
 
       expect($document.activeElement).toBe(parent[0].querySelector('.dialog-close'));
     }));
 
-    it('should focus the last `md083fork-button` in md-actions open if no `.dialog-close`', inject(function($mdDialog, $rootScope, $document, $timeout, $md083forkConstant) {
+    it('should focus the last `md083fork-button` in md-actions open if no `.dialog-close`', inject(function($md083forkDialog, $rootScope, $document, $timeout, $md083forkConstant) {
       TestUtil.mockElementFocus(this);
 
       var parent = angular.element('<div>');
-      $mdDialog.show({
+      $md083forkDialog.show({
         template:
-          '<md-dialog>' +
+          '<md083fork-dialog>' +
             '<div class="md-actions">' +
               '<button id="a">A</md083fork-button>' +
               '<button id="focus-target">B</md083fork-button>' +
             '</div>' +
-          '</md-dialog>',
+          '</md083fork-dialog>',
         parent: parent
       });
 
@@ -334,63 +334,63 @@ describe('$mdDialog', function() {
       var container = angular.element(parent[0].querySelector('.md-dialog-container'));
       container.triggerHandler('transitionend');
       $rootScope.$apply();
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
 
       expect($document.activeElement).toBe(parent[0].querySelector('#focus-target'));
     }));
 
-    it('should only allow one open at a time', inject(function($mdDialog, $rootScope, $animate) {
+    it('should only allow one open at a time', inject(function($md083forkDialog, $rootScope, $animate) {
       var parent = angular.element('<div>');
-      $mdDialog.show({
-        template: '<md-dialog class="one">',
+      $md083forkDialog.show({
+        template: '<md083fork-dialog class="one">',
         parent: parent
       });
       $rootScope.$apply();
       $animate.triggerCallbacks();
 
-      expect(parent[0].querySelectorAll('md-dialog.one').length).toBe(1);
-      expect(parent[0].querySelectorAll('md-dialog.two').length).toBe(0);
+      expect(parent[0].querySelectorAll('md083fork-dialog.one').length).toBe(1);
+      expect(parent[0].querySelectorAll('md083fork-dialog.two').length).toBe(0);
 
-      $mdDialog.show({
-        template: '<md-dialog class="two">',
+      $md083forkDialog.show({
+        template: '<md083fork-dialog class="two">',
         parent: parent
       });
       $rootScope.$apply();
       $animate.triggerCallbacks();
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
       $animate.triggerCallbacks();
 
-      parent.find('md-dialog').triggerHandler('transitionend');
+      parent.find('md083fork-dialog').triggerHandler('transitionend');
       $rootScope.$apply();
       $animate.triggerCallbacks();
       $rootScope.$apply();
       $animate.triggerCallbacks();
-      expect(parent[0].querySelectorAll('md-dialog.one').length).toBe(0);
-      expect(parent[0].querySelectorAll('md-dialog.two').length).toBe(1);
+      expect(parent[0].querySelectorAll('md083fork-dialog.one').length).toBe(0);
+      expect(parent[0].querySelectorAll('md083fork-dialog.two').length).toBe(1);
     }));
 
-    it('should have the dialog role', inject(function($mdDialog, $rootScope) {
-      var template = '<md-dialog>Hello</md-dialog>';
+    it('should have the dialog role', inject(function($md083forkDialog, $rootScope) {
+      var template = '<md083fork-dialog>Hello</md083fork-dialog>';
       var parent = angular.element('<div>');
 
-      $mdDialog.show({
+      $md083forkDialog.show({
         template: template,
         parent: parent
       });
 
       $rootScope.$apply();
 
-      var dialog = angular.element(parent[0].querySelectorAll('md-dialog'));
+      var dialog = angular.element(parent[0].querySelectorAll('md083fork-dialog'));
       expect(dialog.attr('role')).toBe('dialog');
     }));
 
-    it('should create an ARIA label if one is missing', inject(function($mdDialog, $rootScope) {
-      var template = '<md-dialog>Hello</md-dialog>';
+    it('should create an ARIA label if one is missing', inject(function($md083forkDialog, $rootScope) {
+      var template = '<md083fork-dialog>Hello</md083fork-dialog>';
       var parent = angular.element('<div>');
 
-      $mdDialog.show({
+      $md083forkDialog.show({
         template: template,
         parent: parent
       });
@@ -399,22 +399,22 @@ describe('$mdDialog', function() {
       angular.element(parent[0].querySelector('.md-dialog-container')).triggerHandler('transitionend');
       $rootScope.$apply();
 
-      var dialog = angular.element(parent[0].querySelector('md-dialog'));
+      var dialog = angular.element(parent[0].querySelector('md083fork-dialog'));
       expect(dialog.attr('aria-label')).toEqual(dialog.text());
     }));
 
-    it('should not modify an existing ARIA label', inject(function($mdDialog, $rootScope){
-      var template = '<md-dialog aria-label="Some Other Thing">Hello</md-dialog>';
+    it('should not modify an existing ARIA label', inject(function($md083forkDialog, $rootScope){
+      var template = '<md083fork-dialog aria-label="Some Other Thing">Hello</md083fork-dialog>';
       var parent = angular.element('<div>');
 
-      $mdDialog.show({
+      $md083forkDialog.show({
         template: template,
         parent: parent
       });
 
       $rootScope.$apply();
 
-      var dialog = angular.element(parent[0].querySelector('md-dialog'));
+      var dialog = angular.element(parent[0].querySelector('md083fork-dialog'));
       expect(dialog.attr('aria-label')).not.toEqual(dialog.text());
       expect(dialog.attr('aria-label')).toEqual('Some Other Thing');
     }));
@@ -422,8 +422,8 @@ describe('$mdDialog', function() {
 
   function hasConfigurationMethods(preset, methods) {
     angular.forEach(methods, function(method) {
-      return it('supports config method #' + method, inject(function($mdDialog) {
-        var dialog = $mdDialog[preset]();
+      return it('supports config method #' + method, inject(function($md083forkDialog) {
+        var dialog = $md083forkDialog[preset]();
         expect(typeof dialog[method]).toBe('function');
         expect(dialog[method]()).toEqual(dialog);
       }));
@@ -431,27 +431,27 @@ describe('$mdDialog', function() {
   }
 });
 
-describe('$mdDialog with custom interpolation symbols', function() {
+describe('$md083forkDialog with custom interpolation symbols', function() {
   beforeEach(module('material.083fork.components.dialog', 'ngAnimateMock'));
 
   beforeEach(module(function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
   }));
 
-  it('displays #alert() correctly', inject(function($mdDialog, $rootScope) {
+  it('displays #alert() correctly', inject(function($md083forkDialog, $rootScope) {
     var parent = angular.element('<div>');
-    var dialog = $mdDialog.
+    var dialog = $md083forkDialog.
         alert({parent: parent}).
         ariaLabel('test alert').
         title('Title').
         content('Hello, world !').
         ok('OK');
 
-    $mdDialog.show(dialog);
+    $md083forkDialog.show(dialog);
     $rootScope.$digest();
 
     var mdContainer = angular.element(parent[0].querySelector('.md-dialog-container'));
-    var mdDialog = mdContainer.find('md-dialog');
+    var mdDialog = mdContainer.find('md083fork-dialog');
     var mdContent = mdDialog.find('md-content');
     var title = mdContent.find('h2');
     var content = mdContent.find('p');
@@ -464,9 +464,9 @@ describe('$mdDialog with custom interpolation symbols', function() {
     expect(buttons.eq(0).text()).toBe('OK');
   }));
 
-  it('displays #confirm() correctly', inject(function($mdDialog, $rootScope) {
+  it('displays #confirm() correctly', inject(function($md083forkDialog, $rootScope) {
     var parent = angular.element('<div>');
-    var dialog = $mdDialog.
+    var dialog = $md083forkDialog.
         confirm({parent: parent}).
         ariaLabel('test alert').
         title('Title').
@@ -474,11 +474,11 @@ describe('$mdDialog with custom interpolation symbols', function() {
         cancel('CANCEL').
         ok('OK');
 
-    $mdDialog.show(dialog);
+    $md083forkDialog.show(dialog);
     $rootScope.$digest();
 
     var mdContainer = angular.element(parent[0].querySelector('.md-dialog-container'));
-    var mdDialog = mdContainer.find('md-dialog');
+    var mdDialog = mdContainer.find('md083fork-dialog');
     var mdContent = mdDialog.find('md-content');
     var title = mdContent.find('h2');
     var content = mdContent.find('p');
