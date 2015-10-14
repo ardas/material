@@ -159,7 +159,7 @@ input[type="search"] {
     opacity: 0.2; }
 
 /*
-md-tab {
+md083fork-tab {
   > .md-ripple-container {
     .md-ripple {
       box-sizing: content-box;
@@ -3143,6 +3143,27 @@ md-bottom-sheet {
         text-align: center;
         padding-top: 8px; }
 
+md-card {
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 8px;
+  box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.26); }
+  md-card > img, md-card > :not(md-card-content) img {
+    -webkit-order: 0;
+        -ms-flex-order: 0;
+            order: 0;
+    width: 100%; }
+  md-card md-card-content {
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+    padding: 16px; }
+
 /**
  * Position a FAB button.
  */
@@ -3272,27 +3293,6 @@ md-bottom-sheet {
     border-right-width: 1px;
     border-radius: 0px 2px 2px 0px; }
 
-md-card {
-  box-sizing: border-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 8px;
-  box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.26); }
-  md-card > img, md-card > :not(md-card-content) img {
-    -webkit-order: 0;
-        -ms-flex-order: 0;
-            order: 0;
-    width: 100%; }
-  md-card md-card-content {
-    -webkit-order: 1;
-        -ms-flex-order: 1;
-            order: 1;
-    padding: 16px; }
-
 md083fork-checkbox {
   display: block;
   margin: 15px;
@@ -3402,7 +3402,7 @@ md-content {
   height: 100%;
   z-index: 80; }
 
-md-dialog {
+md083fork-dialog {
   opacity: 0;
   min-width: 240px;
   max-width: 80%;
@@ -3416,25 +3416,25 @@ md-dialog {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column; }
-  md-dialog.transition-in {
+  md083fork-dialog.transition-in {
     opacity: 1;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     -webkit-transform: translate3d(0, 0, 0) scale(1);
             transform: translate3d(0, 0, 0) scale(1); }
-  md-dialog.transition-out {
+  md083fork-dialog.transition-out {
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     -webkit-transform: translate3d(0, 100%, 0) scale(0.2);
             transform: translate3d(0, 100%, 0) scale(0.2); }
-  md-dialog md-content {
+  md083fork-dialog md-content {
     -webkit-order: 1;
         -ms-flex-order: 1;
             order: 1;
     padding: 24px;
     overflow: auto;
     -webkit-overflow-scrolling: touch; }
-    md-dialog md-content:not([layout=row]) > *:first-child:not(.md-subheader) {
+    md083fork-dialog md-content:not([layout=row]) > *:first-child:not(.md-subheader) {
       margin-top: 0px; }
-  md-dialog .md-actions {
+  md083fork-dialog .md-actions {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -3450,9 +3450,9 @@ md-dialog {
             justify-content: flex-end;
     padding: 16px 16px;
     min-height: 40px; }
-    md-dialog .md-actions > * {
+    md083fork-dialog .md-actions > * {
       margin-left: 8px; }
-  md-dialog.md-content-overflow .md-actions {
+  md083fork-dialog.md-content-overflow .md-actions {
     border-top: 1px solid; }
 
 md-divider {
@@ -5082,6 +5082,70 @@ md-progress-circular {
         -webkit-animation-name: right-wobble;
                 animation-name: right-wobble; }
 
+md083fork-radio-button, .md-switch-thumb {
+  display: block;
+  margin: 15px;
+  white-space: nowrap;
+  cursor: pointer; }
+  md083fork-radio-button input, .md-switch-thumb input {
+    display: none; }
+  md083fork-radio-button .md-container, .md-switch-thumb .md-container {
+    position: relative;
+    top: 4px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    cursor: pointer; }
+    md083fork-radio-button .md-container .md-ripple-container, .md-switch-thumb .md-container .md-ripple-container {
+      position: absolute;
+      display: block;
+      width: 48px;
+      height: 48px;
+      left: -16px;
+      top: -16px; }
+  md083fork-radio-button .md-off, .md-switch-thumb .md-off {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 16px;
+    height: 16px;
+    border: solid 2px;
+    border-radius: 50%;
+    transition: border-color ease 0.28s; }
+  md083fork-radio-button .md-on, .md-switch-thumb .md-on {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transition: -webkit-transform ease 0.28s;
+    transition: transform ease 0.28s;
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  md083fork-radio-button.md-checked .md-on, .md-switch-thumb.md-checked .md-on {
+    -webkit-transform: scale(0.55);
+            transform: scale(0.55); }
+  md083fork-radio-button .md-label, .md-switch-thumb .md-label {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+    white-space: normal;
+    pointer-events: none;
+    width: auto; }
+  md083fork-radio-button .circle, .md-switch-thumb .circle {
+    border-radius: 50%; }
+
+md083fork-radio-group {
+  border: 1px dotted transparent;
+  display: block;
+  outline: none; }
+
+.radioButtondemoBasicUsage md083fork-radio-group {
+  border: none; }
+
 md-progress-linear {
   display: block;
   width: 100%;
@@ -5442,70 +5506,6 @@ md-progress-linear {
   100% {
     opacity: 1;
     background-position: -200px -23px; } }
-
-md083fork-radio-button, .md-switch-thumb {
-  display: block;
-  margin: 15px;
-  white-space: nowrap;
-  cursor: pointer; }
-  md083fork-radio-button input, .md-switch-thumb input {
-    display: none; }
-  md083fork-radio-button .md-container, .md-switch-thumb .md-container {
-    position: relative;
-    top: 4px;
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    cursor: pointer; }
-    md083fork-radio-button .md-container .md-ripple-container, .md-switch-thumb .md-container .md-ripple-container {
-      position: absolute;
-      display: block;
-      width: 48px;
-      height: 48px;
-      left: -16px;
-      top: -16px; }
-  md083fork-radio-button .md-off, .md-switch-thumb .md-off {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 16px;
-    height: 16px;
-    border: solid 2px;
-    border-radius: 50%;
-    transition: border-color ease 0.28s; }
-  md083fork-radio-button .md-on, .md-switch-thumb .md-on {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    transition: -webkit-transform ease 0.28s;
-    transition: transform ease 0.28s;
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  md083fork-radio-button.md-checked .md-on, .md-switch-thumb.md-checked .md-on {
-    -webkit-transform: scale(0.55);
-            transform: scale(0.55); }
-  md083fork-radio-button .md-label, .md-switch-thumb .md-label {
-    position: relative;
-    display: inline-block;
-    margin-left: 10px;
-    margin-right: 10px;
-    vertical-align: middle;
-    white-space: normal;
-    pointer-events: none;
-    width: auto; }
-  md083fork-radio-button .circle, .md-switch-thumb .circle {
-    border-radius: 50%; }
-
-md083fork-radio-group {
-  border: 1px dotted transparent;
-  display: block;
-  outline: none; }
-
-.radioButtondemoBasicUsage md083fork-radio-group {
-  border: none; }
 
 .md-select-menu-container {
   position: absolute;
@@ -6070,7 +6070,7 @@ md-switch {
   md-switch:not(.md-dragging) .md-bar, md-switch:not(.md-dragging) .md-thumb {
     transition-delay: 0.05s; }
 
-md-tabs {
+md083fork-tabs {
   display: block;
   width: 100%;
   font-weight: 500;
@@ -6111,7 +6111,7 @@ md-tabs {
               transform: rotate(180deg); }
 
 /* If `center` justified, change to left-justify if paginating */
-md-tabs[center] .md-header:not(.md-paginating) .md-header-items {
+md083fork-tabs[center] .md-header:not(.md-paginating) .md-header-items {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
@@ -6177,7 +6177,7 @@ md-tabs[center] .md-header:not(.md-paginating) .md-header-items {
           -webkit-transform: translateX(0);
                   transform: translateX(0); }
 
-md-tabs-ink-bar {
+md083fork-tabs-ink-bar {
   z-index: 1;
   display: none;
   position: absolute;
@@ -6190,12 +6190,12 @@ md-tabs-ink-bar {
           transform: scaleX(1);
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0; }
-  md-tabs-ink-bar.md-transition-right {
+  md083fork-tabs-ink-bar.md-transition-right {
     transition: right 0.25s cubic-bezier(0.35, 0, 0.25, 1), left 0.25s cubic-bezier(0.35, 0, 0.25, 1) 0.075s; }
-  md-tabs-ink-bar.md-transition-left {
+  md083fork-tabs-ink-bar.md-transition-left {
     transition: right 0.25s cubic-bezier(0.35, 0, 0.25, 1) 0.075s, left 0.25s cubic-bezier(0.35, 0, 0.25, 1); }
 
-md-tab {
+md083fork-tab {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -6218,14 +6218,14 @@ md-tab {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none; }
-  md-tab.md-tab-themed {
+  md083fork-tab.md-tab-themed {
     transition: background 0.35s cubic-bezier(0.35, 0, 0.25, 1), color 0.35s cubic-bezier(0.35, 0, 0.25, 1); }
-  md-tab[disabled] {
+  md083fork-tab[disabled] {
     pointer-events: none;
     cursor: default; }
-  md-tab:focus {
+  md083fork-tab:focus {
     outline: none; }
-  md-tab md-tab-label {
+  md083fork-tab md-tab-label {
     -webkit-flex: 1 1 auto;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;

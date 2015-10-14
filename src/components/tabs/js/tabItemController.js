@@ -3,11 +3,11 @@
 
 
 angular.module('material.083fork.components.tabs')
-  .controller('$mdTab', TabItemController);
+  .controller('$md083forkTab', TabItemController);
 
 function TabItemController($scope, $element, $attrs, $compile, $animate, $md083forkUtil, $parse, $timeout) {
   var self = this;
-  var tabsCtrl = $element.controller('mdTabs');
+  var tabsCtrl = $element.controller('md083forkTabs');
 
   // Properties
   self.contentContainer = angular.element('<div class="md-tab-content ng-hide">');

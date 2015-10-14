@@ -6,7 +6,7 @@
  * @name material.components.tabs
  * @description
  *
- *  Tabs, created with the `<md-tabs>` directive provide *tabbed* navigation with different styles.
+ *  Tabs, created with the `<md083fork-tabs>` directive provide *tabbed* navigation with different styles.
  *  The Tabs component consists of clickable tabs that are aligned horizontally side-by-side.
  *
  *  Features include support for:

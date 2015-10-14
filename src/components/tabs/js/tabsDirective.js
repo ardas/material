@@ -2,28 +2,28 @@
 'use strict';
 
 angular.module('material.083fork.components.tabs')
-  .directive('mdTabs', TabsDirective);
+  .directive('md083forkTabs', TabsDirective);
 
 /**
  * @ngdoc directive
- * @name mdTabs
+ * @name md083forkTabs
  * @module material.components.tabs
  *
  * @restrict E
  *
  * @description
- * The `<md-tabs>` directive serves as the container for 1..n `<md-tab>` child directives to produces a Tabs components.
- * In turn, the nested `<md-tab>` directive is used to specify a tab label for the **header button** and a [optional] tab view
+ * The `<md083fork-tabs>` directive serves as the container for 1..n `<md083fork-tab>` child directives to produces a Tabs components.
+ * In turn, the nested `<md083fork-tab>` directive is used to specify a tab label for the **header button** and a [optional] tab view
  * content that will be associated with each tab button.
  *
  * Below is the markup for its simplest usage:
  *
  *  <hljs lang="html">
- *  <md-tabs>
- *    <md-tab label="Tab #1"></md-tab>
- *    <md-tab label="Tab #2"></md-tab>
- *    <md-tab label="Tab #3"></md-tab>
- *  </md-tabs>
+ *  <md083fork-tabs>
+ *    <md083fork-tab label="Tab #1"></md083fork-tab>
+ *    <md083fork-tab label="Tab #2"></md083fork-tab>
+ *    <md083fork-tab label="Tab #3"></md083fork-tab>
+ *  </md083fork-tabs>
  *  </hljs>
  *
  * Tabs supports three (3) usage scenarios:
@@ -43,7 +43,7 @@ angular.module('material.083fork.components.tabs')
  * *  Content can include any markup.
  * *  If a tab is disabled while active/selected, then the next tab will be auto-selected.
  * *  If the currently active tab is the last tab, then next() action will select the first tab.
- * *  Any markup (other than **`<md-tab>`** tags) will be transcluded into the tab header area BEFORE the tab buttons.
+ * *  Any markup (other than **`<md083fork-tab>`** tags) will be transcluded into the tab header area BEFORE the tab buttons.
  *
  * ### Explanation of tab stretching
  *
@@ -69,10 +69,10 @@ angular.module('material.083fork.components.tabs')
  *
  * @usage
  * <hljs lang="html">
- * <md-tabs md-selected="selectedIndex" >
+ * <md083fork-tabs md-selected="selectedIndex" >
  *   <img ng-src="img/angular.png" class="centered">
  *
- *   <md-tab
+ *   <md083fork-tab
  *      ng-repeat="tab in tabs | orderBy:predicate:reversed"
  *      md-on-select="onTabSelected(tab)"
  *      md-on-deselect="announceDeselected(tab)"
@@ -87,17 +87,17 @@ angular.module('material.083fork.components.tabs')
  *
  *       {{tab.content}}
  *
- *   </md-tab>
+ *   </md083fork-tab>
  *
- * </md-tabs>
+ * </md083fork-tabs>
  * </hljs>
  *
  */
 function TabsDirective($md083forkTheming) {
   return {
     restrict: 'E',
-    controller: '$mdTabs',
-    require: 'mdTabs',
+    controller: '$md083forkTabs',
+    require: 'md083forkTabs',
     transclude: true,
     scope: {
       selectedIndex: '=?mdSelected'
@@ -114,10 +114,10 @@ function TabsDirective($md083forkTheming) {
         '</button>' +
 
         // overflow: hidden container when paginating
-        '<div class="md-header-items-container" md-tabs-pagination>' +
-          // flex container for <md-tab> elements
+        '<div class="md-header-items-container" md083fork-tabs-pagination>' +
+          // flex container for <md083fork-tab> elements
           '<div class="md-header-items">' +
-            '<md-tabs-ink-bar></md-tabs-ink-bar>' +
+            '<md083fork-tabs-ink-bar></md083fork-tabs-ink-bar>' +
           '</div>' +
         '</div>' +
 

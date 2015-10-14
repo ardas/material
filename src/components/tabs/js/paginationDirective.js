@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('material.083fork.components.tabs')
-    .directive('mdTabsPagination', TabPaginationDirective);
+    .directive('md083forkTabsPagination', TabPaginationDirective);
 
 function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeout, $md083forkMedia) {
 
@@ -11,13 +11,13 @@ function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeou
 
   return {
     restrict: 'A',
-    require: '^mdTabs',
+    require: '^md083forkTabs',
     link: postLink
   };
 
   function postLink(scope, element, attr, tabsCtrl) {
 
-    var tabs = element[0].getElementsByTagName('md-tab');
+    var tabs = element[0].getElementsByTagName('md083fork-tab');
     var debouncedUpdatePagination = $$rAF.throttle(updatePagination);
     var tabsParent = element.children();
     var locked = false;
@@ -28,7 +28,7 @@ function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeou
       clickPrevious: function() { locked || userChangePage(-1); }
     };
 
-    scope.$on('$mdTabsChanged', debouncedUpdatePagination);
+    scope.$on('$md083forkTabsChanged', debouncedUpdatePagination);
     angular.element($window).on('resize', debouncedUpdatePagination);
 
     scope.$on('$destroy', function() {
@@ -71,7 +71,7 @@ function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeou
         return;
       }
 
-      var tabs = element.find('md-tab');
+      var tabs = element.find('md083fork-tab');
 
       disablePagination();
 
@@ -80,7 +80,7 @@ function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeou
 
       if (needPagination) { enablePagination(); }
 
-      scope.$evalAsync(function () { scope.$broadcast('$mdTabsPaginationChanged'); });
+      scope.$evalAsync(function () { scope.$broadcast('$md083forkTabsPaginationChanged'); });
 
       function enablePagination() {
         tabsParent.css('width', '9999px');
@@ -241,7 +241,7 @@ function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeou
 
       state.page = page;
 
-      scope.$broadcast('$mdTabsPaginationChanged');
+      scope.$broadcast('$md083forkTabsPaginationChanged');
 
       return slideTabButtons(-state.tabData.pages[page].left);
     }

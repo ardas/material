@@ -2,21 +2,21 @@
 'use strict';
 
 angular.module('material.083fork.components.tabs')
-  .directive('mdTab', MdTabDirective);
+  .directive('md083forkTab', MdTabDirective);
 
 /**
  * @ngdoc directive
- * @name mdTab
+ * @name md083forkTab
  * @module material.components.tabs
  *
  * @restrict E
  *
  * @description
- * Use the `<md-tab>` a nested directive used within `<md-tabs>` to specify a tab with a **label** and optional *view content*.
+ * Use the `<md083fork-tab>` a nested directive used within `<md083fork-tabs>` to specify a tab with a **label** and optional *view content*.
  *
  * If the `label` attribute is not specified, then an optional `<md-tab-label>` tag can be used to specify more
  * complex tab header markup. If neither the **label** nor the **md-tab-label** are specified, then the nested
- * markup of the `<md-tab>` is used as the tab header markup.
+ * markup of the `<md083fork-tab>` is used as the tab header markup.
  *
  * If a tab **label** has been identified, then any **non-**`<md-tab-label>` markup
  * will be considered tab content and will be transcluded to the internal `<div class="md-tabs-content">` container.
@@ -35,11 +35,11 @@ angular.module('material.083fork.components.tabs')
  * @usage
  *
  * <hljs lang="html">
- * <md-tab label="" disabled="" md-on-select="" md-on-deselect="" >
+ * <md083fork-tab label="" disabled="" md-on-select="" md-on-deselect="" >
  *   <h3>My Tab content</h3>
- * </md-tab>
+ * </md083fork-tab>
  *
- * <md-tab >
+ * <md083fork-tab >
  *   <md-tab-label>
  *     <h3>My Tab content</h3>
  *   </md-tab-label>
@@ -49,15 +49,15 @@ angular.module('material.083fork.components.tabs')
  *     dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
  *     sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
  *   </p>
- * </md-tab>
+ * </md083fork-tab>
  * </hljs>
  *
  */
 function MdTabDirective($md083forkInkRipple$mdInkRipple, $compile, $md083forkUtil, $md083forkConstant, $timeout) {
   return {
     restrict: 'E',
-    require: ['mdTab', '^mdTabs'],
-    controller: '$mdTab',
+    require: ['md083forkTab', '^md083forkTabs'],
+    controller: '$md083forkTab',
     scope: {
       onSelect: '&mdOnSelect',
       onDeselect: '&mdOnDeselect',
@@ -95,7 +95,7 @@ function MdTabDirective($md083forkInkRipple$mdInkRipple, $compile, $md083forkUti
 
       scope.$watch(
           function () { return attr.label; },
-          function () { $timeout(function () { tabsCtrl.scope.$broadcast('$mdTabsChanged'); }, 0, false); }
+          function () { $timeout(function () { tabsCtrl.scope.$broadcast('$md083forkTabsChanged'); }, 0, false); }
       );
 
       transcludeTabContent();
@@ -111,7 +111,7 @@ function MdTabDirective($md083forkInkRipple$mdInkRipple, $compile, $md083forkUti
       element.on('$destroy', function () {
         //-- wait for item to be removed from the dom
         $timeout(function () {
-          tabsCtrl.scope.$broadcast('$mdTabsChanged');
+          tabsCtrl.scope.$broadcast('$md083forkTabsChanged');
         }, 0, false);
       });
 

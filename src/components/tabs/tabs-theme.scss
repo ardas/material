@@ -1,4 +1,4 @@
-md-tabs.md-THEME_NAME-theme {
+md083fork-tabs.md-THEME_NAME-theme {
   .md-header {
     background-color: transparent;
   }
@@ -11,7 +11,7 @@ md-tabs.md-THEME_NAME-theme {
       background-color: '{{accent-color}}';
     }
 
-    md-tab:not([disabled]) {
+    md083fork-tab:not([disabled]) {
       color: '{{accent-100}}';
       &.active {
         color: '{{accent-contrast}}';
@@ -23,13 +23,13 @@ md-tabs.md-THEME_NAME-theme {
     .md-header {
       background-color: '{{primary-color}}';
     }
-    md-tab:not([disabled]) {
+    md083fork-tab:not([disabled]) {
       color: '{{primary-100}}';
       &.active {
         color: '{{primary-contrast}}';
       }
     }
-    md-tab {
+    md083fork-tab {
       color: '{{primary-100}}';
       &[disabled] {
         color: '{{foreground-3}}';
@@ -52,7 +52,7 @@ md-tabs.md-THEME_NAME-theme {
       background-color: '{{warn-color}}';
     }
 
-    md-tab:not([disabled]) {
+    md083fork-tab:not([disabled]) {
       color: '{{warn-100}}';
       &.active {
         color: '{{warn-contrast}}';
@@ -61,12 +61,12 @@ md-tabs.md-THEME_NAME-theme {
   }
 
 
-  md-tabs-ink-bar {
+  md083fork-tabs-ink-bar {
     color: '{{accent-color}}';
     background: '{{accent-color}}';
   }
 
-  md-tab {
+  md083fork-tab {
     color: '{{foreground-2}}';
     &[disabled] {
       color: '{{foreground-3}}';

@@ -18,10 +18,10 @@
 .tab0, .tab1, .tab2, .tab3 {
 }
 
-md-tabs, md-tabs .md-header {
+md083fork-tabs, md083fork-tabs .md-header {
   border-bottom: 1px solid #D8D8D8;
 }
-md-tab[disabled] {
+md083fork-tab[disabled] {
   opacity: 0.5;
 }
 

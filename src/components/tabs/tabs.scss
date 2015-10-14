@@ -3,7 +3,7 @@ $tabs-paginator-width: $baseline-grid * 4 !default;
 $tabs-tab-width: $baseline-grid * 12 !default;
 $tabs-header-height: 48px !default;
 
-md-tabs {
+md083fork-tabs {
   display: block;
   width: 100%;
   font-weight: 500;
@@ -46,7 +46,7 @@ md-tabs {
 }
 
 /* If `center` justified, change to left-justify if paginating */
-md-tabs[center] .md-header:not(.md-paginating) .md-header-items {
+md083fork-tabs[center] .md-header:not(.md-paginating) .md-header-items {
   justify-content: center;
 }
 .md-paginating .md-header-items-container {
@@ -113,7 +113,7 @@ md-tabs[center] .md-header:not(.md-paginating) .md-header-items {
   }
 }
 
-md-tabs-ink-bar {
+md083fork-tabs-ink-bar {
   $time: 0.25s;
   $delay: $time * 0.3;
   $shortTime: $time;
@@ -137,7 +137,7 @@ md-tabs-ink-bar {
   }
 }
 
-md-tab {
+md083fork-tab {
   display: flex;
   align-items: center;
   justify-content: center;

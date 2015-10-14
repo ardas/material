@@ -1,7 +1,7 @@
 <div ng-controller="AppCtrl" class="sample" layout="column">
 
-  <md-tabs md-selected="selectedIndex" flex>
-    <md-tab ng-repeat="tab in tabs"
+  <md083fork-tabs md-selected="selectedIndex" flex>
+    <md083fork-tab ng-repeat="tab in tabs"
             ng-disabled="tab.disabled"
             label="{{tab.title}}">
 
@@ -11,8 +11,8 @@
             Remove Tab
           </md083fork-button>
       </div>
-    </md-tab>
-  </md-tabs>
+    </md083fork-tab>
+  </md083fork-tabs>
 
   <form ng-submit="addTab(tTitle,tContent)" layout="column" style="padding-top:20px;padding-left:20px;">
     <div layout="row" layout-sm="column" layout-margin >

@@ -1,4 +1,4 @@
-describe('<md-tabs>', function() {
+describe('<md083fork-tabs>', function() {
 
   beforeEach(module('material.083fork.components.tabs'));
   beforeEach(function() {
@@ -45,37 +45,37 @@ describe('<md-tabs>', function() {
   describe('activating tabs', function() {
 
     it('should select first tab by default', function() {
-      var tabs = setup('<md-tabs>' +
-            '<md-tab></md-tab>' +
-            '<md-tab></md-tab>' +
-            '</md-tabs>');
-      expect(tabs.find('md-tab').eq(0)).toBeActiveTab();
+      var tabs = setup('<md083fork-tabs>' +
+            '<md083fork-tab></md083fork-tab>' +
+            '<md083fork-tab></md083fork-tab>' +
+            '</md083fork-tabs>');
+      expect(tabs.find('md083fork-tab').eq(0)).toBeActiveTab();
     });
 
     it('should select & focus tab on click', inject(function($document) {
-      var tabs = setup('<md-tabs>' +
-            '<md-tab></md-tab>' +
-            '<md-tab></md-tab>' +
-            '<md-tab ng-disabled="true"></md-tab>' +
-            '</md-tabs>');
-      var tabItems = tabs.find('md-tab');
+      var tabs = setup('<md083fork-tabs>' +
+            '<md083fork-tab></md083fork-tab>' +
+            '<md083fork-tab></md083fork-tab>' +
+            '<md083fork-tab ng-disabled="true"></md083fork-tab>' +
+            '</md083fork-tabs>');
+      var tabItems = tabs.find('md083fork-tab');
 
-      tabs.find('md-tab').eq(1).triggerHandler('click');
+      tabs.find('md083fork-tab').eq(1).triggerHandler('click');
       expect(tabItems.eq(1)).toBeActiveTab();
       expect($document.activeElement).toBe(tabItems[1]);
       
-      tabs.find('md-tab').eq(0).triggerHandler('click');
+      tabs.find('md083fork-tab').eq(0).triggerHandler('click');
       expect(tabItems.eq(0)).toBeActiveTab();
       expect($document.activeElement).toBe(tabItems[0]);
     }));
 
     it('should focus tab on arrow if tab is enabled', inject(function($document, $md083forkConstant, $timeout) {
-      var tabs = setup('<md-tabs>' +
-                       '<md-tab></md-tab>' +
-                       '<md-tab ng-disabled="true"></md-tab>' +
-                       '<md-tab></md-tab>' +
-                       '</md-tabs>');
-      var tabItems = tabs.find('md-tab');
+      var tabs = setup('<md083fork-tabs>' +
+                       '<md083fork-tab></md083fork-tab>' +
+                       '<md083fork-tab ng-disabled="true"></md083fork-tab>' +
+                       '<md083fork-tab></md083fork-tab>' +
+                       '</md083fork-tabs>');
+      var tabItems = tabs.find('md083fork-tab');
       expect(tabItems.eq(0)).toBeActiveTab();
 
       // Boundary case, do nothing
@@ -103,11 +103,11 @@ describe('<md-tabs>', function() {
     }));
 
     it('should select tab on space or enter', inject(function($md083forkConstant) {
-      var tabs = setup('<md-tabs>' +
-                       '<md-tab></md-tab>' +
-                       '<md-tab></md-tab>' +
-                       '</md-tabs>');
-      var tabItems = tabs.find('md-tab');
+      var tabs = setup('<md083fork-tabs>' +
+                       '<md083fork-tab></md083fork-tab>' +
+                       '<md083fork-tab></md083fork-tab>' +
+                       '</md083fork-tabs>');
+      var tabItems = tabs.find('md083fork-tab');
 
       triggerKeydown(tabItems.eq(1), $md083forkConstant.KEY_CODE.ENTER);
       expect(tabItems.eq(1)).toBeActiveTab();
@@ -117,11 +117,11 @@ describe('<md-tabs>', function() {
     }));
 
     it('the active tab\'s content should always be connected', inject(function($timeout) {
-      var tabs = setup('<md-tabs>' +
-                       '<md-tab label="label1!">content1!</md-tab>' +
-                       '<md-tab label="label2!">content2!</md-tab>' +
-                       '</md-tabs>');
-      var tabItems = tabs.find('md-tab');
+      var tabs = setup('<md083fork-tabs>' +
+                       '<md083fork-tab label="label1!">content1!</md083fork-tab>' +
+                       '<md083fork-tab label="label2!">content2!</md083fork-tab>' +
+                       '</md083fork-tabs>');
+      var tabItems = tabs.find('md083fork-tab');
       var contents = angular.element(tabs[0].querySelectorAll('.md-tab-content'));
 
       $timeout.flush();
@@ -134,12 +134,12 @@ describe('<md-tabs>', function() {
     }));
 
     it('should bind to selected', function() {
-      var tabs = setup('<md-tabs md-selected="current">' +
-                       '<md-tab></md-tab>' +
-                       '<md-tab></md-tab>' +
-                       '<md-tab></md-tab>' +
-                       '</md-tabs>');
-      var tabItems = tabs.find('md-tab');
+      var tabs = setup('<md083fork-tabs md-selected="current">' +
+                       '<md083fork-tab></md083fork-tab>' +
+                       '<md083fork-tab></md083fork-tab>' +
+                       '<md083fork-tab></md083fork-tab>' +
+                       '</md083fork-tabs>');
+      var tabItems = tabs.find('md083fork-tab');
 
       expect(tabItems.eq(0)).toBeActiveTab();
       expect(tabs.scope().current).toBe(0);
@@ -152,12 +152,12 @@ describe('<md-tabs>', function() {
     });
 
     it('should use active binding', function() {
-      var tabs = setup('<md-tabs>' +
-                       '<md-tab md-active="active0"></md-tab>' +
-                       '<md-tab md-active="active1"></md-tab>' +
-                       '<md-tab md-active="active2"></md-tab>' +
-                       '</md-tabs>');
-      var tabItems = tabs.find('md-tab');
+      var tabs = setup('<md083fork-tabs>' +
+                       '<md083fork-tab md-active="active0"></md083fork-tab>' +
+                       '<md083fork-tab md-active="active1"></md083fork-tab>' +
+                       '<md083fork-tab md-active="active2"></md083fork-tab>' +
+                       '</md083fork-tabs>');
+      var tabItems = tabs.find('md083fork-tab');
 
       tabs.scope().$apply('active2 = true');
       expect(tabItems.eq(2)).toBeActiveTab();
@@ -168,11 +168,11 @@ describe('<md-tabs>', function() {
     });
 
     it('disabling active tab', function() {
-      var tabs = setup('<md-tabs>' +
-                       '<md-tab ng-disabled="disabled0"></md-tab>' +
-                       '<md-tab ng-disabled="disabled1"></md-tab>' +
-                       '</md-tabs>');
-      var tabItems = tabs.find('md-tab');
+      var tabs = setup('<md083fork-tabs>' +
+                       '<md083fork-tab ng-disabled="disabled0"></md083fork-tab>' +
+                       '<md083fork-tab ng-disabled="disabled1"></md083fork-tab>' +
+                       '</md083fork-tabs>');
+      var tabItems = tabs.find('md083fork-tab');
 
       expect(tabItems.eq(0)).toBeActiveTab();
 
@@ -188,11 +188,11 @@ describe('<md-tabs>', function() {
     });
 
     it('swiping tabs', function() {
-      var tabs = setup('<md-tabs>' + 
-                       '<md-tab></md-tab>' +
-                       '<md-tab></md-tab>' +
-                       '</md-tabs>');
-      var tabItems = tabs.find('md-tab');
+      var tabs = setup('<md083fork-tabs>' +
+                       '<md083fork-tab></md083fork-tab>' +
+                       '<md083fork-tab></md083fork-tab>' +
+                       '</md083fork-tabs>');
+      var tabItems = tabs.find('md083fork-tab');
 
       tabItems.eq(0).triggerHandler('$md.swipeleft');
       expect(tabItems.eq(1)).toBeActiveTab();
@@ -215,44 +215,44 @@ describe('<md-tabs>', function() {
   describe('tab label & content DOM', function() {
 
     it('should support all 3 label types', function() {
-      var tabs1 = setup('<md-tabs>' +
-                       '<md-tab label="<b>super</b> label"></md-tab>' +
-                       '</md-tabs>');
+      var tabs1 = setup('<md083fork-tabs>' +
+                       '<md083fork-tab label="<b>super</b> label"></md083fork-tab>' +
+                       '</md083fork-tabs>');
       expect(tabs1.find('md-tab-label').html()).toBe('<b>super</b> label');
       
-      var tabs2 = setup('<md-tabs>' +
-                   '<md-tab><b>super</b> label</md-tab>' +
-                   '</md-tabs>');
+      var tabs2 = setup('<md083fork-tabs>' +
+                   '<md083fork-tab><b>super</b> label</md083fork-tab>' +
+                   '</md083fork-tabs>');
       expect(tabs2.find('md-tab-label').html()).toBe('<b>super</b> label');
 
-      var tabs3 = setup('<md-tabs>' +
-                   '<md-tab><md-tab-label><b>super</b> label</md-tab-label></md-tab>' +
-                   '</md-tabs>');
+      var tabs3 = setup('<md083fork-tabs>' +
+                   '<md083fork-tab><md-tab-label><b>super</b> label</md-tab-label></md083fork-tab>' +
+                   '</md083fork-tabs>');
       expect(tabs3.find('md-tab-label').html()).toBe('<b>super</b> label');
     });
 
     it('should support content inside with each kind of label', function() {
-      var tabs1 = setup('<md-tabs>' + 
-                        '<md-tab label="label that!"><b>content</b> that!</md-tab>' +
-                        '</md-tabs>');
+      var tabs1 = setup('<md083fork-tabs>' +
+                        '<md083fork-tab label="label that!"><b>content</b> that!</md083fork-tab>' +
+                        '</md083fork-tabs>');
       expect(tabs1.find('md-tab-label').html()).toBe('label that!');
       expect(tabs1[0].querySelector('.md-tabs-content .md-tab-content').innerHTML)
         .toBe('<b>content</b> that!');
 
-      var tabs2 = setup('<md-tabs>' + 
-                        '<md-tab><md-tab-label>label that!</md-tab-label><b>content</b> that!</md-tab>' +
-                        '</md-tabs>');
+      var tabs2 = setup('<md083fork-tabs>' +
+                        '<md083fork-tab><md-tab-label>label that!</md-tab-label><b>content</b> that!</md083fork-tab>' +
+                        '</md083fork-tabs>');
       expect(tabs1.find('md-tab-label').html()).toBe('label that!');
       expect(tabs1[0].querySelector('.md-tabs-content .md-tab-content').innerHTML)
         .toBe('<b>content</b> that!');
     });
 
     it('should connect content with child of the outside scope', function() {
-      var tabs = setup('<md-tabs>' +
-                       '<md-tab label="label!">content!</md-tab>' +
-                       '</md-tabs>');
+      var tabs = setup('<md083fork-tabs>' +
+                       '<md083fork-tab label="label!">content!</md083fork-tab>' +
+                       '</md083fork-tabs>');
       var content = angular.element(tabs[0].querySelector('.md-tab-content'));
-      expect(content.scope().$parent.$id).toBe(tabs.find('md-tab').scope().$id);
+      expect(content.scope().$parent.$id).toBe(tabs.find('md083fork-tab').scope().$id);
     });
 
   });
@@ -260,10 +260,10 @@ describe('<md-tabs>', function() {
   describe('aria', function() {
 
     it('should link tab content to tabItem with auto-generated ids', function() {
-      var tabs = setup('<md-tabs>' +
-                       '<md-tab label="label!">content!</md-tab>' +
-                       '</md-tabs>');
-      var tabItem = tabs.find('md-tab');
+      var tabs = setup('<md083fork-tabs>' +
+                       '<md083fork-tab label="label!">content!</md083fork-tab>' +
+                       '</md083fork-tabs>');
+      var tabItem = tabs.find('md083fork-tab');
       var tabContent = angular.element(tabs[0].querySelector('.md-tab-content'));
 
       expect(tabs.attr('role')).toBe('tablist');

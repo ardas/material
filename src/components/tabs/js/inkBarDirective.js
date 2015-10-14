@@ -7,7 +7,7 @@
  * bar nor animate.
  */
 angular.module('material.083fork.components.tabs')
-  .directive('mdTabsInkBar', MdTabInkDirective);
+  .directive('md083forkTabsInkBar', MdTabInkDirective);
 
 function MdTabInkDirective($$rAF) {
 
@@ -15,7 +15,7 @@ function MdTabInkDirective($$rAF) {
 
   return {
     restrict: 'E',
-    require: ['^?mdNoBar', '^mdTabs'],
+    require: ['^?mdNoBar', '^md083forkTabs'],
     link: postLink
   };
 
@@ -27,7 +27,7 @@ function MdTabInkDirective($$rAF) {
 
     tabsCtrl.inkBarElement = element;
 
-    scope.$on('$mdTabsPaginationChanged', debouncedUpdateBar);
+    scope.$on('$md083forkTabsPaginationChanged', debouncedUpdateBar);
 
     function updateBar() {
       var selected = tabsCtrl.getSelectedItem();

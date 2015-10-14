@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('material.083fork.components.tabs')
-  .controller('$mdTabs', MdTabsController);
+  .controller('$md083forkTabs', MdTabsController);
 
 function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
 
@@ -64,7 +64,7 @@ function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
       tab.onAdd(self.contentArea, true);
     }
 
-    $scope.$broadcast('$mdTabsChanged');
+    $scope.$broadcast('$md083forkTabsChanged');
   }
 
   function remove(tab, noReselect) {
@@ -77,7 +77,7 @@ function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
     tabsList.remove(tab);
     tab.onRemove();
 
-    $scope.$broadcast('$mdTabsChanged');
+    $scope.$broadcast('$md083forkTabsChanged');
 
     if (isSelectedItem) { select(newTab); }
   }
@@ -90,7 +90,7 @@ function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
     tabsList.add(tab, toIndex);
     if (isSelected) select(tab);
 
-    $scope.$broadcast('$mdTabsChanged');
+    $scope.$broadcast('$md083forkTabsChanged');
   }
 
   function select(tab, rightToLeft) {
@@ -106,7 +106,7 @@ function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
     tab.isSelected = true;
     tab.onSelect(rightToLeft);
 
-    $scope.$broadcast('$mdTabsChanged');
+    $scope.$broadcast('$md083forkTabsChanged');
   }
 
   function focus(tab) {

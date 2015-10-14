@@ -4,7 +4,7 @@
  * @license MIT
  * v0.8.3
  */
-angular.module('ngMaterial083Fork', ["ng","ngAnimate","ngAria","material.083fork.core","material.083fork.core.theming.palette","material.083fork.core.theming","material.083fork.components.autocomplete","material.083fork.components.backdrop","material.083fork.components.bottomSheet","material.083fork.components.button","material.083fork.components.card","material.083fork.components.checkbox","material.083fork.components.content","material.083fork.components.dialog","material.083fork.components.divider","material.083fork.components.gridList","material.083fork.components.icon","material.083fork.components.input","material.083fork.components.list","material.083fork.components.progressCircular","material.083fork.components.progressLinear","material.083fork.components.radioButton","material.083fork.components.select","material.083fork.components.sidenav","material.083fork.components.slider","material.083fork.components.sticky","material.083fork.components.subheader","material.083fork.components.swipe","material.083fork.components.switch","material.083fork.components.tabs","material.083fork.components.textField","material.083fork.components.toast","material.083fork.components.toolbar","material.083fork.components.tooltip","material.083fork.components.whiteframe"]);
+angular.module('ngMaterial083Fork', ["ng","ngAnimate","ngAria","material.083fork.core","material.083fork.core.theming.palette","material.083fork.core.theming","material.083fork.components.autocomplete","material.083fork.components.backdrop","material.083fork.components.bottomSheet","material.083fork.components.card","material.083fork.components.button","material.083fork.components.checkbox","material.083fork.components.content","material.083fork.components.dialog","material.083fork.components.divider","material.083fork.components.gridList","material.083fork.components.icon","material.083fork.components.input","material.083fork.components.list","material.083fork.components.progressCircular","material.083fork.components.radioButton","material.083fork.components.progressLinear","material.083fork.components.select","material.083fork.components.sidenav","material.083fork.components.slider","material.083fork.components.sticky","material.083fork.components.subheader","material.083fork.components.swipe","material.083fork.components.switch","material.083fork.components.tabs","material.083fork.components.textField","material.083fork.components.toast","material.083fork.components.toolbar","material.083fork.components.tooltip","material.083fork.components.whiteframe"]);
 /*!
  * Angular Material Design
  * https://github.com/angular/material
@@ -1626,7 +1626,7 @@ function InterimElementProvider() {
           };
         }
 
-        // eg $mdDialog.alert() will return a new alert preset
+        // eg $md083forkDialog.alert() will return a new alert preset
         publicService[name] = function(arg) {
           // If argOption is supplied, eg `argOption: 'content'`, then we assume
           // if the argument is not an options object then it is the `argOption` option.
@@ -1657,9 +1657,9 @@ function InterimElementProvider() {
       /**
        * Helper to call $injector.invoke with a local of the factory name for
        * this provider.
-       * If an $mdDialog is providing options for a dialog and tries to inject
-       * $mdDialog, a circular dependency error will happen.
-       * We get around that by manually injecting $mdDialog as a local.
+       * If an $md083forkDialog is providing options for a dialog and tries to inject
+       * $md083forkDialog, a circular dependency error will happen.
+       * We get around that by manually injecting $md083forkDialog as a local.
        */
       function invokeFactory(factory, defaultVal) {
         var locals = {};
@@ -3729,6 +3729,65 @@ MdBottomSheetProvider.$inject = ["$$083forkInterimElementProvider"];
 
 /**
  * @ngdoc module
+ * @name material.components.card
+ *
+ * @description
+ * Card components.
+ */
+angular.module('material.083fork.components.card', [
+  'material.083fork.core'
+])
+  .directive('mdCard', mdCardDirective);
+
+
+
+/**
+ * @ngdoc directive
+ * @name mdCard
+ * @module material.components.card
+ *
+ * @restrict E
+ *
+ * @description
+ * The `<md-card>` directive is a container element used within `<md-content>` containers.
+ *
+ * Cards have constant width and variable heights; where the maximum height is limited to what can
+ * fit within a single view on a platform, but it can temporarily expand as needed
+ *
+ * @usage
+ * <hljs lang="html">
+ * <md-card>
+ *  <img src="img/washedout.png" class="md-card-image">
+ *  <h2>Paracosm</h2>
+ *  <p>
+ *    The titles of Washed Out's breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+ *  </p>
+ * </md-card>
+ * </hljs>
+ *
+ */
+function mdCardDirective($md083forkTheming) {
+  return {
+    restrict: 'E',
+    link: function($scope, $element, $attr) {
+      $md083forkTheming($element);
+    }
+  };
+}
+mdCardDirective.$inject = ["$md083forkTheming"];
+})();
+
+/*!
+ * Angular Material Design
+ * https://github.com/angular/material
+ * @license MIT
+ * v0.8.3
+ */
+(function() {
+'use strict';
+
+/**
+ * @ngdoc module
  * @name material.components.button
  * @description
  *
@@ -3816,65 +3875,6 @@ function MdButtonDirective($md083forkInkRipple$mdInkRipple, $md083forkTheming, $
 
 }
 MdButtonDirective.$inject = ["$md083forkInkRipple$mdInkRipple", "$md083forkTheming", "$md083forkAria"];
-})();
-
-/*!
- * Angular Material Design
- * https://github.com/angular/material
- * @license MIT
- * v0.8.3
- */
-(function() {
-'use strict';
-
-/**
- * @ngdoc module
- * @name material.components.card
- *
- * @description
- * Card components.
- */
-angular.module('material.083fork.components.card', [
-  'material.083fork.core'
-])
-  .directive('mdCard', mdCardDirective);
-
-
-
-/**
- * @ngdoc directive
- * @name mdCard
- * @module material.components.card
- *
- * @restrict E
- *
- * @description
- * The `<md-card>` directive is a container element used within `<md-content>` containers.
- *
- * Cards have constant width and variable heights; where the maximum height is limited to what can
- * fit within a single view on a platform, but it can temporarily expand as needed
- *
- * @usage
- * <hljs lang="html">
- * <md-card>
- *  <img src="img/washedout.png" class="md-card-image">
- *  <h2>Paracosm</h2>
- *  <p>
- *    The titles of Washed Out's breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
- *  </p>
- * </md-card>
- * </hljs>
- *
- */
-function mdCardDirective($md083forkTheming) {
-  return {
-    restrict: 'E',
-    link: function($scope, $element, $attr) {
-      $md083forkTheming($element);
-    }
-  };
-}
-mdCardDirective.$inject = ["$md083forkTheming"];
 })();
 
 /*!
@@ -4121,8 +4121,8 @@ angular.module('material.083fork.components.dialog', [
   'material.083fork.core',
   'material.083fork.components.backdrop'
 ])
-  .directive('mdDialog', MdDialogDirective)
-  .provider('$mdDialog', MdDialogProvider);
+  .directive('md083forkDialog', MdDialogDirective)
+  .provider('$md083forkDialog', MdDialogProvider);
 
 function MdDialogDirective($$rAF, $md083forkTheming) {
   return {
@@ -4142,18 +4142,18 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
 
 /**
  * @ngdoc service
- * @name $mdDialog
+ * @name $md083forkDialog
  * @module material.components.dialog
  *
  * @description
- * `$mdDialog` opens a dialog over the app to inform users about critical information or require
+ * `$md083forkDialog` opens a dialog over the app to inform users about critical information or require
  *  them to make decisions. There are two approaches for setup: a simple promise API
  *  and regular object syntax.
  *
  * ## Restrictions
  *
  * - The dialog is always given an isolate scope.
- * - The dialog's template must have an outer `<md-dialog>` element.
+ * - The dialog's template must have an outer `<md083fork-dialog>` element.
  *   Inside, use an `<md-content>` element for the dialog's content, and use
  *   an element with class `md-actions` for the dialog's actions.
  *
@@ -4186,7 +4186,7 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *    .module('demoApp', ['ngMaterial'])
  *    .controller('AppCtrl', AppController);
  *
- *   function AppController($scope, $mdDialog) {
+ *   function AppController($scope, $md083forkDialog) {
  *     var alert;
  *     $scope.showAlert = showAlert;
  *     $scope.showDialog = showDialog;
@@ -4194,13 +4194,13 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *
  *     // Internal method
  *     function showAlert() {
- *       alert = $mdDialog.alert({
+ *       alert = $md083forkDialog.alert({
  *         title: 'Attention',
  *         content: 'This is an example of how easy dialogs can be!',
  *         ok: 'Close'
  *       });
  *
- *       $mdDialog
+ *       $md083forkDialog
  *         .show( alert )
  *         .finally(function() {
  *           alert = undefined;
@@ -4209,11 +4209,11 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *
  *     function showDialog($event) {
  *        var parentEl = angular.element(document.body);
- *        $mdDialog.show({
+ *        $md083forkDialog.show({
  *          parent: parentEl,
  *          targetEvent: $event,
  *          template:
- *            '<md-dialog aria-label="List dialog">' +
+ *            '<md083fork-dialog aria-label="List dialog">' +
  *            '  <md-content>'+
  *            '    <md-list>'+
  *            '      <md-item ng-repeat="item in items">'+
@@ -4226,16 +4226,16 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *            '      Close Dialog' +
  *            '    </md083fork-button>' +
  *            '  </div>' +
- *            '</md-dialog>',
+ *            '</md083fork-dialog>',
  *          locals: {
  *            items: $scope.items
  *          },
  *          controller: DialogController
  *       });
- *       function DialogController(scope, $mdDialog, items) {
+ *       function DialogController(scope, $md083forkDialog, items) {
  *         scope.items = items;
  *         scope.closeDialog = function() {
- *           $mdDialog.hide();
+ *           $md083forkDialog.hide();
  *         }
  *       }
  *     }
@@ -4255,7 +4255,7 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *
  *   // Fictitious Employee Editor to show how to use simple and complex dialogs.
  *
- *   function EmployeeEditor($scope, $mdDialog) {
+ *   function EmployeeEditor($scope, $md083forkDialog) {
  *     var alert;
  *
  *     $scope.showAlert = showAlert;
@@ -4269,12 +4269,12 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *     // reference to dialog instance
  *
  *     function showAlert() {
- *       alert = $mdDialog.alert()
+ *       alert = $md083forkDialog.alert()
  *         .title('Attention, ' + $scope.userName)
  *         .content('This is an example of how easy dialogs can be!')
  *         .ok('Close');
  *
- *       $mdDialog
+ *       $md083forkDialog
  *           .show( alert )
  *           .finally(function() {
  *             alert = undefined;
@@ -4282,21 +4282,21 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *     }
  *
  *     // Close the specified dialog instance and resolve with 'finished' flag
- *     // Normally this is not needed, just use '$mdDialog.hide()' to close
+ *     // Normally this is not needed, just use '$md083forkDialog.hide()' to close
  *     // the most recent dialog popup.
  *
  *     function closeAlert() {
- *       $mdDialog.hide( alert, "finished" );
+ *       $md083forkDialog.hide( alert, "finished" );
  *       alert = undefined;
  *     }
  *
  *     // Dialog #2 - Demonstrate more complex dialogs construction and popup.
  *
  *     function showCustomGreeting($event) {
- *         $mdDialog.show({
+ *         $md083forkDialog.show({
  *           targetEvent: $event,
  *           template:
- *             '<md-dialog>' +
+ *             '<md083fork-dialog>' +
  *
  *             '  <md-content>Hello {{ employee }}!</md-content>' +
  *
@@ -4306,7 +4306,7 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *
  *             '    </md083fork-button>' +
  *             '  </div>' +
- *             '</md-dialog>',
+ *             '</md083fork-dialog>',
  *           controller: 'GreetingController',
  *           onComplete: afterShowAnimation,
  *           locals: { employee: $scope.userName }
@@ -4322,14 +4322,14 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *
  *   // Greeting controller used with the more complex 'showCustomGreeting()' custom dialog
  *
- *   function GreetingController($scope, $mdDialog, employee) {
+ *   function GreetingController($scope, $md083forkDialog, employee) {
  *     // Assigned from construction <code>locals</code> options...
  *     $scope.employee = employee;
  *
  *     $scope.closeDialog = function() {
  *       // Easily hides most recent dialog shown...
  *       // no specific instance reference is needed.
- *       $mdDialog.hide();
+ *       $md083forkDialog.hide();
  *     };
  *   }
  *
@@ -4339,48 +4339,48 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
 
  /**
  * @ngdoc method
- * @name $mdDialog#alert
+ * @name $md083forkDialog#alert
  *
  * @description
  * Builds a preconfigured dialog with the specified message.
  *
- * @returns {obj} an `$mdDialogPreset` with the chainable configuration methods:
+ * @returns {obj} an `$md083forkDialogPreset` with the chainable configuration methods:
  *
- * - $mdDialogPreset#title(string) - sets title to string
- * - $mdDialogPreset#content(string) - sets content / message to string
- * - $mdDialogPreset#ok(string) - sets okay button text to string
- * - $mdDialogPreset#theme(string) - sets the theme of the dialog
+ * - $md083forkDialogPreset#title(string) - sets title to string
+ * - $md083forkDialogPreset#content(string) - sets content / message to string
+ * - $md083forkDialogPreset#ok(string) - sets okay button text to string
+ * - $md083forkDialogPreset#theme(string) - sets the theme of the dialog
  *
  */
 
  /**
  * @ngdoc method
- * @name $mdDialog#confirm
+ * @name $md083forkDialog#confirm
  *
  * @description
  * Builds a preconfigured dialog with the specified message. You can call show and the promise returned
  * will be resolved only if the user clicks the confirm action on the dialog.
  *
- * @returns {obj} an `$mdDialogPreset` with the chainable configuration methods:
+ * @returns {obj} an `$md083forkDialogPreset` with the chainable configuration methods:
  *
  * Additionally, it supports the following methods:
  *
- * - $mdDialogPreset#title(string) - sets title to string
- * - $mdDialogPreset#content(string) - sets content / message to string
- * - $mdDialogPreset#ok(string) - sets okay button text to string
- * - $mdDialogPreset#cancel(string) - sets cancel button text to string
- * - $mdDialogPreset#theme(string) - sets the theme of the dialog
+ * - $md083forkDialogPreset#title(string) - sets title to string
+ * - $md083forkDialogPreset#content(string) - sets content / message to string
+ * - $md083forkDialogPreset#ok(string) - sets okay button text to string
+ * - $md083forkDialogPreset#cancel(string) - sets cancel button text to string
+ * - $md083forkDialogPreset#theme(string) - sets the theme of the dialog
  *
  */
 
 /**
  * @ngdoc method
- * @name $mdDialog#show
+ * @name $md083forkDialog#show
  *
  * @description
  * Show a dialog with the specified options.
  *
- * @param {object} optionsOrPreset Either provide an `$mdDialogPreset` returned from `alert()`, and
+ * @param {object} optionsOrPreset Either provide an `$md083forkDialogPreset` returned from `alert()`, and
  * `confirm()`, or an options object with the following properties:
  *   - `templateUrl` - `{string=}`: The url of a template that will be used as the content
  *   of the dialog.
@@ -4400,7 +4400,7 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *   - `escapeToClose` - `{boolean=}`: Whether the user can press escape to close the dialog.
  *     Default true.
  *   - `controller` - `{string=}`: The controller to associate with the dialog. The controller
- *     will be injected with the local `$mdDialog`, which passes along a scope for the dialog.
+ *     will be injected with the local `$md083forkDialog`, which passes along a scope for the dialog.
  *   - `locals` - `{object=}`: An object containing key/value pairs. The keys will be used as names
  *     of values to inject into the controller. For example, `locals: {three: 3}` would inject
  *     `three` into the controller, with the value 3. If `bindToController` is true, they will be
@@ -4414,26 +4414,26 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  *   - `onComplete` `{function=}`: Callback function used to announce when the show() action is
  *     finished.
  *
- * @returns {promise} A promise that can be resolved with `$mdDialog.hide()` or
- * rejected with `$mdDialog.cancel()`.
+ * @returns {promise} A promise that can be resolved with `$md083forkDialog.hide()` or
+ * rejected with `$md083forkDialog.cancel()`.
  */
 
 /**
  * @ngdoc method
- * @name $mdDialog#hide
+ * @name $md083forkDialog#hide
  *
  * @description
- * Hide an existing dialog and resolve the promise returned from `$mdDialog.show()`.
+ * Hide an existing dialog and resolve the promise returned from `$md083forkDialog.show()`.
  *
  * @param {*=} response An argument for the resolved promise.
  */
 
 /**
  * @ngdoc method
- * @name $mdDialog#cancel
+ * @name $md083forkDialog#cancel
  *
  * @description
- * Hide an existing dialog and reject the promise returned from `$mdDialog.show()`.
+ * Hide an existing dialog and reject the promise returned from `$md083forkDialog.show()`.
  *
  * @param {*=} response An argument for the rejected promise.
  */
@@ -4442,9 +4442,9 @@ function MdDialogProvider($$083forkInterimElementProvider) {
 
   var alertDialogMethods = ['title', 'content', 'ariaLabel', 'ok'];
 
-  advancedDialogOptions.$inject = ["$mdDialog", "$md083forkTheming"];
-  dialogDefaultOptions.$inject = ["$timeout", "$rootElement", "$compile", "$animate", "$md083forkAria", "$document", "$md083forkUtil", "$md083forkConstant", "$md083forkTheming", "$$rAF", "$q", "$mdDialog"];
-  return $$083forkInterimElementProvider('$mdDialog')
+  advancedDialogOptions.$inject = ["$md083forkDialog", "$md083forkTheming"];
+  dialogDefaultOptions.$inject = ["$timeout", "$rootElement", "$compile", "$animate", "$md083forkAria", "$document", "$md083forkUtil", "$md083forkConstant", "$md083forkTheming", "$$rAF", "$q", "$md083forkDialog"];
+  return $$083forkInterimElementProvider('$md083forkDialog')
     .setDefaults({
       methods: ['disableParentScroll', 'hasBackdrop', 'clickOutsideToClose', 'escapeToClose', 'targetEvent'],
       options: dialogDefaultOptions
@@ -4459,10 +4459,10 @@ function MdDialogProvider($$083forkInterimElementProvider) {
     });
 
   /* @ngInject */
-  function advancedDialogOptions($mdDialog, $md083forkTheming) {
+  function advancedDialogOptions($md083forkDialog, $md083forkTheming) {
     return {
       template: [
-        '<md-dialog md-theme="{{ dialog.theme }}" aria-label="{{ dialog.ariaLabel }}">',
+        '<md083fork-dialog md-theme="{{ dialog.theme }}" aria-label="{{ dialog.ariaLabel }}">',
           '<md-content>',
             '<h2>{{ dialog.title }}</h2>',
             '<p>{{ dialog.content }}</p>',
@@ -4475,14 +4475,14 @@ function MdDialogProvider($$083forkInterimElementProvider) {
               '{{ dialog.ok }}',
             '</md083fork-button>',
           '</div>',
-        '</md-dialog>'
+        '</md083fork-dialog>'
       ].join(''),
       controller: function mdDialogCtrl() {
         this.hide = function() {
-          $mdDialog.hide(true);
+          $md083forkDialog.hide(true);
         };
         this.abort = function() {
-          $mdDialog.cancel();
+          $md083forkDialog.cancel();
         };
       },
       controllerAs: 'dialog',
@@ -4493,7 +4493,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
 
   /* @ngInject */
   function dialogDefaultOptions($timeout, $rootElement, $compile, $animate, $md083forkAria, $document,
-                                $md083forkUtil, $md083forkConstant, $md083forkTheming, $$rAF, $q, $mdDialog) {
+                                $md083forkUtil, $md083forkConstant, $md083forkTheming, $$rAF, $q, $md083forkDialog) {
     return {
       hasBackdrop: true,
       isolateScope: true,
@@ -4517,7 +4517,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
       options.popInTarget = angular.element((options.targetEvent || {}).target);
       var closeButton = findCloseButton();
 
-      configureAria(element.find('md-dialog'));
+      configureAria(element.find('md083fork-dialog'));
 
       if (options.hasBackdrop) {
         // Fix for IE 10
@@ -4544,7 +4544,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
         if (options.escapeToClose) {
           options.rootElementKeyupCallback = function(e) {
             if (e.keyCode === $md083forkConstant.KEY_CODE.ESCAPE) {
-              $timeout($mdDialog.cancel);
+              $timeout($md083forkDialog.cancel);
             }
           };
           $rootElement.on('keyup', options.rootElementKeyupCallback);
@@ -4554,7 +4554,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
           options.dialogClickOutsideCallback = function(ev) {
             // Only close if we click the flex container outside the backdrop
             if (ev.target === element[0]) {
-              $timeout($mdDialog.cancel);
+              $timeout($md083forkDialog.cancel);
             }
           };
           element.on('click', options.dialogClickOutsideCallback);
@@ -4624,7 +4624,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
     }
 
     function dialogPopIn(container, parentElement, clickElement) {
-      var dialogEl = container.find('md-dialog');
+      var dialogEl = container.find('md083fork-dialog');
 
       parentElement.append(container);
       transformToClickElement(dialogEl, clickElement);
@@ -4638,7 +4638,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
     }
 
     function dialogPopOut(container, parentElement, clickElement) {
-      var dialogEl = container.find('md-dialog');
+      var dialogEl = container.find('md083fork-dialog');
 
       dialogEl.addClass('transition-out').removeClass('transition-in');
       transformToClickElement(dialogEl, clickElement);
@@ -6576,135 +6576,6 @@ MdProgressCircularDirective.$inject = ["$$rAF", "$md083forkConstant", "$md083for
 
 /**
  * @ngdoc module
- * @name material.components.progressLinear
- * @description Linear Progress module!
- */
-angular.module('material.083fork.components.progressLinear', [
-  'material.083fork.core'
-])
-  .directive('mdProgressLinear', MdProgressLinearDirective);
-
-/**
- * @ngdoc directive
- * @name mdProgressLinear
- * @module material.components.progressLinear
- * @restrict E
- *
- * @description
- * The linear progress directive is used to make loading content in your app as delightful and painless as possible by minimizing the amount of visual change a user sees before they can view and interact with content. Each operation should only be represented by one activity indicator—for example, one refresh operation should not display both a refresh bar and an activity circle.
- *
- * For operations where the percentage of the operation completed can be determined, use a determinate indicator. They give users a quick sense of how long an operation will take.
- *
- * For operations where the user is asked to wait a moment while something finishes up, and it’s not necessary to expose what's happening behind the scenes and how long it will take, use an indeterminate indicator.
- *
- * @param {string} md-mode Select from one of four modes: determinate, indeterminate, buffer or query.
- * @param {number=} value In determinate and buffer modes, this number represents the percentage of the primary progress bar. Default: 0
- * @param {number=} md-buffer-value In the buffer mode, this number represents the precentage of the secondary progress bar. Default: 0
- *
- * @usage
- * <hljs lang="html">
- * <md-progress-linear md-mode="determinate" value="..."></md-progress-linear>
- *
- * <md-progress-linear md-mode="determinate" ng-value="..."></md-progress-linear>
- *
- * <md-progress-linear md-mode="indeterminate"></md-progress-linear>
- *
- * <md-progress-linear md-mode="buffer" value="..." md-buffer-value="..."></md-progress-linear>
- *
- * <md-progress-linear md-mode="query"></md-progress-linear>
- * </hljs>
- */
-function MdProgressLinearDirective($$rAF, $md083forkConstant, $md083forkTheming) {
-
-  return {
-    restrict: 'E',
-    template: '<div class="md-container">' +
-      '<div class="md-dashed"></div>' +
-      '<div class="md-bar md-bar1"></div>' +
-      '<div class="md-bar md-bar2"></div>' +
-      '</div>',
-    compile: compile
-  };
-  
-  function compile(tElement, tAttrs, transclude) {
-    tElement.attr('aria-valuemin', 0);
-    tElement.attr('aria-valuemax', 100);
-    tElement.attr('role', 'progressbar');
-
-    return postLink;
-  }
-  function postLink(scope, element, attr) {
-    $md083forkTheming(element);
-    var bar1Style = element[0].querySelector('.md-bar1').style,
-      bar2Style = element[0].querySelector('.md-bar2').style,
-      container = angular.element(element[0].querySelector('.md-container'));
-
-    attr.$observe('value', function(value) {
-      if (attr.mdMode == 'query') {
-        return;
-      }
-
-      var clamped = clamp(value);
-      element.attr('aria-valuenow', clamped);
-      bar2Style[$md083forkConstant.CSS.TRANSFORM] = transforms[clamped];
-    });
-
-    attr.$observe('mdBufferValue', function(value) {
-      bar1Style[$md083forkConstant.CSS.TRANSFORM] = transforms[clamp(value)];
-    });
-
-    $$rAF(function() {
-      container.addClass('md-ready');
-    });
-  }
-
-  function clamp(value) {
-    if (value > 100) {
-      return 100;
-    }
-
-    if (value < 0) {
-      return 0;
-    }
-
-    return Math.ceil(value || 0);
-  }
-}
-MdProgressLinearDirective.$inject = ["$$rAF", "$md083forkConstant", "$md083forkTheming"];
-
-
-// **********************************************************
-// Private Methods
-// **********************************************************
-var transforms = (function() {
-  var values = new Array(101);
-  for(var i = 0; i < 101; i++){
-    values[i] = makeTransform(i);
-  }
-
-  return values;
-
-  function makeTransform(value){
-    var scale = value/100;
-    var translateX = (value-100)/2;
-    return 'translateX(' + translateX.toString() + '%) scale(' + scale.toString() + ', 1)';
-  }
-})();
-
-})();
-
-/*!
- * Angular Material Design
- * https://github.com/angular/material
- * @license MIT
- * v0.8.3
- */
-(function() {
-'use strict';
-
-
-/**
- * @ngdoc module
  * @name material.components.radioButton
  * @description radioButton module!
  */
@@ -6988,6 +6859,135 @@ function mdRadioButtonDirective($md083forkAria, $md083forkUtil, $md083forkThemin
   }
 }
 mdRadioButtonDirective.$inject = ["$md083forkAria", "$md083forkUtil", "$md083forkTheming"];
+
+})();
+
+/*!
+ * Angular Material Design
+ * https://github.com/angular/material
+ * @license MIT
+ * v0.8.3
+ */
+(function() {
+'use strict';
+
+
+/**
+ * @ngdoc module
+ * @name material.components.progressLinear
+ * @description Linear Progress module!
+ */
+angular.module('material.083fork.components.progressLinear', [
+  'material.083fork.core'
+])
+  .directive('mdProgressLinear', MdProgressLinearDirective);
+
+/**
+ * @ngdoc directive
+ * @name mdProgressLinear
+ * @module material.components.progressLinear
+ * @restrict E
+ *
+ * @description
+ * The linear progress directive is used to make loading content in your app as delightful and painless as possible by minimizing the amount of visual change a user sees before they can view and interact with content. Each operation should only be represented by one activity indicator—for example, one refresh operation should not display both a refresh bar and an activity circle.
+ *
+ * For operations where the percentage of the operation completed can be determined, use a determinate indicator. They give users a quick sense of how long an operation will take.
+ *
+ * For operations where the user is asked to wait a moment while something finishes up, and it’s not necessary to expose what's happening behind the scenes and how long it will take, use an indeterminate indicator.
+ *
+ * @param {string} md-mode Select from one of four modes: determinate, indeterminate, buffer or query.
+ * @param {number=} value In determinate and buffer modes, this number represents the percentage of the primary progress bar. Default: 0
+ * @param {number=} md-buffer-value In the buffer mode, this number represents the precentage of the secondary progress bar. Default: 0
+ *
+ * @usage
+ * <hljs lang="html">
+ * <md-progress-linear md-mode="determinate" value="..."></md-progress-linear>
+ *
+ * <md-progress-linear md-mode="determinate" ng-value="..."></md-progress-linear>
+ *
+ * <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+ *
+ * <md-progress-linear md-mode="buffer" value="..." md-buffer-value="..."></md-progress-linear>
+ *
+ * <md-progress-linear md-mode="query"></md-progress-linear>
+ * </hljs>
+ */
+function MdProgressLinearDirective($$rAF, $md083forkConstant, $md083forkTheming) {
+
+  return {
+    restrict: 'E',
+    template: '<div class="md-container">' +
+      '<div class="md-dashed"></div>' +
+      '<div class="md-bar md-bar1"></div>' +
+      '<div class="md-bar md-bar2"></div>' +
+      '</div>',
+    compile: compile
+  };
+  
+  function compile(tElement, tAttrs, transclude) {
+    tElement.attr('aria-valuemin', 0);
+    tElement.attr('aria-valuemax', 100);
+    tElement.attr('role', 'progressbar');
+
+    return postLink;
+  }
+  function postLink(scope, element, attr) {
+    $md083forkTheming(element);
+    var bar1Style = element[0].querySelector('.md-bar1').style,
+      bar2Style = element[0].querySelector('.md-bar2').style,
+      container = angular.element(element[0].querySelector('.md-container'));
+
+    attr.$observe('value', function(value) {
+      if (attr.mdMode == 'query') {
+        return;
+      }
+
+      var clamped = clamp(value);
+      element.attr('aria-valuenow', clamped);
+      bar2Style[$md083forkConstant.CSS.TRANSFORM] = transforms[clamped];
+    });
+
+    attr.$observe('mdBufferValue', function(value) {
+      bar1Style[$md083forkConstant.CSS.TRANSFORM] = transforms[clamp(value)];
+    });
+
+    $$rAF(function() {
+      container.addClass('md-ready');
+    });
+  }
+
+  function clamp(value) {
+    if (value > 100) {
+      return 100;
+    }
+
+    if (value < 0) {
+      return 0;
+    }
+
+    return Math.ceil(value || 0);
+  }
+}
+MdProgressLinearDirective.$inject = ["$$rAF", "$md083forkConstant", "$md083forkTheming"];
+
+
+// **********************************************************
+// Private Methods
+// **********************************************************
+var transforms = (function() {
+  var values = new Array(101);
+  for(var i = 0; i < 101; i++){
+    values[i] = makeTransform(i);
+  }
+
+  return values;
+
+  function makeTransform(value){
+    var scale = value/100;
+    var translateX = (value-100)/2;
+    return 'translateX(' + translateX.toString() + '%) scale(' + scale.toString() + ', 1)';
+  }
+})();
 
 })();
 
@@ -9269,7 +9269,7 @@ MdSwitch.$inject = ["mdCheckboxDirective", "$md083forkTheming", "$md083forkUtil"
  * @name material.components.tabs
  * @description
  *
- *  Tabs, created with the `<md-tabs>` directive provide *tabbed* navigation with different styles.
+ *  Tabs, created with the `<md083fork-tabs>` directive provide *tabbed* navigation with different styles.
  *  The Tabs component consists of clickable tabs that are aligned horizontally side-by-side.
  *
  *  Features include support for:
@@ -10543,7 +10543,7 @@ angular.module('material.083fork.components.whiteframe', []);
  * bar nor animate.
  */
 angular.module('material.083fork.components.tabs')
-  .directive('mdTabsInkBar', MdTabInkDirective);
+  .directive('md083forkTabsInkBar', MdTabInkDirective);
 
 function MdTabInkDirective($$rAF) {
 
@@ -10551,7 +10551,7 @@ function MdTabInkDirective($$rAF) {
 
   return {
     restrict: 'E',
-    require: ['^?mdNoBar', '^mdTabs'],
+    require: ['^?mdNoBar', '^md083forkTabs'],
     link: postLink
   };
 
@@ -10563,7 +10563,7 @@ function MdTabInkDirective($$rAF) {
 
     tabsCtrl.inkBarElement = element;
 
-    scope.$on('$mdTabsPaginationChanged', debouncedUpdateBar);
+    scope.$on('$md083forkTabsPaginationChanged', debouncedUpdateBar);
 
     function updateBar() {
       var selected = tabsCtrl.getSelectedItem();
@@ -10603,7 +10603,7 @@ MdTabInkDirective.$inject = ["$$rAF"];
 'use strict';
 
 angular.module('material.083fork.components.tabs')
-    .directive('mdTabsPagination', TabPaginationDirective);
+    .directive('md083forkTabsPagination', TabPaginationDirective);
 
 function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeout, $md083forkMedia) {
 
@@ -10612,13 +10612,13 @@ function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeou
 
   return {
     restrict: 'A',
-    require: '^mdTabs',
+    require: '^md083forkTabs',
     link: postLink
   };
 
   function postLink(scope, element, attr, tabsCtrl) {
 
-    var tabs = element[0].getElementsByTagName('md-tab');
+    var tabs = element[0].getElementsByTagName('md083fork-tab');
     var debouncedUpdatePagination = $$rAF.throttle(updatePagination);
     var tabsParent = element.children();
     var locked = false;
@@ -10629,7 +10629,7 @@ function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeou
       clickPrevious: function() { locked || userChangePage(-1); }
     };
 
-    scope.$on('$mdTabsChanged', debouncedUpdatePagination);
+    scope.$on('$md083forkTabsChanged', debouncedUpdatePagination);
     angular.element($window).on('resize', debouncedUpdatePagination);
 
     scope.$on('$destroy', function() {
@@ -10672,7 +10672,7 @@ function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeou
         return;
       }
 
-      var tabs = element.find('md-tab');
+      var tabs = element.find('md083fork-tab');
 
       disablePagination();
 
@@ -10681,7 +10681,7 @@ function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeou
 
       if (needPagination) { enablePagination(); }
 
-      scope.$evalAsync(function () { scope.$broadcast('$mdTabsPaginationChanged'); });
+      scope.$evalAsync(function () { scope.$broadcast('$md083forkTabsPaginationChanged'); });
 
       function enablePagination() {
         tabsParent.css('width', '9999px');
@@ -10842,7 +10842,7 @@ function TabPaginationDirective($md083forkConstant, $window, $$rAF, $$q, $timeou
 
       state.page = page;
 
-      scope.$broadcast('$mdTabsPaginationChanged');
+      scope.$broadcast('$md083forkTabsPaginationChanged');
 
       return slideTabButtons(-state.tabData.pages[page].left);
     }
@@ -10863,11 +10863,11 @@ TabPaginationDirective.$inject = ["$md083forkConstant", "$window", "$$rAF", "$$q
 
 
 angular.module('material.083fork.components.tabs')
-  .controller('$mdTab', TabItemController);
+  .controller('$md083forkTab', TabItemController);
 
 function TabItemController($scope, $element, $attrs, $compile, $animate, $md083forkUtil, $parse, $timeout) {
   var self = this;
-  var tabsCtrl = $element.controller('mdTabs');
+  var tabsCtrl = $element.controller('md083forkTabs');
 
   // Properties
   self.contentContainer = angular.element('<div class="md-tab-content ng-hide">');
@@ -10979,21 +10979,21 @@ TabItemController.$inject = ["$scope", "$element", "$attrs", "$compile", "$anima
 'use strict';
 
 angular.module('material.083fork.components.tabs')
-  .directive('mdTab', MdTabDirective);
+  .directive('md083forkTab', MdTabDirective);
 
 /**
  * @ngdoc directive
- * @name mdTab
+ * @name md083forkTab
  * @module material.components.tabs
  *
  * @restrict E
  *
  * @description
- * Use the `<md-tab>` a nested directive used within `<md-tabs>` to specify a tab with a **label** and optional *view content*.
+ * Use the `<md083fork-tab>` a nested directive used within `<md083fork-tabs>` to specify a tab with a **label** and optional *view content*.
  *
  * If the `label` attribute is not specified, then an optional `<md-tab-label>` tag can be used to specify more
  * complex tab header markup. If neither the **label** nor the **md-tab-label** are specified, then the nested
- * markup of the `<md-tab>` is used as the tab header markup.
+ * markup of the `<md083fork-tab>` is used as the tab header markup.
  *
  * If a tab **label** has been identified, then any **non-**`<md-tab-label>` markup
  * will be considered tab content and will be transcluded to the internal `<div class="md-tabs-content">` container.
@@ -11012,11 +11012,11 @@ angular.module('material.083fork.components.tabs')
  * @usage
  *
  * <hljs lang="html">
- * <md-tab label="" disabled="" md-on-select="" md-on-deselect="" >
+ * <md083fork-tab label="" disabled="" md-on-select="" md-on-deselect="" >
  *   <h3>My Tab content</h3>
- * </md-tab>
+ * </md083fork-tab>
  *
- * <md-tab >
+ * <md083fork-tab >
  *   <md-tab-label>
  *     <h3>My Tab content</h3>
  *   </md-tab-label>
@@ -11026,15 +11026,15 @@ angular.module('material.083fork.components.tabs')
  *     dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
  *     sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
  *   </p>
- * </md-tab>
+ * </md083fork-tab>
  * </hljs>
  *
  */
 function MdTabDirective($md083forkInkRipple$mdInkRipple, $compile, $md083forkUtil, $md083forkConstant, $timeout) {
   return {
     restrict: 'E',
-    require: ['mdTab', '^mdTabs'],
-    controller: '$mdTab',
+    require: ['md083forkTab', '^md083forkTabs'],
+    controller: '$md083forkTab',
     scope: {
       onSelect: '&mdOnSelect',
       onDeselect: '&mdOnDeselect',
@@ -11072,7 +11072,7 @@ function MdTabDirective($md083forkInkRipple$mdInkRipple, $compile, $md083forkUti
 
       scope.$watch(
           function () { return attr.label; },
-          function () { $timeout(function () { tabsCtrl.scope.$broadcast('$mdTabsChanged'); }, 0, false); }
+          function () { $timeout(function () { tabsCtrl.scope.$broadcast('$md083forkTabsChanged'); }, 0, false); }
       );
 
       transcludeTabContent();
@@ -11088,7 +11088,7 @@ function MdTabDirective($md083forkInkRipple$mdInkRipple, $compile, $md083forkUti
       element.on('$destroy', function () {
         //-- wait for item to be removed from the dom
         $timeout(function () {
-          tabsCtrl.scope.$broadcast('$mdTabsChanged');
+          tabsCtrl.scope.$broadcast('$md083forkTabsChanged');
         }, 0, false);
       });
 
@@ -11221,7 +11221,7 @@ MdTabDirective.$inject = ["$md083forkInkRipple$mdInkRipple", "$compile", "$md083
 'use strict';
 
 angular.module('material.083fork.components.tabs')
-  .controller('$mdTabs', MdTabsController);
+  .controller('$md083forkTabs', MdTabsController);
 
 function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
 
@@ -11283,7 +11283,7 @@ function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
       tab.onAdd(self.contentArea, true);
     }
 
-    $scope.$broadcast('$mdTabsChanged');
+    $scope.$broadcast('$md083forkTabsChanged');
   }
 
   function remove(tab, noReselect) {
@@ -11296,7 +11296,7 @@ function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
     tabsList.remove(tab);
     tab.onRemove();
 
-    $scope.$broadcast('$mdTabsChanged');
+    $scope.$broadcast('$md083forkTabsChanged');
 
     if (isSelectedItem) { select(newTab); }
   }
@@ -11309,7 +11309,7 @@ function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
     tabsList.add(tab, toIndex);
     if (isSelected) select(tab);
 
-    $scope.$broadcast('$mdTabsChanged');
+    $scope.$broadcast('$md083forkTabsChanged');
   }
 
   function select(tab, rightToLeft) {
@@ -11325,7 +11325,7 @@ function MdTabsController($scope, $element, $md083forkUtil, $timeout) {
     tab.isSelected = true;
     tab.onSelect(rightToLeft);
 
-    $scope.$broadcast('$mdTabsChanged');
+    $scope.$broadcast('$md083forkTabsChanged');
   }
 
   function focus(tab) {
@@ -11367,28 +11367,28 @@ MdTabsController.$inject = ["$scope", "$element", "$md083forkUtil", "$timeout"];
 'use strict';
 
 angular.module('material.083fork.components.tabs')
-  .directive('mdTabs', TabsDirective);
+  .directive('md083forkTabs', TabsDirective);
 
 /**
  * @ngdoc directive
- * @name mdTabs
+ * @name md083forkTabs
  * @module material.components.tabs
  *
  * @restrict E
  *
  * @description
- * The `<md-tabs>` directive serves as the container for 1..n `<md-tab>` child directives to produces a Tabs components.
- * In turn, the nested `<md-tab>` directive is used to specify a tab label for the **header button** and a [optional] tab view
+ * The `<md083fork-tabs>` directive serves as the container for 1..n `<md083fork-tab>` child directives to produces a Tabs components.
+ * In turn, the nested `<md083fork-tab>` directive is used to specify a tab label for the **header button** and a [optional] tab view
  * content that will be associated with each tab button.
  *
  * Below is the markup for its simplest usage:
  *
  *  <hljs lang="html">
- *  <md-tabs>
- *    <md-tab label="Tab #1"></md-tab>
- *    <md-tab label="Tab #2"></md-tab>
- *    <md-tab label="Tab #3"></md-tab>
- *  </md-tabs>
+ *  <md083fork-tabs>
+ *    <md083fork-tab label="Tab #1"></md083fork-tab>
+ *    <md083fork-tab label="Tab #2"></md083fork-tab>
+ *    <md083fork-tab label="Tab #3"></md083fork-tab>
+ *  </md083fork-tabs>
  *  </hljs>
  *
  * Tabs supports three (3) usage scenarios:
@@ -11408,7 +11408,7 @@ angular.module('material.083fork.components.tabs')
  * *  Content can include any markup.
  * *  If a tab is disabled while active/selected, then the next tab will be auto-selected.
  * *  If the currently active tab is the last tab, then next() action will select the first tab.
- * *  Any markup (other than **`<md-tab>`** tags) will be transcluded into the tab header area BEFORE the tab buttons.
+ * *  Any markup (other than **`<md083fork-tab>`** tags) will be transcluded into the tab header area BEFORE the tab buttons.
  *
  * ### Explanation of tab stretching
  *
@@ -11434,10 +11434,10 @@ angular.module('material.083fork.components.tabs')
  *
  * @usage
  * <hljs lang="html">
- * <md-tabs md-selected="selectedIndex" >
+ * <md083fork-tabs md-selected="selectedIndex" >
  *   <img ng-src="img/angular.png" class="centered">
  *
- *   <md-tab
+ *   <md083fork-tab
  *      ng-repeat="tab in tabs | orderBy:predicate:reversed"
  *      md-on-select="onTabSelected(tab)"
  *      md-on-deselect="announceDeselected(tab)"
@@ -11452,17 +11452,17 @@ angular.module('material.083fork.components.tabs')
  *
  *       {{tab.content}}
  *
- *   </md-tab>
+ *   </md083fork-tab>
  *
- * </md-tabs>
+ * </md083fork-tabs>
  * </hljs>
  *
  */
 function TabsDirective($md083forkTheming) {
   return {
     restrict: 'E',
-    controller: '$mdTabs',
-    require: 'mdTabs',
+    controller: '$md083forkTabs',
+    require: 'md083forkTabs',
     transclude: true,
     scope: {
       selectedIndex: '=?mdSelected'
@@ -11479,10 +11479,10 @@ function TabsDirective($md083forkTheming) {
         '</button>' +
 
         // overflow: hidden container when paginating
-        '<div class="md-header-items-container" md-tabs-pagination>' +
-          // flex container for <md-tab> elements
+        '<div class="md-header-items-container" md083fork-tabs-pagination>' +
+          // flex container for <md083fork-tab> elements
           '<div class="md-header-items">' +
-            '<md-tabs-ink-bar></md-tabs-ink-bar>' +
+            '<md083fork-tabs-ink-bar></md083fork-tabs-ink-bar>' +
           '</div>' +
         '</div>' +
 
@@ -11537,5 +11537,5 @@ TabsDirective.$inject = ["$md083forkTheming"];
 })();
 
 (function(){ 
- angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete {  background: '{{background-50}}'; }  md-autocomplete button md-icon path {    fill: '{{background-600}}'; }  md-autocomplete button:after {    background: '{{background-600-0.3}}'; }  md-autocomplete ul {    background: '{{background-50}}'; }    md-autocomplete ul li {      border-top: 1px solid '{{background-400}}';      color: '{{background-900}}'; }      md-autocomplete ul li .highlight {        color: '{{background-600}}'; }      md-autocomplete ul li:hover, md-autocomplete ul li.selected {        background: '{{background-200}}'; }md-backdrop.md-opaque.md-THEME_NAME-theme {  background-color: '{{foreground-4-0.5}}'; }md-bottom-sheet.md-THEME_NAME-theme {  background-color: '{{background-50}}';  border-top-color: '{{background-300}}'; }  md-bottom-sheet.md-THEME_NAME-theme.md-list md-item {    color: '{{foreground-1}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    background-color: '{{background-50}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    color: '{{foreground-1}}'; }md-toolbar .md083fork-button.md-THEME_NAME-theme.md-fab {  background-color: white; }.md083fork-button.md-THEME_NAME-theme {  border-radius: 3px; }  .md083fork-button.md-THEME_NAME-theme:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme:not([disabled]):focus {    background-color: '{{background-500-0.2}}'; }  .md083fork-button.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }    .md083fork-button.md-THEME_NAME-theme.md-primary.md-raised, .md083fork-button.md-THEME_NAME-theme.md-primary.md-fab {      color: '{{primary-contrast}}';      background-color: '{{primary-color}}'; }      .md083fork-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):focus, .md083fork-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):focus {        background-color: '{{primary-600}}'; }  .md083fork-button.md-THEME_NAME-theme.md-fab {    border-radius: 50%;    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }    .md083fork-button.md-THEME_NAME-theme.md-fab:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-fab:not([disabled]):focus {      background-color: '{{accent-A700}}'; }  .md083fork-button.md-THEME_NAME-theme.md-raised {    color: '{{background-contrast}}';    background-color: '{{background-50}}'; }    .md083fork-button.md-THEME_NAME-theme.md-raised:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-raised:not([disabled]):focus {      background-color: '{{background-200}}'; }  .md083fork-button.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }    .md083fork-button.md-THEME_NAME-theme.md-warn.md-raised, .md083fork-button.md-THEME_NAME-theme.md-warn.md-fab {      color: '{{warn-contrast}}';      background-color: '{{warn-color}}'; }      .md083fork-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):focus, .md083fork-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):focus {        background-color: '{{warn-700}}'; }  .md083fork-button.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }    .md083fork-button.md-THEME_NAME-theme.md-accent.md-raised, .md083fork-button.md-THEME_NAME-theme.md-accent.md-fab {      color: '{{accent-contrast}}';      background-color: '{{accent-color}}'; }      .md083fork-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):focus, .md083fork-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):focus {        background-color: '{{accent-700}}'; }  .md083fork-button.md-THEME_NAME-theme[disabled], .md083fork-button.md-THEME_NAME-theme.md-raised[disabled], .md083fork-button.md-THEME_NAME-theme.md-fab[disabled] {    color: '{{foreground-3}}';    background-color: transparent;    cursor: not-allowed; }md-card.md-THEME_NAME-theme {  border-radius: 2px; }  md-card.md-THEME_NAME-theme .md-card-image {    border-radius: 2px 2px 0 0; }md083fork-checkbox.md-THEME_NAME-theme .md-ripple {  color: '{{accent-600}}'; }md083fork-checkbox.md-THEME_NAME-theme.md-checked .md-ripple {  color: '{{background-600}}'; }md083fork-checkbox.md-THEME_NAME-theme .md-icon {  border-color: '{{foreground-2}}'; }md083fork-checkbox.md-THEME_NAME-theme.md-checked .md-icon {  background-color: '{{accent-color-0.87}}'; }md083fork-checkbox.md-THEME_NAME-theme.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ripple {  color: '{{primary-600}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ripple {  color: '{{background-600}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-icon {  border-color: '{{foreground-2}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon {  background-color: '{{primary-color-0.87}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ripple {  color: '{{warn-600}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-icon {  border-color: '{{foreground-2}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon {  background-color: '{{warn-color-0.87}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md083fork-checkbox.md-THEME_NAME-theme[disabled] .md-icon {  border-color: '{{foreground-3}}'; }md083fork-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon {  background-color: '{{foreground-3}}'; }md-content.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md-dialog.md-THEME_NAME-theme {  border-radius: 4px;  background-color: '{{background-hue-3}}'; }  md-dialog.md-THEME_NAME-theme.md-content-overflow .md-actions {    border-top-color: '{{foreground-4}}'; }md-divider.md-THEME_NAME-theme {  border-top-color: '{{foreground-4}}'; }md-icon.md-THEME_NAME-theme.md-primary {  color: '{{primary-color}}'; }md-icon.md-THEME_NAME-theme.md-accent {  color: '{{accent-color}}'; }md-icon.md-THEME_NAME-theme.md-warn {  color: '{{warn-color}}'; }md-icon.md-THEME_NAME-theme.md-danger {  color: '{{danger-color}}'; }md083fork-input-container.md-THEME_NAME-theme .md-input {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}';  text-shadow: '{{foreground-shadow}}'; }  md083fork-input-container.md-THEME_NAME-theme .md-input::-webkit-input-placeholder, md083fork-input-container.md-THEME_NAME-theme .md-input::-moz-placeholder, md083fork-input-container.md-THEME_NAME-theme .md-input:-moz-placeholder, md083fork-input-container.md-THEME_NAME-theme .md-input:-ms-input-placeholder {    color: '{{foreground-3}}'; }md083fork-input-container.md-THEME_NAME-theme > md-icon {  fill: '{{foreground-1}}'; }md083fork-input-container.md-THEME_NAME-theme label, md083fork-input-container.md-THEME_NAME-theme .md-placeholder {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-has-value label {  color: '{{foreground-2}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused .md-input {  border-color: '{{primary-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused label {  color: '{{primary-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused md-icon {  fill: '{{primary-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent .md-input {  border-color: '{{accent-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent label {  color: '{{accent-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn .md-input {  border-color: '{{warn-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn label {  color: '{{warn-500}}'; }md083fork-input-container.md-THEME_NAME-theme.md-input-invalid .md-input {  border-color: '{{warn-500}}'; }md083fork-input-container.md-THEME_NAME-theme.md-input-invalid label {  color: '{{warn-500}}'; }md083fork-input-container.md-THEME_NAME-theme.md-input-invalid ng-message, md083fork-input-container.md-THEME_NAME-theme.md-input-invalid data-ng-message, md083fork-input-container.md-THEME_NAME-theme.md-input-invalid x-ng-message, md083fork-input-container.md-THEME_NAME-theme.md-input-invalid [ng-message], md083fork-input-container.md-THEME_NAME-theme.md-input-invalid [data-ng-message], md083fork-input-container.md-THEME_NAME-theme.md-input-invalid [x-ng-message], md083fork-input-container.md-THEME_NAME-theme.md-input-invalid .md-char-counter {  color: '{{warn-500}}'; }md083fork-input-container.md-THEME_NAME-theme .md-input[disabled], [disabled] md083fork-input-container.md-THEME_NAME-theme .md-input {  border-bottom-color: transparent;  color: '{{foreground-3}}';  background-image: linear-gradient(to right, '{{foreground-4}}' 0%, '{{foreground-4}}' 33%, transparent 0%);  background-image: -ms-linear-gradient(left, transparent 0%, '{{foreground-4}}' 100%); }md-progress-circular.md-THEME_NAME-theme {  background-color: transparent; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-gap {    border-top-color: '{{primary-color}}';    border-bottom-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-top-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-right-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle {    border-left-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-gap {    border-top-color: '{{warn-color}}';    border-bottom-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-top-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-right-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle {    border-left-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-gap {    border-top-color: '{{accent-color}}';    border-bottom-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-top-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-right-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle {    border-left-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme .md-container {  background-color: '{{primary-100}}'; }md-progress-linear.md-THEME_NAME-theme .md-bar {  background-color: '{{primary-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-container {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-bar {  background-color: '{{warn-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-container {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-bar {  background-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-bar1 {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-dashed:before {  background: radial-gradient('{{warn-100}}' 0%, '{{warn-100}}' 16%, transparent 42%); }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-bar1 {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-dashed:before {  background: radial-gradient('{{accent-100}}' 0%, '{{accent-100}}' 16%, transparent 42%); }md083fork-radio-button.md-THEME_NAME-theme .md-off {  border-color: '{{foreground-2}}'; }md083fork-radio-button.md-THEME_NAME-theme .md-on {  background-color: '{{accent-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme.md-checked .md-off {  border-color: '{{accent-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme.md-checked .md-ink-ripple {  color: '{{accent-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme .md-container .md-ripple {  color: '{{accent-600}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-on {  background-color: '{{primary-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off {  border-color: '{{primary-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple {  color: '{{primary-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple {  color: '{{primary-600}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-on {  background-color: '{{warn-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off {  border-color: '{{warn-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple {  color: '{{warn-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple {  color: '{{warn-600}}'; }md083fork-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-off {  border-color: '{{foreground-3}}'; }md083fork-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-on {  border-color: '{{foreground-3}}'; }md083fork-radio-group.md-THEME_NAME-theme:focus:not(:empty) {  border-color: '{{foreground-1}}'; }md083fork-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label {  border-bottom-color: '{{primary-color}}';  color: '{{ foreground-1 }}'; }  md083fork-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label.md-placeholder {    color: '{{ foreground-1 }}'; }md083fork-select.md-THEME_NAME-theme:not([disabled]):focus.md-accent .md-select-label {  border-bottom-color: '{{accent-color}}'; }md083fork-select.md-THEME_NAME-theme:not([disabled]):focus.md-warn .md-select-label {  border-bottom-color: '{{warn-color}}'; }md083fork-select.md-THEME_NAME-theme[disabled] .md-select-label {  color: '{{foreground-3}}'; }  md083fork-select.md-THEME_NAME-theme[disabled] .md-select-label.md-placeholder {    color: '{{foreground-3}}'; }md083fork-select.md-THEME_NAME-theme .md-select-label {  border-bottom-color: '{{foreground-4}}'; }  md083fork-select.md-THEME_NAME-theme .md-select-label.md-placeholder {    color: '{{foreground-2}}'; }md083fork-select-menu.md-THEME_NAME-theme md083fork-optgroup {  color: '{{foreground-2}}'; }  md083fork-select-menu.md-THEME_NAME-theme md083fork-optgroup md083fork-option {    color: '{{foreground-1}}'; }md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected] {  background-color: '{{primary-50}}'; }  md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected]:focus {    background-color: '{{primary-100}}'; }  md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected].md-accent {    background-color: '{{accent-50}}'; }    md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected].md-accent:focus {      background-color: '{{accent-100}}'; }md083fork-select-menu.md-THEME_NAME-theme md083fork-option:focus:not([selected]) {  background: '{{background-200}}'; }md-sidenav.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md083fork-slider.md-THEME_NAME-theme .md-track {  background-color: '{{foreground-3}}'; }md083fork-slider.md-THEME_NAME-theme .md-track-ticks {  background-color: '{{foreground-4}}'; }md083fork-slider.md-THEME_NAME-theme .md-focus-thumb {  background-color: '{{foreground-2}}'; }md083fork-slider.md-THEME_NAME-theme .md-focus-ring {  border-color: '{{foreground-4}}'; }md083fork-slider.md-THEME_NAME-theme .md-disabled-thumb {  border-color: '{{background-hue-3}}'; }md083fork-slider.md-THEME_NAME-theme.md-min .md-thumb:after {  background-color: '{{background-hue-3}}'; }md083fork-slider.md-THEME_NAME-theme .md-track.md-track-fill {  background-color: '{{accent-color}}'; }md083fork-slider.md-THEME_NAME-theme .md-thumb:after {  border-color: '{{accent-color}}';  background-color: '{{accent-color}}'; }md083fork-slider.md-THEME_NAME-theme .md-sign {  background-color: '{{accent-color}}'; }  md083fork-slider.md-THEME_NAME-theme .md-sign:after {    border-top-color: '{{accent-color}}'; }md083fork-slider.md-THEME_NAME-theme .md-thumb-text {  color: '{{accent-contrast}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-track.md-track-fill {  background-color: '{{warn-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-thumb:after {  border-color: '{{warn-color}}';  background-color: '{{warn-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-sign {  background-color: '{{warn-color}}'; }  md083fork-slider.md-THEME_NAME-theme.md-warn .md-sign:after {    border-top-color: '{{warn-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-thumb-text {  color: '{{warn-contrast}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-track.md-track-fill {  background-color: '{{primary-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-thumb:after {  border-color: '{{primary-color}}';  background-color: '{{primary-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-sign {  background-color: '{{primary-color}}'; }  md083fork-slider.md-THEME_NAME-theme.md-primary .md-sign:after {    border-top-color: '{{primary-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-thumb-text {  color: '{{primary-contrast}}'; }md083fork-slider.md-THEME_NAME-theme[disabled] .md-thumb:after {  border-color: '{{foreground-3}}'; }md083fork-slider.md-THEME_NAME-theme[disabled]:not(.md-min) .md-thumb:after {  background-color: '{{foreground-3}}'; }.md-subheader.md-THEME_NAME-theme {  color: '{{ foreground-2-0.23 }}';  background-color: '{{background-hue-3}}'; }  .md-subheader.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme .md-thumb {  background-color: '{{background-50}}'; }md-switch.md-THEME_NAME-theme .md-bar {  background-color: '{{background-500}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-thumb {  background-color: '{{accent-color}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-bar {  background-color: '{{accent-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-thumb {  background-color: '{{primary-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-bar {  background-color: '{{primary-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-thumb {  background-color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-bar {  background-color: '{{warn-color-0.5}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-thumb {  background-color: '{{background-400}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-bar {  background-color: '{{foreground-4}}'; }md-switch.md-THEME_NAME-theme:focus .md-label:not(:empty) {  border-color: '{{foreground-1}}';  border-style: dotted; }md-tabs.md-THEME_NAME-theme .md-header {  background-color: transparent; }md-tabs.md-THEME_NAME-theme .md-paginator md-icon {  color: '{{primary-color}}'; }md-tabs.md-THEME_NAME-theme.md-accent .md-header {  background-color: '{{accent-color}}'; }md-tabs.md-THEME_NAME-theme.md-accent md-tab:not([disabled]) {  color: '{{accent-100}}'; }  md-tabs.md-THEME_NAME-theme.md-accent md-tab:not([disabled]).active {    color: '{{accent-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-primary .md-header {  background-color: '{{primary-color}}'; }md-tabs.md-THEME_NAME-theme.md-primary md-tab:not([disabled]) {  color: '{{primary-100}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab:not([disabled]).active {    color: '{{primary-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-primary md-tab {  color: '{{primary-100}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab[disabled] {    color: '{{foreground-3}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab:focus {    color: '{{primary-contrast}}';    background-color: '{{primary-contrast-0.1}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab.active {    color: '{{primary-contrast}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab .md-ripple-container {    color: '{{primary-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-warn .md-header {  background-color: '{{warn-color}}'; }md-tabs.md-THEME_NAME-theme.md-warn md-tab:not([disabled]) {  color: '{{warn-100}}'; }  md-tabs.md-THEME_NAME-theme.md-warn md-tab:not([disabled]).active {    color: '{{warn-contrast}}'; }md-tabs.md-THEME_NAME-theme md-tabs-ink-bar {  color: '{{accent-color}}';  background: '{{accent-color}}'; }md-tabs.md-THEME_NAME-theme md-tab {  color: '{{foreground-2}}'; }  md-tabs.md-THEME_NAME-theme md-tab[disabled] {    color: '{{foreground-3}}'; }  md-tabs.md-THEME_NAME-theme md-tab:focus {    color: '{{foreground-1}}'; }  md-tabs.md-THEME_NAME-theme md-tab.active {    color: '{{primary-color}}'; }  md-tabs.md-THEME_NAME-theme md-tab .md-ripple-container {    color: '{{accent-100}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  text-shadow: '{{foreground-shadow}}'; }  md-input-group.md-THEME_NAME-theme input::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme input::-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-ms-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-ms-input-placeholder {    color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme label {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused input, md-input-group.md-THEME_NAME-theme.md-input-focused textarea {  border-color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused label {  color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent input, md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent textarea {  border-color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent label {  color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-has-value:not(.md-input-focused) label {  color: '{{foreground-2}}'; }md-input-group.md-THEME_NAME-theme .md-input[disabled] {  border-bottom-color: '{{foreground-4}}';  color: '{{foreground-3}}'; }md083fork-toast.md-THEME_NAME-theme {  background-color: '{{foreground-1}}';  color: '{{background-50}}'; }  md083fork-toast.md-THEME_NAME-theme .md083fork-button {    color: '{{background-50}}'; }    md083fork-toast.md-THEME_NAME-theme .md083fork-button.md-highlight {      color: '{{primary-A200}}'; }      md083fork-toast.md-THEME_NAME-theme .md083fork-button.md-highlight.md-accent {        color: '{{accent-A200}}'; }      md083fork-toast.md-THEME_NAME-theme .md083fork-button.md-highlight.md-warn {        color: '{{warn-A200}}'; }md-toolbar.md-THEME_NAME-theme {  background-color: '{{primary-color}}';  color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme .md083fork-button {    color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-accent {    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-warn {    background-color: '{{warn-color}}';    color: '{{warn-contrast}}'; }md-tooltip.md-THEME_NAME-theme {  color: '{{background-A100}}'; }  md-tooltip.md-THEME_NAME-theme .md-background {    background-color: '{{foreground-2}}'; }"); 
+ angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete {  background: '{{background-50}}'; }  md-autocomplete button md-icon path {    fill: '{{background-600}}'; }  md-autocomplete button:after {    background: '{{background-600-0.3}}'; }  md-autocomplete ul {    background: '{{background-50}}'; }    md-autocomplete ul li {      border-top: 1px solid '{{background-400}}';      color: '{{background-900}}'; }      md-autocomplete ul li .highlight {        color: '{{background-600}}'; }      md-autocomplete ul li:hover, md-autocomplete ul li.selected {        background: '{{background-200}}'; }md-backdrop.md-opaque.md-THEME_NAME-theme {  background-color: '{{foreground-4-0.5}}'; }md-bottom-sheet.md-THEME_NAME-theme {  background-color: '{{background-50}}';  border-top-color: '{{background-300}}'; }  md-bottom-sheet.md-THEME_NAME-theme.md-list md-item {    color: '{{foreground-1}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    background-color: '{{background-50}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    color: '{{foreground-1}}'; }md-card.md-THEME_NAME-theme {  border-radius: 2px; }  md-card.md-THEME_NAME-theme .md-card-image {    border-radius: 2px 2px 0 0; }md-toolbar .md083fork-button.md-THEME_NAME-theme.md-fab {  background-color: white; }.md083fork-button.md-THEME_NAME-theme {  border-radius: 3px; }  .md083fork-button.md-THEME_NAME-theme:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme:not([disabled]):focus {    background-color: '{{background-500-0.2}}'; }  .md083fork-button.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }    .md083fork-button.md-THEME_NAME-theme.md-primary.md-raised, .md083fork-button.md-THEME_NAME-theme.md-primary.md-fab {      color: '{{primary-contrast}}';      background-color: '{{primary-color}}'; }      .md083fork-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):focus, .md083fork-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):focus {        background-color: '{{primary-600}}'; }  .md083fork-button.md-THEME_NAME-theme.md-fab {    border-radius: 50%;    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }    .md083fork-button.md-THEME_NAME-theme.md-fab:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-fab:not([disabled]):focus {      background-color: '{{accent-A700}}'; }  .md083fork-button.md-THEME_NAME-theme.md-raised {    color: '{{background-contrast}}';    background-color: '{{background-50}}'; }    .md083fork-button.md-THEME_NAME-theme.md-raised:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-raised:not([disabled]):focus {      background-color: '{{background-200}}'; }  .md083fork-button.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }    .md083fork-button.md-THEME_NAME-theme.md-warn.md-raised, .md083fork-button.md-THEME_NAME-theme.md-warn.md-fab {      color: '{{warn-contrast}}';      background-color: '{{warn-color}}'; }      .md083fork-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):focus, .md083fork-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):focus {        background-color: '{{warn-700}}'; }  .md083fork-button.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }    .md083fork-button.md-THEME_NAME-theme.md-accent.md-raised, .md083fork-button.md-THEME_NAME-theme.md-accent.md-fab {      color: '{{accent-contrast}}';      background-color: '{{accent-color}}'; }      .md083fork-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):focus, .md083fork-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):hover, .md083fork-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):focus {        background-color: '{{accent-700}}'; }  .md083fork-button.md-THEME_NAME-theme[disabled], .md083fork-button.md-THEME_NAME-theme.md-raised[disabled], .md083fork-button.md-THEME_NAME-theme.md-fab[disabled] {    color: '{{foreground-3}}';    background-color: transparent;    cursor: not-allowed; }md083fork-checkbox.md-THEME_NAME-theme .md-ripple {  color: '{{accent-600}}'; }md083fork-checkbox.md-THEME_NAME-theme.md-checked .md-ripple {  color: '{{background-600}}'; }md083fork-checkbox.md-THEME_NAME-theme .md-icon {  border-color: '{{foreground-2}}'; }md083fork-checkbox.md-THEME_NAME-theme.md-checked .md-icon {  background-color: '{{accent-color-0.87}}'; }md083fork-checkbox.md-THEME_NAME-theme.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ripple {  color: '{{primary-600}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ripple {  color: '{{background-600}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-icon {  border-color: '{{foreground-2}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon {  background-color: '{{primary-color-0.87}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ripple {  color: '{{warn-600}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-icon {  border-color: '{{foreground-2}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon {  background-color: '{{warn-color-0.87}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md083fork-checkbox.md-THEME_NAME-theme[disabled] .md-icon {  border-color: '{{foreground-3}}'; }md083fork-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon {  background-color: '{{foreground-3}}'; }md-content.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md083fork-dialog.md-THEME_NAME-theme {  border-radius: 4px;  background-color: '{{background-hue-3}}'; }  md083fork-dialog.md-THEME_NAME-theme.md-content-overflow .md-actions {    border-top-color: '{{foreground-4}}'; }md-divider.md-THEME_NAME-theme {  border-top-color: '{{foreground-4}}'; }md-icon.md-THEME_NAME-theme.md-primary {  color: '{{primary-color}}'; }md-icon.md-THEME_NAME-theme.md-accent {  color: '{{accent-color}}'; }md-icon.md-THEME_NAME-theme.md-warn {  color: '{{warn-color}}'; }md-icon.md-THEME_NAME-theme.md-danger {  color: '{{danger-color}}'; }md083fork-input-container.md-THEME_NAME-theme .md-input {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}';  text-shadow: '{{foreground-shadow}}'; }  md083fork-input-container.md-THEME_NAME-theme .md-input::-webkit-input-placeholder, md083fork-input-container.md-THEME_NAME-theme .md-input::-moz-placeholder, md083fork-input-container.md-THEME_NAME-theme .md-input:-moz-placeholder, md083fork-input-container.md-THEME_NAME-theme .md-input:-ms-input-placeholder {    color: '{{foreground-3}}'; }md083fork-input-container.md-THEME_NAME-theme > md-icon {  fill: '{{foreground-1}}'; }md083fork-input-container.md-THEME_NAME-theme label, md083fork-input-container.md-THEME_NAME-theme .md-placeholder {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-has-value label {  color: '{{foreground-2}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused .md-input {  border-color: '{{primary-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused label {  color: '{{primary-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused md-icon {  fill: '{{primary-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent .md-input {  border-color: '{{accent-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent label {  color: '{{accent-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn .md-input {  border-color: '{{warn-500}}'; }md083fork-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn label {  color: '{{warn-500}}'; }md083fork-input-container.md-THEME_NAME-theme.md-input-invalid .md-input {  border-color: '{{warn-500}}'; }md083fork-input-container.md-THEME_NAME-theme.md-input-invalid label {  color: '{{warn-500}}'; }md083fork-input-container.md-THEME_NAME-theme.md-input-invalid ng-message, md083fork-input-container.md-THEME_NAME-theme.md-input-invalid data-ng-message, md083fork-input-container.md-THEME_NAME-theme.md-input-invalid x-ng-message, md083fork-input-container.md-THEME_NAME-theme.md-input-invalid [ng-message], md083fork-input-container.md-THEME_NAME-theme.md-input-invalid [data-ng-message], md083fork-input-container.md-THEME_NAME-theme.md-input-invalid [x-ng-message], md083fork-input-container.md-THEME_NAME-theme.md-input-invalid .md-char-counter {  color: '{{warn-500}}'; }md083fork-input-container.md-THEME_NAME-theme .md-input[disabled], [disabled] md083fork-input-container.md-THEME_NAME-theme .md-input {  border-bottom-color: transparent;  color: '{{foreground-3}}';  background-image: linear-gradient(to right, '{{foreground-4}}' 0%, '{{foreground-4}}' 33%, transparent 0%);  background-image: -ms-linear-gradient(left, transparent 0%, '{{foreground-4}}' 100%); }md-progress-circular.md-THEME_NAME-theme {  background-color: transparent; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-gap {    border-top-color: '{{primary-color}}';    border-bottom-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-top-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-right-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle {    border-left-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-gap {    border-top-color: '{{warn-color}}';    border-bottom-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-top-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-right-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle {    border-left-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-gap {    border-top-color: '{{accent-color}}';    border-bottom-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-top-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-right-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle {    border-left-color: '{{accent-color}}'; }md083fork-radio-button.md-THEME_NAME-theme .md-off {  border-color: '{{foreground-2}}'; }md083fork-radio-button.md-THEME_NAME-theme .md-on {  background-color: '{{accent-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme.md-checked .md-off {  border-color: '{{accent-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme.md-checked .md-ink-ripple {  color: '{{accent-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme .md-container .md-ripple {  color: '{{accent-600}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-on {  background-color: '{{primary-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off {  border-color: '{{primary-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple {  color: '{{primary-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple {  color: '{{primary-600}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-on {  background-color: '{{warn-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off {  border-color: '{{warn-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple {  color: '{{warn-color-0.87}}'; }md083fork-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple {  color: '{{warn-600}}'; }md083fork-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-off {  border-color: '{{foreground-3}}'; }md083fork-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-on {  border-color: '{{foreground-3}}'; }md083fork-radio-group.md-THEME_NAME-theme:focus:not(:empty) {  border-color: '{{foreground-1}}'; }md-progress-linear.md-THEME_NAME-theme .md-container {  background-color: '{{primary-100}}'; }md-progress-linear.md-THEME_NAME-theme .md-bar {  background-color: '{{primary-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-container {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-bar {  background-color: '{{warn-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-container {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-bar {  background-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-bar1 {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-dashed:before {  background: radial-gradient('{{warn-100}}' 0%, '{{warn-100}}' 16%, transparent 42%); }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-bar1 {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-dashed:before {  background: radial-gradient('{{accent-100}}' 0%, '{{accent-100}}' 16%, transparent 42%); }md083fork-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label {  border-bottom-color: '{{primary-color}}';  color: '{{ foreground-1 }}'; }  md083fork-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label.md-placeholder {    color: '{{ foreground-1 }}'; }md083fork-select.md-THEME_NAME-theme:not([disabled]):focus.md-accent .md-select-label {  border-bottom-color: '{{accent-color}}'; }md083fork-select.md-THEME_NAME-theme:not([disabled]):focus.md-warn .md-select-label {  border-bottom-color: '{{warn-color}}'; }md083fork-select.md-THEME_NAME-theme[disabled] .md-select-label {  color: '{{foreground-3}}'; }  md083fork-select.md-THEME_NAME-theme[disabled] .md-select-label.md-placeholder {    color: '{{foreground-3}}'; }md083fork-select.md-THEME_NAME-theme .md-select-label {  border-bottom-color: '{{foreground-4}}'; }  md083fork-select.md-THEME_NAME-theme .md-select-label.md-placeholder {    color: '{{foreground-2}}'; }md083fork-select-menu.md-THEME_NAME-theme md083fork-optgroup {  color: '{{foreground-2}}'; }  md083fork-select-menu.md-THEME_NAME-theme md083fork-optgroup md083fork-option {    color: '{{foreground-1}}'; }md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected] {  background-color: '{{primary-50}}'; }  md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected]:focus {    background-color: '{{primary-100}}'; }  md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected].md-accent {    background-color: '{{accent-50}}'; }    md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected].md-accent:focus {      background-color: '{{accent-100}}'; }md083fork-select-menu.md-THEME_NAME-theme md083fork-option:focus:not([selected]) {  background: '{{background-200}}'; }md-sidenav.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md083fork-slider.md-THEME_NAME-theme .md-track {  background-color: '{{foreground-3}}'; }md083fork-slider.md-THEME_NAME-theme .md-track-ticks {  background-color: '{{foreground-4}}'; }md083fork-slider.md-THEME_NAME-theme .md-focus-thumb {  background-color: '{{foreground-2}}'; }md083fork-slider.md-THEME_NAME-theme .md-focus-ring {  border-color: '{{foreground-4}}'; }md083fork-slider.md-THEME_NAME-theme .md-disabled-thumb {  border-color: '{{background-hue-3}}'; }md083fork-slider.md-THEME_NAME-theme.md-min .md-thumb:after {  background-color: '{{background-hue-3}}'; }md083fork-slider.md-THEME_NAME-theme .md-track.md-track-fill {  background-color: '{{accent-color}}'; }md083fork-slider.md-THEME_NAME-theme .md-thumb:after {  border-color: '{{accent-color}}';  background-color: '{{accent-color}}'; }md083fork-slider.md-THEME_NAME-theme .md-sign {  background-color: '{{accent-color}}'; }  md083fork-slider.md-THEME_NAME-theme .md-sign:after {    border-top-color: '{{accent-color}}'; }md083fork-slider.md-THEME_NAME-theme .md-thumb-text {  color: '{{accent-contrast}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-track.md-track-fill {  background-color: '{{warn-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-thumb:after {  border-color: '{{warn-color}}';  background-color: '{{warn-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-sign {  background-color: '{{warn-color}}'; }  md083fork-slider.md-THEME_NAME-theme.md-warn .md-sign:after {    border-top-color: '{{warn-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-thumb-text {  color: '{{warn-contrast}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-track.md-track-fill {  background-color: '{{primary-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-thumb:after {  border-color: '{{primary-color}}';  background-color: '{{primary-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-sign {  background-color: '{{primary-color}}'; }  md083fork-slider.md-THEME_NAME-theme.md-primary .md-sign:after {    border-top-color: '{{primary-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-thumb-text {  color: '{{primary-contrast}}'; }md083fork-slider.md-THEME_NAME-theme[disabled] .md-thumb:after {  border-color: '{{foreground-3}}'; }md083fork-slider.md-THEME_NAME-theme[disabled]:not(.md-min) .md-thumb:after {  background-color: '{{foreground-3}}'; }.md-subheader.md-THEME_NAME-theme {  color: '{{ foreground-2-0.23 }}';  background-color: '{{background-hue-3}}'; }  .md-subheader.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme .md-thumb {  background-color: '{{background-50}}'; }md-switch.md-THEME_NAME-theme .md-bar {  background-color: '{{background-500}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-thumb {  background-color: '{{accent-color}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-bar {  background-color: '{{accent-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-thumb {  background-color: '{{primary-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-bar {  background-color: '{{primary-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-thumb {  background-color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-bar {  background-color: '{{warn-color-0.5}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-thumb {  background-color: '{{background-400}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-bar {  background-color: '{{foreground-4}}'; }md-switch.md-THEME_NAME-theme:focus .md-label:not(:empty) {  border-color: '{{foreground-1}}';  border-style: dotted; }md083fork-tabs.md-THEME_NAME-theme .md-header {  background-color: transparent; }md083fork-tabs.md-THEME_NAME-theme .md-paginator md-icon {  color: '{{primary-color}}'; }md083fork-tabs.md-THEME_NAME-theme.md-accent .md-header {  background-color: '{{accent-color}}'; }md083fork-tabs.md-THEME_NAME-theme.md-accent md083fork-tab:not([disabled]) {  color: '{{accent-100}}'; }  md083fork-tabs.md-THEME_NAME-theme.md-accent md083fork-tab:not([disabled]).active {    color: '{{accent-contrast}}'; }md083fork-tabs.md-THEME_NAME-theme.md-primary .md-header {  background-color: '{{primary-color}}'; }md083fork-tabs.md-THEME_NAME-theme.md-primary md083fork-tab:not([disabled]) {  color: '{{primary-100}}'; }  md083fork-tabs.md-THEME_NAME-theme.md-primary md083fork-tab:not([disabled]).active {    color: '{{primary-contrast}}'; }md083fork-tabs.md-THEME_NAME-theme.md-primary md083fork-tab {  color: '{{primary-100}}'; }  md083fork-tabs.md-THEME_NAME-theme.md-primary md083fork-tab[disabled] {    color: '{{foreground-3}}'; }  md083fork-tabs.md-THEME_NAME-theme.md-primary md083fork-tab:focus {    color: '{{primary-contrast}}';    background-color: '{{primary-contrast-0.1}}'; }  md083fork-tabs.md-THEME_NAME-theme.md-primary md083fork-tab.active {    color: '{{primary-contrast}}'; }  md083fork-tabs.md-THEME_NAME-theme.md-primary md083fork-tab .md-ripple-container {    color: '{{primary-contrast}}'; }md083fork-tabs.md-THEME_NAME-theme.md-warn .md-header {  background-color: '{{warn-color}}'; }md083fork-tabs.md-THEME_NAME-theme.md-warn md083fork-tab:not([disabled]) {  color: '{{warn-100}}'; }  md083fork-tabs.md-THEME_NAME-theme.md-warn md083fork-tab:not([disabled]).active {    color: '{{warn-contrast}}'; }md083fork-tabs.md-THEME_NAME-theme md083fork-tabs-ink-bar {  color: '{{accent-color}}';  background: '{{accent-color}}'; }md083fork-tabs.md-THEME_NAME-theme md083fork-tab {  color: '{{foreground-2}}'; }  md083fork-tabs.md-THEME_NAME-theme md083fork-tab[disabled] {    color: '{{foreground-3}}'; }  md083fork-tabs.md-THEME_NAME-theme md083fork-tab:focus {    color: '{{foreground-1}}'; }  md083fork-tabs.md-THEME_NAME-theme md083fork-tab.active {    color: '{{primary-color}}'; }  md083fork-tabs.md-THEME_NAME-theme md083fork-tab .md-ripple-container {    color: '{{accent-100}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  text-shadow: '{{foreground-shadow}}'; }  md-input-group.md-THEME_NAME-theme input::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme input::-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-ms-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-ms-input-placeholder {    color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme label {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused input, md-input-group.md-THEME_NAME-theme.md-input-focused textarea {  border-color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused label {  color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent input, md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent textarea {  border-color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent label {  color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-has-value:not(.md-input-focused) label {  color: '{{foreground-2}}'; }md-input-group.md-THEME_NAME-theme .md-input[disabled] {  border-bottom-color: '{{foreground-4}}';  color: '{{foreground-3}}'; }md083fork-toast.md-THEME_NAME-theme {  background-color: '{{foreground-1}}';  color: '{{background-50}}'; }  md083fork-toast.md-THEME_NAME-theme .md083fork-button {    color: '{{background-50}}'; }    md083fork-toast.md-THEME_NAME-theme .md083fork-button.md-highlight {      color: '{{primary-A200}}'; }      md083fork-toast.md-THEME_NAME-theme .md083fork-button.md-highlight.md-accent {        color: '{{accent-A200}}'; }      md083fork-toast.md-THEME_NAME-theme .md083fork-button.md-highlight.md-warn {        color: '{{warn-A200}}'; }md-toolbar.md-THEME_NAME-theme {  background-color: '{{primary-color}}';  color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme .md083fork-button {    color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-accent {    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-warn {    background-color: '{{warn-color}}';    color: '{{warn-contrast}}'; }md-tooltip.md-THEME_NAME-theme {  color: '{{background-A100}}'; }  md-tooltip.md-THEME_NAME-theme .md-background {    background-color: '{{foreground-2}}'; }"); 
 })();
