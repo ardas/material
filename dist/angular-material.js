@@ -4,7 +4,7 @@
  * @license MIT
  * v0.8.3
  */
-angular.module('ngMaterial083Fork', ["ng","ngAnimate","ngAria","material.083fork.core","material.083fork.core.theming.palette","material.083fork.core.theming","material.083fork.components.autocomplete","material.083fork.components.backdrop","material.083fork.components.bottomSheet","material.083fork.components.button","material.083fork.components.card","material.083fork.components.checkbox","material.083fork.components.content","material.083fork.components.dialog","material.083fork.components.divider","material.083fork.components.gridList","material.083fork.components.icon","material.083fork.components.input","material.083fork.components.progressCircular","material.083fork.components.list","material.083fork.components.progressLinear","material.083fork.components.radioButton","material.083fork.components.select","material.083fork.components.sidenav","material.083fork.components.slider","material.083fork.components.sticky","material.083fork.components.subheader","material.083fork.components.swipe","material.083fork.components.switch","material.083fork.components.tabs","material.083fork.components.textField","material.083fork.components.toast","material.083fork.components.toolbar","material.083fork.components.tooltip","material.083fork.components.whiteframe"]);
+angular.module('ngMaterial083Fork', ["ng","ngAnimate","ngAria","material.083fork.core","material.083fork.core.theming.palette","material.083fork.core.theming","material.083fork.components.autocomplete","material.083fork.components.backdrop","material.083fork.components.bottomSheet","material.083fork.components.button","material.083fork.components.card","material.083fork.components.checkbox","material.083fork.components.content","material.083fork.components.dialog","material.083fork.components.divider","material.083fork.components.gridList","material.083fork.components.icon","material.083fork.components.input","material.083fork.components.list","material.083fork.components.progressCircular","material.083fork.components.progressLinear","material.083fork.components.radioButton","material.083fork.components.select","material.083fork.components.sidenav","material.083fork.components.sticky","material.083fork.components.slider","material.083fork.components.subheader","material.083fork.components.swipe","material.083fork.components.switch","material.083fork.components.tabs","material.083fork.components.textField","material.083fork.components.toast","material.083fork.components.toolbar","material.083fork.components.tooltip","material.083fork.components.whiteframe"]);
 /*!
  * Angular Material Design
  * https://github.com/angular/material
@@ -1068,7 +1068,7 @@ angular.element(document)
   .on(MOVE_EVENTS, gestureMove)
   .on(END_EVENTS, gestureEnd)
   // For testing
-  .on('$$mdGestureReset', function() {
+  .on('$$md083forkGestureReset', function() {
     lastPointer = pointer = null;
   });
 
@@ -1169,8 +1169,8 @@ function makeStartPointer(ev) {
 }
 
 angular.module('material.083fork.core')
-.run(["$mdGesture", function($mdGesture) {}]) // make sure $mdGesture is always instantiated
-.factory('$mdGesture', ["$$MdGestureHandler", "$$rAF", "$timeout", function($$MdGestureHandler, $$rAF, $timeout) {
+.run(["$md083forkGesture", function($md083forkGesture) {}]) // make sure $md083forkGesture is always instantiated
+.factory('$md083forkGesture', ["$$md083forkGestureHandler", "$$rAF", "$timeout", function($$md083forkGestureHandler, $$rAF, $timeout) {
   HANDLERS = {};
 
   if (shouldHijackClicks) {
@@ -1207,7 +1207,7 @@ angular.module('material.083fork.core')
       $timeout.cancel(this.state.timeout);
     },
     onStart: function(ev, pointer) {
-      // For hold, require a parent to be registered with $mdGesture.register()
+      // For hold, require a parent to be registered with $md083forkGesture.register()
       // Because we prevent scroll events, this is necessary.
       if (!this.state.registeredParent) return this.cancel();
 
@@ -1235,7 +1235,7 @@ angular.module('material.083fork.core')
       horizontal: true
     },
     onStart: function(ev) {
-      // For drag, require a parent to be registered with $mdGesture.register()
+      // For drag, require a parent to be registered with $md083forkGesture.register()
       if (!this.state.registeredParent) this.cancel();
     },
     onMove: function(ev, pointer) {
@@ -1303,7 +1303,7 @@ angular.module('material.083fork.core')
   };
 
   function addHandler(name, definition) {
-    var handler = new $$MdGestureHandler(name);
+    var handler = new $$md083forkGestureHandler(name);
     angular.extend(handler, definition);
     HANDLERS[name] = handler;
     return self;
@@ -1318,7 +1318,7 @@ angular.module('material.083fork.core')
     return handler.registerElement(element, options);
   }
 }])
-.factory('$$MdGestureHandler', ["$$rAF", function($$rAF) {
+.factory('$$md083forkGestureHandler', ["$$rAF", function($$rAF) {
 
   function GestureHandler(name) {
     this.name = name;
@@ -1338,7 +1338,7 @@ angular.module('material.083fork.core')
     start: function(ev, pointer) {
       if (this.state.isRunning) return;
       var parentTarget = this.getNearestParent(ev.target);
-      var parentTargetOptions = parentTarget && parentTarget.$mdGesture[this.name] || {};
+      var parentTargetOptions = parentTarget && parentTarget.$md083forkGesture[this.name] || {};
 
       this.state = {
         isRunning: true,
@@ -1362,11 +1362,11 @@ angular.module('material.083fork.core')
     },
 
     // Find and return the nearest parent element that has been registered via
-    // $mdGesture.register(element, 'handlerName').
+    // $md083forkGesture.register(element, 'handlerName').
     getNearestParent: function(node) {
       var current = node;
       while (current) {
-        if ( (current.$mdGesture || {})[this.name] ) {
+        if ( (current.$md083forkGesture || {})[this.name] ) {
           return current;
         }
         current = current.parentNode;
@@ -1375,14 +1375,14 @@ angular.module('material.083fork.core')
 
     registerElement: function(element, options) {
       var self = this;
-      element[0].$mdGesture = element[0].$mdGesture || {};
-      element[0].$mdGesture[this.name] = options || {};
+      element[0].$md083forkGesture = element[0].$md083forkGesture || {};
+      element[0].$md083forkGesture[this.name] = options || {};
       element.on('$destroy', onDestroy);
 
       return onDestroy;
 
       function onDestroy() {
-        delete element[0].$mdGesture[self.name];
+        delete element[0].$md083forkGesture[self.name];
         element.off('$destroy', onDestroy);
       }
     }
@@ -1452,29 +1452,29 @@ angular.module('material.083fork.core')
 'use strict';
 
 angular.module('material.083fork.core')
-  .provider('$$interimElement', InterimElementProvider);
+  .provider('$$083forkInterimElement', InterimElementProvider);
 
 /*
  * @ngdoc service
- * @name $$interimElement
+ * @name $$083forkInterimElement
  * @module material.core
  *
  * @description
  *
- * Factory that contructs `$$interimElement.$service` services.
+ * Factory that contructs `$$083forkInterimElement.$service` services.
  * Used internally in material design for elements that appear on screen temporarily.
  * The service provides a promise-like API for interacting with the temporary
  * elements.
  *
  * ```js
- * app.service('$mdToast', function($$interimElement) {
- *   var $mdToast = $$interimElement(toastDefaultOptions);
- *   return $mdToast;
+ * app.service('$md083forkToast', function($$083forkInterimElement) {
+ *   var $md083forkToast = $$083forkInterimElement(toastDefaultOptions);
+ *   return $md083forkToast;
  * });
  * ```
  * @param {object=} defaultOptions Options used by default for the `show` method on the service.
  *
- * @returns {$$interimElement.$service}
+ * @returns {$$083forkInterimElement.$service}
  *
  */
 
@@ -1511,7 +1511,7 @@ function InterimElementProvider() {
         'template', 'templateUrl', 'themable', 'transformTemplate', 'parent']
     });
 
-    factory.$inject = ["$$interimElement", "$animate", "$injector"];
+    factory.$inject = ["$$083forkInterimElement", "$animate", "$injector"];
     return provider;
 
     /**
@@ -1558,10 +1558,10 @@ function InterimElementProvider() {
      * Create a factory that has the given methods & defaults implementing interimElement
      */
     /* @ngInject */
-    function factory($$interimElement, $animate, $injector) {
+    function factory($$083forkInterimElement, $animate, $injector) {
       var defaultMethods;
       var defaultOptions;
-      var interimElementService = $$interimElement();
+      var interimElementService = $$083forkInterimElement();
 
       /*
        * publicService is what the developer will be using.
@@ -1631,7 +1631,7 @@ function InterimElementProvider() {
           // If argOption is supplied, eg `argOption: 'content'`, then we assume
           // if the argument is not an options object then it is the `argOption` option.
           //
-          // @example `$mdToast.simple('hello')` // sets options.content to hello
+          // @example `$md083forkToast.simple('hello')` // sets options.content to hello
           //                                     // because argOption === 'content'
           if (arguments.length && definition.argOption && !angular.isObject(arg) &&
               !angular.isArray(arg)) {
@@ -1682,7 +1682,7 @@ function InterimElementProvider() {
     return function createInterimElementService() {
       /*
        * @ngdoc service
-       * @name $$interimElement.$service
+       * @name $$083forkInterimElement.$service
        *
        * @description
        * A service used to control inserting and removing an element into the DOM.
@@ -1698,7 +1698,7 @@ function InterimElementProvider() {
 
       /*
        * @ngdoc method
-       * @name $$interimElement.$service#show
+       * @name $$083forkInterimElement.$service#show
        * @kind function
        *
        * @description
@@ -1725,7 +1725,7 @@ function InterimElementProvider() {
 
       /*
        * @ngdoc method
-       * @name $$interimElement.$service#hide
+       * @name $$083forkInterimElement.$service#hide
        * @kind function
        *
        * @description
@@ -1744,7 +1744,7 @@ function InterimElementProvider() {
 
       /*
        * @ngdoc method
-       * @name $$interimElement.$service#cancel
+       * @name $$083forkInterimElement.$service#cancel
        * @kind function
        *
        * @description
@@ -1895,7 +1895,7 @@ function InterimElementProvider() {
    * Note: currently this as a private service in the SideNav component.
    */
   angular.module('material.083fork.core')
-    .factory('$mdComponentRegistry', ComponentRegistry);
+    .factory('$md083forkComponentRegistry', ComponentRegistry);
 
   /*
    * @private
@@ -2020,25 +2020,25 @@ function InterimElementProvider() {
 'use strict';
 
 angular.module('material.083fork.core')
-  .factory('$mdInkRipple', InkRippleService)
+  .factory('$md083forkInkRipple$mdInkRipple', InkRippleService)
   .directive('mdInkRipple', InkRippleDirective)
   .directive('mdNoInk', attrNoDirective())
   .directive('mdNoBar', attrNoDirective())
   .directive('mdNoStretch', attrNoDirective());
 
-function InkRippleDirective($mdInkRipple) {
+function InkRippleDirective($md083forkInkRipple$mdInkRipple) {
   return {
     controller: angular.noop,
     link: function (scope, element, attr) {
       if (attr.hasOwnProperty('mdInkRippleCheckbox')) {
-        $mdInkRipple.attachCheckboxBehavior(scope, element);
+        $md083forkInkRipple$mdInkRipple.attachCheckboxBehavior(scope, element);
       } else {
-        $mdInkRipple.attachButtonBehavior(scope, element);
+        $md083forkInkRipple$mdInkRipple.attachButtonBehavior(scope, element);
       }
     }
   };
 }
-InkRippleDirective.$inject = ["$mdInkRipple"];
+InkRippleDirective.$inject = ["$md083forkInkRipple$mdInkRipple"];
 
 function InkRippleService($window, $timeout) {
 
@@ -3577,20 +3577,20 @@ function MdBottomSheetDirective() {
  *
  */
 
-function MdBottomSheetProvider($$interimElementProvider) {
+function MdBottomSheetProvider($$083forkInterimElementProvider) {
   // how fast we need to flick down to close the sheet, pixels/ms
   var CLOSING_VELOCITY = 0.5;
   var PADDING = 80; // same as css
 
-  bottomSheetDefaults.$inject = ["$animate", "$md083forkConstant", "$timeout", "$$rAF", "$compile", "$md083forkTheming", "$mdBottomSheet", "$rootElement", "$rootScope", "$mdGesture"];
-  return $$interimElementProvider('$mdBottomSheet')
+  bottomSheetDefaults.$inject = ["$animate", "$md083forkConstant", "$timeout", "$$rAF", "$compile", "$md083forkTheming", "$mdBottomSheet", "$rootElement", "$rootScope", "$md083forkGesture"];
+  return $$083forkInterimElementProvider('$mdBottomSheet')
     .setDefaults({
       methods: ['disableParentScroll', 'escapeToClose', 'targetEvent'],
       options: bottomSheetDefaults
     });
 
   /* @ngInject */
-  function bottomSheetDefaults($animate, $md083forkConstant, $timeout, $$rAF, $compile, $md083forkTheming, $mdBottomSheet, $rootElement, $rootScope, $mdGesture) {
+  function bottomSheetDefaults($animate, $md083forkConstant, $timeout, $$rAF, $compile, $md083forkTheming, $mdBottomSheet, $rootElement, $rootScope, $md083forkGesture) {
     var backdrop;
 
     return {
@@ -3668,7 +3668,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
      * BottomSheet class to apply bottom-sheet behavior to an element
      */
     function BottomSheet(element, parent) {
-      var deregister = $mdGesture.register(parent, 'drag', { horizontal: false });
+      var deregister = $md083forkGesture.register(parent, 'drag', { horizontal: false });
       parent.on('$md.dragstart', onDragStart)
         .on('$md.drag', onDrag)
         .on('$md.dragend', onDragEnd);
@@ -3714,7 +3714,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
   }
 
 }
-MdBottomSheetProvider.$inject = ["$$interimElementProvider"];
+MdBottomSheetProvider.$inject = ["$$083forkInterimElementProvider"];
 
 })();
 
@@ -3775,7 +3775,7 @@ angular.module('material.083fork.components.button', [
  *  </md-button>
  * </hljs>
  */
-function MdButtonDirective($mdInkRipple, $md083forkTheming, $md083forkAria) {
+function MdButtonDirective($md083forkInkRipple$mdInkRipple, $md083forkTheming, $md083forkAria) {
 
   return {
     restrict: 'EA',
@@ -3798,7 +3798,7 @@ function MdButtonDirective($mdInkRipple, $md083forkTheming, $md083forkAria) {
   function postLink(scope, element, attr) {
     var node = element[0];
     $md083forkTheming(element);
-    $mdInkRipple.attachButtonBehavior(scope, element);
+    $md083forkInkRipple$mdInkRipple.attachButtonBehavior(scope, element);
 
     var elementHasText = node.textContent.trim();
     if (!elementHasText) {
@@ -3815,7 +3815,7 @@ function MdButtonDirective($mdInkRipple, $md083forkTheming, $md083forkAria) {
   }
 
 }
-MdButtonDirective.$inject = ["$mdInkRipple", "$md083forkTheming", "$md083forkAria"];
+MdButtonDirective.$inject = ["$md083forkInkRipple$mdInkRipple", "$md083forkTheming", "$md083forkAria"];
 })();
 
 /*!
@@ -3894,11 +3894,11 @@ mdCardDirective.$inject = ["$md083forkTheming"];
 angular.module('material.083fork.components.checkbox', [
   'material.083fork.core'
 ])
-  .directive('mdCheckbox', MdCheckboxDirective);
+  .directive('md083forkCheckbox', MdCheckboxDirective);
 
 /**
  * @ngdoc directive
- * @name mdCheckbox
+ * @name md083forkCheckbox
  * @module material.components.checkbox
  * @restrict E
  *
@@ -3920,22 +3920,22 @@ angular.module('material.083fork.components.checkbox', [
  *
  * @usage
  * <hljs lang="html">
- * <md-checkbox ng-model="isChecked" aria-label="Finished?">
+ * <md083fork-checkbox ng-model="isChecked" aria-label="Finished?">
  *   Finished ?
- * </md-checkbox>
+ * </md083fork-checkbox>
  *
- * <md-checkbox md-no-ink ng-model="hasInk" aria-label="No Ink Effects">
+ * <md083fork-checkbox md-no-ink ng-model="hasInk" aria-label="No Ink Effects">
  *   No Ink Effects
- * </md-checkbox>
+ * </md083fork-checkbox>
  *
- * <md-checkbox ng-disabled="true" ng-model="isDisabled" aria-label="Disabled">
+ * <md083fork-checkbox ng-disabled="true" ng-model="isDisabled" aria-label="Disabled">
  *   Disabled
- * </md-checkbox>
+ * </md083fork-checkbox>
  *
  * </hljs>
  *
  */
-function MdCheckboxDirective(inputDirective, $mdInkRipple, $md083forkAria, $md083forkConstant, $md083forkTheming, $md083forkUtil) {
+function MdCheckboxDirective(inputDirective, $md083forkInkRipple$mdInkRipple, $md083forkAria, $md083forkConstant, $md083forkTheming, $md083forkUtil) {
   inputDirective = inputDirective[0];
   var CHECKED_CSS = 'md-checked';
 
@@ -4014,7 +4014,7 @@ function MdCheckboxDirective(inputDirective, $mdInkRipple, $md083forkAria, $md08
     };
   }
 }
-MdCheckboxDirective.$inject = ["inputDirective", "$mdInkRipple", "$md083forkAria", "$md083forkConstant", "$md083forkTheming", "$md083forkUtil"];
+MdCheckboxDirective.$inject = ["inputDirective", "$md083forkInkRipple$mdInkRipple", "$md083forkAria", "$md083forkConstant", "$md083forkTheming", "$md083forkUtil"];
 
 })();
 
@@ -4438,13 +4438,13 @@ MdDialogDirective.$inject = ["$$rAF", "$md083forkTheming"];
  * @param {*=} response An argument for the rejected promise.
  */
 
-function MdDialogProvider($$interimElementProvider) {
+function MdDialogProvider($$083forkInterimElementProvider) {
 
   var alertDialogMethods = ['title', 'content', 'ariaLabel', 'ok'];
 
   advancedDialogOptions.$inject = ["$mdDialog", "$md083forkTheming"];
   dialogDefaultOptions.$inject = ["$timeout", "$rootElement", "$compile", "$animate", "$md083forkAria", "$document", "$md083forkUtil", "$md083forkConstant", "$md083forkTheming", "$$rAF", "$q", "$mdDialog"];
-  return $$interimElementProvider('$mdDialog')
+  return $$083forkInterimElementProvider('$mdDialog')
     .setDefaults({
       methods: ['disableParentScroll', 'hasBackdrop', 'clickOutsideToClose', 'escapeToClose', 'targetEvent'],
       options: dialogDefaultOptions
@@ -4677,7 +4677,7 @@ function MdDialogProvider($$interimElementProvider) {
 
   }
 }
-MdDialogProvider.$inject = ["$$interimElementProvider"];
+MdDialogProvider.$inject = ["$$083forkInterimElementProvider"];
 
 })();
 
@@ -6351,6 +6351,102 @@ function placeholderDirective() {
 
 /**
  * @ngdoc module
+ * @name material.components.list
+ * @description
+ * List module
+ */
+angular.module('material.083fork.components.list', [
+  'material.083fork.core'
+])
+  .directive('mdList', mdListDirective)
+  .directive('mdItem', mdItemDirective)
+  .directive('mdListItem', mdItemDirective);
+
+/**
+ * @ngdoc directive
+ * @name mdList
+ * @module material.components.list
+ *
+ * @restrict E
+ *
+ * @description
+ * The `<md-list>` directive is a list container for 1..n `<md-item>` tags.
+ *
+ * @usage
+ * <hljs lang="html">
+ * <md-list>
+ *   <md-item ng-repeat="item in todos">
+ *     <md-item-content>
+ *       <div class="md-tile-left">
+ *         <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
+ *       </div>
+ *       <div class="md-tile-content">
+ *         <h3>{{item.what}}</h3>
+ *         <h4>{{item.who}}</h4>
+ *         <p>
+ *           {{item.notes}}
+ *         </p>
+ *       </div>
+ *     </md-item-content>
+ *   </md-item>
+ * </md-list>
+ * </hljs>
+ *
+ */
+function mdListDirective() {
+  return {
+    restrict: 'E',
+    link: function($scope, $element, $attr) {
+      $element.attr({
+        'role' : 'list'
+      });
+    }
+  };
+}
+
+/**
+ * @ngdoc directive
+ * @name mdItem
+ * @module material.components.list
+ *
+ * @restrict E
+ *
+ * @description
+ * The `<md-item>` directive is a container intended for row items in a `<md-list>` container.
+ *
+ * @usage
+ * <hljs lang="html">
+ *  <md-list>
+ *    <md-item>
+ *            Item content in list
+ *    </md-item>
+ *  </md-list>
+ * </hljs>
+ *
+ */
+function mdItemDirective() {
+  return {
+    restrict: 'E',
+    link: function($scope, $element, $attr) {
+      $element.attr({
+        'role' : 'listitem'
+      });
+    }
+  };
+}
+})();
+
+/*!
+ * Angular Material Design
+ * https://github.com/angular/material
+ * @license MIT
+ * v0.8.3
+ */
+(function() {
+'use strict';
+
+/**
+ * @ngdoc module
  * @name material.components.progressCircular
  * @description Circular Progress module!
  */
@@ -6466,102 +6562,6 @@ function MdProgressCircularDirective($$rAF, $md083forkConstant, $md083forkThemin
   }
 }
 MdProgressCircularDirective.$inject = ["$$rAF", "$md083forkConstant", "$md083forkTheming"];
-})();
-
-/*!
- * Angular Material Design
- * https://github.com/angular/material
- * @license MIT
- * v0.8.3
- */
-(function() {
-'use strict';
-
-/**
- * @ngdoc module
- * @name material.components.list
- * @description
- * List module
- */
-angular.module('material.083fork.components.list', [
-  'material.083fork.core'
-])
-  .directive('mdList', mdListDirective)
-  .directive('mdItem', mdItemDirective)
-  .directive('mdListItem', mdItemDirective);
-
-/**
- * @ngdoc directive
- * @name mdList
- * @module material.components.list
- *
- * @restrict E
- *
- * @description
- * The `<md-list>` directive is a list container for 1..n `<md-item>` tags.
- *
- * @usage
- * <hljs lang="html">
- * <md-list>
- *   <md-item ng-repeat="item in todos">
- *     <md-item-content>
- *       <div class="md-tile-left">
- *         <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
- *       </div>
- *       <div class="md-tile-content">
- *         <h3>{{item.what}}</h3>
- *         <h4>{{item.who}}</h4>
- *         <p>
- *           {{item.notes}}
- *         </p>
- *       </div>
- *     </md-item-content>
- *   </md-item>
- * </md-list>
- * </hljs>
- *
- */
-function mdListDirective() {
-  return {
-    restrict: 'E',
-    link: function($scope, $element, $attr) {
-      $element.attr({
-        'role' : 'list'
-      });
-    }
-  };
-}
-
-/**
- * @ngdoc directive
- * @name mdItem
- * @module material.components.list
- *
- * @restrict E
- *
- * @description
- * The `<md-item>` directive is a container intended for row items in a `<md-list>` container.
- *
- * @usage
- * <hljs lang="html">
- *  <md-list>
- *    <md-item>
- *            Item content in list
- *    </md-item>
- *  </md-list>
- * </hljs>
- *
- */
-function mdItemDirective() {
-  return {
-    restrict: 'E',
-    link: function($scope, $element, $attr) {
-      $element.attr({
-        'role' : 'listitem'
-      });
-    }
-  };
-}
 })();
 
 /*!
@@ -7011,12 +7011,12 @@ mdRadioButtonDirective.$inject = ["$md083forkAria", "$md083forkUtil", "$md083for
 
 - [ ] ng-model with child mdOptions (basic)
 - [ ] ng-model="foo" ng-model-options="{ trackBy: '$value.id' }" for objects
-- [ ] mdOption with value
+- [ ] md083forkOption with value
 - [ ] Usage with input inside
 - [ ] Usage with md-multiple
 
 ### TODO - POST RC1 ###
-- [ ] Abstract placement logic in $mdSelect service to $mdMenu service
+- [ ] Abstract placement logic in $md083forkSelect service to $mdMenu service
 
 ***************************************************/
 
@@ -7027,16 +7027,16 @@ angular.module('material.083fork.components.select', [
   'material.083fork.core',
   'material.083fork.components.backdrop'
 ])
-.directive('mdSelect', SelectDirective)
-.directive('mdSelectMenu', SelectMenuDirective)
-.directive('mdOption', OptionDirective)
-.directive('mdOptgroup', OptgroupDirective)
-.provider('$mdSelect', SelectProvider);
+.directive('md083forkSelect', SelectDirective)
+.directive('md083forkSelectMenu', SelectMenuDirective)
+.directive('md083forkOption', OptionDirective)
+.directive('md083forkOptgroup', OptgroupDirective)
+.provider('$md083forkSelect', SelectProvider);
 
 
 /**
  * @ngdoc directive
- * @name mdSelect
+ * @name md083forkSelect
  * @restrict E
  * @module material.components.select
  *
@@ -7049,29 +7049,29 @@ angular.module('material.083fork.components.select', [
  * @usage
  * With a placeholder (label is added dynamically)
  * <hljs lang="html">
- *   <md-select
+ *   <md083fork-select
  *     ng-model="someModel"
  *     placeholder="Select a state">
- *     <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
- *   </md-select>
+ *     <md083fork-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md083fork-option>
+ *   </md083fork-select>
  * </hljs>
  *
  * With an explicit label
  * <hljs lang="html">
- *   <md-select
+ *   <md083fork-select
  *     ng-model="someModel">
- *     <md-select-label>Select a state</md-select-label>
- *     <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
- *   </md-select>
+ *     <md083fork-select-label>Select a state</md-select-label>
+ *     <md083fork-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md083fork-option>
+ *   </md083fork-select>
  * </hljs>
  */
-function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpolate, $compile, $parse) {
+function SelectDirective($md083forkSelect, $md083forkUtil, $md083forkTheming, $interpolate, $compile, $parse) {
   var intStart = $interpolate.startSymbol();
   var intEnd = $interpolate.endSymbol();
 
   return {
     restrict: 'E',
-    require: ['mdSelect', 'ngModel'],
+    require: ['md083forkSelect', 'ngModel'],
     compile: compile,
     controller: function() { } // empty placeholder controller to be initialized in link
   };
@@ -7093,7 +7093,7 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
       element.append( angular.element('<md-content>').append(element.contents()) );
     }
 
-    // Add progress spinner for md-options-loading
+    // Add progress spinner for md083fork-options-loading
     if (attr.mdOnOpen) {
       element.find('md-content').prepend(
         angular.element('<md-progress-circular>')
@@ -7106,10 +7106,10 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
 
     // Use everything that's left inside element.contents() as the contents of the menu
     var selectTemplate = '<div class="md-select-menu-container">' +
-        '<md-select-menu ' +
+        '<md083fork-select-menu ' +
         (angular.isDefined(attr.multiple) ? 'multiple' : '') + '>' +
           element.html() +
-        '</md-select-menu></div>';
+        '</md083fork-select-menu></div>';
 
     element.empty().append(labelEl);
 
@@ -7148,7 +7148,7 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
 
       function syncLabelText() {
         if (selectContainer) {
-          var selectMenuCtrl = selectContainer.find('md-select-menu').controller('mdSelectMenu');
+          var selectMenuCtrl = selectContainer.find('md083fork-select-menu').controller('md083forkSelectMenu');
           mdSelectCtrl.setLabelText(selectMenuCtrl.selectedLabels());
         }
       }
@@ -7183,7 +7183,7 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
 
       scope.$on('$destroy', function() {
         if (isOpen) {
-          $mdSelect.cancel().then(function() {
+          $md083forkSelect.cancel().then(function() {
             selectContainer.remove();
           });
         } else {
@@ -7195,9 +7195,9 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
       // Create a fake select to find out the label value
       function createSelect() {
         selectContainer = angular.element(selectTemplate);
-        var selectEl = selectContainer.find('md-select-menu');
+        var selectEl = selectContainer.find('md083fork-select-menu');
         selectEl.data('$ngModelController', ngModel);
-        selectEl.data('$mdSelectController', mdSelectCtrl);
+        selectEl.data('$md083forkSelectController', mdSelectCtrl);
         selectScope = scope.$new();
         selectContainer = $compile(selectContainer)(selectScope);
       }
@@ -7214,7 +7214,7 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
       function openSelect() {
         scope.$evalAsync(function() {
           isOpen = true;
-          $mdSelect.show({
+          $md083forkSelect.show({
             scope: selectScope,
             preserveScope: true,
             skipCompile: true,
@@ -7230,14 +7230,14 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
     };
   }
 }
-SelectDirective.$inject = ["$mdSelect", "$md083forkUtil", "$md083forkTheming", "$interpolate", "$compile", "$parse"];
+SelectDirective.$inject = ["$md083forkSelect", "$md083forkUtil", "$md083forkTheming", "$interpolate", "$compile", "$parse"];
 
 function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
 
   SelectMenuController.$inject = ["$scope", "$attrs", "$element"];
   return {
     restrict: 'E',
-    require: ['mdSelectMenu', '?ngModel'],
+    require: ['md083forkSelectMenu', '?ngModel'],
     controller: SelectMenuController,
     link: { pre: preLink }
   };
@@ -7269,8 +7269,8 @@ function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
     }
 
     function clickListener(ev) {
-      var option = $md083forkUtil.getClosest(ev.target, 'md-option');
-      var optionCtrl = option && angular.element(option).data('$mdOptionController');
+      var option = $md083forkUtil.getClosest(ev.target, 'md083fork-option');
+      var optionCtrl = option && angular.element(option).data('$md083forkOptionController');
       if (!option || !optionCtrl) return;
 
       var optionHashKey = selectCtrl.hashGetter(optionCtrl.value);
@@ -7323,7 +7323,7 @@ function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
       } else {
         self.hashGetter = function getHashValue(value) {
           if (angular.isObject(value)) {
-            return '$$object_' + (value.$$mdSelectId || (value.$$mdSelectId = ++selectNextId));
+            return '$$object_' + (value.$$md083forkSelectId || (value.$$md083forkSelectId = ++selectNextId));
           }
           return value;
         };
@@ -7350,7 +7350,7 @@ function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
     };
 
     self.selectedLabels = function() {
-      var selectedOptionEls = nodesToArray($element[0].querySelectorAll('md-option[selected]'));
+      var selectedOptionEls = nodesToArray($element[0].querySelectorAll('md083fork-option[selected]'));
       if (selectedOptionEls.length) {
         return selectedOptionEls.map(function(el) { return el.textContent; }).join(', ');
       } else {
@@ -7371,7 +7371,7 @@ function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
 
     self.addOption = function(hashKey, optionCtrl) {
       if (angular.isDefined(self.options[hashKey])) {
-        throw new Error('Duplicate md-option values are not allowed in a select. ' +
+        throw new Error('Duplicate md083fork-option values are not allowed in a select. ' +
                         'Duplicate value "' + optionCtrl.value + '" found.');
       }
       self.options[hashKey] = optionCtrl;
@@ -7433,12 +7433,12 @@ function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
 }
 SelectMenuDirective.$inject = ["$parse", "$md083forkUtil", "$md083forkTheming"];
 
-function OptionDirective($mdInkRipple, $md083forkUtil) {
+function OptionDirective($md083forkInkRipple$mdInkRipple, $md083forkUtil) {
 
   OptionController.$inject = ["$element"];
   return {
     restrict: 'E',
-    require: ['mdOption', '^^mdSelectMenu'],
+    require: ['md083forkOption', '^^md083forkSelectMenu'],
     controller: OptionController,
     compile: compile
   };
@@ -7476,7 +7476,7 @@ function OptionDirective($mdInkRipple, $md083forkUtil) {
       selectCtrl.ngModel.$render();
     });
 
-    $mdInkRipple.attachButtonBehavior(scope, element);
+    $md083forkInkRipple$mdInkRipple.attachButtonBehavior(scope, element);
     configureAria();
 
     function setOptionValue(newValue, oldValue) {
@@ -7520,7 +7520,7 @@ function OptionDirective($mdInkRipple, $md083forkUtil) {
   }
 
 }
-OptionDirective.$inject = ["$mdInkRipple", "$md083forkUtil"];
+OptionDirective.$inject = ["$md083forkInkRipple$mdInkRipple", "$md083forkUtil"];
 
 function OptgroupDirective() {
   return {
@@ -7537,16 +7537,16 @@ function OptgroupDirective() {
   }
 }
 
-function SelectProvider($$interimElementProvider) {
-  selectDefaultOptions.$inject = ["$mdSelect", "$md083forkConstant", "$$rAF", "$md083forkUtil", "$md083forkTheming", "$timeout"];
-  return $$interimElementProvider('$mdSelect')
+function SelectProvider($$083forkInterimElementProvider) {
+  selectDefaultOptions.$inject = ["$md083forkSelect", "$md083forkConstant", "$$rAF", "$md083forkUtil", "$md083forkTheming", "$timeout"];
+  return $$083forkInterimElementProvider('$md083forkSelect')
     .setDefaults({
       methods: ['target'],
       options: selectDefaultOptions
     });
 
   /* @ngInject */
-  function selectDefaultOptions($mdSelect, $md083forkConstant, $$rAF, $md083forkUtil, $md083forkTheming, $timeout) {
+  function selectDefaultOptions($md083forkSelect, $md083forkConstant, $$rAF, $md083forkUtil, $md083forkTheming, $timeout) {
     return {
       parent: 'body',
       onShow: onShow,
@@ -7558,7 +7558,7 @@ function SelectProvider($$interimElementProvider) {
 
     function onShow(scope, element, opts) {
       if (!opts.target) {
-        throw new Error('$mdSelect.show() expected a target element in options.target but got ' +
+        throw new Error('$md083forkSelect.show() expected a target element in options.target but got ' +
                         '"' + opts.target + '"!');
       }
 
@@ -7566,7 +7566,7 @@ function SelectProvider($$interimElementProvider) {
         isRemoved: false,
         target: angular.element(opts.target), //make sure it's not a naked dom node
         parent: angular.element(opts.parent),
-        selectEl: element.find('md-select-menu'),
+        selectEl: element.find('md083fork-select-menu'),
         contentEl: element.find('md-content'),
         backdrop: opts.hasBackdrop && angular.element('<md-backdrop class="md-select-backdrop">')
       });
@@ -7575,7 +7575,7 @@ function SelectProvider($$interimElementProvider) {
 
       element.removeClass('md-leave');
 
-      var optionNodes = opts.selectEl[0].getElementsByTagName('md-option');
+      var optionNodes = opts.selectEl[0].getElementsByTagName('md083fork-option');
 
       if (opts.loadingAsync && opts.loadingAsync.then) {
         opts.loadingAsync.then(function() {
@@ -7626,14 +7626,14 @@ function SelectProvider($$interimElementProvider) {
 
       function activateInteraction() {
         if (opts.isRemoved) return;
-        var selectCtrl = opts.selectEl.controller('mdSelectMenu') || {};
+        var selectCtrl = opts.selectEl.controller('md083forkSelectMenu') || {};
         element.addClass('md-clickable');
 
         opts.backdrop && opts.backdrop.on('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
           opts.restoreFocus = false;
-          scope.$apply($mdSelect.cancel);
+          scope.$apply($md083forkSelect.cancel);
         });
 
         // Escape to close
@@ -7641,7 +7641,7 @@ function SelectProvider($$interimElementProvider) {
           switch (ev.keyCode) {
             case $md083forkConstant.KEY_CODE.SPACE:
             case $md083forkConstant.KEY_CODE.ENTER:
-              var option = $md083forkUtil.getClosest(ev.target, 'md-option');
+              var option = $md083forkUtil.getClosest(ev.target, 'md083fork-option');
               if (option) {
                 opts.selectEl.triggerHandler({
                   type: 'click',
@@ -7654,7 +7654,7 @@ function SelectProvider($$interimElementProvider) {
             case $md083forkConstant.KEY_CODE.ESCAPE:
               ev.preventDefault();
               opts.restoreFocus = true;
-              scope.$apply($mdSelect.cancel);
+              scope.$apply($md083forkSelect.cancel);
           }
         });
 
@@ -7698,7 +7698,7 @@ function SelectProvider($$interimElementProvider) {
         function closeMenu() {
           opts.restoreFocus = true;
           scope.$evalAsync(function() {
-            $mdSelect.hide(selectCtrl.ngModel.$viewValue);
+            $md083forkSelect.hide(selectCtrl.ngModel.$viewValue);
           });
         }
       }
@@ -7717,9 +7717,9 @@ function SelectProvider($$interimElementProvider) {
         delete opts.disableTarget;
       }
 
-      var mdSelect = opts.selectEl.controller('mdSelect');
+      var mdSelect = opts.selectEl.controller('md083forkSelect');
       if (mdSelect) {
-        mdSelect.setLabelText(opts.selectEl.controller('mdSelectMenu').selectedLabels());
+        mdSelect.setLabelText(opts.selectEl.controller('md083forkSelectMenu').selectedLabels());
       }
 
       return $md083forkUtil.transitionEndPromise(element, { timeout: 350 }).then(function() {
@@ -7753,9 +7753,9 @@ function SelectProvider($$interimElementProvider) {
           },
           maxWidth = parentRect.width - SELECT_EDGE_MARGIN * 2,
           isScrollable = contentNode.scrollHeight > contentNode.offsetHeight,
-          selectedNode = selectNode.querySelector('md-option[selected]'),
-          optionNodes = selectNode.getElementsByTagName('md-option'),
-          optgroupNodes = selectNode.getElementsByTagName('md-optgroup');
+          selectedNode = selectNode.querySelector('md083fork-option[selected]'),
+          optionNodes = selectNode.getElementsByTagName('md083fork-option'),
+          optgroupNodes = selectNode.getElementsByTagName('md083fork-optgroup');
 
 
       var centeredNode;
@@ -7796,7 +7796,7 @@ function SelectProvider($$interimElementProvider) {
       }
 
       var focusedNode = centeredNode;
-      if ((focusedNode.tagName || '').toUpperCase() === 'MD-OPTGROUP') {
+      if ((focusedNode.tagName || '').toUpperCase() === 'MD083FORK-OPTGROUP') {
         focusedNode = optionNodes[0] || contentNode.firstElementChild || contentNode;
       }
       if (focusedNode) {
@@ -7874,7 +7874,7 @@ function SelectProvider($$interimElementProvider) {
     } : { left: 0, top: 0, width: 0, height: 0 };
   }
 }
-SelectProvider.$inject = ["$$interimElementProvider"];
+SelectProvider.$inject = ["$$083forkInterimElementProvider"];
 
 // Annoying method to copy nodes to an array, thanks to IE
 function nodesToArray(nodes) {
@@ -7945,14 +7945,14 @@ angular.module('material.083fork.components.sidenav', [
  * $mdSidenav(componentId).isLockedOpen();
  * </hljs>
  */
-function SidenavService($mdComponentRegistry, $q) {
+function SidenavService($md083forkComponentRegistry, $q) {
   return function(handle) {
     var errorMsg = "SideNav '" + handle + "' is not available!";
 
     // Lookup the controller instance for the specified sidNav instance
-    var instance = $mdComponentRegistry.get(handle);
+    var instance = $md083forkComponentRegistry.get(handle);
     if(!instance) {
-      $mdComponentRegistry.notFoundError(handle);
+      $md083forkComponentRegistry.notFoundError(handle);
     }
 
     return {
@@ -7974,7 +7974,7 @@ function SidenavService($mdComponentRegistry, $q) {
     };
   };
 }
-SidenavService.$inject = ["$mdComponentRegistry", "$q"];
+SidenavService.$inject = ["$md083forkComponentRegistry", "$q"];
 
 /**
  * @ngdoc directive
@@ -8185,7 +8185,7 @@ SidenavDirective.$inject = ["$timeout", "$animate", "$parse", "$log", "$md083for
  * @module material.components.sidenav
  *
  */
-function SidenavController($scope, $element, $attrs, $mdComponentRegistry, $q) {
+function SidenavController($scope, $element, $attrs, $md083forkComponentRegistry, $q) {
 
   var self = this;
 
@@ -8198,414 +8198,11 @@ function SidenavController($scope, $element, $attrs, $mdComponentRegistry, $q) {
   self.close  = function() { return self.$toggleOpen( false ); };
   self.toggle = function() { return self.$toggleOpen( !$scope.isOpen );  };
 
-  self.destroy = $mdComponentRegistry.register(self, $attrs.mdComponentId);
+  self.destroy = $md083forkComponentRegistry.register(self, $attrs.mdComponentId);
 }
-SidenavController.$inject = ["$scope", "$element", "$attrs", "$mdComponentRegistry", "$q"];
+SidenavController.$inject = ["$scope", "$element", "$attrs", "$md083forkComponentRegistry", "$q"];
 
 
-
-})();
-
-/*!
- * Angular Material Design
- * https://github.com/angular/material
- * @license MIT
- * v0.8.3
- */
-(function() {
-  'use strict';
-
-  /**
-   * @ngdoc module
-   * @name material.components.slider
-   */
-  angular.module('material.083fork.components.slider', [
-    'material.083fork.core'
-  ])
-  .directive('mdSlider', SliderDirective);
-
-/**
- * @ngdoc directive
- * @name mdSlider
- * @module material.components.slider
- * @restrict E
- * @description
- * The `<md-slider>` component allows the user to choose from a range of
- * values.
- *
- * As per the [material design spec](http://www.google.com/design/spec/style/color.html#color-ui-color-application)
- * the slider is in the accent color by default. The primary color palette may be used with
- * the `md-primary` class.
- *
- * It has two modes: 'normal' mode, where the user slides between a wide range
- * of values, and 'discrete' mode, where the user slides between only a few
- * select values.
- *
- * To enable discrete mode, add the `md-discrete` attribute to a slider,
- * and use the `step` attribute to change the distance between
- * values the user is allowed to pick.
- *
- * @usage
- * <h4>Normal Mode</h4>
- * <hljs lang="html">
- * <md-slider ng-model="myValue" min="5" max="500">
- * </md-slider>
- * </hljs>
- * <h4>Discrete Mode</h4>
- * <hljs lang="html">
- * <md-slider md-discrete ng-model="myDiscreteValue" step="10" min="10" max="130">
- * </md-slider>
- * </hljs>
- *
- * @param {boolean=} md-discrete Whether to enable discrete mode.
- * @param {number=} step The distance between values the user is allowed to pick. Default 1.
- * @param {number=} min The minimum value the user is allowed to pick. Default 0.
- * @param {number=} max The maximum value the user is allowed to pick. Default 100.
- */
-function SliderDirective($$rAF, $window, $md083forkAria, $md083forkUtil, $md083forkConstant, $md083forkTheming, $mdGesture, $parse) {
-  return {
-    scope: {},
-    require: '?ngModel',
-    template:
-      '<div class="md-slider-wrapper">\
-        <div class="md-track-container">\
-          <div class="md-track"></div>\
-          <div class="md-track md-track-fill"></div>\
-          <div class="md-track-ticks"></div>\
-        </div>\
-        <div class="md-thumb-container">\
-          <div class="md-thumb"></div>\
-          <div class="md-focus-thumb"></div>\
-          <div class="md-focus-ring"></div>\
-          <div class="md-sign">\
-            <span class="md-thumb-text"></span>\
-          </div>\
-          <div class="md-disabled-thumb"></div>\
-        </div>\
-      </div>',
-    compile: compile
-  };
-
-  // **********************************************************
-  // Private Methods
-  // **********************************************************
-
-  function compile (tElement, tAttrs) {
-    tElement.attr({
-      tabIndex: 0,
-      role: 'slider'
-    });
-
-    $md083forkAria.expect(tElement, 'aria-label');
-
-    return postLink;
-  }
-
-  function postLink(scope, element, attr, ngModelCtrl) {
-    $md083forkTheming(element);
-    ngModelCtrl = ngModelCtrl || {
-      // Mock ngModelController if it doesn't exist to give us
-      // the minimum functionality needed
-      $setViewValue: function(val) {
-        this.$viewValue = val;
-        this.$viewChangeListeners.forEach(function(cb) { cb(); });
-      },
-      $parsers: [],
-      $formatters: [],
-      $viewChangeListeners: []
-    };
-
-    var isDisabledParsed = attr.ngDisabled && $parse(attr.ngDisabled);
-    var isDisabledGetter = isDisabledParsed ?
-      function() { return isDisabledParsed(scope.$parent); } :
-      angular.noop;
-    var thumb = angular.element(element[0].querySelector('.md-thumb'));
-    var thumbText = angular.element(element[0].querySelector('.md-thumb-text'));
-    var thumbContainer = thumb.parent();
-    var trackContainer = angular.element(element[0].querySelector('.md-track-container'));
-    var activeTrack = angular.element(element[0].querySelector('.md-track-fill'));
-    var tickContainer = angular.element(element[0].querySelector('.md-track-ticks'));
-    var throttledRefreshDimensions = $md083forkUtil.throttle(refreshSliderDimensions, 5000);
-
-    // Default values, overridable by attrs
-    attr.min ? attr.$observe('min', updateMin) : updateMin(0);
-    attr.max ? attr.$observe('max', updateMax) : updateMax(100);
-    attr.step ? attr.$observe('step', updateStep) : updateStep(1);
-
-    // We have to manually stop the $watch on ngDisabled because it exists
-    // on the parent scope, and won't be automatically destroyed when
-    // the component is destroyed.
-    var stopDisabledWatch = angular.noop;
-    if (attr.ngDisabled) {
-      stopDisabledWatch = scope.$parent.$watch(attr.ngDisabled, updateAriaDisabled);
-    }
-
-    $mdGesture.register(element, 'drag');
-
-    element
-      .on('keydown', keydownListener)
-      .on('$md.pressdown', onPressDown)
-      .on('$md.pressup', onPressUp)
-      .on('$md.dragstart', onDragStart)
-      .on('$md.drag', onDrag)
-      .on('$md.dragend', onDragEnd);
-
-    // On resize, recalculate the slider's dimensions and re-render
-    function updateAll() {
-      refreshSliderDimensions();
-      ngModelRender();
-      redrawTicks();
-    }
-    setTimeout(updateAll);
-
-    var debouncedUpdateAll = $$rAF.throttle(updateAll);
-    angular.element($window).on('resize', debouncedUpdateAll);
-
-    scope.$on('$destroy', function() {
-      angular.element($window).off('resize', debouncedUpdateAll);
-      stopDisabledWatch();
-    });
-
-    ngModelCtrl.$render = ngModelRender;
-    ngModelCtrl.$viewChangeListeners.push(ngModelRender);
-    ngModelCtrl.$formatters.push(minMaxValidator);
-    ngModelCtrl.$formatters.push(stepValidator);
-
-    /**
-     * Attributes
-     */
-    var min;
-    var max;
-    var step;
-    function updateMin(value) {
-      min = parseFloat(value);
-      element.attr('aria-valuemin', value);
-      updateAll();
-    }
-    function updateMax(value) {
-      max = parseFloat(value);
-      element.attr('aria-valuemax', value);
-      updateAll();
-    }
-    function updateStep(value) {
-      step = parseFloat(value);
-      redrawTicks();
-    }
-    function updateAriaDisabled(isDisabled) {
-      element.attr('aria-disabled', !!isDisabled);
-    }
-
-    // Draw the ticks with canvas.
-    // The alternative to drawing ticks with canvas is to draw one element for each tick,
-    // which could quickly become a performance bottleneck.
-    var tickCanvas, tickCtx;
-    function redrawTicks() {
-      if (!angular.isDefined(attr.mdDiscrete)) return;
-
-      var numSteps = Math.floor( (max - min) / step );
-      if (!tickCanvas) {
-        var trackTicksStyle = $window.getComputedStyle(tickContainer[0]);
-        tickCanvas = angular.element('<canvas style="position:absolute;">');
-        tickCtx = tickCanvas[0].getContext('2d');
-        tickCtx.fillStyle = trackTicksStyle.backgroundColor || 'black';
-        tickContainer.append(tickCanvas);
-      }
-      var dimensions = getSliderDimensions();
-      tickCanvas[0].width = dimensions.width;
-      tickCanvas[0].height = dimensions.height;
-
-      var distance;
-      for (var i = 0; i <= numSteps; i++) {
-        distance = Math.floor(dimensions.width * (i / numSteps));
-        tickCtx.fillRect(distance - 1, 0, 2, dimensions.height);
-      }
-    }
-
-
-    /**
-     * Refreshing Dimensions
-     */
-    var sliderDimensions = {};
-    refreshSliderDimensions();
-    function refreshSliderDimensions() {
-      sliderDimensions = trackContainer[0].getBoundingClientRect();
-    }
-    function getSliderDimensions() {
-      throttledRefreshDimensions();
-      return sliderDimensions;
-    }
-
-    /**
-     * left/right arrow listener
-     */
-    function keydownListener(ev) {
-      if(element[0].hasAttribute('disabled')) {
-        return;
-      }
-
-      var changeAmount;
-      if (ev.keyCode === $md083forkConstant.KEY_CODE.LEFT_ARROW) {
-        changeAmount = -step;
-      } else if (ev.keyCode === $md083forkConstant.KEY_CODE.RIGHT_ARROW) {
-        changeAmount = step;
-      }
-      if (changeAmount) {
-        if (ev.metaKey || ev.ctrlKey || ev.altKey) {
-          changeAmount *= 4;
-        }
-        ev.preventDefault();
-        ev.stopPropagation();
-        scope.$evalAsync(function() {
-          setModelValue(ngModelCtrl.$viewValue + changeAmount);
-        });
-      }
-    }
-
-    /**
-     * ngModel setters and validators
-     */
-    function setModelValue(value) {
-      ngModelCtrl.$setViewValue( minMaxValidator(stepValidator(value)) );
-    }
-    function ngModelRender() {
-      if (isNaN(ngModelCtrl.$viewValue)) {
-        ngModelCtrl.$viewValue = ngModelCtrl.$modelValue;
-      }
-
-      var percent = (ngModelCtrl.$viewValue - min) / (max - min);
-      scope.modelValue = ngModelCtrl.$viewValue;
-      element.attr('aria-valuenow', ngModelCtrl.$viewValue);
-      setSliderPercent(percent);
-      thumbText.text( ngModelCtrl.$viewValue );
-    }
-
-    function minMaxValidator(value) {
-      if (angular.isNumber(value)) {
-        return Math.max(min, Math.min(max, value));
-      }
-    }
-    function stepValidator(value) {
-      if (angular.isNumber(value)) {
-        return Math.round(value / step) * step;
-      }
-    }
-
-    /**
-     * @param percent 0-1
-     */
-    function setSliderPercent(percent) {
-      activeTrack.css('width', (percent * 100) + '%');
-      thumbContainer.css(
-        'left',
-        (percent * 100) + '%'
-      );
-      element.toggleClass('md-min', percent === 0);
-    }
-
-
-    /**
-     * Slide listeners
-     */
-    var isDragging = false;
-    var isDiscrete = angular.isDefined(attr.mdDiscrete);
-
-    function onPressDown(ev) {
-      if (isDisabledGetter()) return;
-
-      element.addClass('active');
-      element[0].focus();
-      refreshSliderDimensions();
-
-      var exactVal = percentToValue( positionToPercent( ev.pointer.x ));
-      var closestVal = minMaxValidator( stepValidator(exactVal) );
-      scope.$apply(function() {
-        setModelValue( closestVal );
-        setSliderPercent( valueToPercent(closestVal));
-      });
-    }
-    function onPressUp(ev) {
-      if (isDisabledGetter()) return;
-
-      element.removeClass('dragging active');
-
-      var exactVal = percentToValue( positionToPercent( ev.pointer.x ));
-      var closestVal = minMaxValidator( stepValidator(exactVal) );
-      scope.$apply(function() {
-        setModelValue(closestVal);
-        ngModelRender();
-      });
-    }
-    function onDragStart(ev) {
-      if (isDisabledGetter()) return;
-      isDragging = true;
-      ev.stopPropagation();
-
-      element.addClass('dragging');
-      setSliderFromEvent(ev);
-    }
-    function onDrag(ev) {
-      if (!isDragging) return;
-      ev.stopPropagation();
-      setSliderFromEvent(ev);
-    }
-    function onDragEnd(ev) {
-      if (!isDragging) return;
-      ev.stopPropagation();
-      isDragging = false;
-    }
-
-    function setSliderFromEvent(ev) {
-      // While panning discrete, update only the
-      // visual positioning but not the model value.
-      if ( isDiscrete ) adjustThumbPosition( ev.pointer.x );
-      else              doSlide( ev.pointer.x );
-    }
-
-    /**
-     * Slide the UI by changing the model value
-     * @param x
-     */
-    function doSlide( x ) {
-      scope.$evalAsync( function() {
-        setModelValue( percentToValue( positionToPercent(x) ));
-      });
-    }
-
-    /**
-     * Slide the UI without changing the model (while dragging/panning)
-     * @param x
-     */
-    function adjustThumbPosition( x ) {
-      var exactVal = percentToValue( positionToPercent( x ));
-      var closestVal = minMaxValidator( stepValidator(exactVal) );
-      setSliderPercent( positionToPercent(x) );
-      thumbText.text( closestVal );
-    }
-
-    /**
-     * Convert horizontal position on slider to percentage value of offset from beginning...
-     * @param x
-     * @returns {number}
-     */
-    function positionToPercent( x ) {
-      return Math.max(0, Math.min(1, (x - sliderDimensions.left) / (sliderDimensions.width)));
-    }
-
-    /**
-     * Convert percentage offset on slide to equivalent model value
-     * @param percent
-     * @returns {*}
-     */
-    function percentToValue( percent ) {
-      return (min + percent * (max - min));
-    }
-
-    function valueToPercent( val ) {
-      return (val - min)/(max - min);
-    }
-  }
-}
-SliderDirective.$inject = ["$$rAF", "$window", "$md083forkAria", "$md083forkUtil", "$md083forkConstant", "$md083forkTheming", "$mdGesture", "$parse"];
 
 })();
 
@@ -8928,6 +8525,409 @@ MdSticky.$inject = ["$document", "$md083forkConstant", "$compile", "$$rAF", "$md
  * v0.8.3
  */
 (function() {
+  'use strict';
+
+  /**
+   * @ngdoc module
+   * @name material.components.slider
+   */
+  angular.module('material.083fork.components.slider', [
+    'material.083fork.core'
+  ])
+  .directive('md083forkSlider', SliderDirective);
+
+/**
+ * @ngdoc directive
+ * @name md083forkSlider
+ * @module material.components.slider
+ * @restrict E
+ * @description
+ * The `<md083fork-slider>` component allows the user to choose from a range of
+ * values.
+ *
+ * As per the [material design spec](http://www.google.com/design/spec/style/color.html#color-ui-color-application)
+ * the slider is in the accent color by default. The primary color palette may be used with
+ * the `md-primary` class.
+ *
+ * It has two modes: 'normal' mode, where the user slides between a wide range
+ * of values, and 'discrete' mode, where the user slides between only a few
+ * select values.
+ *
+ * To enable discrete mode, add the `md-discrete` attribute to a slider,
+ * and use the `step` attribute to change the distance between
+ * values the user is allowed to pick.
+ *
+ * @usage
+ * <h4>Normal Mode</h4>
+ * <hljs lang="html">
+ * <md083fork-slider ng-model="myValue" min="5" max="500">
+ * </md083fork-slider>
+ * </hljs>
+ * <h4>Discrete Mode</h4>
+ * <hljs lang="html">
+ * <md083fork-slider md-discrete ng-model="myDiscreteValue" step="10" min="10" max="130">
+ * </md083fork-slider>
+ * </hljs>
+ *
+ * @param {boolean=} md-discrete Whether to enable discrete mode.
+ * @param {number=} step The distance between values the user is allowed to pick. Default 1.
+ * @param {number=} min The minimum value the user is allowed to pick. Default 0.
+ * @param {number=} max The maximum value the user is allowed to pick. Default 100.
+ */
+function SliderDirective($$rAF, $window, $md083forkAria, $md083forkUtil, $md083forkConstant, $md083forkTheming, $md083forkGesture, $parse) {
+  return {
+    scope: {},
+    require: '?ngModel',
+    template:
+      '<div class="md-slider-wrapper">\
+        <div class="md-track-container">\
+          <div class="md-track"></div>\
+          <div class="md-track md-track-fill"></div>\
+          <div class="md-track-ticks"></div>\
+        </div>\
+        <div class="md-thumb-container">\
+          <div class="md-thumb"></div>\
+          <div class="md-focus-thumb"></div>\
+          <div class="md-focus-ring"></div>\
+          <div class="md-sign">\
+            <span class="md-thumb-text"></span>\
+          </div>\
+          <div class="md-disabled-thumb"></div>\
+        </div>\
+      </div>',
+    compile: compile
+  };
+
+  // **********************************************************
+  // Private Methods
+  // **********************************************************
+
+  function compile (tElement, tAttrs) {
+    tElement.attr({
+      tabIndex: 0,
+      role: 'slider'
+    });
+
+    $md083forkAria.expect(tElement, 'aria-label');
+
+    return postLink;
+  }
+
+  function postLink(scope, element, attr, ngModelCtrl) {
+    $md083forkTheming(element);
+    ngModelCtrl = ngModelCtrl || {
+      // Mock ngModelController if it doesn't exist to give us
+      // the minimum functionality needed
+      $setViewValue: function(val) {
+        this.$viewValue = val;
+        this.$viewChangeListeners.forEach(function(cb) { cb(); });
+      },
+      $parsers: [],
+      $formatters: [],
+      $viewChangeListeners: []
+    };
+
+    var isDisabledParsed = attr.ngDisabled && $parse(attr.ngDisabled);
+    var isDisabledGetter = isDisabledParsed ?
+      function() { return isDisabledParsed(scope.$parent); } :
+      angular.noop;
+    var thumb = angular.element(element[0].querySelector('.md-thumb'));
+    var thumbText = angular.element(element[0].querySelector('.md-thumb-text'));
+    var thumbContainer = thumb.parent();
+    var trackContainer = angular.element(element[0].querySelector('.md-track-container'));
+    var activeTrack = angular.element(element[0].querySelector('.md-track-fill'));
+    var tickContainer = angular.element(element[0].querySelector('.md-track-ticks'));
+    var throttledRefreshDimensions = $md083forkUtil.throttle(refreshSliderDimensions, 5000);
+
+    // Default values, overridable by attrs
+    attr.min ? attr.$observe('min', updateMin) : updateMin(0);
+    attr.max ? attr.$observe('max', updateMax) : updateMax(100);
+    attr.step ? attr.$observe('step', updateStep) : updateStep(1);
+
+    // We have to manually stop the $watch on ngDisabled because it exists
+    // on the parent scope, and won't be automatically destroyed when
+    // the component is destroyed.
+    var stopDisabledWatch = angular.noop;
+    if (attr.ngDisabled) {
+      stopDisabledWatch = scope.$parent.$watch(attr.ngDisabled, updateAriaDisabled);
+    }
+
+    $md083forkGesture.register(element, 'drag');
+
+    element
+      .on('keydown', keydownListener)
+      .on('$md.pressdown', onPressDown)
+      .on('$md.pressup', onPressUp)
+      .on('$md.dragstart', onDragStart)
+      .on('$md.drag', onDrag)
+      .on('$md.dragend', onDragEnd);
+
+    // On resize, recalculate the slider's dimensions and re-render
+    function updateAll() {
+      refreshSliderDimensions();
+      ngModelRender();
+      redrawTicks();
+    }
+    setTimeout(updateAll);
+
+    var debouncedUpdateAll = $$rAF.throttle(updateAll);
+    angular.element($window).on('resize', debouncedUpdateAll);
+
+    scope.$on('$destroy', function() {
+      angular.element($window).off('resize', debouncedUpdateAll);
+      stopDisabledWatch();
+    });
+
+    ngModelCtrl.$render = ngModelRender;
+    ngModelCtrl.$viewChangeListeners.push(ngModelRender);
+    ngModelCtrl.$formatters.push(minMaxValidator);
+    ngModelCtrl.$formatters.push(stepValidator);
+
+    /**
+     * Attributes
+     */
+    var min;
+    var max;
+    var step;
+    function updateMin(value) {
+      min = parseFloat(value);
+      element.attr('aria-valuemin', value);
+      updateAll();
+    }
+    function updateMax(value) {
+      max = parseFloat(value);
+      element.attr('aria-valuemax', value);
+      updateAll();
+    }
+    function updateStep(value) {
+      step = parseFloat(value);
+      redrawTicks();
+    }
+    function updateAriaDisabled(isDisabled) {
+      element.attr('aria-disabled', !!isDisabled);
+    }
+
+    // Draw the ticks with canvas.
+    // The alternative to drawing ticks with canvas is to draw one element for each tick,
+    // which could quickly become a performance bottleneck.
+    var tickCanvas, tickCtx;
+    function redrawTicks() {
+      if (!angular.isDefined(attr.mdDiscrete)) return;
+
+      var numSteps = Math.floor( (max - min) / step );
+      if (!tickCanvas) {
+        var trackTicksStyle = $window.getComputedStyle(tickContainer[0]);
+        tickCanvas = angular.element('<canvas style="position:absolute;">');
+        tickCtx = tickCanvas[0].getContext('2d');
+        tickCtx.fillStyle = trackTicksStyle.backgroundColor || 'black';
+        tickContainer.append(tickCanvas);
+      }
+      var dimensions = getSliderDimensions();
+      tickCanvas[0].width = dimensions.width;
+      tickCanvas[0].height = dimensions.height;
+
+      var distance;
+      for (var i = 0; i <= numSteps; i++) {
+        distance = Math.floor(dimensions.width * (i / numSteps));
+        tickCtx.fillRect(distance - 1, 0, 2, dimensions.height);
+      }
+    }
+
+
+    /**
+     * Refreshing Dimensions
+     */
+    var sliderDimensions = {};
+    refreshSliderDimensions();
+    function refreshSliderDimensions() {
+      sliderDimensions = trackContainer[0].getBoundingClientRect();
+    }
+    function getSliderDimensions() {
+      throttledRefreshDimensions();
+      return sliderDimensions;
+    }
+
+    /**
+     * left/right arrow listener
+     */
+    function keydownListener(ev) {
+      if(element[0].hasAttribute('disabled')) {
+        return;
+      }
+
+      var changeAmount;
+      if (ev.keyCode === $md083forkConstant.KEY_CODE.LEFT_ARROW) {
+        changeAmount = -step;
+      } else if (ev.keyCode === $md083forkConstant.KEY_CODE.RIGHT_ARROW) {
+        changeAmount = step;
+      }
+      if (changeAmount) {
+        if (ev.metaKey || ev.ctrlKey || ev.altKey) {
+          changeAmount *= 4;
+        }
+        ev.preventDefault();
+        ev.stopPropagation();
+        scope.$evalAsync(function() {
+          setModelValue(ngModelCtrl.$viewValue + changeAmount);
+        });
+      }
+    }
+
+    /**
+     * ngModel setters and validators
+     */
+    function setModelValue(value) {
+      ngModelCtrl.$setViewValue( minMaxValidator(stepValidator(value)) );
+    }
+    function ngModelRender() {
+      if (isNaN(ngModelCtrl.$viewValue)) {
+        ngModelCtrl.$viewValue = ngModelCtrl.$modelValue;
+      }
+
+      var percent = (ngModelCtrl.$viewValue - min) / (max - min);
+      scope.modelValue = ngModelCtrl.$viewValue;
+      element.attr('aria-valuenow', ngModelCtrl.$viewValue);
+      setSliderPercent(percent);
+      thumbText.text( ngModelCtrl.$viewValue );
+    }
+
+    function minMaxValidator(value) {
+      if (angular.isNumber(value)) {
+        return Math.max(min, Math.min(max, value));
+      }
+    }
+    function stepValidator(value) {
+      if (angular.isNumber(value)) {
+        return Math.round(value / step) * step;
+      }
+    }
+
+    /**
+     * @param percent 0-1
+     */
+    function setSliderPercent(percent) {
+      activeTrack.css('width', (percent * 100) + '%');
+      thumbContainer.css(
+        'left',
+        (percent * 100) + '%'
+      );
+      element.toggleClass('md-min', percent === 0);
+    }
+
+
+    /**
+     * Slide listeners
+     */
+    var isDragging = false;
+    var isDiscrete = angular.isDefined(attr.mdDiscrete);
+
+    function onPressDown(ev) {
+      if (isDisabledGetter()) return;
+
+      element.addClass('active');
+      element[0].focus();
+      refreshSliderDimensions();
+
+      var exactVal = percentToValue( positionToPercent( ev.pointer.x ));
+      var closestVal = minMaxValidator( stepValidator(exactVal) );
+      scope.$apply(function() {
+        setModelValue( closestVal );
+        setSliderPercent( valueToPercent(closestVal));
+      });
+    }
+    function onPressUp(ev) {
+      if (isDisabledGetter()) return;
+
+      element.removeClass('dragging active');
+
+      var exactVal = percentToValue( positionToPercent( ev.pointer.x ));
+      var closestVal = minMaxValidator( stepValidator(exactVal) );
+      scope.$apply(function() {
+        setModelValue(closestVal);
+        ngModelRender();
+      });
+    }
+    function onDragStart(ev) {
+      if (isDisabledGetter()) return;
+      isDragging = true;
+      ev.stopPropagation();
+
+      element.addClass('dragging');
+      setSliderFromEvent(ev);
+    }
+    function onDrag(ev) {
+      if (!isDragging) return;
+      ev.stopPropagation();
+      setSliderFromEvent(ev);
+    }
+    function onDragEnd(ev) {
+      if (!isDragging) return;
+      ev.stopPropagation();
+      isDragging = false;
+    }
+
+    function setSliderFromEvent(ev) {
+      // While panning discrete, update only the
+      // visual positioning but not the model value.
+      if ( isDiscrete ) adjustThumbPosition( ev.pointer.x );
+      else              doSlide( ev.pointer.x );
+    }
+
+    /**
+     * Slide the UI by changing the model value
+     * @param x
+     */
+    function doSlide( x ) {
+      scope.$evalAsync( function() {
+        setModelValue( percentToValue( positionToPercent(x) ));
+      });
+    }
+
+    /**
+     * Slide the UI without changing the model (while dragging/panning)
+     * @param x
+     */
+    function adjustThumbPosition( x ) {
+      var exactVal = percentToValue( positionToPercent( x ));
+      var closestVal = minMaxValidator( stepValidator(exactVal) );
+      setSliderPercent( positionToPercent(x) );
+      thumbText.text( closestVal );
+    }
+
+    /**
+     * Convert horizontal position on slider to percentage value of offset from beginning...
+     * @param x
+     * @returns {number}
+     */
+    function positionToPercent( x ) {
+      return Math.max(0, Math.min(1, (x - sliderDimensions.left) / (sliderDimensions.width)));
+    }
+
+    /**
+     * Convert percentage offset on slide to equivalent model value
+     * @param percent
+     * @returns {*}
+     */
+    function percentToValue( percent ) {
+      return (min + percent * (max - min));
+    }
+
+    function valueToPercent( val ) {
+      return (val - min)/(max - min);
+    }
+  }
+}
+SliderDirective.$inject = ["$$rAF", "$window", "$md083forkAria", "$md083forkUtil", "$md083forkConstant", "$md083forkTheming", "$md083forkGesture", "$parse"];
+
+})();
+
+/*!
+ * Angular Material Design
+ * https://github.com/angular/material
+ * @license MIT
+ * v0.8.3
+ */
+(function() {
 'use strict';
 
 /**
@@ -9144,7 +9144,7 @@ angular.module('material.083fork.components.switch', [
  *
  * </hljs>
  */
-function MdSwitch(mdCheckboxDirective, $md083forkTheming, $md083forkUtil, $document, $md083forkConstant, $parse, $$rAF, $mdGesture) {
+function MdSwitch(mdCheckboxDirective, $md083forkTheming, $md083forkUtil, $document, $md083forkConstant, $parse, $$rAF, $md083forkGesture) {
   var checkboxDirective = mdCheckboxDirective[0];
 
   return {
@@ -9188,7 +9188,7 @@ function MdSwitch(mdCheckboxDirective, $md083forkTheming, $md083forkUtil, $docum
       }
 
       // These events are triggered by setup drag
-      $mdGesture.register(switchContainer, 'drag');
+      $md083forkGesture.register(switchContainer, 'drag');
       switchContainer
         .on('$md.dragstart', onDragStart)
         .on('$md.drag', onDrag)
@@ -9251,7 +9251,7 @@ function MdSwitch(mdCheckboxDirective, $md083forkTheming, $md083forkUtil, $docum
 
 
 }
-MdSwitch.$inject = ["mdCheckboxDirective", "$md083forkTheming", "$md083forkUtil", "$document", "$md083forkConstant", "$parse", "$$rAF", "$mdGesture"];
+MdSwitch.$inject = ["mdCheckboxDirective", "$md083forkTheming", "$md083forkUtil", "$document", "$md083forkConstant", "$parse", "$$rAF", "$md083forkGesture"];
 
 })();
 
@@ -9457,8 +9457,8 @@ angular.module('material.083fork.components.toast', [
   'material.083fork.core',
   'material.083fork.components.button'
 ])
-  .directive('mdToast', MdToastDirective)
-  .provider('$mdToast', MdToastProvider);
+  .directive('md083forkToast', MdToastDirective)
+  .provider('$md083forkToast', MdToastProvider);
 
 function MdToastDirective() {
   return {
@@ -9468,16 +9468,16 @@ function MdToastDirective() {
 
 /**
  * @ngdoc service
- * @name $mdToast
+ * @name $md083forkToast
  * @module material.components.toast
  *
  * @description
- * `$mdToast` is a service to build a toast nofication on any position
+ * `$md083forkToast` is a service to build a toast nofication on any position
  * on the screen with an optional duration, and provides a simple promise API.
  *
  *
  * ## Restrictions on custom toasts
- * - The toast's template must have an outer `<md-toast>` element.
+ * - The toast's template must have an outer `<md083fork-toast>` element.
  * - For a toast action, use element with class `md-action`.
  * - Add the class `md-capsule` for curved corners.
  *
@@ -9492,10 +9492,10 @@ function MdToastDirective() {
  *
  * <hljs lang="js">
  * var app = angular.module('app', ['ngMaterial']);
- * app.controller('MyController', function($scope, $mdToast) {
+ * app.controller('MyController', function($scope, $md083forkToast) {
  *   $scope.openToast = function($event) {
- *     $mdToast.show($mdToast.simple().content('Hello!'));
- *     // Could also do $mdToast.showSimple('Hello');
+ *     $md083forkToast.show($md083forkToast.simple().content('Hello!'));
+ *     // Could also do $md083forkToast.showSimple('Hello');
  *   };
  * });
  * </hljs>
@@ -9503,35 +9503,35 @@ function MdToastDirective() {
 
 /**
  * @ngdoc method
- * @name $mdToast#showSimple
+ * @name $md083forkToast#showSimple
  * 
  * @description
  * Convenience method which builds and shows a simple toast.
  *
- * @returns {promise} A promise that can be resolved with `$mdToast.hide()` or
- * rejected with `$mdToast.cancel()`.
+ * @returns {promise} A promise that can be resolved with `$md083forkToast.hide()` or
+ * rejected with `$md083forkToast.cancel()`.
  *
  */
 
  /**
  * @ngdoc method
- * @name $mdToast#simple
+ * @name $md083forkToast#simple
  *
  * @description
  * Builds a preconfigured toast.
  *
- * @returns {obj} a `$mdToastPreset` with the chainable configuration methods:
+ * @returns {obj} a `$md083forkToastPreset` with the chainable configuration methods:
  *
- * - $mdToastPreset#content(string) - sets toast content to string
- * - $mdToastPreset#action(string) - adds an action button, which resolves the promise returned from `show()` if clicked.
- * - $mdToastPreset#highlightAction(boolean) - sets action button to be highlighted
- * - $mdToastPreset#capsule(boolean) - adds 'md-capsule' class to the toast (curved corners)
- * - $mdToastPreset#theme(boolean) - sets the theme on the toast to theme (default is `$md083forkThemingProvider`'s default theme)
+ * - $md083forkToastPreset#content(string) - sets toast content to string
+ * - $md083forkToastPreset#action(string) - adds an action button, which resolves the promise returned from `show()` if clicked.
+ * - $md083forkToastPreset#highlightAction(boolean) - sets action button to be highlighted
+ * - $md083forkToastPreset#capsule(boolean) - adds 'md-capsule' class to the toast (curved corners)
+ * - $md083forkToastPreset#theme(boolean) - sets the theme on the toast to theme (default is `$md083forkThemingProvider`'s default theme)
  */
 
 /**
  * @ngdoc method
- * @name $mdToast#updateContent
+ * @name $md083forkToast#updateContent
  * 
  * @description
  * Updates the content of an existing toast. Useful for updating things like counts, etc.
@@ -9540,26 +9540,26 @@ function MdToastDirective() {
 
  /**
  * @ngdoc method
- * @name $mdToast#build
+ * @name $md083forkToast#build
  *
  * @description
- * Creates a custom `$mdToastPreset` that you can configure.
+ * Creates a custom `$md083forkToastPreset` that you can configure.
  *
- * @returns {obj} a `$mdToastPreset` with the chainable configuration methods for shows' options (see below).
+ * @returns {obj} a `$md083forkToastPreset` with the chainable configuration methods for shows' options (see below).
  */
 
  /**
  * @ngdoc method
- * @name $mdToast#show
+ * @name $md083forkToast#show
  *
  * @description Shows the toast.
  *
- * @param {object} optionsOrPreset Either provide an `$mdToastPreset` returned from `simple()`
+ * @param {object} optionsOrPreset Either provide an `$md083forkToastPreset` returned from `simple()`
  * and `build()`, or an options object with the following properties:
  *
  *   - `templateUrl` - `{string=}`: The url of an html template file that will
  *     be used as the content of the toast. Restrictions: the template must
- *     have an outer `md-toast` element.
+ *     have an outer `md083fork-toast` element.
  *   - `template` - `{string=}`: Same as templateUrl, except this is an actual
  *     template string.
  *   - `scope` - `{object=}`: the scope to link the template / controller to. If none is specified, it will create a new child scope.
@@ -9584,16 +9584,16 @@ function MdToastDirective() {
  *   - `parent` - `{element=}`: The element to append the toast to. Defaults to appending
  *     to the root element of the application.
  *
- * @returns {promise} A promise that can be resolved with `$mdToast.hide()` or
- * rejected with `$mdToast.cancel()`.
+ * @returns {promise} A promise that can be resolved with `$md083forkToast.hide()` or
+ * rejected with `$md083forkToast.cancel()`.
  */
 
 /**
  * @ngdoc method
- * @name $mdToast#hide
+ * @name $md083forkToast#hide
  *
  * @description
- * Hide an existing toast and resolve the promise returned from `$mdToast.show()`.
+ * Hide an existing toast and resolve the promise returned from `$md083forkToast.show()`.
  *
  * @param {*=} response An argument for the resolved promise.
  *
@@ -9603,11 +9603,11 @@ function MdToastDirective() {
 
 /**
  * @ngdoc method
- * @name $mdToast#cancel
+ * @name $md083forkToast#cancel
  *
  * @description
  * Hide the existing toast and reject the promise returned from
- * `$mdToast.show()`.
+ * `$md083forkToast.show()`.
  *
  * @param {*=} response An argument for the rejected promise.
  *
@@ -9615,9 +9615,9 @@ function MdToastDirective() {
  *
  */
 
-function MdToastProvider($$interimElementProvider) {
+function MdToastProvider($$083forkInterimElementProvider) {
   var activeToastContent;
-  var $mdToast = $$interimElementProvider('$mdToast')
+  var $md083forkToast = $$083forkInterimElementProvider('$md083forkToast')
     .setDefaults({
       methods: ['position', 'hideDelay', 'capsule'],
       options: toastDefaultOptions
@@ -9625,15 +9625,15 @@ function MdToastProvider($$interimElementProvider) {
     .addPreset('simple', {
       argOption: 'content',
       methods: ['content', 'action', 'highlightAction', 'theme'],
-      options: /* @ngInject */ ["$mdToast", "$md083forkTheming", function($mdToast, $md083forkTheming) {
+      options: /* @ngInject */ ["$md083forkToast", "$md083forkTheming", function($md083forkToast, $md083forkTheming) {
         var opts = {
           template: [
-            '<md-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">',
+            '<md083fork-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">',
               '<span flex>{{ toast.content }}</span>',
               '<md-button class="md-action" ng-if="toast.action" ng-click="toast.resolve()" ng-class="{\'md-highlight\': toast.highlightAction}">',
                 '{{ toast.action }}',
               '</md-button>',
-            '</md-toast>'
+            '</md083fork-toast>'
           ].join(''),
           controller: /* @ngInject */ ["$scope", function mdToastCtrl($scope) {
             var self = this;
@@ -9641,7 +9641,7 @@ function MdToastProvider($$interimElementProvider) {
               self.content = activeToastContent;
             });
             this.resolve = function() {
-              $mdToast.hide();
+              $md083forkToast.hide();
             };
           }],
           theme: $md083forkTheming.defaultTheme(),
@@ -9655,11 +9655,11 @@ function MdToastProvider($$interimElementProvider) {
       activeToastContent = newContent;
     });
 
-  toastDefaultOptions.$inject = ["$timeout", "$animate", "$mdToast"];
-    return $mdToast;
+  toastDefaultOptions.$inject = ["$timeout", "$animate", "$md083forkToast"];
+    return $md083forkToast;
 
   /* @ngInject */
-  function toastDefaultOptions($timeout, $animate, $mdToast) {
+  function toastDefaultOptions($timeout, $animate, $md083forkToast) {
     return {
       onShow: onShow,
       onRemove: onRemove,
@@ -9679,7 +9679,7 @@ function MdToastProvider($$interimElementProvider) {
       options.onSwipe = function(ev, gesture) {
         //Add swipeleft/swiperight class to element so it can animate correctly
         element.addClass('md-' + ev.type.replace('$md.',''));
-        $timeout($mdToast.cancel);
+        $timeout($md083forkToast.cancel);
       };
       element.on('$md.swipeleft $md.swiperight', options.onSwipe);
       return $animate.enter(element, options.parent);
@@ -9698,7 +9698,7 @@ function MdToastProvider($$interimElementProvider) {
   }
 
 }
-MdToastProvider.$inject = ["$$interimElementProvider"];
+MdToastProvider.$inject = ["$$083forkInterimElementProvider"];
 
 })();
 
@@ -11030,7 +11030,7 @@ angular.module('material.083fork.components.tabs')
  * </hljs>
  *
  */
-function MdTabDirective($mdInkRipple, $compile, $md083forkUtil, $md083forkConstant, $timeout) {
+function MdTabDirective($md083forkInkRipple$mdInkRipple, $compile, $md083forkUtil, $md083forkConstant, $timeout) {
   return {
     restrict: 'E',
     require: ['mdTab', '^mdTabs'],
@@ -11078,7 +11078,7 @@ function MdTabDirective($mdInkRipple, $compile, $md083forkUtil, $md083forkConsta
       transcludeTabContent();
       configureAria();
 
-      $mdInkRipple.attachTabBehavior(scope, element, {
+      $md083forkInkRipple$mdInkRipple.attachTabBehavior(scope, element, {
         colorElement: tabsCtrl.inkBarElement
       });
       tabsCtrl.add(tabItemCtrl);
@@ -11207,7 +11207,7 @@ function MdTabDirective($mdInkRipple, $compile, $md083forkUtil, $md083forkConsta
   }
 
 }
-MdTabDirective.$inject = ["$mdInkRipple", "$compile", "$md083forkUtil", "$md083forkConstant", "$timeout"];
+MdTabDirective.$inject = ["$md083forkInkRipple$mdInkRipple", "$compile", "$md083forkUtil", "$md083forkConstant", "$timeout"];
 
 })();
 
@@ -11537,5 +11537,5 @@ TabsDirective.$inject = ["$md083forkTheming"];
 })();
 
 (function(){ 
- angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete {  background: '{{background-50}}'; }  md-autocomplete button md-icon path {    fill: '{{background-600}}'; }  md-autocomplete button:after {    background: '{{background-600-0.3}}'; }  md-autocomplete ul {    background: '{{background-50}}'; }    md-autocomplete ul li {      border-top: 1px solid '{{background-400}}';      color: '{{background-900}}'; }      md-autocomplete ul li .highlight {        color: '{{background-600}}'; }      md-autocomplete ul li:hover, md-autocomplete ul li.selected {        background: '{{background-200}}'; }md-backdrop.md-opaque.md-THEME_NAME-theme {  background-color: '{{foreground-4-0.5}}'; }md-bottom-sheet.md-THEME_NAME-theme {  background-color: '{{background-50}}';  border-top-color: '{{background-300}}'; }  md-bottom-sheet.md-THEME_NAME-theme.md-list md-item {    color: '{{foreground-1}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    background-color: '{{background-50}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    color: '{{foreground-1}}'; }md-toolbar .md-button.md-THEME_NAME-theme.md-fab {  background-color: white; }.md-button.md-THEME_NAME-theme {  border-radius: 3px; }  .md-button.md-THEME_NAME-theme:not([disabled]):hover, .md-button.md-THEME_NAME-theme:not([disabled]):focus {    background-color: '{{background-500-0.2}}'; }  .md-button.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }    .md-button.md-THEME_NAME-theme.md-primary.md-raised, .md-button.md-THEME_NAME-theme.md-primary.md-fab {      color: '{{primary-contrast}}';      background-color: '{{primary-color}}'; }      .md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):focus {        background-color: '{{primary-600}}'; }  .md-button.md-THEME_NAME-theme.md-fab {    border-radius: 50%;    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }    .md-button.md-THEME_NAME-theme.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-fab:not([disabled]):focus {      background-color: '{{accent-A700}}'; }  .md-button.md-THEME_NAME-theme.md-raised {    color: '{{background-contrast}}';    background-color: '{{background-50}}'; }    .md-button.md-THEME_NAME-theme.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-raised:not([disabled]):focus {      background-color: '{{background-200}}'; }  .md-button.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }    .md-button.md-THEME_NAME-theme.md-warn.md-raised, .md-button.md-THEME_NAME-theme.md-warn.md-fab {      color: '{{warn-contrast}}';      background-color: '{{warn-color}}'; }      .md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):focus {        background-color: '{{warn-700}}'; }  .md-button.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }    .md-button.md-THEME_NAME-theme.md-accent.md-raised, .md-button.md-THEME_NAME-theme.md-accent.md-fab {      color: '{{accent-contrast}}';      background-color: '{{accent-color}}'; }      .md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):focus {        background-color: '{{accent-700}}'; }  .md-button.md-THEME_NAME-theme[disabled], .md-button.md-THEME_NAME-theme.md-raised[disabled], .md-button.md-THEME_NAME-theme.md-fab[disabled] {    color: '{{foreground-3}}';    background-color: transparent;    cursor: not-allowed; }md-card.md-THEME_NAME-theme {  border-radius: 2px; }  md-card.md-THEME_NAME-theme .md-card-image {    border-radius: 2px 2px 0 0; }md-checkbox.md-THEME_NAME-theme .md-ripple {  color: '{{accent-600}}'; }md-checkbox.md-THEME_NAME-theme.md-checked .md-ripple {  color: '{{background-600}}'; }md-checkbox.md-THEME_NAME-theme .md-icon {  border-color: '{{foreground-2}}'; }md-checkbox.md-THEME_NAME-theme.md-checked .md-icon {  background-color: '{{accent-color-0.87}}'; }md-checkbox.md-THEME_NAME-theme.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ripple {  color: '{{primary-600}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ripple {  color: '{{background-600}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-icon {  border-color: '{{foreground-2}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon {  background-color: '{{primary-color-0.87}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ripple {  color: '{{warn-600}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-icon {  border-color: '{{foreground-2}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon {  background-color: '{{warn-color-0.87}}'; }md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md-checkbox.md-THEME_NAME-theme[disabled] .md-icon {  border-color: '{{foreground-3}}'; }md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon {  background-color: '{{foreground-3}}'; }md-content.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md-dialog.md-THEME_NAME-theme {  border-radius: 4px;  background-color: '{{background-hue-3}}'; }  md-dialog.md-THEME_NAME-theme.md-content-overflow .md-actions {    border-top-color: '{{foreground-4}}'; }md-divider.md-THEME_NAME-theme {  border-top-color: '{{foreground-4}}'; }md-icon.md-THEME_NAME-theme.md-primary {  color: '{{primary-color}}'; }md-icon.md-THEME_NAME-theme.md-accent {  color: '{{accent-color}}'; }md-icon.md-THEME_NAME-theme.md-warn {  color: '{{warn-color}}'; }md-icon.md-THEME_NAME-theme.md-danger {  color: '{{danger-color}}'; }md-input-container.md-THEME_NAME-theme .md-input {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}';  text-shadow: '{{foreground-shadow}}'; }  md-input-container.md-THEME_NAME-theme .md-input::-webkit-input-placeholder, md-input-container.md-THEME_NAME-theme .md-input::-moz-placeholder, md-input-container.md-THEME_NAME-theme .md-input:-moz-placeholder, md-input-container.md-THEME_NAME-theme .md-input:-ms-input-placeholder {    color: '{{foreground-3}}'; }md-input-container.md-THEME_NAME-theme > md-icon {  fill: '{{foreground-1}}'; }md-input-container.md-THEME_NAME-theme label, md-input-container.md-THEME_NAME-theme .md-placeholder {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-has-value label {  color: '{{foreground-2}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused .md-input {  border-color: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused label {  color: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused md-icon {  fill: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent .md-input {  border-color: '{{accent-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent label {  color: '{{accent-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn .md-input {  border-color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn label {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input {  border-color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid label {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid data-ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid x-ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid [ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid [data-ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid [x-ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid .md-char-counter {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme .md-input[disabled], [disabled] md-input-container.md-THEME_NAME-theme .md-input {  border-bottom-color: transparent;  color: '{{foreground-3}}';  background-image: linear-gradient(to right, '{{foreground-4}}' 0%, '{{foreground-4}}' 33%, transparent 0%);  background-image: -ms-linear-gradient(left, transparent 0%, '{{foreground-4}}' 100%); }md-progress-circular.md-THEME_NAME-theme {  background-color: transparent; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-gap {    border-top-color: '{{primary-color}}';    border-bottom-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-top-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-right-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle {    border-left-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-gap {    border-top-color: '{{warn-color}}';    border-bottom-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-top-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-right-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle {    border-left-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-gap {    border-top-color: '{{accent-color}}';    border-bottom-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-top-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-right-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle {    border-left-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme .md-container {  background-color: '{{primary-100}}'; }md-progress-linear.md-THEME_NAME-theme .md-bar {  background-color: '{{primary-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-container {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-bar {  background-color: '{{warn-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-container {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-bar {  background-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-bar1 {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-dashed:before {  background: radial-gradient('{{warn-100}}' 0%, '{{warn-100}}' 16%, transparent 42%); }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-bar1 {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-dashed:before {  background: radial-gradient('{{accent-100}}' 0%, '{{accent-100}}' 16%, transparent 42%); }md-radio-button.md-THEME_NAME-theme .md-off {  border-color: '{{foreground-2}}'; }md-radio-button.md-THEME_NAME-theme .md-on {  background-color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme.md-checked .md-off {  border-color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme.md-checked .md-ink-ripple {  color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme .md-container .md-ripple {  color: '{{accent-600}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-on {  background-color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off {  border-color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple {  color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple {  color: '{{primary-600}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-on {  background-color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off {  border-color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple {  color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple {  color: '{{warn-600}}'; }md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-off {  border-color: '{{foreground-3}}'; }md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-on {  border-color: '{{foreground-3}}'; }md-radio-group.md-THEME_NAME-theme:focus:not(:empty) {  border-color: '{{foreground-1}}'; }md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label {  border-bottom-color: '{{primary-color}}';  color: '{{ foreground-1 }}'; }  md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label.md-placeholder {    color: '{{ foreground-1 }}'; }md-select.md-THEME_NAME-theme:not([disabled]):focus.md-accent .md-select-label {  border-bottom-color: '{{accent-color}}'; }md-select.md-THEME_NAME-theme:not([disabled]):focus.md-warn .md-select-label {  border-bottom-color: '{{warn-color}}'; }md-select.md-THEME_NAME-theme[disabled] .md-select-label {  color: '{{foreground-3}}'; }  md-select.md-THEME_NAME-theme[disabled] .md-select-label.md-placeholder {    color: '{{foreground-3}}'; }md-select.md-THEME_NAME-theme .md-select-label {  border-bottom-color: '{{foreground-4}}'; }  md-select.md-THEME_NAME-theme .md-select-label.md-placeholder {    color: '{{foreground-2}}'; }md-select-menu.md-THEME_NAME-theme md-optgroup {  color: '{{foreground-2}}'; }  md-select-menu.md-THEME_NAME-theme md-optgroup md-option {    color: '{{foreground-1}}'; }md-select-menu.md-THEME_NAME-theme md-option[selected] {  background-color: '{{primary-50}}'; }  md-select-menu.md-THEME_NAME-theme md-option[selected]:focus {    background-color: '{{primary-100}}'; }  md-select-menu.md-THEME_NAME-theme md-option[selected].md-accent {    background-color: '{{accent-50}}'; }    md-select-menu.md-THEME_NAME-theme md-option[selected].md-accent:focus {      background-color: '{{accent-100}}'; }md-select-menu.md-THEME_NAME-theme md-option:focus:not([selected]) {  background: '{{background-200}}'; }md-sidenav.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md-slider.md-THEME_NAME-theme .md-track {  background-color: '{{foreground-3}}'; }md-slider.md-THEME_NAME-theme .md-track-ticks {  background-color: '{{foreground-4}}'; }md-slider.md-THEME_NAME-theme .md-focus-thumb {  background-color: '{{foreground-2}}'; }md-slider.md-THEME_NAME-theme .md-focus-ring {  border-color: '{{foreground-4}}'; }md-slider.md-THEME_NAME-theme .md-disabled-thumb {  border-color: '{{background-hue-3}}'; }md-slider.md-THEME_NAME-theme.md-min .md-thumb:after {  background-color: '{{background-hue-3}}'; }md-slider.md-THEME_NAME-theme .md-track.md-track-fill {  background-color: '{{accent-color}}'; }md-slider.md-THEME_NAME-theme .md-thumb:after {  border-color: '{{accent-color}}';  background-color: '{{accent-color}}'; }md-slider.md-THEME_NAME-theme .md-sign {  background-color: '{{accent-color}}'; }  md-slider.md-THEME_NAME-theme .md-sign:after {    border-top-color: '{{accent-color}}'; }md-slider.md-THEME_NAME-theme .md-thumb-text {  color: '{{accent-contrast}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-track.md-track-fill {  background-color: '{{warn-color}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-thumb:after {  border-color: '{{warn-color}}';  background-color: '{{warn-color}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-sign {  background-color: '{{warn-color}}'; }  md-slider.md-THEME_NAME-theme.md-warn .md-sign:after {    border-top-color: '{{warn-color}}'; }md-slider.md-THEME_NAME-theme.md-warn .md-thumb-text {  color: '{{warn-contrast}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-track.md-track-fill {  background-color: '{{primary-color}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-thumb:after {  border-color: '{{primary-color}}';  background-color: '{{primary-color}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-sign {  background-color: '{{primary-color}}'; }  md-slider.md-THEME_NAME-theme.md-primary .md-sign:after {    border-top-color: '{{primary-color}}'; }md-slider.md-THEME_NAME-theme.md-primary .md-thumb-text {  color: '{{primary-contrast}}'; }md-slider.md-THEME_NAME-theme[disabled] .md-thumb:after {  border-color: '{{foreground-3}}'; }md-slider.md-THEME_NAME-theme[disabled]:not(.md-min) .md-thumb:after {  background-color: '{{foreground-3}}'; }.md-subheader.md-THEME_NAME-theme {  color: '{{ foreground-2-0.23 }}';  background-color: '{{background-hue-3}}'; }  .md-subheader.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme .md-thumb {  background-color: '{{background-50}}'; }md-switch.md-THEME_NAME-theme .md-bar {  background-color: '{{background-500}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-thumb {  background-color: '{{accent-color}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-bar {  background-color: '{{accent-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-thumb {  background-color: '{{primary-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-bar {  background-color: '{{primary-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-thumb {  background-color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-bar {  background-color: '{{warn-color-0.5}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-thumb {  background-color: '{{background-400}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-bar {  background-color: '{{foreground-4}}'; }md-switch.md-THEME_NAME-theme:focus .md-label:not(:empty) {  border-color: '{{foreground-1}}';  border-style: dotted; }md-tabs.md-THEME_NAME-theme .md-header {  background-color: transparent; }md-tabs.md-THEME_NAME-theme .md-paginator md-icon {  color: '{{primary-color}}'; }md-tabs.md-THEME_NAME-theme.md-accent .md-header {  background-color: '{{accent-color}}'; }md-tabs.md-THEME_NAME-theme.md-accent md-tab:not([disabled]) {  color: '{{accent-100}}'; }  md-tabs.md-THEME_NAME-theme.md-accent md-tab:not([disabled]).active {    color: '{{accent-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-primary .md-header {  background-color: '{{primary-color}}'; }md-tabs.md-THEME_NAME-theme.md-primary md-tab:not([disabled]) {  color: '{{primary-100}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab:not([disabled]).active {    color: '{{primary-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-primary md-tab {  color: '{{primary-100}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab[disabled] {    color: '{{foreground-3}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab:focus {    color: '{{primary-contrast}}';    background-color: '{{primary-contrast-0.1}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab.active {    color: '{{primary-contrast}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab .md-ripple-container {    color: '{{primary-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-warn .md-header {  background-color: '{{warn-color}}'; }md-tabs.md-THEME_NAME-theme.md-warn md-tab:not([disabled]) {  color: '{{warn-100}}'; }  md-tabs.md-THEME_NAME-theme.md-warn md-tab:not([disabled]).active {    color: '{{warn-contrast}}'; }md-tabs.md-THEME_NAME-theme md-tabs-ink-bar {  color: '{{accent-color}}';  background: '{{accent-color}}'; }md-tabs.md-THEME_NAME-theme md-tab {  color: '{{foreground-2}}'; }  md-tabs.md-THEME_NAME-theme md-tab[disabled] {    color: '{{foreground-3}}'; }  md-tabs.md-THEME_NAME-theme md-tab:focus {    color: '{{foreground-1}}'; }  md-tabs.md-THEME_NAME-theme md-tab.active {    color: '{{primary-color}}'; }  md-tabs.md-THEME_NAME-theme md-tab .md-ripple-container {    color: '{{accent-100}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  text-shadow: '{{foreground-shadow}}'; }  md-input-group.md-THEME_NAME-theme input::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme input::-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-ms-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-ms-input-placeholder {    color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme label {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused input, md-input-group.md-THEME_NAME-theme.md-input-focused textarea {  border-color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused label {  color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent input, md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent textarea {  border-color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent label {  color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-has-value:not(.md-input-focused) label {  color: '{{foreground-2}}'; }md-input-group.md-THEME_NAME-theme .md-input[disabled] {  border-bottom-color: '{{foreground-4}}';  color: '{{foreground-3}}'; }md-toast.md-THEME_NAME-theme {  background-color: '{{foreground-1}}';  color: '{{background-50}}'; }  md-toast.md-THEME_NAME-theme .md-button {    color: '{{background-50}}'; }    md-toast.md-THEME_NAME-theme .md-button.md-highlight {      color: '{{primary-A200}}'; }      md-toast.md-THEME_NAME-theme .md-button.md-highlight.md-accent {        color: '{{accent-A200}}'; }      md-toast.md-THEME_NAME-theme .md-button.md-highlight.md-warn {        color: '{{warn-A200}}'; }md-toolbar.md-THEME_NAME-theme {  background-color: '{{primary-color}}';  color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme .md-button {    color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-accent {    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-warn {    background-color: '{{warn-color}}';    color: '{{warn-contrast}}'; }md-tooltip.md-THEME_NAME-theme {  color: '{{background-A100}}'; }  md-tooltip.md-THEME_NAME-theme .md-background {    background-color: '{{foreground-2}}'; }"); 
+ angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete {  background: '{{background-50}}'; }  md-autocomplete button md-icon path {    fill: '{{background-600}}'; }  md-autocomplete button:after {    background: '{{background-600-0.3}}'; }  md-autocomplete ul {    background: '{{background-50}}'; }    md-autocomplete ul li {      border-top: 1px solid '{{background-400}}';      color: '{{background-900}}'; }      md-autocomplete ul li .highlight {        color: '{{background-600}}'; }      md-autocomplete ul li:hover, md-autocomplete ul li.selected {        background: '{{background-200}}'; }md-backdrop.md-opaque.md-THEME_NAME-theme {  background-color: '{{foreground-4-0.5}}'; }md-bottom-sheet.md-THEME_NAME-theme {  background-color: '{{background-50}}';  border-top-color: '{{background-300}}'; }  md-bottom-sheet.md-THEME_NAME-theme.md-list md-item {    color: '{{foreground-1}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    background-color: '{{background-50}}'; }  md-bottom-sheet.md-THEME_NAME-theme .md-subheader {    color: '{{foreground-1}}'; }md-toolbar .md-button.md-THEME_NAME-theme.md-fab {  background-color: white; }.md-button.md-THEME_NAME-theme {  border-radius: 3px; }  .md-button.md-THEME_NAME-theme:not([disabled]):hover, .md-button.md-THEME_NAME-theme:not([disabled]):focus {    background-color: '{{background-500-0.2}}'; }  .md-button.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }    .md-button.md-THEME_NAME-theme.md-primary.md-raised, .md-button.md-THEME_NAME-theme.md-primary.md-fab {      color: '{{primary-contrast}}';      background-color: '{{primary-color}}'; }      .md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):focus {        background-color: '{{primary-600}}'; }  .md-button.md-THEME_NAME-theme.md-fab {    border-radius: 50%;    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }    .md-button.md-THEME_NAME-theme.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-fab:not([disabled]):focus {      background-color: '{{accent-A700}}'; }  .md-button.md-THEME_NAME-theme.md-raised {    color: '{{background-contrast}}';    background-color: '{{background-50}}'; }    .md-button.md-THEME_NAME-theme.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-raised:not([disabled]):focus {      background-color: '{{background-200}}'; }  .md-button.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }    .md-button.md-THEME_NAME-theme.md-warn.md-raised, .md-button.md-THEME_NAME-theme.md-warn.md-fab {      color: '{{warn-contrast}}';      background-color: '{{warn-color}}'; }      .md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):focus {        background-color: '{{warn-700}}'; }  .md-button.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }    .md-button.md-THEME_NAME-theme.md-accent.md-raised, .md-button.md-THEME_NAME-theme.md-accent.md-fab {      color: '{{accent-contrast}}';      background-color: '{{accent-color}}'; }      .md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):focus, .md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):hover, .md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):focus {        background-color: '{{accent-700}}'; }  .md-button.md-THEME_NAME-theme[disabled], .md-button.md-THEME_NAME-theme.md-raised[disabled], .md-button.md-THEME_NAME-theme.md-fab[disabled] {    color: '{{foreground-3}}';    background-color: transparent;    cursor: not-allowed; }md-card.md-THEME_NAME-theme {  border-radius: 2px; }  md-card.md-THEME_NAME-theme .md-card-image {    border-radius: 2px 2px 0 0; }md083fork-checkbox.md-THEME_NAME-theme .md-ripple {  color: '{{accent-600}}'; }md083fork-checkbox.md-THEME_NAME-theme.md-checked .md-ripple {  color: '{{background-600}}'; }md083fork-checkbox.md-THEME_NAME-theme .md-icon {  border-color: '{{foreground-2}}'; }md083fork-checkbox.md-THEME_NAME-theme.md-checked .md-icon {  background-color: '{{accent-color-0.87}}'; }md083fork-checkbox.md-THEME_NAME-theme.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ripple {  color: '{{primary-600}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ripple {  color: '{{background-600}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-icon {  border-color: '{{foreground-2}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon {  background-color: '{{primary-color-0.87}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ripple {  color: '{{warn-600}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-icon {  border-color: '{{foreground-2}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon {  background-color: '{{warn-color-0.87}}'; }md083fork-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon:after {  border-color: '{{background-200}}'; }md083fork-checkbox.md-THEME_NAME-theme[disabled] .md-icon {  border-color: '{{foreground-3}}'; }md083fork-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon {  background-color: '{{foreground-3}}'; }md-content.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md-dialog.md-THEME_NAME-theme {  border-radius: 4px;  background-color: '{{background-hue-3}}'; }  md-dialog.md-THEME_NAME-theme.md-content-overflow .md-actions {    border-top-color: '{{foreground-4}}'; }md-divider.md-THEME_NAME-theme {  border-top-color: '{{foreground-4}}'; }md-icon.md-THEME_NAME-theme.md-primary {  color: '{{primary-color}}'; }md-icon.md-THEME_NAME-theme.md-accent {  color: '{{accent-color}}'; }md-icon.md-THEME_NAME-theme.md-warn {  color: '{{warn-color}}'; }md-icon.md-THEME_NAME-theme.md-danger {  color: '{{danger-color}}'; }md-input-container.md-THEME_NAME-theme .md-input {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}';  text-shadow: '{{foreground-shadow}}'; }  md-input-container.md-THEME_NAME-theme .md-input::-webkit-input-placeholder, md-input-container.md-THEME_NAME-theme .md-input::-moz-placeholder, md-input-container.md-THEME_NAME-theme .md-input:-moz-placeholder, md-input-container.md-THEME_NAME-theme .md-input:-ms-input-placeholder {    color: '{{foreground-3}}'; }md-input-container.md-THEME_NAME-theme > md-icon {  fill: '{{foreground-1}}'; }md-input-container.md-THEME_NAME-theme label, md-input-container.md-THEME_NAME-theme .md-placeholder {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-has-value label {  color: '{{foreground-2}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused .md-input {  border-color: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused label {  color: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused md-icon {  fill: '{{primary-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent .md-input {  border-color: '{{accent-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent label {  color: '{{accent-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn .md-input {  border-color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn label {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input {  border-color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid label {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme.md-input-invalid ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid data-ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid x-ng-message, md-input-container.md-THEME_NAME-theme.md-input-invalid [ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid [data-ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid [x-ng-message], md-input-container.md-THEME_NAME-theme.md-input-invalid .md-char-counter {  color: '{{warn-500}}'; }md-input-container.md-THEME_NAME-theme .md-input[disabled], [disabled] md-input-container.md-THEME_NAME-theme .md-input {  border-bottom-color: transparent;  color: '{{foreground-3}}';  background-image: linear-gradient(to right, '{{foreground-4}}' 0%, '{{foreground-4}}' 33%, transparent 0%);  background-image: -ms-linear-gradient(left, transparent 0%, '{{foreground-4}}' 100%); }md-progress-circular.md-THEME_NAME-theme {  background-color: transparent; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-gap {    border-top-color: '{{primary-color}}';    border-bottom-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-top-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-right .md-half-circle {    border-right-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme .md-inner .md-left .md-half-circle {    border-left-color: '{{primary-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-gap {    border-top-color: '{{warn-color}}';    border-bottom-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-top-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-right .md-half-circle {    border-right-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-warn .md-inner .md-left .md-half-circle {    border-left-color: '{{warn-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-gap {    border-top-color: '{{accent-color}}';    border-bottom-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle, md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-top-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-right .md-half-circle {    border-right-color: '{{accent-color}}'; }  md-progress-circular.md-THEME_NAME-theme.md-accent .md-inner .md-left .md-half-circle {    border-left-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme .md-container {  background-color: '{{primary-100}}'; }md-progress-linear.md-THEME_NAME-theme .md-bar {  background-color: '{{primary-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-container {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-warn .md-bar {  background-color: '{{warn-color}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-container {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme.md-accent .md-bar {  background-color: '{{accent-color}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-bar1 {  background-color: '{{warn-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-dashed:before {  background: radial-gradient('{{warn-100}}' 0%, '{{warn-100}}' 16%, transparent 42%); }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-bar1 {  background-color: '{{accent-100}}'; }md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-dashed:before {  background: radial-gradient('{{accent-100}}' 0%, '{{accent-100}}' 16%, transparent 42%); }md-radio-button.md-THEME_NAME-theme .md-off {  border-color: '{{foreground-2}}'; }md-radio-button.md-THEME_NAME-theme .md-on {  background-color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme.md-checked .md-off {  border-color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme.md-checked .md-ink-ripple {  color: '{{accent-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme .md-container .md-ripple {  color: '{{accent-600}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-on {  background-color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off {  border-color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple {  color: '{{primary-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple {  color: '{{primary-600}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-on {  background-color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off {  border-color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple {  color: '{{warn-color-0.87}}'; }md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple {  color: '{{warn-600}}'; }md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-off {  border-color: '{{foreground-3}}'; }md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-on {  border-color: '{{foreground-3}}'; }md-radio-group.md-THEME_NAME-theme:focus:not(:empty) {  border-color: '{{foreground-1}}'; }md083fork-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label {  border-bottom-color: '{{primary-color}}';  color: '{{ foreground-1 }}'; }  md083fork-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-label.md-placeholder {    color: '{{ foreground-1 }}'; }md083fork-select.md-THEME_NAME-theme:not([disabled]):focus.md-accent .md-select-label {  border-bottom-color: '{{accent-color}}'; }md083fork-select.md-THEME_NAME-theme:not([disabled]):focus.md-warn .md-select-label {  border-bottom-color: '{{warn-color}}'; }md083fork-select.md-THEME_NAME-theme[disabled] .md-select-label {  color: '{{foreground-3}}'; }  md083fork-select.md-THEME_NAME-theme[disabled] .md-select-label.md-placeholder {    color: '{{foreground-3}}'; }md083fork-select.md-THEME_NAME-theme .md-select-label {  border-bottom-color: '{{foreground-4}}'; }  md083fork-select.md-THEME_NAME-theme .md-select-label.md-placeholder {    color: '{{foreground-2}}'; }md083fork-select-menu.md-THEME_NAME-theme md083fork-optgroup {  color: '{{foreground-2}}'; }  md083fork-select-menu.md-THEME_NAME-theme md083fork-optgroup md083fork-option {    color: '{{foreground-1}}'; }md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected] {  background-color: '{{primary-50}}'; }  md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected]:focus {    background-color: '{{primary-100}}'; }  md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected].md-accent {    background-color: '{{accent-50}}'; }    md083fork-select-menu.md-THEME_NAME-theme md083fork-option[selected].md-accent:focus {      background-color: '{{accent-100}}'; }md083fork-select-menu.md-THEME_NAME-theme md083fork-option:focus:not([selected]) {  background: '{{background-200}}'; }md-sidenav.md-THEME_NAME-theme {  background-color: '{{background-hue-3}}'; }md083fork-slider.md-THEME_NAME-theme .md-track {  background-color: '{{foreground-3}}'; }md083fork-slider.md-THEME_NAME-theme .md-track-ticks {  background-color: '{{foreground-4}}'; }md083fork-slider.md-THEME_NAME-theme .md-focus-thumb {  background-color: '{{foreground-2}}'; }md083fork-slider.md-THEME_NAME-theme .md-focus-ring {  border-color: '{{foreground-4}}'; }md083fork-slider.md-THEME_NAME-theme .md-disabled-thumb {  border-color: '{{background-hue-3}}'; }md083fork-slider.md-THEME_NAME-theme.md-min .md-thumb:after {  background-color: '{{background-hue-3}}'; }md083fork-slider.md-THEME_NAME-theme .md-track.md-track-fill {  background-color: '{{accent-color}}'; }md083fork-slider.md-THEME_NAME-theme .md-thumb:after {  border-color: '{{accent-color}}';  background-color: '{{accent-color}}'; }md083fork-slider.md-THEME_NAME-theme .md-sign {  background-color: '{{accent-color}}'; }  md083fork-slider.md-THEME_NAME-theme .md-sign:after {    border-top-color: '{{accent-color}}'; }md083fork-slider.md-THEME_NAME-theme .md-thumb-text {  color: '{{accent-contrast}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-track.md-track-fill {  background-color: '{{warn-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-thumb:after {  border-color: '{{warn-color}}';  background-color: '{{warn-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-sign {  background-color: '{{warn-color}}'; }  md083fork-slider.md-THEME_NAME-theme.md-warn .md-sign:after {    border-top-color: '{{warn-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-warn .md-thumb-text {  color: '{{warn-contrast}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-track.md-track-fill {  background-color: '{{primary-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-thumb:after {  border-color: '{{primary-color}}';  background-color: '{{primary-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-sign {  background-color: '{{primary-color}}'; }  md083fork-slider.md-THEME_NAME-theme.md-primary .md-sign:after {    border-top-color: '{{primary-color}}'; }md083fork-slider.md-THEME_NAME-theme.md-primary .md-thumb-text {  color: '{{primary-contrast}}'; }md083fork-slider.md-THEME_NAME-theme[disabled] .md-thumb:after {  border-color: '{{foreground-3}}'; }md083fork-slider.md-THEME_NAME-theme[disabled]:not(.md-min) .md-thumb:after {  background-color: '{{foreground-3}}'; }.md-subheader.md-THEME_NAME-theme {  color: '{{ foreground-2-0.23 }}';  background-color: '{{background-hue-3}}'; }  .md-subheader.md-THEME_NAME-theme.md-primary {    color: '{{primary-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-accent {    color: '{{accent-color}}'; }  .md-subheader.md-THEME_NAME-theme.md-warn {    color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme .md-thumb {  background-color: '{{background-50}}'; }md-switch.md-THEME_NAME-theme .md-bar {  background-color: '{{background-500}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-thumb {  background-color: '{{accent-color}}'; }md-switch.md-THEME_NAME-theme.md-checked .md-bar {  background-color: '{{accent-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-thumb {  background-color: '{{primary-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-bar {  background-color: '{{primary-color-0.5}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-thumb {  background-color: '{{warn-color}}'; }md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-bar {  background-color: '{{warn-color-0.5}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-thumb {  background-color: '{{background-400}}'; }md-switch.md-THEME_NAME-theme[disabled] .md-bar {  background-color: '{{foreground-4}}'; }md-switch.md-THEME_NAME-theme:focus .md-label:not(:empty) {  border-color: '{{foreground-1}}';  border-style: dotted; }md-tabs.md-THEME_NAME-theme .md-header {  background-color: transparent; }md-tabs.md-THEME_NAME-theme .md-paginator md-icon {  color: '{{primary-color}}'; }md-tabs.md-THEME_NAME-theme.md-accent .md-header {  background-color: '{{accent-color}}'; }md-tabs.md-THEME_NAME-theme.md-accent md-tab:not([disabled]) {  color: '{{accent-100}}'; }  md-tabs.md-THEME_NAME-theme.md-accent md-tab:not([disabled]).active {    color: '{{accent-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-primary .md-header {  background-color: '{{primary-color}}'; }md-tabs.md-THEME_NAME-theme.md-primary md-tab:not([disabled]) {  color: '{{primary-100}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab:not([disabled]).active {    color: '{{primary-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-primary md-tab {  color: '{{primary-100}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab[disabled] {    color: '{{foreground-3}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab:focus {    color: '{{primary-contrast}}';    background-color: '{{primary-contrast-0.1}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab.active {    color: '{{primary-contrast}}'; }  md-tabs.md-THEME_NAME-theme.md-primary md-tab .md-ripple-container {    color: '{{primary-contrast}}'; }md-tabs.md-THEME_NAME-theme.md-warn .md-header {  background-color: '{{warn-color}}'; }md-tabs.md-THEME_NAME-theme.md-warn md-tab:not([disabled]) {  color: '{{warn-100}}'; }  md-tabs.md-THEME_NAME-theme.md-warn md-tab:not([disabled]).active {    color: '{{warn-contrast}}'; }md-tabs.md-THEME_NAME-theme md-tabs-ink-bar {  color: '{{accent-color}}';  background: '{{accent-color}}'; }md-tabs.md-THEME_NAME-theme md-tab {  color: '{{foreground-2}}'; }  md-tabs.md-THEME_NAME-theme md-tab[disabled] {    color: '{{foreground-3}}'; }  md-tabs.md-THEME_NAME-theme md-tab:focus {    color: '{{foreground-1}}'; }  md-tabs.md-THEME_NAME-theme md-tab.active {    color: '{{primary-color}}'; }  md-tabs.md-THEME_NAME-theme md-tab .md-ripple-container {    color: '{{accent-100}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  text-shadow: '{{foreground-shadow}}'; }  md-input-group.md-THEME_NAME-theme input::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme input::-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-moz-placeholder, md-input-group.md-THEME_NAME-theme input:-ms-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-webkit-input-placeholder, md-input-group.md-THEME_NAME-theme textarea::-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-moz-placeholder, md-input-group.md-THEME_NAME-theme textarea:-ms-input-placeholder {    color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme label {  text-shadow: '{{foreground-shadow}}';  color: '{{foreground-3}}'; }md-input-group.md-THEME_NAME-theme input, md-input-group.md-THEME_NAME-theme textarea {  color: '{{foreground-1}}';  border-color: '{{foreground-4}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused input, md-input-group.md-THEME_NAME-theme.md-input-focused textarea {  border-color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused label {  color: '{{primary-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent input, md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent textarea {  border-color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-focused.md-accent label {  color: '{{accent-500}}'; }md-input-group.md-THEME_NAME-theme.md-input-has-value:not(.md-input-focused) label {  color: '{{foreground-2}}'; }md-input-group.md-THEME_NAME-theme .md-input[disabled] {  border-bottom-color: '{{foreground-4}}';  color: '{{foreground-3}}'; }md083fork-toast.md-THEME_NAME-theme {  background-color: '{{foreground-1}}';  color: '{{background-50}}'; }  md083fork-toast.md-THEME_NAME-theme .md-button {    color: '{{background-50}}'; }    md083fork-toast.md-THEME_NAME-theme .md-button.md-highlight {      color: '{{primary-A200}}'; }      md083fork-toast.md-THEME_NAME-theme .md-button.md-highlight.md-accent {        color: '{{accent-A200}}'; }      md083fork-toast.md-THEME_NAME-theme .md-button.md-highlight.md-warn {        color: '{{warn-A200}}'; }md-toolbar.md-THEME_NAME-theme {  background-color: '{{primary-color}}';  color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme .md-button {    color: '{{primary-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-accent {    background-color: '{{accent-color}}';    color: '{{accent-contrast}}'; }  md-toolbar.md-THEME_NAME-theme.md-warn {    background-color: '{{warn-color}}';    color: '{{warn-contrast}}'; }md-tooltip.md-THEME_NAME-theme {  color: '{{background-A100}}'; }  md-tooltip.md-THEME_NAME-theme .md-background {    background-color: '{{foreground-2}}'; }"); 
 })();

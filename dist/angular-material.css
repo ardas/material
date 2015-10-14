@@ -3293,7 +3293,7 @@ md-card {
             order: 1;
     padding: 16px; }
 
-md-checkbox {
+md083fork-checkbox {
   display: block;
   margin: 15px;
   white-space: nowrap;
@@ -3303,20 +3303,20 @@ md-checkbox {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none; }
-  md-checkbox .md-container {
+  md083fork-checkbox .md-container {
     position: relative;
     top: 4px;
     display: inline-block;
     width: 18px;
     height: 18px; }
-    md-checkbox .md-container:after {
+    md083fork-checkbox .md-container:after {
       content: '';
       position: absolute;
       top: -10px;
       right: -10px;
       bottom: -10px;
       left: -10px; }
-    md-checkbox .md-container .md-ripple-container {
+    md083fork-checkbox .md-container .md-ripple-container {
       position: absolute;
       display: block;
       width: auto;
@@ -3325,7 +3325,7 @@ md-checkbox {
       top: -15px;
       right: -15px;
       bottom: -15px; }
-  md-checkbox .md-icon {
+  md083fork-checkbox .md-icon {
     transition: 240ms;
     position: absolute;
     top: 0;
@@ -3334,13 +3334,13 @@ md-checkbox {
     height: 18px;
     border: 2px solid;
     border-radius: 2px; }
-  md-checkbox.md-checked .md-icon {
+  md083fork-checkbox.md-checked .md-icon {
     border: none; }
-  md-checkbox[disabled] {
+  md083fork-checkbox[disabled] {
     cursor: no-drop; }
-  md-checkbox:focus .md-label:not(:empty) {
+  md083fork-checkbox:focus .md-label:not(:empty) {
     border-color: black; }
-  md-checkbox.md-checked .md-icon:after {
+  md083fork-checkbox.md-checked .md-icon:after {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
     position: absolute;
@@ -3353,7 +3353,7 @@ md-checkbox {
     border-top: 0;
     border-left: 0;
     content: ' '; }
-  md-checkbox .md-label {
+  md083fork-checkbox .md-label {
     border: 1px dotted transparent;
     position: relative;
     display: inline-block;
@@ -3640,6 +3640,57 @@ md-input-container {
     background-position: 0 bottom;
     background-size: 3px 1px;
     background-repeat: repeat-x; }
+
+md-list {
+  padding: 8px 0px 8px 0px; }
+
+md-item-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0px 0px 0px 0px; }
+
+/**
+ * The left tile for a list item.
+ */
+.md-tile-left {
+  min-width: 56px;
+  margin-right: -16px; }
+
+/**
+ * The center content tile for a list item.
+ */
+.md-tile-content {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 16px;
+  text-overflow: ellipsis; }
+  .md-tile-content h3 {
+    margin: 0 0 3px 0;
+    font-weight: 400;
+    font-size: 1.1em; }
+  .md-tile-content h4 {
+    margin: 0 0 3px 0;
+    font-weight: 400;
+    font-size: 0.9em; }
+  .md-tile-content p {
+    margin: 0 0 3px 0;
+    font-size: 0.75em; }
+
+/**
+ * The right tile for a list item.
+ */
+.md-tile-right {
+  padding-right: 0px; }
 
 @-webkit-keyframes outer-rotate {
   100% {
@@ -5031,57 +5082,6 @@ md-progress-circular {
         -webkit-animation-name: right-wobble;
                 animation-name: right-wobble; }
 
-md-list {
-  padding: 8px 0px 8px 0px; }
-
-md-item-content {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  box-sizing: border-box;
-  position: relative;
-  padding: 0px 0px 0px 0px; }
-
-/**
- * The left tile for a list item.
- */
-.md-tile-left {
-  min-width: 56px;
-  margin-right: -16px; }
-
-/**
- * The center content tile for a list item.
- */
-.md-tile-content {
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  padding: 16px;
-  text-overflow: ellipsis; }
-  .md-tile-content h3 {
-    margin: 0 0 3px 0;
-    font-weight: 400;
-    font-size: 1.1em; }
-  .md-tile-content h4 {
-    margin: 0 0 3px 0;
-    font-weight: 400;
-    font-size: 0.9em; }
-  .md-tile-content p {
-    margin: 0 0 3px 0;
-    font-size: 0.75em; }
-
-/**
- * The right tile for a list item.
- */
-.md-tile-right {
-  padding-right: 0px; }
-
 md-progress-linear {
   display: block;
   width: 100%;
@@ -5520,11 +5520,11 @@ md-radio-group {
     margin: 24px auto !important; }
   .md-select-menu-container.md-active {
     opacity: 1; }
-    .md-select-menu-container.md-active md-select-menu {
+    .md-select-menu-container.md-active md083fork-select-menu {
       transition: -webkit-transform all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       transition: transform all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       transition-duration: 200ms; }
-      .md-select-menu-container.md-active md-select-menu > * {
+      .md-select-menu-container.md-active md083fork-select-menu > * {
         opacity: 1;
         transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
         transition-duration: 200ms;
@@ -5534,14 +5534,14 @@ md-radio-group {
     transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
     transition-duration: 250ms; }
 
-md-select {
+md083fork-select {
   display: inline-block;
   margin-top: 1.4em; }
-  md-select[disabled]:hover {
+  md083fork-select[disabled]:hover {
     cursor: default; }
-  md-select:not([disabled]):hover {
+  md083fork-select:not([disabled]):hover {
     cursor: pointer; }
-  md-select:not([disabled]):focus .md-select-label {
+  md083fork-select:not([disabled]):focus .md-select-label {
     border-bottom: 2px solid;
     padding-bottom: 7px; }
 
@@ -5576,7 +5576,7 @@ md-select {
     -webkit-transform: scaleY(0.6) scaleX(1);
             transform: scaleY(0.6) scaleX(1); }
 
-md-select-menu {
+md083fork-select-menu {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -5590,21 +5590,21 @@ md-select-menu {
           transform: scale(1);
   max-height: 256px;
   overflow-y: hidden; }
-  md-select-menu.md-reverse {
+  md083fork-select-menu.md-reverse {
     -webkit-flex-direction: column-reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse; }
-  md-select-menu:not(.md-overflow) md-content {
+  md083fork-select-menu:not(.md-overflow) md-content {
     padding-top: 8px;
     padding-bottom: 8px; }
-  md-select-menu md-content {
+  md083fork-select-menu md-content {
     min-width: 136px;
     max-height: 256px;
     overflow-y: auto; }
-  md-select-menu > * {
+  md083fork-select-menu > * {
     opacity: 0; }
 
-md-option {
+md083fork-option {
   cursor: pointer;
   position: relative;
   display: -webkit-flex;
@@ -5616,21 +5616,21 @@ md-option {
   width: auto;
   padding: 0 16px 0 16px;
   height: 48px; }
-  md-option .md-text {
+  md083fork-option .md-text {
     width: auto;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1em; }
 
-md-optgroup {
+md083fork-optgroup {
   display: block; }
-  md-optgroup label {
+  md083fork-optgroup label {
     display: block;
     font-size: 1em;
     text-transform: uppercase;
     padding: 16px 8px; }
-  md-optgroup md-option {
+  md083fork-optgroup md083fork-option {
     padding-left: 24px; }
 
 md-sidenav {
@@ -5716,6 +5716,21 @@ md-sidenav {
     width: 85%; }
  }
 
+.md-sticky-clone {
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute !important;
+  -webkit-transform: translate3d(-9999px, -9999px, 0);
+          transform: translate3d(-9999px, -9999px, 0); }
+  .md-sticky-clone[sticky-state="active"] {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); }
+    .md-sticky-clone[sticky-state="active"]:not(.md-sticky-no-effect):after {
+      -webkit-animation: subheaderStickyHoverIn 0.3s ease-out both;
+              animation: subheaderStickyHoverIn 0.3s ease-out both; }
+
 @-webkit-keyframes sliderFocusThumb {
   0% {
     opacity: 0;
@@ -5744,7 +5759,7 @@ md-sidenav {
   100% {
     opacity: 0; } }
 
-md-slider {
+md083fork-slider {
   height: 48px;
   position: relative;
   display: block;
@@ -5762,33 +5777,33 @@ md-slider {
    * The border/background that comes in when focused in non-discrete mode
    */
   /* Don't animate left/right while panning */ }
-  md-slider .md-slider-wrapper {
+  md083fork-slider .md-slider-wrapper {
     position: relative; }
-  md-slider .md-track-container {
+  md083fork-slider .md-track-container {
     width: 100%;
     position: absolute;
     top: 23px;
     height: 2px; }
-  md-slider .md-track {
+  md083fork-slider .md-track {
     position: absolute;
     left: 0;
     right: 0;
     height: 100%; }
-  md-slider .md-track-fill {
+  md083fork-slider .md-track-fill {
     transition: width 0.05s linear; }
-  md-slider .md-track-ticks {
+  md083fork-slider .md-track-ticks {
     position: absolute;
     left: 0;
     right: 0;
     height: 100%; }
-  md-slider .md-thumb-container {
+  md083fork-slider .md-thumb-container {
     position: absolute;
     left: 0;
     top: 50%;
     -webkit-transform: translate3d(-50%, -50%, 0);
             transform: translate3d(-50%, -50%, 0);
     transition: left 0.1s linear; }
-  md-slider .md-thumb {
+  md083fork-slider .md-thumb {
     z-index: 1;
     position: absolute;
     left: -19px;
@@ -5799,7 +5814,7 @@ md-slider {
     -webkit-transform: scale(0.5);
             transform: scale(0.5);
     transition: all 0.1s linear; }
-    md-slider .md-thumb:after {
+    md083fork-slider .md-thumb:after {
       content: '';
       position: absolute;
       left: 3px;
@@ -5808,7 +5823,7 @@ md-slider {
       height: 32px;
       border-radius: 32px;
       border: 3px solid; }
-  md-slider .md-sign {
+  md083fork-slider .md-sign {
     /* Center the children (slider-thumb-text) */
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -5829,7 +5844,7 @@ md-slider {
             transform: scale(0.4) translate3d(0, 70px, 0);
     transition: all 0.2s ease-in-out;
     /* The arrow pointing down under the sign */ }
-    md-slider .md-sign:after {
+    md083fork-slider .md-sign:after {
       position: absolute;
       content: '';
       left: 0px;
@@ -5842,11 +5857,11 @@ md-slider {
       -webkit-transform: translate3d(0, -8px, 0);
               transform: translate3d(0, -8px, 0);
       transition: all 0.2s ease-in-out; }
-    md-slider .md-sign .md-thumb-text {
+    md083fork-slider .md-sign .md-thumb-text {
       z-index: 1;
       font-size: 12px;
       font-weight: bold; }
-  md-slider .md-focus-thumb {
+  md083fork-slider .md-focus-thumb {
     position: absolute;
     left: -24px;
     top: 0px;
@@ -5858,7 +5873,7 @@ md-slider {
     background-color: #C0C0C0;
     -webkit-animation: sliderFocusThumb 0.4s linear;
             animation: sliderFocusThumb 0.4s linear; }
-  md-slider .md-focus-ring {
+  md083fork-slider .md-focus-ring {
     position: absolute;
     left: -24px;
     top: 0px;
@@ -5870,7 +5885,7 @@ md-slider {
     -webkit-transform: scale(0);
             transform: scale(0);
     transition: all 0.2s linear; }
-  md-slider .md-disabled-thumb {
+  md083fork-slider .md-disabled-thumb {
     position: absolute;
     left: -22px;
     top: 2px;
@@ -5881,61 +5896,46 @@ md-slider {
             transform: scale(0.35);
     border: 6px solid;
     display: none; }
-  md-slider.md-min .md-thumb:after {
+  md083fork-slider.md-min .md-thumb:after {
     background-color: white; }
-  md-slider.md-min .md-sign {
+  md083fork-slider.md-min .md-sign {
     opacity: 0; }
-  md-slider:focus {
+  md083fork-slider:focus {
     outline: none; }
-  md-slider.dragging .md-thumb-container, md-slider.dragging .md-track-fill {
+  md083fork-slider.dragging .md-thumb-container, md083fork-slider.dragging .md-track-fill {
     transition: none; }
-  md-slider:not([md-discrete]) {
+  md083fork-slider:not([md-discrete]) {
     /* Hide the sign and ticks in non-discrete mode */ }
-    md-slider:not([md-discrete]) .md-track-ticks, md-slider:not([md-discrete]) .md-sign {
+    md083fork-slider:not([md-discrete]) .md-track-ticks, md083fork-slider:not([md-discrete]) .md-sign {
       display: none; }
-    md-slider:not([md-discrete]):not([disabled]):hover .md-thumb {
+    md083fork-slider:not([md-discrete]):not([disabled]):hover .md-thumb {
       -webkit-transform: scale(0.6);
               transform: scale(0.6); }
-    md-slider:not([md-discrete]):not([disabled]):focus .md-focus-thumb, md-slider:not([md-discrete]):not([disabled]).active .md-focus-thumb {
+    md083fork-slider:not([md-discrete]):not([disabled]):focus .md-focus-thumb, md083fork-slider:not([md-discrete]):not([disabled]).active .md-focus-thumb {
       display: block; }
-    md-slider:not([md-discrete]):not([disabled]):focus .md-focus-ring, md-slider:not([md-discrete]):not([disabled]).active .md-focus-ring {
+    md083fork-slider:not([md-discrete]):not([disabled]):focus .md-focus-ring, md083fork-slider:not([md-discrete]):not([disabled]).active .md-focus-ring {
       -webkit-transform: scale(1);
               transform: scale(1); }
-    md-slider:not([md-discrete]):not([disabled]):focus .md-thumb, md-slider:not([md-discrete]):not([disabled]).active .md-thumb {
+    md083fork-slider:not([md-discrete]):not([disabled]):focus .md-thumb, md083fork-slider:not([md-discrete]):not([disabled]).active .md-thumb {
       -webkit-transform: scale(0.85);
               transform: scale(0.85); }
-  md-slider[md-discrete] {
+  md083fork-slider[md-discrete] {
     /* Hide the focus thumb in discrete mode */ }
-    md-slider[md-discrete] .md-focus-thumb, md-slider[md-discrete] .md-focus-ring {
+    md083fork-slider[md-discrete] .md-focus-thumb, md083fork-slider[md-discrete] .md-focus-ring {
       display: none; }
-    md-slider[md-discrete]:not([disabled]):focus .md-sign, md-slider[md-discrete]:not([disabled]):focus .md-sign:after, md-slider[md-discrete]:not([disabled]).active .md-sign, md-slider[md-discrete]:not([disabled]).active .md-sign:after {
+    md083fork-slider[md-discrete]:not([disabled]):focus .md-sign, md083fork-slider[md-discrete]:not([disabled]):focus .md-sign:after, md083fork-slider[md-discrete]:not([disabled]).active .md-sign, md083fork-slider[md-discrete]:not([disabled]).active .md-sign:after {
       opacity: 1;
       -webkit-transform: translate3d(0, 0, 0) scale(1);
               transform: translate3d(0, 0, 0) scale(1); }
-  md-slider[disabled] .md-track-fill {
+  md083fork-slider[disabled] .md-track-fill {
     display: none; }
-  md-slider[disabled] .md-sign {
+  md083fork-slider[disabled] .md-sign {
     display: none; }
-  md-slider[disabled] .md-thumb {
+  md083fork-slider[disabled] .md-thumb {
     -webkit-transform: scale(0.35);
             transform: scale(0.35); }
-  md-slider[disabled] .md-disabled-thumb {
+  md083fork-slider[disabled] .md-disabled-thumb {
     display: block; }
-
-.md-sticky-clone {
-  z-index: 2;
-  top: 0;
-  left: 0;
-  right: 0;
-  position: absolute !important;
-  -webkit-transform: translate3d(-9999px, -9999px, 0);
-          transform: translate3d(-9999px, -9999px, 0); }
-  .md-sticky-clone[sticky-state="active"] {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0); }
-    .md-sticky-clone[sticky-state="active"]:not(.md-sticky-no-effect):after {
-      -webkit-animation: subheaderStickyHoverIn 0.3s ease-out both;
-              animation: subheaderStickyHoverIn 0.3s ease-out both; }
 
 @-webkit-keyframes subheaderStickyHoverIn {
   0% {
@@ -6300,7 +6300,7 @@ md-input-group, .md-input-group {
             transform-origin: left center;
     transition: all 0.15s cubic-bezier(0.35, 0, 0.25, 1); }
 
-md-toast {
+md083fork-toast {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -6325,37 +6325,37 @@ md-toast {
           transform: translate3d(0, 0, 0) rotateZ(0deg);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   /* Transition differently when swiping */ }
-  md-toast.md-capsule {
+  md083fork-toast.md-capsule {
     border-radius: 24px; }
-  md-toast.ng-leave-active {
+  md083fork-toast.ng-leave-active {
     transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2); }
-  md-toast.md-swipeleft, md-toast.md-swiperight, md-toast.md-swipeup, md-toast.md-swipedown {
+  md083fork-toast.md-swipeleft, md083fork-toast.md-swiperight, md083fork-toast.md-swipeup, md083fork-toast.md-swipedown {
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
-  md-toast.ng-enter {
+  md083fork-toast.ng-enter {
     -webkit-transform: translate3d(0, 100%, 0);
             transform: translate3d(0, 100%, 0);
     opacity: 0; }
-    md-toast.ng-enter.md-top {
+    md083fork-toast.ng-enter.md-top {
       -webkit-transform: translate3d(0, -100%, 0);
               transform: translate3d(0, -100%, 0); }
-    md-toast.ng-enter.ng-enter-active {
+    md083fork-toast.ng-enter.ng-enter-active {
       -webkit-transform: translate3d(0, 0, 0);
               transform: translate3d(0, 0, 0);
       opacity: 1; }
-  md-toast.ng-leave.ng-leave-active {
+  md083fork-toast.ng-leave.ng-leave-active {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
             transform: translate3d(0, 100%, 0); }
-    md-toast.ng-leave.ng-leave-active.md-top {
+    md083fork-toast.ng-leave.ng-leave-active.md-top {
       -webkit-transform: translate3d(0, -100%, 0);
               transform: translate3d(0, -100%, 0); }
-    md-toast.ng-leave.ng-leave-active.md-swipeleft {
+    md083fork-toast.ng-leave.ng-leave-active.md-swipeleft {
       -webkit-transform: translate3d(-100%, 0%, 0);
               transform: translate3d(-100%, 0%, 0); }
-    md-toast.ng-leave.ng-leave-active.md-swiperight {
+    md083fork-toast.ng-leave.ng-leave-active.md-swiperight {
       -webkit-transform: translate3d(100%, 0%, 0);
               transform: translate3d(100%, 0%, 0); }
-  md-toast .md-action {
+  md083fork-toast .md-action {
     line-height: 19px;
     margin-left: 24px;
     cursor: pointer;
@@ -6363,7 +6363,7 @@ md-toast {
     float: right; }
 
 @media (max-width: 600px) {
-  md-toast {
+  md083fork-toast {
     left: 0;
     right: 0;
     width: 100%;
@@ -6371,36 +6371,36 @@ md-toast {
     min-width: 0;
     border-radius: 0;
     bottom: 0; }
-    md-toast.md-top {
+    md083fork-toast.md-top {
       bottom: auto;
       top: 0; }
  }
 
 @media (min-width: 600px) {
-  md-toast {
+  md083fork-toast {
     min-width: 288px;
     /* 
      * When the toast doesn't take up the whole screen,
      * make it rotate when the user swipes it away
      */ }
-    md-toast.md-bottom {
+    md083fork-toast.md-bottom {
       bottom: 8px; }
-    md-toast.md-left {
+    md083fork-toast.md-left {
       left: 8px; }
-    md-toast.md-right {
+    md083fork-toast.md-right {
       right: 8px; }
-    md-toast.md-top {
+    md083fork-toast.md-top {
       top: 8px; }
-    md-toast.ng-leave.ng-leave-active.md-swipeleft {
+    md083fork-toast.ng-leave.ng-leave-active.md-swipeleft {
       -webkit-transform: translate3d(-100%, 25%, 0) rotateZ(-15deg);
               transform: translate3d(-100%, 25%, 0) rotateZ(-15deg); }
-    md-toast.ng-leave.ng-leave-active.md-swiperight {
+    md083fork-toast.ng-leave.ng-leave-active.md-swiperight {
       -webkit-transform: translate3d(100%, 25%, 0) rotateZ(15deg);
               transform: translate3d(100%, 25%, 0) rotateZ(15deg); }
-    md-toast.ng-leave.ng-leave-active.md-top.md-swipeleft {
+    md083fork-toast.ng-leave.ng-leave-active.md-top.md-swipeleft {
       -webkit-transform: translate3d(-100%, 0, 0) rotateZ(-15deg);
               transform: translate3d(-100%, 0, 0) rotateZ(-15deg); }
-    md-toast.ng-leave.ng-leave-active.md-top.md-swiperight {
+    md083fork-toast.ng-leave.ng-leave-active.md-top.md-swiperight {
       -webkit-transform: translate3d(100%, 0, 0) rotateZ(15deg);
               transform: translate3d(100%, 0, 0) rotateZ(15deg); }
  }

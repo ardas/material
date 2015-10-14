@@ -9,11 +9,11 @@
 angular.module('material.083fork.components.checkbox', [
   'material.083fork.core'
 ])
-  .directive('mdCheckbox', MdCheckboxDirective);
+  .directive('md083forkCheckbox', MdCheckboxDirective);
 
 /**
  * @ngdoc directive
- * @name mdCheckbox
+ * @name md083forkCheckbox
  * @module material.components.checkbox
  * @restrict E
  *
@@ -35,17 +35,17 @@ angular.module('material.083fork.components.checkbox', [
  *
  * @usage
  * <hljs lang="html">
- * <md-checkbox ng-model="isChecked" aria-label="Finished?">
+ * <md083fork-checkbox ng-model="isChecked" aria-label="Finished?">
  *   Finished ?
- * </md-checkbox>
+ * </md083fork-checkbox>
  *
- * <md-checkbox md-no-ink ng-model="hasInk" aria-label="No Ink Effects">
+ * <md083fork-checkbox md-no-ink ng-model="hasInk" aria-label="No Ink Effects">
  *   No Ink Effects
- * </md-checkbox>
+ * </md083fork-checkbox>
  *
- * <md-checkbox ng-disabled="true" ng-model="isDisabled" aria-label="Disabled">
+ * <md083fork-checkbox ng-disabled="true" ng-model="isDisabled" aria-label="Disabled">
  *   Disabled
- * </md-checkbox>
+ * </md083fork-checkbox>
  *
  * </hljs>
  *
