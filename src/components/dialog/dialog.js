@@ -49,18 +49,18 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *
  * <hljs lang="html">
  * <div  ng-app="demoApp" ng-controller="EmployeeController">
- *   <md-button ng-click="showAlert()" class="md-raised md-warn">
+ *   <md083fork-button ng-click="showAlert()" class="md-raised md-warn">
  *     Employee Alert!
- *   </md-button>
- *   <md-button ng-click="showDialog($event)" class="md-raised">
+ *   </md083fork-button>
+ *   <md083fork-button ng-click="showDialog($event)" class="md-raised">
  *     Custom Dialog
- *   </md-button>
- *   <md-button ng-click="closeAlert()" ng-disabled="!hasAlert()" class="md-raised">
+ *   </md083fork-button>
+ *   <md083fork-button ng-click="closeAlert()" ng-disabled="!hasAlert()" class="md-raised">
  *     Close Alert
- *   </md-button>
- *   <md-button ng-click="showGreeting($event)" class="md-raised md-primary" >
+ *   </md083fork-button>
+ *   <md083fork-button ng-click="showGreeting($event)" class="md-raised md-primary" >
  *     Greet Employee
- *   </md-button>
+ *   </md083fork-button>
  * </div>
  * </hljs>
  *
@@ -109,9 +109,9 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *            '    </md-list>'+
  *            '  </md-content>' +
  *            '  <div class="md-actions">' +
- *            '    <md-button ng-click="closeDialog()">' +
+ *            '    <md083fork-button ng-click="closeDialog()">' +
  *            '      Close Dialog' +
- *            '    </md-button>' +
+ *            '    </md083fork-button>' +
  *            '  </div>' +
  *            '</md-dialog>',
  *          locals: {
@@ -188,10 +188,10 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *             '  <md-content>Hello {{ employee }}!</md-content>' +
  *
  *             '  <div class="md-actions">' +
- *             '    <md-button ng-click="closeDialog()">' +
+ *             '    <md083fork-button ng-click="closeDialog()">' +
  *             '      Close Greeting' +
  *
- *             '    </md-button>' +
+ *             '    </md083fork-button>' +
  *             '  </div>' +
  *             '</md-dialog>',
  *           controller: 'GreetingController',
@@ -353,12 +353,12 @@ function MdDialogProvider($$083forkInterimElementProvider) {
             '<p>{{ dialog.content }}</p>',
           '</md-content>',
           '<div class="md-actions">',
-            '<md-button ng-if="dialog.$type == \'confirm\'" ng-click="dialog.abort()">',
+            '<md083fork-button ng-if="dialog.$type == \'confirm\'" ng-click="dialog.abort()">',
               '{{ dialog.cancel }}',
-            '</md-button>',
-            '<md-button ng-click="dialog.hide()" class="md-primary">',
+            '</md083fork-button>',
+            '<md083fork-button ng-click="dialog.hide()" class="md-primary">',
               '{{ dialog.ok }}',
-            '</md-button>',
+            '</md083fork-button>',
           '</div>',
         '</md-dialog>'
       ].join(''),

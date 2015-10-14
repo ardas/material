@@ -101,9 +101,9 @@ function SidenavService($md083forkComponentRegistry, $q) {
  *
  *   <md-content>
  *     Center Content
- *     <md-button ng-click="openLeftMenu()">
+ *     <md083fork-button ng-click="openLeftMenu()">
  *       Open Left Menu
- *     </md-button>
+ *     </md083fork-button>
  *   </md-content>
  *
  *   <md-sidenav md-component-id="right"

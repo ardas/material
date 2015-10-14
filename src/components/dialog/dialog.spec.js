@@ -43,7 +43,7 @@ describe('$mdDialog', function() {
       expect(title.text()).toBe('Title');
       var content = parent.find('p');
       expect(content.text()).toBe('Hello world');
-      var buttons = parent.find('md-button');
+      var buttons = parent.find('md083fork-button');
       expect(buttons.length).toBe(1);
       expect(buttons.eq(0).text()).toBe('Next');
       var theme = parent.find('md-dialog').attr('md-theme');
@@ -91,7 +91,7 @@ describe('$mdDialog', function() {
       expect(title.text()).toBe('Title');
       var content = parent.find('p');
       expect(content.text()).toBe('Hello world');
-      var buttons = parent.find('md-button');
+      var buttons = parent.find('md083fork-button');
       expect(buttons.length).toBe(2);
       expect(buttons.eq(0).text()).toBe('Next');
       expect(buttons.eq(1).text()).toBe('Forget it');
@@ -287,7 +287,7 @@ describe('$mdDialog', function() {
       expect(parent[0].querySelectorAll('md-backdrop').length).toBe(0);
     }));
 
-    it('should focus `md-button.dialog-close` on open', inject(function($mdDialog, $rootScope, $document, $timeout, $md083forkConstant) {
+    it('should focus `md083fork-button.dialog-close` on open', inject(function($mdDialog, $rootScope, $document, $timeout, $md083forkConstant) {
       TestUtil.mockElementFocus(this);
 
       var parent = angular.element('<div>');
@@ -313,7 +313,7 @@ describe('$mdDialog', function() {
       expect($document.activeElement).toBe(parent[0].querySelector('.dialog-close'));
     }));
 
-    it('should focus the last `md-button` in md-actions open if no `.dialog-close`', inject(function($mdDialog, $rootScope, $document, $timeout, $md083forkConstant) {
+    it('should focus the last `md083fork-button` in md-actions open if no `.dialog-close`', inject(function($mdDialog, $rootScope, $document, $timeout, $md083forkConstant) {
       TestUtil.mockElementFocus(this);
 
       var parent = angular.element('<div>');
@@ -321,8 +321,8 @@ describe('$mdDialog', function() {
         template:
           '<md-dialog>' +
             '<div class="md-actions">' +
-              '<button id="a">A</md-button>' +
-              '<button id="focus-target">B</md-button>' +
+              '<button id="a">A</md083fork-button>' +
+              '<button id="focus-target">B</md083fork-button>' +
             '</div>' +
           '</md-dialog>',
         parent: parent
@@ -456,7 +456,7 @@ describe('$mdDialog with custom interpolation symbols', function() {
     var title = mdContent.find('h2');
     var content = mdContent.find('p');
     var mdActions = angular.element(mdDialog[0].querySelector('.md-actions'));
-    var buttons = mdActions.find('md-button');
+    var buttons = mdActions.find('md083fork-button');
 
     expect(mdDialog.attr('aria-label')).toBe('test alert');
     expect(title.text()).toBe('Title');
@@ -483,7 +483,7 @@ describe('$mdDialog with custom interpolation symbols', function() {
     var title = mdContent.find('h2');
     var content = mdContent.find('p');
     var mdActions = angular.element(mdDialog[0].querySelector('.md-actions'));
-    var buttons = mdActions.find('md-button');
+    var buttons = mdActions.find('md083fork-button');
 
     expect(mdDialog.attr('aria-label')).toBe('test alert');
     expect(title.text()).toBe('Title');

@@ -7,9 +7,9 @@
 
     <div class="demo-tab tab{{$index%4}}" layout="column" layout-align="space-around center">
         <div ng-bind="tab.content"></div>
-          <md-button class="md-primary md-raised" ng-click="removeTab( tab )">
+          <md083fork-button class="md-primary md-raised" ng-click="removeTab( tab )">
             Remove Tab
-          </md-button>
+          </md083fork-button>
       </div>
     </md-tab>
   </md-tabs>
@@ -37,7 +37,7 @@
         <label for="content">Content</label>
         <input type="text" id="content" ng-model="tContent">
       </md083fork-input-container>
-      <md-button class="add-tab md-primary"  type="submit" style="max-height: 40px" >Add Tab</md-button>
+      <md083fork-button class="add-tab md-primary"  type="submit" style="max-height: 40px" >Add Tab</md083fork-button>
     </div>
   </form>
 

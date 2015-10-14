@@ -36,9 +36,9 @@ angular.module('material.083fork.components.toolbar', [
  *       <!-- fill up the space between left and right area -->
  *       <span flex></span>
  *
- *       <md-button>
+ *       <md083fork-button>
  *         Right Bar Button
- *       </md-button>
+ *       </md083fork-button>
  *     </div>
  *
  *   </md-toolbar>

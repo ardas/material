@@ -23,7 +23,7 @@ $button-fab-toast-offset: $button-fab-height * 0.75;
   }
 }
 
-.md-button {
+.md083fork-button {
   color: currentColor;
 
   user-select: none;
@@ -134,8 +134,8 @@ $button-fab-toast-offset: $button-fab-height * 0.75;
 }
 
 .md-toast-open-top {
-  .md-button.md-fab-top-left,
-  .md-button.md-fab-top-right {
+  .md083fork-button.md-fab-top-left,
+  .md083fork-button.md-fab-top-right {
     transform: translate3d(0, $button-fab-toast-offset, 0);
     &:not([disabled]) {
       &:focus,
@@ -146,8 +146,8 @@ $button-fab-toast-offset: $button-fab-height * 0.75;
   }
 }
 .md-toast-open-bottom {
-  .md-button.md-fab-bottom-left,
-  .md-button.md-fab-bottom-right {
+  .md083fork-button.md-fab-bottom-left,
+  .md083fork-button.md-fab-bottom-right {
     transform: translate3d(0, -$button-fab-toast-offset, 0);
     &:not([disabled]) {
       &:focus,
@@ -164,7 +164,7 @@ $button-fab-toast-offset: $button-fab-height * 0.75;
   flex: 1;
   width: 100%;
 }
-.md-button-group > .md-button {
+.md-button-group > .md083fork-button {
   flex: 1;
 
   display: block;

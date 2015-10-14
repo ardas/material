@@ -11,17 +11,17 @@
 angular.module('material.083fork.components.button', [
   'material.083fork.core'
 ])
-  .directive('mdButton', MdButtonDirective);
+  .directive('md083forkButton', MdButtonDirective);
 
 /**
  * @ngdoc directive
- * @name mdButton
+ * @name md083forkButton
  * @module material.components.button
  *
  * @restrict E
  *
  * @description
- * `<md-button>` is a button directive with optional ink ripples (default enabled).
+ * `<md083fork-button>` is a button directive with optional ink ripples (default enabled).
  *
  * If you supply a `href` or `ng-href` attribute, it will become an `<a>` element. Otherwise, it will
  * become a `<button>` element.
@@ -38,15 +38,15 @@ angular.module('material.083fork.components.button', [
  *
  * @usage
  * <hljs lang="html">
- *  <md-button>
+ *  <md083fork-button>
  *    Button
- *  </md-button>
- *  <md-button href="http://google.com" class="md-button-colored">
+ *  </md083fork-button>
+ *  <md083fork-button href="http://google.com" class="md083fork-button-colored">
  *    I'm a link
- *  </md-button>
- *  <md-button ng-disabled="true" class="md-colored">
+ *  </md083fork-button>
+ *  <md083fork-button ng-disabled="true" class="md-colored">
  *    I'm a disabled button
- *  </md-button>
+ *  </md083fork-button>
  * </hljs>
  */
 function MdButtonDirective($md083forkInkRipple$mdInkRipple, $md083forkTheming, $md083forkAria) {
@@ -65,8 +65,8 @@ function MdButtonDirective($md083forkInkRipple$mdInkRipple, $md083forkTheming, $
   
   function getTemplate(element, attr) {
     return isAnchor(attr) ?
-           '<a class="md-button" ng-transclude></a>' :
-           '<button class="md-button" ng-transclude></button>';
+           '<a class="md083fork-button" ng-transclude></a>' :
+           '<button class="md083fork-button" ng-transclude></button>';
   }
 
   function postLink(scope, element, attr) {

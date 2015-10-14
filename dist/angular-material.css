@@ -118,10 +118,10 @@ input[type="search"] {
   border-radius: inherit;
   pointer-events: none; }
 
-.md-shadow-bottom-z-1, .md-button.md-raised:not([disabled]), .md-button.md-fab {
+.md-shadow-bottom-z-1, .md083fork-button.md-raised:not([disabled]), .md083fork-button.md-fab {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }
 
-.md-shadow-bottom-z-2, .md-button.md-raised:not([disabled]):focus, .md-button.md-raised:not([disabled]):hover, .md-button.md-fab:not([disabled]):focus, .md-button.md-fab:not([disabled]):hover {
+.md-shadow-bottom-z-2, .md083fork-button.md-raised:not([disabled]):focus, .md083fork-button.md-raised:not([disabled]):hover, .md083fork-button.md-fab:not([disabled]):focus, .md083fork-button.md-fab:not([disabled]):hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4); }
 
 .md-shadow-animated.md-shadow {
@@ -3146,7 +3146,7 @@ md-bottom-sheet {
 /**
  * Position a FAB button.
  */
-.md-button {
+.md083fork-button {
   color: currentColor;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -3172,21 +3172,21 @@ md-bottom-sheet {
   overflow: hidden;
   transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
-  .md-button:focus {
+  .md083fork-button:focus {
     outline: none; }
-  .md-button:hover {
+  .md083fork-button:hover {
     text-decoration: none; }
-  .md-button.ng-hide {
+  .md083fork-button.ng-hide {
     transition: none; }
-  .md-button.md-cornered {
+  .md083fork-button.md-cornered {
     border-radius: 0; }
-  .md-button.md-icon {
+  .md083fork-button.md-icon {
     padding: 0;
     background: none; }
-  .md-button.md-raised {
+  .md083fork-button.md-raised {
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0); }
-  .md-button.md-fab {
+  .md083fork-button.md-fab {
     z-index: 20;
     width: 56px;
     height: 56px;
@@ -3198,50 +3198,50 @@ md-bottom-sheet {
     transition: 0.2s linear;
     transition-property: -webkit-transform, box-shadow;
     transition-property: transform, box-shadow; }
-    .md-button.md-fab.md-fab-bottom-right {
+    .md083fork-button.md-fab.md-fab-bottom-right {
       top: auto;
       right: 20px;
       bottom: 20px;
       left: auto;
       position: absolute; }
-    .md-button.md-fab.md-fab-bottom-left {
+    .md083fork-button.md-fab.md-fab-bottom-left {
       top: auto;
       right: auto;
       bottom: 20px;
       left: 20px;
       position: absolute; }
-    .md-button.md-fab.md-fab-top-right {
+    .md083fork-button.md-fab.md-fab-top-right {
       top: 20px;
       right: 20px;
       bottom: auto;
       left: auto;
       position: absolute; }
-    .md-button.md-fab.md-fab-top-left {
+    .md083fork-button.md-fab.md-fab-top-left {
       top: 20px;
       right: auto;
       bottom: auto;
       left: 20px;
       position: absolute; }
-    .md-button.md-fab md-icon {
+    .md083fork-button.md-fab md-icon {
       margin-top: 0; }
-    .md-button.md-fab.md-mini {
+    .md083fork-button.md-fab.md-mini {
       width: 40px;
       height: 40px; }
-  .md-button:not([disabled]).md-raised:focus, .md-button:not([disabled]).md-raised:hover, .md-button:not([disabled]).md-fab:focus, .md-button:not([disabled]).md-fab:hover {
+  .md083fork-button:not([disabled]).md-raised:focus, .md083fork-button:not([disabled]).md-raised:hover, .md083fork-button:not([disabled]).md-fab:focus, .md083fork-button:not([disabled]).md-fab:hover {
     -webkit-transform: translate3d(0, -1px, 0);
             transform: translate3d(0, -1px, 0); }
 
-.md-toast-open-top .md-button.md-fab-top-left, .md-toast-open-top .md-button.md-fab-top-right {
+.md-toast-open-top .md083fork-button.md-fab-top-left, .md-toast-open-top .md083fork-button.md-fab-top-right {
   -webkit-transform: translate3d(0, 42px, 0);
           transform: translate3d(0, 42px, 0); }
-  .md-toast-open-top .md-button.md-fab-top-left:not([disabled]):focus, .md-toast-open-top .md-button.md-fab-top-left:not([disabled]):hover, .md-toast-open-top .md-button.md-fab-top-right:not([disabled]):focus, .md-toast-open-top .md-button.md-fab-top-right:not([disabled]):hover {
+  .md-toast-open-top .md083fork-button.md-fab-top-left:not([disabled]):focus, .md-toast-open-top .md083fork-button.md-fab-top-left:not([disabled]):hover, .md-toast-open-top .md083fork-button.md-fab-top-right:not([disabled]):focus, .md-toast-open-top .md083fork-button.md-fab-top-right:not([disabled]):hover {
     -webkit-transform: translate3d(0, 41px, 0);
             transform: translate3d(0, 41px, 0); }
 
-.md-toast-open-bottom .md-button.md-fab-bottom-left, .md-toast-open-bottom .md-button.md-fab-bottom-right {
+.md-toast-open-bottom .md083fork-button.md-fab-bottom-left, .md-toast-open-bottom .md083fork-button.md-fab-bottom-right {
   -webkit-transform: translate3d(0, -42px, 0);
           transform: translate3d(0, -42px, 0); }
-  .md-toast-open-bottom .md-button.md-fab-bottom-left:not([disabled]):focus, .md-toast-open-bottom .md-button.md-fab-bottom-left:not([disabled]):hover, .md-toast-open-bottom .md-button.md-fab-bottom-right:not([disabled]):focus, .md-toast-open-bottom .md-button.md-fab-bottom-right:not([disabled]):hover {
+  .md-toast-open-bottom .md083fork-button.md-fab-bottom-left:not([disabled]):focus, .md-toast-open-bottom .md083fork-button.md-fab-bottom-left:not([disabled]):hover, .md-toast-open-bottom .md083fork-button.md-fab-bottom-right:not([disabled]):focus, .md-toast-open-bottom .md083fork-button.md-fab-bottom-right:not([disabled]):hover {
     -webkit-transform: translate3d(0, -43px, 0);
             transform: translate3d(0, -43px, 0); }
 
@@ -3254,7 +3254,7 @@ md-bottom-sheet {
           flex: 1;
   width: 100%; }
 
-.md-button-group > .md-button {
+.md-button-group > .md083fork-button {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -3266,9 +3266,9 @@ md-bottom-sheet {
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap; }
-  .md-button-group > .md-button:first-child {
+  .md-button-group > .md083fork-button:first-child {
     border-radius: 2px 0px 0px 2px; }
-  .md-button-group > .md-button:last-child {
+  .md-button-group > .md083fork-button:last-child {
     border-right-width: 1px;
     border-radius: 0px 2px 2px 0px; }
 
@@ -6466,7 +6466,7 @@ md-toolbar {
             align-items: center; }
   .md-toolbar-tools .md-tools {
     margin-left: auto; }
-  .md-toolbar-tools .md-button {
+  .md-toolbar-tools .md083fork-button {
     font-size: 16px; }
 
 md-tooltip {

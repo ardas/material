@@ -37,9 +37,9 @@ function MdBottomSheetDirective() {
  * @usage
  * <hljs lang="html">
  * <div ng-controller="MyController">
- *   <md-button ng-click="openBottomSheet()">
+ *   <md083fork-button ng-click="openBottomSheet()">
  *     Open a Bottom Sheet!
- *   </md-button>
+ *   </md083fork-button>
  * </div>
  * </hljs>
  * <hljs lang="js">

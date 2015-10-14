@@ -7,10 +7,10 @@ describe('<md-tooltip> directive', function() {
   }
 
   it('should show and hide when visible is set', inject(function($compile, $rootScope, $timeout) {
-    var element = $compile('<md-button>' +
+    var element = $compile('<md083fork-button>' +
                'Hello' +
                '<md-tooltip md-visible="isVisible">Tooltip</md-tooltip>' +
-             '</md-button>')($rootScope);
+             '</md083fork-button>')($rootScope);
 
     $rootScope.$apply();
     expect(findTooltip().length).toBe(0);
@@ -26,10 +26,10 @@ describe('<md-tooltip> directive', function() {
   }));
 
   it('should describe parent', inject(function($compile, $rootScope, $timeout) {
-    var element = $compile('<md-button>' +
+    var element = $compile('<md083fork-button>' +
                'Hello' +
                '<md-tooltip md-visible="isVisible">Tooltip</md-tooltip>' +
-             '</md-button>')($rootScope);
+             '</md083fork-button>')($rootScope);
 
     $rootScope.$apply('isVisible = true');
 
@@ -41,10 +41,10 @@ describe('<md-tooltip> directive', function() {
   }));
 
   it('should set visible on mouseenter and mouseleave', inject(function($compile, $rootScope, $timeout) {
-    var element = $compile('<md-button>' +
+    var element = $compile('<md083fork-button>' +
                'Hello' +
                '<md-tooltip md-visible="isVisible">Tooltip</md-tooltip>' +
-             '</md-button>')($rootScope);
+             '</md083fork-button>')($rootScope);
 
     $rootScope.$apply();
 
@@ -75,10 +75,10 @@ describe('<md-tooltip> directive', function() {
   }));
 
   it('should set visible on focus and blur', inject(function($compile, $rootScope, $timeout) {
-    var element = $compile('<md-button>' +
+    var element = $compile('<md083fork-button>' +
                'Hello' +
                '<md-tooltip md-visible="isVisible">Tooltip</md-tooltip>' +
-             '</md-button>')($rootScope);
+             '</md083fork-button>')($rootScope);
 
     $rootScope.$apply();
 
@@ -92,10 +92,10 @@ describe('<md-tooltip> directive', function() {
   }));
 
   it('should set visible on touchstart and touchend', inject(function($compile, $rootScope, $timeout) {
-    var element = $compile('<md-button>' +
+    var element = $compile('<md083fork-button>' +
                'Hello' +
                '<md-tooltip md-visible="isVisible">Tooltip</md-tooltip>' +
-             '</md-button>')($rootScope);
+             '</md083fork-button>')($rootScope);
 
     $rootScope.$apply();
 
@@ -109,12 +109,12 @@ describe('<md-tooltip> directive', function() {
   }));
 
   it('should show after tooltipDelay ms', inject(function($compile, $rootScope, $timeout) {
-    var element = $compile('<md-button>' +
+    var element = $compile('<md083fork-button>' +
                'Hello' +
                '<md-tooltip md-visible="isVisible" md-delay="99">' +
                  'Tooltip' +
                '</md-tooltip>' +
-             '</md-button>')($rootScope);
+             '</md083fork-button>')($rootScope);
     element.triggerHandler('focus');
 
     expect($rootScope.isVisible).toBeFalsy();

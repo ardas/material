@@ -38,9 +38,9 @@ function MdToastDirective() {
  * @usage
  * <hljs lang="html">
  * <div ng-controller="MyController">
- *   <md-button ng-click="openToast()">
+ *   <md083fork-button ng-click="openToast()">
  *     Open a Toast!
- *   </md-button>
+ *   </md083fork-button>
  * </div>
  * </hljs>
  *
@@ -184,9 +184,9 @@ function MdToastProvider($$083forkInterimElementProvider) {
           template: [
             '<md083fork-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">',
               '<span flex>{{ toast.content }}</span>',
-              '<md-button class="md-action" ng-if="toast.action" ng-click="toast.resolve()" ng-class="{\'md-highlight\': toast.highlightAction}">',
+              '<md083fork-button class="md-action" ng-if="toast.action" ng-click="toast.resolve()" ng-class="{\'md-highlight\': toast.highlightAction}">',
                 '{{ toast.action }}',
-              '</md-button>',
+              '</md083fork-button>',
             '</md083fork-toast>'
           ].join(''),
           controller: /* @ngInject */ function mdToastCtrl($scope) {
