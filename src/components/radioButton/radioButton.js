@@ -10,46 +10,46 @@
 angular.module('material.083fork.components.radioButton', [
   'material.083fork.core'
 ])
-  .directive('mdRadioGroup', mdRadioGroupDirective)
-  .directive('mdRadioButton', mdRadioButtonDirective);
+  .directive('md083forkRadioGroup', mdRadioGroupDirective)
+  .directive('md083forkRadioButton', mdRadioButtonDirective);
 
 /**
  * @ngdoc directive
  * @module material.components.radioButton
- * @name mdRadioGroup
+ * @name md083forkRadioGroup
  *
  * @restrict E
  *
  * @description
- * The `<md-radio-group>` directive identifies a grouping
+ * The `<md083fork-radio-group>` directive identifies a grouping
  * container for the 1..n grouped radio buttons; specified using nested
- * `<md-radio-button>` tags.
+ * `<md083fork-radio-button>` tags.
  *
  * As per the [material design spec](http://www.google.com/design/spec/style/color.html#color-ui-color-application)
  * the radio button is in the accent color by default. The primary color palette may be used with
  * the `md-primary` class.
  *
- * Note: `<md-radio-group>` and `<md-radio-button>` handle tabindex differently
+ * Note: `<md083fork-radio-group>` and `<md083fork-radio-button>` handle tabindex differently
  * than the native `<input type='radio'>` controls. Whereas the native controls
- * force the user to tab through all the radio buttons, `<md-radio-group>`
- * is focusable, and by default the `<md-radio-button>`s are not.
+ * force the user to tab through all the radio buttons, `<md083fork-radio-group>`
+ * is focusable, and by default the `<md083fork-radio-button>`s are not.
  *
  * @param {string} ng-model Assignable angular expression to data-bind to.
  * @param {boolean=} md-no-ink Use of attribute indicates flag to disable ink ripple effects.
  *
  * @usage
  * <hljs lang="html">
- * <md-radio-group ng-model="selected">
+ * <md083fork-radio-group ng-model="selected">
  *
- *   <md-radio-button
+ *   <md083fork-radio-button
  *        ng-repeat="d in colorOptions"
  *        ng-value="d.value" aria-label="{{ d.label }}">
  *
  *          {{ d.label }}
  *
- *   </md-radio-button>
+ *   </md083fork-radio-button>
  *
- * </md-radio-group>
+ * </md083fork-radio-group>
  * </hljs>
  *
  */
@@ -59,7 +59,7 @@ function mdRadioGroupDirective($md083forkUtil, $md083forkConstant, $md083forkThe
   return {
     restrict: 'E',
     controller: ['$element', RadioGroupController],
-    require: ['mdRadioGroup', '?ngModel'],
+    require: ['md083forkRadioGroup', '?ngModel'],
     link: { pre: linkRadioGroup }
   };
 
@@ -151,14 +151,14 @@ function mdRadioGroupDirective($md083forkUtil, $md083forkConstant, $md083forkThe
    */
   function changeSelectedButton(parent, increment) {
     // Coerce all child radio buttons into an array, then wrap then in an iterator
-    var buttons = $md083forkUtil.iterator(parent[0].querySelectorAll('md-radio-button'), true);
+    var buttons = $md083forkUtil.iterator(parent[0].querySelectorAll('md083fork-radio-button'), true);
 
     if (buttons.count()) {
       var validate = function (button) {
         // If disabled, then NOT valid
         return !angular.element(button).attr("disabled");
       };
-      var selected = parent[0].querySelector('md-radio-button.md-checked');
+      var selected = parent[0].querySelector('md083fork-radio-button.md-checked');
       var target = buttons[increment < 0 ? 'previous' : 'next'](selected, validate) || buttons.first();
       // Activate radioButton's click listener (triggerHandler won't create a real click event)
       angular.element(target).triggerHandler('click');
@@ -172,15 +172,15 @@ function mdRadioGroupDirective($md083forkUtil, $md083forkConstant, $md083forkThe
 /**
  * @ngdoc directive
  * @module material.components.radioButton
- * @name mdRadioButton
+ * @name md083forkRadioButton
  *
  * @restrict E
  *
  * @description
- * The `<md-radio-button>`directive is the child directive required to be used within `<md-radio-group>` elements.
+ * The `<md083fork-radio-button>`directive is the child directive required to be used within `<md083fork-radio-group>` elements.
  *
  * While similar to the `<input type="radio" ng-model="" value="">` directive,
- * the `<md-radio-button>` directive provides ink effects, ARIA support, and
+ * the `<md083fork-radio-button>` directive provides ink effects, ARIA support, and
  * supports use within named radio groups.
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
@@ -196,13 +196,13 @@ function mdRadioGroupDirective($md083forkUtil, $md083forkConstant, $md083forkThe
  * @usage
  * <hljs lang="html">
  *
- * <md-radio-button value="1" aria-label="Label 1">
+ * <md083fork-radio-button value="1" aria-label="Label 1">
  *   Label 1
- * </md-radio-button>
+ * </md083fork-radio-button>
  *
- * <md-radio-button ng-model="color" ng-value="specialValue" aria-label="Green">
+ * <md083fork-radio-button ng-model="color" ng-value="specialValue" aria-label="Green">
  *   Green
- * </md-radio-button>
+ * </md083fork-radio-button>
  *
  * </hljs>
  *
@@ -213,7 +213,7 @@ function mdRadioButtonDirective($md083forkAria, $md083forkUtil, $md083forkThemin
 
   return {
     restrict: 'E',
-    require: '^mdRadioGroup',
+    require: '^md083forkRadioGroup',
     transclude: true,
     template: '<div class="md-container" md-ink-ripple md-ink-ripple-checkbox>' +
                 '<div class="md-off"></div>' +

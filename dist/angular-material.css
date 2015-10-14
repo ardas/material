@@ -5443,28 +5443,28 @@ md-progress-linear {
     opacity: 1;
     background-position: -200px -23px; } }
 
-md-radio-button, .md-switch-thumb {
+md083fork-radio-button, .md-switch-thumb {
   display: block;
   margin: 15px;
   white-space: nowrap;
   cursor: pointer; }
-  md-radio-button input, .md-switch-thumb input {
+  md083fork-radio-button input, .md-switch-thumb input {
     display: none; }
-  md-radio-button .md-container, .md-switch-thumb .md-container {
+  md083fork-radio-button .md-container, .md-switch-thumb .md-container {
     position: relative;
     top: 4px;
     display: inline-block;
     width: 16px;
     height: 16px;
     cursor: pointer; }
-    md-radio-button .md-container .md-ripple-container, .md-switch-thumb .md-container .md-ripple-container {
+    md083fork-radio-button .md-container .md-ripple-container, .md-switch-thumb .md-container .md-ripple-container {
       position: absolute;
       display: block;
       width: 48px;
       height: 48px;
       left: -16px;
       top: -16px; }
-  md-radio-button .md-off, .md-switch-thumb .md-off {
+  md083fork-radio-button .md-off, .md-switch-thumb .md-off {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -5473,7 +5473,7 @@ md-radio-button, .md-switch-thumb {
     border: solid 2px;
     border-radius: 50%;
     transition: border-color ease 0.28s; }
-  md-radio-button .md-on, .md-switch-thumb .md-on {
+  md083fork-radio-button .md-on, .md-switch-thumb .md-on {
     position: absolute;
     top: 0;
     left: 0;
@@ -5484,10 +5484,10 @@ md-radio-button, .md-switch-thumb {
     transition: transform ease 0.28s;
     -webkit-transform: scale(0);
             transform: scale(0); }
-  md-radio-button.md-checked .md-on, .md-switch-thumb.md-checked .md-on {
+  md083fork-radio-button.md-checked .md-on, .md-switch-thumb.md-checked .md-on {
     -webkit-transform: scale(0.55);
             transform: scale(0.55); }
-  md-radio-button .md-label, .md-switch-thumb .md-label {
+  md083fork-radio-button .md-label, .md-switch-thumb .md-label {
     position: relative;
     display: inline-block;
     margin-left: 10px;
@@ -5496,15 +5496,15 @@ md-radio-button, .md-switch-thumb {
     white-space: normal;
     pointer-events: none;
     width: auto; }
-  md-radio-button .circle, .md-switch-thumb .circle {
+  md083fork-radio-button .circle, .md-switch-thumb .circle {
     border-radius: 50%; }
 
-md-radio-group {
+md083fork-radio-group {
   border: 1px dotted transparent;
   display: block;
   outline: none; }
 
-.radioButtondemoBasicUsage md-radio-group {
+.radioButtondemoBasicUsage md083fork-radio-group {
   border: none; }
 
 .md-select-menu-container {
@@ -5716,21 +5716,6 @@ md-sidenav {
     width: 85%; }
  }
 
-.md-sticky-clone {
-  z-index: 2;
-  top: 0;
-  left: 0;
-  right: 0;
-  position: absolute !important;
-  -webkit-transform: translate3d(-9999px, -9999px, 0);
-          transform: translate3d(-9999px, -9999px, 0); }
-  .md-sticky-clone[sticky-state="active"] {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0); }
-    .md-sticky-clone[sticky-state="active"]:not(.md-sticky-no-effect):after {
-      -webkit-animation: subheaderStickyHoverIn 0.3s ease-out both;
-              animation: subheaderStickyHoverIn 0.3s ease-out both; }
-
 @-webkit-keyframes sliderFocusThumb {
   0% {
     opacity: 0;
@@ -5936,6 +5921,21 @@ md083fork-slider {
             transform: scale(0.35); }
   md083fork-slider[disabled] .md-disabled-thumb {
     display: block; }
+
+.md-sticky-clone {
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute !important;
+  -webkit-transform: translate3d(-9999px, -9999px, 0);
+          transform: translate3d(-9999px, -9999px, 0); }
+  .md-sticky-clone[sticky-state="active"] {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); }
+    .md-sticky-clone[sticky-state="active"]:not(.md-sticky-no-effect):after {
+      -webkit-animation: subheaderStickyHoverIn 0.3s ease-out both;
+              animation: subheaderStickyHoverIn 0.3s ease-out both; }
 
 @-webkit-keyframes subheaderStickyHoverIn {
   0% {

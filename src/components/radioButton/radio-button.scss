@@ -1,7 +1,7 @@
 $radio-width: 16px !default;
 $radio-height: $radio-width !default;
 
-md-radio-button,
+md083fork-radio-button,
 .md-switch-thumb { // Used in switch
   display: block;
   margin: 15px;
@@ -73,13 +73,13 @@ md-radio-button,
   }
 
 }
-md-radio-group {
+md083fork-radio-group {
   border: 1px dotted transparent;
   display: block;
   outline: none;
 }
 
 
-.radioButtondemoBasicUsage  md-radio-group {
+.radioButtondemoBasicUsage  md083fork-radio-group {
   border: none;
 }
