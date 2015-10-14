@@ -12,12 +12,12 @@
 
 - [ ] ng-model with child mdOptions (basic)
 - [ ] ng-model="foo" ng-model-options="{ trackBy: '$value.id' }" for objects
-- [ ] mdOption with value
+- [ ] md083forkOption with value
 - [ ] Usage with input inside
 - [ ] Usage with md-multiple
 
 ### TODO - POST RC1 ###
-- [ ] Abstract placement logic in $mdSelect service to $mdMenu service
+- [ ] Abstract placement logic in $md083forkSelect service to $mdMenu service
 
 ***************************************************/
 
@@ -28,16 +28,16 @@ angular.module('material.083fork.components.select', [
   'material.083fork.core',
   'material.083fork.components.backdrop'
 ])
-.directive('mdSelect', SelectDirective)
-.directive('mdSelectMenu', SelectMenuDirective)
-.directive('mdOption', OptionDirective)
-.directive('mdOptgroup', OptgroupDirective)
-.provider('$mdSelect', SelectProvider);
+.directive('md083forkSelect', SelectDirective)
+.directive('md083forkSelectMenu', SelectMenuDirective)
+.directive('md083forkOption', OptionDirective)
+.directive('md083forkOptgroup', OptgroupDirective)
+.provider('$md083forkSelect', SelectProvider);
 
 
 /**
  * @ngdoc directive
- * @name mdSelect
+ * @name md083forkSelect
  * @restrict E
  * @module material.components.select
  *
@@ -50,29 +50,29 @@ angular.module('material.083fork.components.select', [
  * @usage
  * With a placeholder (label is added dynamically)
  * <hljs lang="html">
- *   <md-select
+ *   <md083fork-select
  *     ng-model="someModel"
  *     placeholder="Select a state">
- *     <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
- *   </md-select>
+ *     <md083fork-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md083fork-option>
+ *   </md083fork-select>
  * </hljs>
  *
  * With an explicit label
  * <hljs lang="html">
- *   <md-select
+ *   <md083fork-select
  *     ng-model="someModel">
- *     <md-select-label>Select a state</md-select-label>
- *     <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
- *   </md-select>
+ *     <md083fork-select-label>Select a state</md-select-label>
+ *     <md083fork-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md083fork-option>
+ *   </md083fork-select>
  * </hljs>
  */
-function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpolate, $compile, $parse) {
+function SelectDirective($md083forkSelect, $md083forkUtil, $md083forkTheming, $interpolate, $compile, $parse) {
   var intStart = $interpolate.startSymbol();
   var intEnd = $interpolate.endSymbol();
 
   return {
     restrict: 'E',
-    require: ['mdSelect', 'ngModel'],
+    require: ['md083forkSelect', 'ngModel'],
     compile: compile,
     controller: function() { } // empty placeholder controller to be initialized in link
   };
@@ -94,7 +94,7 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
       element.append( angular.element('<md-content>').append(element.contents()) );
     }
 
-    // Add progress spinner for md-options-loading
+    // Add progress spinner for md083fork-options-loading
     if (attr.mdOnOpen) {
       element.find('md-content').prepend(
         angular.element('<md-progress-circular>')
@@ -107,10 +107,10 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
 
     // Use everything that's left inside element.contents() as the contents of the menu
     var selectTemplate = '<div class="md-select-menu-container">' +
-        '<md-select-menu ' +
+        '<md083fork-select-menu ' +
         (angular.isDefined(attr.multiple) ? 'multiple' : '') + '>' +
           element.html() +
-        '</md-select-menu></div>';
+        '</md083fork-select-menu></div>';
 
     element.empty().append(labelEl);
 
@@ -149,7 +149,7 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
 
       function syncLabelText() {
         if (selectContainer) {
-          var selectMenuCtrl = selectContainer.find('md-select-menu').controller('mdSelectMenu');
+          var selectMenuCtrl = selectContainer.find('md083fork-select-menu').controller('md083forkSelectMenu');
           mdSelectCtrl.setLabelText(selectMenuCtrl.selectedLabels());
         }
       }
@@ -184,7 +184,7 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
 
       scope.$on('$destroy', function() {
         if (isOpen) {
-          $mdSelect.cancel().then(function() {
+          $md083forkSelect.cancel().then(function() {
             selectContainer.remove();
           });
         } else {
@@ -196,9 +196,9 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
       // Create a fake select to find out the label value
       function createSelect() {
         selectContainer = angular.element(selectTemplate);
-        var selectEl = selectContainer.find('md-select-menu');
+        var selectEl = selectContainer.find('md083fork-select-menu');
         selectEl.data('$ngModelController', ngModel);
-        selectEl.data('$mdSelectController', mdSelectCtrl);
+        selectEl.data('$md083forkSelectController', mdSelectCtrl);
         selectScope = scope.$new();
         selectContainer = $compile(selectContainer)(selectScope);
       }
@@ -215,7 +215,7 @@ function SelectDirective($mdSelect, $md083forkUtil, $md083forkTheming, $interpol
       function openSelect() {
         scope.$evalAsync(function() {
           isOpen = true;
-          $mdSelect.show({
+          $md083forkSelect.show({
             scope: selectScope,
             preserveScope: true,
             skipCompile: true,
@@ -236,7 +236,7 @@ function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
 
   return {
     restrict: 'E',
-    require: ['mdSelectMenu', '?ngModel'],
+    require: ['md083forkSelectMenu', '?ngModel'],
     controller: SelectMenuController,
     link: { pre: preLink }
   };
@@ -268,8 +268,8 @@ function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
     }
 
     function clickListener(ev) {
-      var option = $md083forkUtil.getClosest(ev.target, 'md-option');
-      var optionCtrl = option && angular.element(option).data('$mdOptionController');
+      var option = $md083forkUtil.getClosest(ev.target, 'md083fork-option');
+      var optionCtrl = option && angular.element(option).data('$md083forkOptionController');
       if (!option || !optionCtrl) return;
 
       var optionHashKey = selectCtrl.hashGetter(optionCtrl.value);
@@ -322,7 +322,7 @@ function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
       } else {
         self.hashGetter = function getHashValue(value) {
           if (angular.isObject(value)) {
-            return '$$object_' + (value.$$mdSelectId || (value.$$mdSelectId = ++selectNextId));
+            return '$$object_' + (value.$$md083forkSelectId || (value.$$md083forkSelectId = ++selectNextId));
           }
           return value;
         };
@@ -349,7 +349,7 @@ function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
     };
 
     self.selectedLabels = function() {
-      var selectedOptionEls = nodesToArray($element[0].querySelectorAll('md-option[selected]'));
+      var selectedOptionEls = nodesToArray($element[0].querySelectorAll('md083fork-option[selected]'));
       if (selectedOptionEls.length) {
         return selectedOptionEls.map(function(el) { return el.textContent; }).join(', ');
       } else {
@@ -370,7 +370,7 @@ function SelectMenuDirective($parse, $md083forkUtil, $md083forkTheming) {
 
     self.addOption = function(hashKey, optionCtrl) {
       if (angular.isDefined(self.options[hashKey])) {
-        throw new Error('Duplicate md-option values are not allowed in a select. ' +
+        throw new Error('Duplicate md083fork-option values are not allowed in a select. ' +
                         'Duplicate value "' + optionCtrl.value + '" found.');
       }
       self.options[hashKey] = optionCtrl;
@@ -435,7 +435,7 @@ function OptionDirective($md083forkInkRipple$mdInkRipple, $md083forkUtil) {
 
   return {
     restrict: 'E',
-    require: ['mdOption', '^^mdSelectMenu'],
+    require: ['md083forkOption', '^^md083forkSelectMenu'],
     controller: OptionController,
     compile: compile
   };
@@ -534,14 +534,14 @@ function OptgroupDirective() {
 }
 
 function SelectProvider($$083forkInterimElementProvider) {
-  return $$083forkInterimElementProvider('$mdSelect')
+  return $$083forkInterimElementProvider('$md083forkSelect')
     .setDefaults({
       methods: ['target'],
       options: selectDefaultOptions
     });
 
   /* @ngInject */
-  function selectDefaultOptions($mdSelect, $md083forkConstant, $$rAF, $md083forkUtil, $md083forkTheming, $timeout) {
+  function selectDefaultOptions($md083forkSelect, $md083forkConstant, $$rAF, $md083forkUtil, $md083forkTheming, $timeout) {
     return {
       parent: 'body',
       onShow: onShow,
@@ -553,7 +553,7 @@ function SelectProvider($$083forkInterimElementProvider) {
 
     function onShow(scope, element, opts) {
       if (!opts.target) {
-        throw new Error('$mdSelect.show() expected a target element in options.target but got ' +
+        throw new Error('$md083forkSelect.show() expected a target element in options.target but got ' +
                         '"' + opts.target + '"!');
       }
 
@@ -561,7 +561,7 @@ function SelectProvider($$083forkInterimElementProvider) {
         isRemoved: false,
         target: angular.element(opts.target), //make sure it's not a naked dom node
         parent: angular.element(opts.parent),
-        selectEl: element.find('md-select-menu'),
+        selectEl: element.find('md083fork-select-menu'),
         contentEl: element.find('md-content'),
         backdrop: opts.hasBackdrop && angular.element('<md-backdrop class="md-select-backdrop">')
       });
@@ -570,7 +570,7 @@ function SelectProvider($$083forkInterimElementProvider) {
 
       element.removeClass('md-leave');
 
-      var optionNodes = opts.selectEl[0].getElementsByTagName('md-option');
+      var optionNodes = opts.selectEl[0].getElementsByTagName('md083fork-option');
 
       if (opts.loadingAsync && opts.loadingAsync.then) {
         opts.loadingAsync.then(function() {
@@ -621,14 +621,14 @@ function SelectProvider($$083forkInterimElementProvider) {
 
       function activateInteraction() {
         if (opts.isRemoved) return;
-        var selectCtrl = opts.selectEl.controller('mdSelectMenu') || {};
+        var selectCtrl = opts.selectEl.controller('md083forkSelectMenu') || {};
         element.addClass('md-clickable');
 
         opts.backdrop && opts.backdrop.on('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
           opts.restoreFocus = false;
-          scope.$apply($mdSelect.cancel);
+          scope.$apply($md083forkSelect.cancel);
         });
 
         // Escape to close
@@ -636,7 +636,7 @@ function SelectProvider($$083forkInterimElementProvider) {
           switch (ev.keyCode) {
             case $md083forkConstant.KEY_CODE.SPACE:
             case $md083forkConstant.KEY_CODE.ENTER:
-              var option = $md083forkUtil.getClosest(ev.target, 'md-option');
+              var option = $md083forkUtil.getClosest(ev.target, 'md083fork-option');
               if (option) {
                 opts.selectEl.triggerHandler({
                   type: 'click',
@@ -649,7 +649,7 @@ function SelectProvider($$083forkInterimElementProvider) {
             case $md083forkConstant.KEY_CODE.ESCAPE:
               ev.preventDefault();
               opts.restoreFocus = true;
-              scope.$apply($mdSelect.cancel);
+              scope.$apply($md083forkSelect.cancel);
           }
         });
 
@@ -693,7 +693,7 @@ function SelectProvider($$083forkInterimElementProvider) {
         function closeMenu() {
           opts.restoreFocus = true;
           scope.$evalAsync(function() {
-            $mdSelect.hide(selectCtrl.ngModel.$viewValue);
+            $md083forkSelect.hide(selectCtrl.ngModel.$viewValue);
           });
         }
       }
@@ -712,9 +712,9 @@ function SelectProvider($$083forkInterimElementProvider) {
         delete opts.disableTarget;
       }
 
-      var mdSelect = opts.selectEl.controller('mdSelect');
+      var mdSelect = opts.selectEl.controller('md083forkSelect');
       if (mdSelect) {
-        mdSelect.setLabelText(opts.selectEl.controller('mdSelectMenu').selectedLabels());
+        mdSelect.setLabelText(opts.selectEl.controller('md083forkSelectMenu').selectedLabels());
       }
 
       return $md083forkUtil.transitionEndPromise(element, { timeout: 350 }).then(function() {
@@ -748,9 +748,9 @@ function SelectProvider($$083forkInterimElementProvider) {
           },
           maxWidth = parentRect.width - SELECT_EDGE_MARGIN * 2,
           isScrollable = contentNode.scrollHeight > contentNode.offsetHeight,
-          selectedNode = selectNode.querySelector('md-option[selected]'),
-          optionNodes = selectNode.getElementsByTagName('md-option'),
-          optgroupNodes = selectNode.getElementsByTagName('md-optgroup');
+          selectedNode = selectNode.querySelector('md083fork-option[selected]'),
+          optionNodes = selectNode.getElementsByTagName('md083fork-option'),
+          optgroupNodes = selectNode.getElementsByTagName('md083fork-optgroup');
 
 
       var centeredNode;
@@ -791,7 +791,7 @@ function SelectProvider($$083forkInterimElementProvider) {
       }
 
       var focusedNode = centeredNode;
-      if ((focusedNode.tagName || '').toUpperCase() === 'MD-OPTGROUP') {
+      if ((focusedNode.tagName || '').toUpperCase() === 'MD083FORK-OPTGROUP') {
         focusedNode = optionNodes[0] || contentNode.firstElementChild || contentNode;
       }
       if (focusedNode) {

@@ -1,4 +1,4 @@
-describe('<md-select-menu>', function() {
+describe('<md083fork-select-menu>', function() {
 
   beforeEach(module('material.083fork.components.select', 'ngAnimateMock'));
 
@@ -14,7 +14,7 @@ describe('<md-select-menu>', function() {
     var innerTpl = setup(attrs, options, true);
     var el;
     inject(function($compile, $rootScope) {
-      var template = angular.element('<md-select ' + (attrs || '') + '>' + optTemplate(options) + '</md-select>');
+      var template = angular.element('<md083fork-select ' + (attrs || '') + '>' + optTemplate(options) + '</md083fork-select>');
       el = $compile(template)($rootScope);
       $rootScope.$digest();
       $rootScope.$digest();
@@ -26,8 +26,8 @@ describe('<md-select-menu>', function() {
     var el;
     inject(function($compile, $rootScope) {
       var optionsTpl = optTemplate(options);
-      var fullTpl = '<md-select-menu '+(attrs || '')+'>' + optionsTpl +
-               '</md-select-menu>';
+      var fullTpl = '<md083fork-select-menu '+(attrs || '')+'>' + optionsTpl +
+               '</md083fork-select-menu>';
       el = $compile(fullTpl)($rootScope);
       $rootScope.$apply();
     });
@@ -44,7 +44,7 @@ describe('<md-select-menu>', function() {
     inject(function($rootScope) {
       if (angular.isArray(options)) {
         $rootScope.$$values = options;
-        optionsTpl = '<md-option ng-repeat="value in $$values" ng-value="value">{{value}}"></md-option>';
+        optionsTpl = '<md083fork-option ng-repeat="value in $$values" ng-value="value">{{value}}"></md083fork-option>';
       } else if (angular.isString(options)) {
         optionsTpl = options;
       }
@@ -53,7 +53,7 @@ describe('<md-select-menu>', function() {
   }
 
   function selectedOptions(el) {
-    return angular.element(el[0].querySelectorAll('md-option[selected]'));
+    return angular.element(el[0].querySelectorAll('md083fork-option[selected]'));
   }
 
   function openSelect(el) {
@@ -96,17 +96,17 @@ describe('<md-select-menu>', function() {
     var select = setupSelect('disabled="disabled", ng-model="val"');
     openSelect(select);
     waitForSelectOpen();
-    expect($document.find('md-select-menu').length).toBe(0);
+    expect($document.find('md083fork-select-menu').length).toBe(0);
   }));
 
   it('closes the menu if the element is destroyed', inject(function($document) {
     var select = setupSelect('ng-model="val"');
     openSelect(select);
     waitForSelectOpen();
-    expect($document.find('md-select-menu').length).toBe(1);
+    expect($document.find('md083fork-select-menu').length).toBe(1);
     select.scope().$destroy();
     waitForSelectClose();
-    expect($document.find('md-select-menu').length).toBe(0);
+    expect($document.find('md083fork-select-menu').length).toBe(0);
   }));
 
   describe('label behavior', function() {
@@ -119,11 +119,11 @@ describe('<md-select-menu>', function() {
 
     it('sets itself to the selected option\'s label', inject(function($rootScope, $compile) {
       $rootScope.val = 2;
-      var select = $compile('<md-select ng-model="val" placeholder="Hello World">' +
-                              '<md-option value="1">One</md-option>' +
-                              '<md-option value="2">Two</md-option>' +
-                              '<md-option value="3">Three</md-option>' +
-                            '</md-select>')($rootScope);
+      var select = $compile('<md083fork-select ng-model="val" placeholder="Hello World">' +
+                              '<md083fork-option value="1">One</md083fork-option>' +
+                              '<md083fork-option value="2">Two</md083fork-option>' +
+                              '<md083fork-option value="3">Three</md083fork-option>' +
+                            '</md083fork-select>')($rootScope);
       var label = select.find('md-select-label');
       $rootScope.$digest();
 
@@ -133,11 +133,11 @@ describe('<md-select-menu>', function() {
 
     it('supports rendering multiple', inject(function($rootScope, $compile) {
       $rootScope.val = [1, 3];
-      var select = $compile('<md-select multiple ng-model="val" placeholder="Hello World">' +
-                              '<md-option value="1">One</md-option>' +
-                              '<md-option value="2">Two</md-option>' +
-                              '<md-option value="3">Three</md-option>' +
-                            '</md-select>')($rootScope);
+      var select = $compile('<md083fork-select multiple ng-model="val" placeholder="Hello World">' +
+                              '<md083fork-option value="1">One</md083fork-option>' +
+                              '<md083fork-option value="2">Two</md083fork-option>' +
+                              '<md083fork-option value="3">Three</md083fork-option>' +
+                            '</md083fork-select>')($rootScope);
       var label = select.find('md-select-label');
       $rootScope.$digest();
 
@@ -146,15 +146,15 @@ describe('<md-select-menu>', function() {
     }));
   });
 
-  it('errors for duplicate md-options, non-dynamic value', inject(function($rootScope) {
+  it('errors for duplicate md083fork-options, non-dynamic value', inject(function($rootScope) {
     expect(function() {
-      setup('ng-model="$root.model"', '<md-option value="a">Hello</md-option>' +
-            '<md-option value="a">Goodbye</md-option>');
+      setup('ng-model="$root.model"', '<md083fork-option value="a">Hello</md083fork-option>' +
+            '<md083fork-option value="a">Goodbye</md083fork-option>');
     }).toThrow();
   }));
-  it('errors for duplicate md-options, ng-value', inject(function($rootScope) {
-    setup('ng-model="$root.model"', '<md-option ng-value="foo">Hello</md-option>' +
-          '<md-option ng-value="bar">Goodbye</md-option>');
+  it('errors for duplicate md083fork-options, ng-value', inject(function($rootScope) {
+    setup('ng-model="$root.model"', '<md083fork-option ng-value="foo">Hello</md083fork-option>' +
+          '<md083fork-option ng-value="bar">Goodbye</md083fork-option>');
     $rootScope.$apply('foo = "a"');
     expect(function() {
       $rootScope.$apply('bar = "a"');
@@ -170,7 +170,7 @@ describe('<md-select-menu>', function() {
         var el = setup('ng-model="$root.model"', ['a','b','c']);
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
       }));
 
       it('renders nothing if no initial value is set', function() {
@@ -183,10 +183,10 @@ describe('<md-select-menu>', function() {
         var el = setup('ng-model="$root.model"', ['a','b','c']);
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
 
         $rootScope.$apply('model = "c"');
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
         expect(selectedOptions(el).length).toBe(1);
       }));
 
@@ -195,7 +195,7 @@ describe('<md-select-menu>', function() {
         var el = setup('ng-model="$root.model"', ['a','b','c']);
         
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
 
         $rootScope.$apply('model = "d"');
         expect(selectedOptions(el).length).toBe(0);
@@ -206,7 +206,7 @@ describe('<md-select-menu>', function() {
         var el = setup('ng-model="$root.model"', ['a','b','c']);
         
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
 
         $rootScope.$apply('model = undefined');
         expect(selectedOptions(el).length).toBe(0);
@@ -218,12 +218,12 @@ describe('<md-select-menu>', function() {
             [{id:1}, {id:2}, {id:3}]);
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
 
         $rootScope.$apply('model = {id: 3}');
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
       }));
 
       it('uses uid by default to compare objects', inject(function($rootScope) {
@@ -232,7 +232,7 @@ describe('<md-select-menu>', function() {
         var el = setup('ng-model="$root.model"', [one, two, three]);
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
 
         $rootScope.$apply('model = {}');
 
@@ -248,14 +248,14 @@ describe('<md-select-menu>', function() {
         var el = setup('ng-model="$root.model"', [1,2,3]);
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
 
         el.triggerHandler({
           type: 'click',
-          target: el.find('md-option')[2]
+          target: el.find('md083fork-option')[2]
         });
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
         expect($rootScope.model).toBe(3);
       }));
 
@@ -268,10 +268,10 @@ describe('<md-select-menu>', function() {
           var selectEl = setupSelect('ng-model="myModel", ng-change="changed()"', [1, 2, 3]);
           openSelect(selectEl);
           waitForSelectOpen();
-          var menuEl = $document.find('md-select-menu');
+          var menuEl = $document.find('md083fork-select-menu');
           menuEl.triggerHandler({
             type: 'click',
-            target: menuEl.find('md-option')[1]
+            target: menuEl.find('md083fork-option')[1]
           });
           expect(changeCalled).toBe(true);
       }));
@@ -281,43 +281,43 @@ describe('<md-select-menu>', function() {
         var el = setup('ng-model="$root.model"', [1,2,3]);
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
         
         el.triggerHandler({
           type: 'click',
-          target: el.find('md-option')[1]
+          target: el.find('md083fork-option')[1]
         });
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
         expect($rootScope.model).toBe(2);
       }));
 
       it('should keep model value if selected option is removed', inject(function($rootScope) {
         $rootScope.model = 3;
         $rootScope.values = [1,2,3];
-        var el = setup('ng-model="$root.model"', '<md-option ng-repeat="v in values" ng-value="v">{{v}}</md-option>');
+        var el = setup('ng-model="$root.model"', '<md083fork-option ng-repeat="v in values" ng-value="v">{{v}}</md083fork-option>');
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
 
         $rootScope.$apply('values.pop()');
 
         expect(selectedOptions(el).length).toBe(0);
-        expect(el.find('md-option').length).toBe(2);
+        expect(el.find('md083fork-option').length).toBe(2);
         expect($rootScope.model).toBe(3);
       }));
 
       it('should select an option that was just added matching the modelValue', inject(function($rootScope) {
         $rootScope.model = 4;
         $rootScope.values = [1,2,3];
-        var el = setup('ng-model="$root.model"', '<md-option ng-repeat="v in values" ng-value="v">{{v}}</md-option>');
+        var el = setup('ng-model="$root.model"', '<md083fork-option ng-repeat="v in values" ng-value="v">{{v}}</md083fork-option>');
 
         expect(selectedOptions(el).length).toBe(0);
 
         $rootScope.$apply('values.unshift(4)');
 
-        expect(el.find('md-option').length).toBe(4);
-        expect(el.find('md-option').eq(0).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').length).toBe(4);
+        expect(el.find('md083fork-option').eq(0).attr('selected')).toBe('selected');
         expect(selectedOptions(el).length).toBe(1);
         expect($rootScope.model).toBe(4);
       }));
@@ -334,8 +334,8 @@ describe('<md-select-menu>', function() {
         var el = setupMultiple('ng-model="$root.model"', [1,2,3,4]);
         
         expect(selectedOptions(el).length).toBe(2);
-        expect(el.find('md-option').eq(0).attr('selected')).toBe('selected');
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(0).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
         expect($rootScope.model).toEqual([1,3]);
       }));
 
@@ -357,7 +357,7 @@ describe('<md-select-menu>', function() {
         $rootScope.$apply('model.push(2)');
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
         expect($rootScope.model).toEqual([2]);
       }));
       
@@ -371,7 +371,7 @@ describe('<md-select-menu>', function() {
         $rootScope.$apply('model.shift()');
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
         expect($rootScope.model).toEqual([3]);
       }));
 
@@ -398,10 +398,10 @@ describe('<md-select-menu>', function() {
         $rootScope.$apply('model = model.concat([1,4])');
 
         expect(selectedOptions(el).length).toBe(4);
-        expect(el.find('md-option').eq(0).attr('selected')).toBe('selected');
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
-        expect(el.find('md-option').eq(3).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(0).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(3).attr('selected')).toBe('selected');
         expect($rootScope.model).toEqual([2,3,1,4]);
       }));
 
@@ -415,9 +415,9 @@ describe('<md-select-menu>', function() {
         $rootScope.$apply('model = [1,2,3]');
 
         expect(selectedOptions(el).length).toBe(3);
-        expect(el.find('md-option').eq(0).attr('selected')).toBe('selected');
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(0).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
         expect($rootScope.model).toEqual([1,2,3]);
       }));
 
@@ -441,13 +441,13 @@ describe('<md-select-menu>', function() {
             [{id:1}, {id:2}, {id:3}]);
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
 
         $rootScope.$apply('model.push({id: 3}); model.push({id:1}); model.shift();');
 
         expect(selectedOptions(el).length).toBe(2);
-        expect(el.find('md-option').eq(0).attr('selected')).toBe('selected');
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(0).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
       }));
 
       it('uses uid by default to compare objects', inject(function($rootScope) {
@@ -456,7 +456,7 @@ describe('<md-select-menu>', function() {
         var el = setupMultiple('ng-model="$root.model"', [one, two, three]);
 
         expect(selectedOptions(el).length).toBe(1);
-        expect(el.find('md-option').eq(1).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(1).attr('selected')).toBe('selected');
 
         $rootScope.$apply('model = [{}]');
 
@@ -487,7 +487,7 @@ describe('<md-select-menu>', function() {
 
         el.triggerHandler({
           type: 'click',
-          target: el.find('md-option')[0]
+          target: el.find('md083fork-option')[0]
         });
 
         expect(selectedOptions(el).length).toBe(0);
@@ -503,7 +503,7 @@ describe('<md-select-menu>', function() {
 
         el.triggerHandler({
           type: 'click',
-          target: el.find('md-option')[1]
+          target: el.find('md083fork-option')[1]
         });
 
         expect(selectedOptions(el).length).toBe(2);
@@ -514,7 +514,7 @@ describe('<md-select-menu>', function() {
         $rootScope.model = [1];
         $rootScope.values = [1,2];
         var el = setupMultiple('ng-model="$root.model"', 
-            '<md-option ng-repeat="v in values" ng-value="v">{{v}}</md-option>');
+            '<md083fork-option ng-repeat="v in values" ng-value="v">{{v}}</md083fork-option>');
 
         expect(selectedOptions(el).length).toBe(1);
         expect($rootScope.model).toEqual([1]);
@@ -529,7 +529,7 @@ describe('<md-select-menu>', function() {
         $rootScope.model = [1,3];
         $rootScope.values = [1,2];
         var el = setupMultiple('ng-model="$root.model"', 
-            '<md-option ng-repeat="v in values" ng-value="v">{{v}}</md-option>');
+            '<md083fork-option ng-repeat="v in values" ng-value="v">{{v}}</md083fork-option>');
 
         expect(selectedOptions(el).length).toBe(1);
         expect($rootScope.model).toEqual([1,3]);
@@ -537,8 +537,8 @@ describe('<md-select-menu>', function() {
         $rootScope.$apply('values.push(3)');
 
         expect(selectedOptions(el).length).toBe(2);
-        expect(el.find('md-option').eq(0).attr('selected')).toBe('selected');
-        expect(el.find('md-option').eq(2).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(0).attr('selected')).toBe('selected');
+        expect(el.find('md083fork-option').eq(2).attr('selected')).toBe('selected');
         expect($rootScope.model).toEqual([1,3]);
       }));
 
@@ -549,13 +549,13 @@ describe('<md-select-menu>', function() {
     var el;
     beforeEach(inject(function($q, $document) {
       el = setupSelect('ng-model="someModel"', [1, 2, 3]);
-      var selectMenus = $document.find('md-select-menu');
+      var selectMenus = $document.find('md083fork-select-menu');
       selectMenus.remove();
     }));
 
     it('sets up the aria-owns attribute', inject(function($document) {
       openSelect(el);
-      var selectMenu = $document.find('md-select-menu');
+      var selectMenu = $document.find('md083fork-select-menu');
       var selectMenuId = selectMenu.attr('id');
       expect(selectMenuId.length).toBeTruthy();
       expect(el.attr('aria-owns')).toBe(selectMenuId);
@@ -563,7 +563,7 @@ describe('<md-select-menu>', function() {
     it('sets up the aria-labeledby attribute', inject(function($document) {
       openSelect(el);
       var selectId = el.attr('id');
-      var selectMenu = $document.find('md-select-menu');
+      var selectMenu = $document.find('md083fork-select-menu');
       expect(selectId.length).toBeTruthy();
       expect(selectMenu.attr('aria-labelledby')).toBe(selectId);
     }));
@@ -572,7 +572,7 @@ describe('<md-select-menu>', function() {
       openSelect(el);
       expect(el.attr('aria-expanded')).toBe('true');
 
-      var selectMenu = $document.find('md-select-menu');
+      var selectMenu = $document.find('md083fork-select-menu');
       pressKey(selectMenu, 27);
       waitForSelectClose();
       expect(el.attr('aria-expanded')).toBe('false');
@@ -585,11 +585,11 @@ describe('<md-select-menu>', function() {
     }));
     it('sets up the aria-selected attribute', inject(function($rootScope) {
       var el = setup('ng-model="$root.model"', [1,2,3]);
-      var options = el.find('md-option');
+      var options = el.find('md083fork-option');
       expect(options.eq(2).attr('aria-selected')).toBe('false');
       el.triggerHandler({
         type: 'click',
-        target: el.find('md-option')[2]
+        target: el.find('md083fork-option')[2]
       });
       expect(options.eq(2).attr('aria-selected')).toBe('true');
     }));
@@ -599,16 +599,16 @@ describe('<md-select-menu>', function() {
 
 
     afterEach(inject(function($document) {
-      var selectMenus = $document.find('md-select-menu');
+      var selectMenus = $document.find('md083fork-select-menu');
       selectMenus.remove();
     }));
 
-    describe('md-select', function() {
+    describe('md083fork-select', function() {
       it('can be opened with a space key', inject(function($document) {
         var el = setupSelect('ng-model="someModel"', [1, 2, 3]);
         pressKey(el, 32);
         waitForSelectOpen();
-        var selectMenu = angular.element($document.find('md-select-menu'));
+        var selectMenu = angular.element($document.find('md083fork-select-menu'));
         expect(selectMenu.length).toBe(1);
       }));
 
@@ -616,7 +616,7 @@ describe('<md-select-menu>', function() {
         var el = setupSelect('ng-model="someModel"', [1, 2, 3]);
         pressKey(el, 13);
         waitForSelectOpen();
-        var selectMenu = angular.element($document.find('md-select-menu'));
+        var selectMenu = angular.element($document.find('md083fork-select-menu'));
         expect(selectMenu.length).toBe(1);
       }));
 
@@ -624,7 +624,7 @@ describe('<md-select-menu>', function() {
         var el = setupSelect('ng-model="someModel"', [1, 2, 3]);
         pressKey(el, 38);
         waitForSelectOpen();
-        var selectMenu = angular.element($document.find('md-select-menu'));
+        var selectMenu = angular.element($document.find('md083fork-select-menu'));
         expect(selectMenu.length).toBe(1);
       }));
 
@@ -632,20 +632,20 @@ describe('<md-select-menu>', function() {
         var el = setupSelect('ng-model="someModel"', [1, 2, 3]);
         pressKey(el, 40);
         waitForSelectOpen();
-        var selectMenu = angular.element($document.find('md-select-menu'));
+        var selectMenu = angular.element($document.find('md083fork-select-menu'));
         expect(selectMenu.length).toBe(1);
       }));
     });
 
-    describe('md-select-menu', function() {
+    describe('md083fork-select-menu', function() {
       it('can be closed with escape', inject(function($document, $rootScope, $animate) {
         var el = setupSelect('ng-model="someVal"', [1, 2, 3]);
         openSelect(el);
-        var selectMenu = angular.element($document.find('md-select-menu'));
+        var selectMenu = angular.element($document.find('md083fork-select-menu'));
         expect(selectMenu.length).toBe(1);
         pressKey(selectMenu, 27);
         waitForSelectClose();
-        expect($document.find('md-select-menu').length).toBe(0);
+        expect($document.find('md083fork-select-menu').length).toBe(0);
       }));
     });
   });

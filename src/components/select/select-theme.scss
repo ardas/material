@@ -1,4 +1,4 @@
-md-select.md-THEME_NAME-theme {
+md083fork-select.md-THEME_NAME-theme {
   &:not([disabled]):focus {
     .md-select-label {
       border-bottom-color: '{{primary-color}}';
@@ -30,15 +30,15 @@ md-select.md-THEME_NAME-theme {
   }
 }
 
-md-select-menu.md-THEME_NAME-theme {
+md083fork-select-menu.md-THEME_NAME-theme {
 
-  md-optgroup {
+  md083fork-optgroup {
     color: '{{foreground-2}}';
-    md-option {
+    md083fork-option {
       color: '{{foreground-1}}';
     }
   }
-  md-option[selected] {
+  md083fork-option[selected] {
     background-color: '{{primary-50}}';
     &:focus {
       background-color: '{{primary-100}}';
@@ -50,7 +50,7 @@ md-select-menu.md-THEME_NAME-theme {
       }
     }
   }
-  md-option:focus:not([selected]) {
+  md083fork-option:focus:not([selected]) {
     background: '{{background-200}}';
   }
 
