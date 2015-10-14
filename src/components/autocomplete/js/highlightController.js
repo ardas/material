@@ -2,10 +2,10 @@
   'use strict';
   angular
       .module('material.083fork.components.autocomplete')
-      .controller('MdHighlightCtrl', MdHighlightCtrl);
+      .controller('Md083forkHighlightCtrl', MdHighlightCtrl);
 
   function MdHighlightCtrl ($scope, $element, $interpolate) {
-    var term = $element.attr('md-highlight-text'),
+    var term = $element.attr('md083fork-highlight-text'),
         text = $interpolate($element.text())($scope),
         watcher = $scope.$watch(term, function (term) {
           var regex = new RegExp('^' + sanitize(term), 'i'),

@@ -2,15 +2,15 @@
   'use strict';
   angular
       .module('material.083fork.components.autocomplete')
-      .directive('mdAutocomplete', MdAutocomplete);
+      .directive('md083forkAutocomplete', MdAutocomplete);
 
   /**
    * @ngdoc directive
-   * @name mdAutocomplete
+   * @name md083forkAutocomplete
    * @module material.components.autocomplete
    *
    * @description
-   * `<md-autocomplete>` is a special input component with a drop-down of all possible matches to a custom query.
+   * `<md083fork-autocomplete>` is a special input component with a drop-down of all possible matches to a custom query.
    * This component allows you to provide real-time suggestions as the user types in the input area.
    *
    * @param {string=} md-search-text A model to bind the search query text to
@@ -27,13 +27,13 @@
    *
    * @usage
    * <hljs lang="html">
-   *   <md-autocomplete
+   *   <md083fork-autocomplete
    *       md-selected-item="selectedItem"
    *       md-search-text="searchText"
    *       md-items="item in getMatches(searchText)"
    *       md-item-text="item.display">
-   *     <span md-highlight-text="searchText">{{item.display}}</span>
-   *   </md-autocomplete>
+   *     <span md083fork-highlight-text="searchText">{{item.display}}</span>
+   *   </md083fork-autocomplete>
    * </hljs>
    */
 
@@ -72,7 +72,7 @@
               ng-show="searchText && !$mdAutocompleteCtrl.hidden"\
               ng-click="$mdAutocompleteCtrl.select(index)"\
               ng-transclude\
-              md-autocomplete-list-item="$mdAutocompleteCtrl.itemName">\
+              md083fork-autocomplete-list-item="$mdAutocompleteCtrl.itemName">\
           </li>\
         </ul>\
         <aria-status\
@@ -82,7 +82,7 @@
           <p ng-repeat="message in $mdAutocompleteCtrl.messages">{{message.display}}</p>\
         </aria-status>',
       transclude:   true,
-      controller:   'MdAutocompleteCtrl',
+      controller:   'Md083forkAutocompleteCtrl',
       controllerAs: '$mdAutocompleteCtrl',
       scope:        {
         searchText:   '=mdSearchText',

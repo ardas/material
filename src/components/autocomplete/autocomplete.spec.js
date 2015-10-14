@@ -1,4 +1,4 @@
-describe('<md-autocomplete>', function() {
+describe('<md083fork-autocomplete>', function() {
 
   beforeEach(module('material.083fork.components.autocomplete'));
 
@@ -31,16 +31,16 @@ describe('<md-autocomplete>', function() {
     it('should fail', inject(function($timeout, $md083forkConstant) {
       var scope = createScope();
       var template = '\
-          <md-autocomplete\
+          <md083fork-autocomplete\
               md-selected-item="selectedItem"\
               md-search-text="searchText"\
               md-items="item in match(searchText)"\
               md-item-text="item.display"\
               placeholder="placeholder">\
-            <span md-highlight-text="searchText">{{item.display}}</span>\
-          </md-autocomplete>';
+            <span md083fork-highlight-text="searchText">{{item.display}}</span>\
+          </md083fork-autocomplete>';
       var element = compile(template, scope);
-      var ctrl    = element.controller('mdAutocomplete');
+      var ctrl    = element.controller('md083forkAutocomplete');
 
       expect(scope.searchText).toBe('');
       expect(scope.selectedItem).toBe(null);

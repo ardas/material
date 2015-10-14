@@ -2803,38 +2803,38 @@ md083fork-tab {
 md-content {
   overflow: visible; }
 
-md-autocomplete {
+md083fork-autocomplete {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   border-radius: 2px;
   display: block;
   height: 40px;
   position: relative;
   overflow: visible; }
-  md-autocomplete md-autocomplete-wrap {
+  md083fork-autocomplete md-autocomplete-wrap {
     display: block;
     position: relative;
     overflow: visible;
     height: 40px; }
-    md-autocomplete md-autocomplete-wrap md-progress-linear {
+    md083fork-autocomplete md-autocomplete-wrap md-progress-linear {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
       height: 3px;
       transition: none; }
-      md-autocomplete md-autocomplete-wrap md-progress-linear .md-container {
+      md083fork-autocomplete md-autocomplete-wrap md-progress-linear .md-container {
         transition: none;
         top: auto;
         height: 3px; }
-      md-autocomplete md-autocomplete-wrap md-progress-linear.ng-enter {
+      md083fork-autocomplete md-autocomplete-wrap md-progress-linear.ng-enter {
         transition: opacity 0.15s linear; }
-        md-autocomplete md-autocomplete-wrap md-progress-linear.ng-enter.ng-enter-active {
+        md083fork-autocomplete md-autocomplete-wrap md-progress-linear.ng-enter.ng-enter-active {
           opacity: 1; }
-      md-autocomplete md-autocomplete-wrap md-progress-linear.ng-leave {
+      md083fork-autocomplete md-autocomplete-wrap md-progress-linear.ng-leave {
         transition: opacity 0.15s linear; }
-        md-autocomplete md-autocomplete-wrap md-progress-linear.ng-leave.ng-leave-active {
+        md083fork-autocomplete md-autocomplete-wrap md-progress-linear.ng-leave.ng-leave-active {
           opacity: 0; }
-  md-autocomplete input {
+  md083fork-autocomplete input {
     position: absolute;
     left: 0;
     top: 0;
@@ -2849,9 +2849,9 @@ md-autocomplete {
     outline: none;
     z-index: 2;
     background: transparent; }
-    md-autocomplete input::-ms-clear {
+    md083fork-autocomplete input::-ms-clear {
       display: none; }
-  md-autocomplete button {
+  md083fork-autocomplete button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -2866,7 +2866,7 @@ md-autocomplete {
     padding: 0;
     font-size: 12px;
     background: transparent; }
-    md-autocomplete button:after {
+    md083fork-autocomplete button:after {
       content: '';
       position: absolute;
       top: -6px;
@@ -2879,33 +2879,33 @@ md-autocomplete {
       opacity: 0;
       transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       z-index: -1; }
-    md-autocomplete button:focus:after {
+    md083fork-autocomplete button:focus:after {
       -webkit-transform: scale(1);
               transform: scale(1);
       opacity: 1; }
-    md-autocomplete button md-icon {
+    md083fork-autocomplete button md-icon {
       position: absolute;
       top: 50%;
       left: 50%;
       -webkit-transform: translate3d(-50%, -50%, 0) scale(0.9);
               transform: translate3d(-50%, -50%, 0) scale(0.9); }
-      md-autocomplete button md-icon path {
+      md083fork-autocomplete button md-icon path {
         stroke-width: 0; }
-    md-autocomplete button.ng-enter {
+    md083fork-autocomplete button.ng-enter {
       -webkit-transform: scale(0);
               transform: scale(0);
       transition: -webkit-transform 0.15s ease-out;
       transition: transform 0.15s ease-out; }
-      md-autocomplete button.ng-enter.ng-enter-active {
+      md083fork-autocomplete button.ng-enter.ng-enter-active {
         -webkit-transform: scale(1);
                 transform: scale(1); }
-    md-autocomplete button.ng-leave {
+    md083fork-autocomplete button.ng-leave {
       transition: -webkit-transform 0.15s ease-out;
       transition: transform 0.15s ease-out; }
-      md-autocomplete button.ng-leave.ng-leave-active {
+      md083fork-autocomplete button.ng-leave.ng-leave-active {
         -webkit-transform: scale(0);
                 transform: scale(0); }
-  md-autocomplete ul {
+  md083fork-autocomplete ul {
     position: absolute;
     top: 100%;
     left: 0;
@@ -2917,7 +2917,7 @@ md-autocomplete {
     overflow: auto;
     max-height: 225.5px;
     z-index: 49; }
-    md-autocomplete ul li {
+    md083fork-autocomplete ul li {
       border-top: 1px solid #ddd;
       padding: 0 15px;
       line-height: 40px;
@@ -2927,11 +2927,11 @@ md-autocomplete {
       transition: background 0.15s linear;
       cursor: pointer;
       margin: 0; }
-      md-autocomplete ul li.ng-enter, md-autocomplete ul li.ng-hide-remove {
+      md083fork-autocomplete ul li.ng-enter, md083fork-autocomplete ul li.ng-hide-remove {
         transition: none;
         -webkit-animation: md-autocomplete-list-in 0.2s;
                 animation: md-autocomplete-list-in 0.2s; }
-      md-autocomplete ul li.ng-leave, md-autocomplete ul li.ng-hide-add {
+      md083fork-autocomplete ul li.ng-leave, md083fork-autocomplete ul li.ng-hide-add {
         transition: none;
         -webkit-animation: md-autocomplete-list-out 0.2s;
                 animation: md-autocomplete-list-out 0.2s; }
@@ -3143,27 +3143,6 @@ md-bottom-sheet {
         text-align: center;
         padding-top: 8px; }
 
-md-card {
-  box-sizing: border-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 8px;
-  box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.26); }
-  md-card > img, md-card > :not(md-card-content) img {
-    -webkit-order: 0;
-        -ms-flex-order: 0;
-            order: 0;
-    width: 100%; }
-  md-card md-card-content {
-    -webkit-order: 1;
-        -ms-flex-order: 1;
-            order: 1;
-    padding: 16px; }
-
 /**
  * Position a FAB button.
  */
@@ -3293,6 +3272,27 @@ md-card {
     border-right-width: 1px;
     border-radius: 0px 2px 2px 0px; }
 
+md-card {
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 8px;
+  box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.26); }
+  md-card > img, md-card > :not(md-card-content) img {
+    -webkit-order: 0;
+        -ms-flex-order: 0;
+            order: 0;
+    width: 100%; }
+  md-card md-card-content {
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+    padding: 16px; }
+
 md083fork-checkbox {
   display: block;
   margin: 15px;
@@ -3366,25 +3366,6 @@ md083fork-checkbox {
         -ms-user-select: text;
             user-select: text; }
 
-md-content {
-  display: block;
-  position: relative;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch; }
-  md-content[md-scroll-y] {
-    overflow-y: auto;
-    overflow-x: hidden; }
-  md-content[md-scroll-x] {
-    overflow-x: auto;
-    overflow-y: hidden; }
-  md-content.md-padding {
-    padding: 8px; }
-
-@media (min-width: 600px) {
-  md-content.md-padding {
-    padding: 16px; }
- }
-
 .md-dialog-container {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3455,12 +3436,24 @@ md083fork-dialog {
   md083fork-dialog.md-content-overflow .md-actions {
     border-top: 1px solid; }
 
-md-divider {
+md-content {
   display: block;
-  border-top: 1px solid;
-  margin: 0; }
-  md-divider[md-inset] {
-    margin-left: 80px; }
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; }
+  md-content[md-scroll-y] {
+    overflow-y: auto;
+    overflow-x: hidden; }
+  md-content[md-scroll-x] {
+    overflow-x: auto;
+    overflow-y: hidden; }
+  md-content.md-padding {
+    padding: 8px; }
+
+@media (min-width: 600px) {
+  md-content.md-padding {
+    padding: 16px; }
+ }
 
 md-grid-list {
   display: block;
@@ -3515,6 +3508,13 @@ md-grid-list {
     md-grid-list md-grid-tile md-grid-tile-footer {
       bottom: 0; }
 
+md-divider {
+  display: block;
+  border-top: 1px solid;
+  margin: 0; }
+  md-divider[md-inset] {
+    margin-left: 80px; }
+
 md-icon {
   margin: auto;
   background-repeat: no-repeat no-repeat;
@@ -3523,6 +3523,57 @@ md-icon {
   fill: currentcolor;
   height: 24px;
   width: 24px; }
+
+md-list {
+  padding: 8px 0px 8px 0px; }
+
+md-item-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0px 0px 0px 0px; }
+
+/**
+ * The left tile for a list item.
+ */
+.md-tile-left {
+  min-width: 56px;
+  margin-right: -16px; }
+
+/**
+ * The center content tile for a list item.
+ */
+.md-tile-content {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 16px;
+  text-overflow: ellipsis; }
+  .md-tile-content h3 {
+    margin: 0 0 3px 0;
+    font-weight: 400;
+    font-size: 1.1em; }
+  .md-tile-content h4 {
+    margin: 0 0 3px 0;
+    font-weight: 400;
+    font-size: 0.9em; }
+  .md-tile-content p {
+    margin: 0 0 3px 0;
+    font-size: 0.75em; }
+
+/**
+ * The right tile for a list item.
+ */
+.md-tile-right {
+  padding-right: 0px; }
 
 md083fork-input-container {
   display: -webkit-flex;
@@ -3641,56 +3692,366 @@ md083fork-input-container {
     background-size: 3px 1px;
     background-repeat: repeat-x; }
 
-md-list {
-  padding: 8px 0px 8px 0px; }
+md-progress-linear {
+  display: block;
+  width: 100%;
+  height: 5px; }
+  md-progress-linear .md-container {
+    overflow: hidden;
+    position: relative;
+    height: 5px;
+    top: 5px;
+    -webkit-transform: translate(0, 5px) scale(1, 0);
+            transform: translate(0, 5px) scale(1, 0);
+    transition: all 0.3s linear; }
+  md-progress-linear .md-container.md-ready {
+    -webkit-transform: translate(0, 0) scale(1, 1);
+            transform: translate(0, 0) scale(1, 1); }
+  md-progress-linear .md-bar {
+    height: 5px;
+    position: absolute;
+    width: 100%; }
+  md-progress-linear .md-bar1, md-progress-linear .md-bar2 {
+    transition: all 0.2s linear; }
+  md-progress-linear[md-mode=determinate] .md-bar1 {
+    display: none; }
+  md-progress-linear[md-mode=indeterminate] .md-bar1 {
+    -webkit-animation: indeterminate1 4s infinite linear;
+            animation: indeterminate1 4s infinite linear; }
+  md-progress-linear[md-mode=indeterminate] .md-bar2 {
+    -webkit-animation: indeterminate2 4s infinite linear;
+            animation: indeterminate2 4s infinite linear; }
+  md-progress-linear[md-mode=buffer] .md-container {
+    background-color: transparent !important; }
+  md-progress-linear[md-mode=buffer] .md-dashed:before {
+    content: "";
+    display: block;
+    height: 5px;
+    width: 100%;
+    margin-top: 0px;
+    position: absolute;
+    background-color: transparent;
+    background-size: 10px 10px !important;
+    background-position: 0px -23px;
+    -webkit-animation: buffer 3s infinite linear;
+            animation: buffer 3s infinite linear; }
+  md-progress-linear[md-mode=query] .md-bar2 {
+    -webkit-animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);
+            animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1); }
 
-md-item-content {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  box-sizing: border-box;
-  position: relative;
-  padding: 0px 0px 0px 0px; }
+@-webkit-keyframes indeterminate1 {
+  0% {
+    -webkit-transform: translateX(-25%) scale(0.5, 1);
+            transform: translateX(-25%) scale(0.5, 1); }
 
-/**
- * The left tile for a list item.
- */
-.md-tile-left {
-  min-width: 56px;
-  margin-right: -16px; }
+  10% {
+    -webkit-transform: translateX(25%) scale(0.5, 1);
+            transform: translateX(25%) scale(0.5, 1); }
 
-/**
- * The center content tile for a list item.
- */
-.md-tile-content {
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  padding: 16px;
-  text-overflow: ellipsis; }
-  .md-tile-content h3 {
-    margin: 0 0 3px 0;
-    font-weight: 400;
-    font-size: 1.1em; }
-  .md-tile-content h4 {
-    margin: 0 0 3px 0;
-    font-weight: 400;
-    font-size: 0.9em; }
-  .md-tile-content p {
-    margin: 0 0 3px 0;
-    font-size: 0.75em; }
+  19.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
 
-/**
- * The right tile for a list item.
- */
-.md-tile-right {
-  padding-right: 0px; }
+  20% {
+    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
+            transform: translateX(-37.5%) scale(0.25, 1); }
+
+  30% {
+    -webkit-transform: translateX(37.5%) scale(0.25, 1);
+            transform: translateX(37.5%) scale(0.25, 1); }
+
+  34.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  36.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  37% {
+    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
+            transform: translateX(-37.5%) scale(0.25, 1); }
+
+  47% {
+    -webkit-transform: translateX(20%) scale(0.25, 1);
+            transform: translateX(20%) scale(0.25, 1); }
+
+  52% {
+    -webkit-transform: translateX(35%) scale(0.05, 1);
+            transform: translateX(35%) scale(0.05, 1); }
+
+  55% {
+    -webkit-transform: translateX(35%) scale(0.1, 1);
+            transform: translateX(35%) scale(0.1, 1); }
+
+  58% {
+    -webkit-transform: translateX(50%) scale(0.1, 1);
+            transform: translateX(50%) scale(0.1, 1); }
+
+  61.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  69.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  70% {
+    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
+            transform: translateX(-37.5%) scale(0.25, 1); }
+
+  80% {
+    -webkit-transform: translateX(20%) scale(0.25, 1);
+            transform: translateX(20%) scale(0.25, 1); }
+
+  85% {
+    -webkit-transform: translateX(35%) scale(0.05, 1);
+            transform: translateX(35%) scale(0.05, 1); }
+
+  88% {
+    -webkit-transform: translateX(35%) scale(0.1, 1);
+            transform: translateX(35%) scale(0.1, 1); }
+
+  91% {
+    -webkit-transform: translateX(50%) scale(0.1, 1);
+            transform: translateX(50%) scale(0.1, 1); }
+
+  92.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  93% {
+    -webkit-transform: translateX(-50%) scale(0, 1);
+            transform: translateX(-50%) scale(0, 1); }
+
+  100% {
+    -webkit-transform: translateX(-25%) scale(0.5, 1);
+            transform: translateX(-25%) scale(0.5, 1); } }
+
+@keyframes indeterminate1 {
+  0% {
+    -webkit-transform: translateX(-25%) scale(0.5, 1);
+            transform: translateX(-25%) scale(0.5, 1); }
+
+  10% {
+    -webkit-transform: translateX(25%) scale(0.5, 1);
+            transform: translateX(25%) scale(0.5, 1); }
+
+  19.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  20% {
+    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
+            transform: translateX(-37.5%) scale(0.25, 1); }
+
+  30% {
+    -webkit-transform: translateX(37.5%) scale(0.25, 1);
+            transform: translateX(37.5%) scale(0.25, 1); }
+
+  34.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  36.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  37% {
+    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
+            transform: translateX(-37.5%) scale(0.25, 1); }
+
+  47% {
+    -webkit-transform: translateX(20%) scale(0.25, 1);
+            transform: translateX(20%) scale(0.25, 1); }
+
+  52% {
+    -webkit-transform: translateX(35%) scale(0.05, 1);
+            transform: translateX(35%) scale(0.05, 1); }
+
+  55% {
+    -webkit-transform: translateX(35%) scale(0.1, 1);
+            transform: translateX(35%) scale(0.1, 1); }
+
+  58% {
+    -webkit-transform: translateX(50%) scale(0.1, 1);
+            transform: translateX(50%) scale(0.1, 1); }
+
+  61.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  69.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  70% {
+    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
+            transform: translateX(-37.5%) scale(0.25, 1); }
+
+  80% {
+    -webkit-transform: translateX(20%) scale(0.25, 1);
+            transform: translateX(20%) scale(0.25, 1); }
+
+  85% {
+    -webkit-transform: translateX(35%) scale(0.05, 1);
+            transform: translateX(35%) scale(0.05, 1); }
+
+  88% {
+    -webkit-transform: translateX(35%) scale(0.1, 1);
+            transform: translateX(35%) scale(0.1, 1); }
+
+  91% {
+    -webkit-transform: translateX(50%) scale(0.1, 1);
+            transform: translateX(50%) scale(0.1, 1); }
+
+  92.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  93% {
+    -webkit-transform: translateX(-50%) scale(0, 1);
+            transform: translateX(-50%) scale(0, 1); }
+
+  100% {
+    -webkit-transform: translateX(-25%) scale(0.5, 1);
+            transform: translateX(-25%) scale(0.5, 1); } }
+
+@-webkit-keyframes indeterminate2 {
+  0% {
+    -webkit-transform: translateX(-50%) scale(0, 1);
+            transform: translateX(-50%) scale(0, 1); }
+
+  25.99% {
+    -webkit-transform: translateX(-50%) scale(0, 1);
+            transform: translateX(-50%) scale(0, 1); }
+
+  28% {
+    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
+            transform: translateX(-37.5%) scale(0.25, 1); }
+
+  38% {
+    -webkit-transform: translateX(37.5%) scale(0.25, 1);
+            transform: translateX(37.5%) scale(0.25, 1); }
+
+  42.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  46.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  49.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  50% {
+    -webkit-transform: translateX(-50%) scale(0, 1);
+            transform: translateX(-50%) scale(0, 1); }
+
+  60% {
+    -webkit-transform: translateX(-25%) scale(0.5, 1);
+            transform: translateX(-25%) scale(0.5, 1); }
+
+  70% {
+    -webkit-transform: translateX(25%) scale(0.5, 1);
+            transform: translateX(25%) scale(0.5, 1); }
+
+  79.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); } }
+
+@keyframes indeterminate2 {
+  0% {
+    -webkit-transform: translateX(-50%) scale(0, 1);
+            transform: translateX(-50%) scale(0, 1); }
+
+  25.99% {
+    -webkit-transform: translateX(-50%) scale(0, 1);
+            transform: translateX(-50%) scale(0, 1); }
+
+  28% {
+    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
+            transform: translateX(-37.5%) scale(0.25, 1); }
+
+  38% {
+    -webkit-transform: translateX(37.5%) scale(0.25, 1);
+            transform: translateX(37.5%) scale(0.25, 1); }
+
+  42.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  46.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  49.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); }
+
+  50% {
+    -webkit-transform: translateX(-50%) scale(0, 1);
+            transform: translateX(-50%) scale(0, 1); }
+
+  60% {
+    -webkit-transform: translateX(-25%) scale(0.5, 1);
+            transform: translateX(-25%) scale(0.5, 1); }
+
+  70% {
+    -webkit-transform: translateX(25%) scale(0.5, 1);
+            transform: translateX(25%) scale(0.5, 1); }
+
+  79.99% {
+    -webkit-transform: translateX(50%) scale(0, 1);
+            transform: translateX(50%) scale(0, 1); } }
+
+@-webkit-keyframes query {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(35%) scale(0.3, 1);
+            transform: translateX(35%) scale(0.3, 1); }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%) scale(0, 1);
+            transform: translateX(-50%) scale(0, 1); } }
+
+@keyframes query {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(35%) scale(0.3, 1);
+            transform: translateX(35%) scale(0.3, 1); }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%) scale(0, 1);
+            transform: translateX(-50%) scale(0, 1); } }
+
+@-webkit-keyframes buffer {
+  0% {
+    opacity: 1;
+    background-position: 0px -23px; }
+
+  50% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1;
+    background-position: -200px -23px; } }
+
+@keyframes buffer {
+  0% {
+    opacity: 1;
+    background-position: 0px -23px; }
+
+  50% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1;
+    background-position: -200px -23px; } }
 
 @-webkit-keyframes outer-rotate {
   100% {
@@ -5145,367 +5506,6 @@ md083fork-radio-group {
 
 .radioButtondemoBasicUsage md083fork-radio-group {
   border: none; }
-
-md-progress-linear {
-  display: block;
-  width: 100%;
-  height: 5px; }
-  md-progress-linear .md-container {
-    overflow: hidden;
-    position: relative;
-    height: 5px;
-    top: 5px;
-    -webkit-transform: translate(0, 5px) scale(1, 0);
-            transform: translate(0, 5px) scale(1, 0);
-    transition: all 0.3s linear; }
-  md-progress-linear .md-container.md-ready {
-    -webkit-transform: translate(0, 0) scale(1, 1);
-            transform: translate(0, 0) scale(1, 1); }
-  md-progress-linear .md-bar {
-    height: 5px;
-    position: absolute;
-    width: 100%; }
-  md-progress-linear .md-bar1, md-progress-linear .md-bar2 {
-    transition: all 0.2s linear; }
-  md-progress-linear[md-mode=determinate] .md-bar1 {
-    display: none; }
-  md-progress-linear[md-mode=indeterminate] .md-bar1 {
-    -webkit-animation: indeterminate1 4s infinite linear;
-            animation: indeterminate1 4s infinite linear; }
-  md-progress-linear[md-mode=indeterminate] .md-bar2 {
-    -webkit-animation: indeterminate2 4s infinite linear;
-            animation: indeterminate2 4s infinite linear; }
-  md-progress-linear[md-mode=buffer] .md-container {
-    background-color: transparent !important; }
-  md-progress-linear[md-mode=buffer] .md-dashed:before {
-    content: "";
-    display: block;
-    height: 5px;
-    width: 100%;
-    margin-top: 0px;
-    position: absolute;
-    background-color: transparent;
-    background-size: 10px 10px !important;
-    background-position: 0px -23px;
-    -webkit-animation: buffer 3s infinite linear;
-            animation: buffer 3s infinite linear; }
-  md-progress-linear[md-mode=query] .md-bar2 {
-    -webkit-animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);
-            animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1); }
-
-@-webkit-keyframes indeterminate1 {
-  0% {
-    -webkit-transform: translateX(-25%) scale(0.5, 1);
-            transform: translateX(-25%) scale(0.5, 1); }
-
-  10% {
-    -webkit-transform: translateX(25%) scale(0.5, 1);
-            transform: translateX(25%) scale(0.5, 1); }
-
-  19.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  20% {
-    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
-            transform: translateX(-37.5%) scale(0.25, 1); }
-
-  30% {
-    -webkit-transform: translateX(37.5%) scale(0.25, 1);
-            transform: translateX(37.5%) scale(0.25, 1); }
-
-  34.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  36.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  37% {
-    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
-            transform: translateX(-37.5%) scale(0.25, 1); }
-
-  47% {
-    -webkit-transform: translateX(20%) scale(0.25, 1);
-            transform: translateX(20%) scale(0.25, 1); }
-
-  52% {
-    -webkit-transform: translateX(35%) scale(0.05, 1);
-            transform: translateX(35%) scale(0.05, 1); }
-
-  55% {
-    -webkit-transform: translateX(35%) scale(0.1, 1);
-            transform: translateX(35%) scale(0.1, 1); }
-
-  58% {
-    -webkit-transform: translateX(50%) scale(0.1, 1);
-            transform: translateX(50%) scale(0.1, 1); }
-
-  61.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  69.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  70% {
-    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
-            transform: translateX(-37.5%) scale(0.25, 1); }
-
-  80% {
-    -webkit-transform: translateX(20%) scale(0.25, 1);
-            transform: translateX(20%) scale(0.25, 1); }
-
-  85% {
-    -webkit-transform: translateX(35%) scale(0.05, 1);
-            transform: translateX(35%) scale(0.05, 1); }
-
-  88% {
-    -webkit-transform: translateX(35%) scale(0.1, 1);
-            transform: translateX(35%) scale(0.1, 1); }
-
-  91% {
-    -webkit-transform: translateX(50%) scale(0.1, 1);
-            transform: translateX(50%) scale(0.1, 1); }
-
-  92.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  93% {
-    -webkit-transform: translateX(-50%) scale(0, 1);
-            transform: translateX(-50%) scale(0, 1); }
-
-  100% {
-    -webkit-transform: translateX(-25%) scale(0.5, 1);
-            transform: translateX(-25%) scale(0.5, 1); } }
-
-@keyframes indeterminate1 {
-  0% {
-    -webkit-transform: translateX(-25%) scale(0.5, 1);
-            transform: translateX(-25%) scale(0.5, 1); }
-
-  10% {
-    -webkit-transform: translateX(25%) scale(0.5, 1);
-            transform: translateX(25%) scale(0.5, 1); }
-
-  19.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  20% {
-    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
-            transform: translateX(-37.5%) scale(0.25, 1); }
-
-  30% {
-    -webkit-transform: translateX(37.5%) scale(0.25, 1);
-            transform: translateX(37.5%) scale(0.25, 1); }
-
-  34.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  36.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  37% {
-    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
-            transform: translateX(-37.5%) scale(0.25, 1); }
-
-  47% {
-    -webkit-transform: translateX(20%) scale(0.25, 1);
-            transform: translateX(20%) scale(0.25, 1); }
-
-  52% {
-    -webkit-transform: translateX(35%) scale(0.05, 1);
-            transform: translateX(35%) scale(0.05, 1); }
-
-  55% {
-    -webkit-transform: translateX(35%) scale(0.1, 1);
-            transform: translateX(35%) scale(0.1, 1); }
-
-  58% {
-    -webkit-transform: translateX(50%) scale(0.1, 1);
-            transform: translateX(50%) scale(0.1, 1); }
-
-  61.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  69.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  70% {
-    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
-            transform: translateX(-37.5%) scale(0.25, 1); }
-
-  80% {
-    -webkit-transform: translateX(20%) scale(0.25, 1);
-            transform: translateX(20%) scale(0.25, 1); }
-
-  85% {
-    -webkit-transform: translateX(35%) scale(0.05, 1);
-            transform: translateX(35%) scale(0.05, 1); }
-
-  88% {
-    -webkit-transform: translateX(35%) scale(0.1, 1);
-            transform: translateX(35%) scale(0.1, 1); }
-
-  91% {
-    -webkit-transform: translateX(50%) scale(0.1, 1);
-            transform: translateX(50%) scale(0.1, 1); }
-
-  92.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  93% {
-    -webkit-transform: translateX(-50%) scale(0, 1);
-            transform: translateX(-50%) scale(0, 1); }
-
-  100% {
-    -webkit-transform: translateX(-25%) scale(0.5, 1);
-            transform: translateX(-25%) scale(0.5, 1); } }
-
-@-webkit-keyframes indeterminate2 {
-  0% {
-    -webkit-transform: translateX(-50%) scale(0, 1);
-            transform: translateX(-50%) scale(0, 1); }
-
-  25.99% {
-    -webkit-transform: translateX(-50%) scale(0, 1);
-            transform: translateX(-50%) scale(0, 1); }
-
-  28% {
-    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
-            transform: translateX(-37.5%) scale(0.25, 1); }
-
-  38% {
-    -webkit-transform: translateX(37.5%) scale(0.25, 1);
-            transform: translateX(37.5%) scale(0.25, 1); }
-
-  42.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  46.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  49.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  50% {
-    -webkit-transform: translateX(-50%) scale(0, 1);
-            transform: translateX(-50%) scale(0, 1); }
-
-  60% {
-    -webkit-transform: translateX(-25%) scale(0.5, 1);
-            transform: translateX(-25%) scale(0.5, 1); }
-
-  70% {
-    -webkit-transform: translateX(25%) scale(0.5, 1);
-            transform: translateX(25%) scale(0.5, 1); }
-
-  79.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); } }
-
-@keyframes indeterminate2 {
-  0% {
-    -webkit-transform: translateX(-50%) scale(0, 1);
-            transform: translateX(-50%) scale(0, 1); }
-
-  25.99% {
-    -webkit-transform: translateX(-50%) scale(0, 1);
-            transform: translateX(-50%) scale(0, 1); }
-
-  28% {
-    -webkit-transform: translateX(-37.5%) scale(0.25, 1);
-            transform: translateX(-37.5%) scale(0.25, 1); }
-
-  38% {
-    -webkit-transform: translateX(37.5%) scale(0.25, 1);
-            transform: translateX(37.5%) scale(0.25, 1); }
-
-  42.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  46.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  49.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); }
-
-  50% {
-    -webkit-transform: translateX(-50%) scale(0, 1);
-            transform: translateX(-50%) scale(0, 1); }
-
-  60% {
-    -webkit-transform: translateX(-25%) scale(0.5, 1);
-            transform: translateX(-25%) scale(0.5, 1); }
-
-  70% {
-    -webkit-transform: translateX(25%) scale(0.5, 1);
-            transform: translateX(25%) scale(0.5, 1); }
-
-  79.99% {
-    -webkit-transform: translateX(50%) scale(0, 1);
-            transform: translateX(50%) scale(0, 1); } }
-
-@-webkit-keyframes query {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(35%) scale(0.3, 1);
-            transform: translateX(35%) scale(0.3, 1); }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: translateX(-50%) scale(0, 1);
-            transform: translateX(-50%) scale(0, 1); } }
-
-@keyframes query {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(35%) scale(0.3, 1);
-            transform: translateX(35%) scale(0.3, 1); }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: translateX(-50%) scale(0, 1);
-            transform: translateX(-50%) scale(0, 1); } }
-
-@-webkit-keyframes buffer {
-  0% {
-    opacity: 1;
-    background-position: 0px -23px; }
-
-  50% {
-    opacity: 0; }
-
-  100% {
-    opacity: 1;
-    background-position: -200px -23px; } }
-
-@keyframes buffer {
-  0% {
-    opacity: 1;
-    background-position: 0px -23px; }
-
-  50% {
-    opacity: 0; }
-
-  100% {
-    opacity: 1;
-    background-position: -200px -23px; } }
 
 .md-select-menu-container {
   position: absolute;
