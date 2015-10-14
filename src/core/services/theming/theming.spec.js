@@ -6,7 +6,7 @@ describe('$mdThemingProvider', function() {
   var testPalette;
   var startAngular = inject;
   function setup() {
-    module('material.core.theming', function($mdThemingProvider, $provide) {
+    module('material.083fork.core.theming', function($mdThemingProvider, $provide) {
       themingProvider = $mdThemingProvider;
 
       testPalette = themingProvider._PALETTES.testPalette = themingProvider._PALETTES.otherTestPalette = {
@@ -288,7 +288,7 @@ describe('$mdThemingProvider', function() {
 
 describe('$mdTheming service', function() {
   var $mdThemingProvider;
-  beforeEach(module('material.core', function(_$mdThemingProvider_) {
+  beforeEach(module('material.083fork.core', function(_$mdThemingProvider_) {
     $mdThemingProvider = _$mdThemingProvider_;
   }));
 
@@ -355,7 +355,7 @@ describe('$mdTheming service', function() {
 });
 
 describe('md-theme directive', function() {
-  beforeEach(module('material.core'));
+  beforeEach(module('material.083fork.core'));
 
   it('should observe and set mdTheme controller', inject(function($compile, $rootScope) {
     $rootScope.themey = 'red';
@@ -388,7 +388,7 @@ describe('md-theme directive', function() {
 
 describe('md-themable directive', function() {
   var $mdThemingProvider;
-  beforeEach(module('material.core', function(_$mdThemingProvider_) {
+  beforeEach(module('material.083fork.core', function(_$mdThemingProvider_) {
     $mdThemingProvider = _$mdThemingProvider_;
   }));
 

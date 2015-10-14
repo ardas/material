@@ -1,6 +1,6 @@
 describe('md-button', function() {
 
-  beforeEach(module('material.components.button'));
+  beforeEach(module('material.083fork.components.button'));
 
   it('should convert attributes on an md-button to attributes on the generated button', inject(function($compile, $rootScope) {
     var button = $compile('<md-button hide hide-sm></md-button>')($rootScope);

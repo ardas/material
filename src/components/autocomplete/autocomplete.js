@@ -7,8 +7,8 @@
   /*
    * @see js folder for autocomplete implementation
    */
-  angular.module('material.components.autocomplete', [
-    'material.core',
-    'material.components.icon'
+  angular.module('material.083fork.components.autocomplete', [
+    'material.083fork.core',
+    'material.083fork.components.icon'
   ]);
 })();

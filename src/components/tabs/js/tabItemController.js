@@ -2,7 +2,7 @@
 'use strict';
 
 
-angular.module('material.components.tabs')
+angular.module('material.083fork.components.tabs')
   .controller('$mdTab', TabItemController);
 
 function TabItemController($scope, $element, $attrs, $compile, $animate, $mdUtil, $parse, $timeout) {

@@ -19,9 +19,9 @@
  *  > To improve the visual grouping of content, use the system color for your subheaders.
  *
  */
-angular.module('material.components.subheader', [
-  'material.core',
-  'material.components.sticky'
+angular.module('material.083fork.components.subheader', [
+  'material.083fork.core',
+  'material.083fork.components.sticky'
 ])
   .directive('mdSubheader', MdSubheaderDirective);
 

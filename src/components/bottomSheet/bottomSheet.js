@@ -7,9 +7,9 @@
  * @description
  * BottomSheet
  */
-angular.module('material.components.bottomSheet', [
-  'material.core',
-  'material.components.backdrop'
+angular.module('material.083fork.components.bottomSheet', [
+  'material.083fork.core',
+  'material.083fork.components.backdrop'
 ])
   .directive('mdBottomSheet', MdBottomSheetDirective)
   .provider('$mdBottomSheet', MdBottomSheetProvider);

@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('material.components.tabs')
+angular.module('material.083fork.components.tabs')
     .directive('mdTabsPagination', TabPaginationDirective);
 
 function TabPaginationDirective($mdConstant, $window, $$rAF, $$q, $timeout, $mdMedia) {

@@ -7,8 +7,8 @@
  * @description
  * Form
  */
-angular.module('material.components.textField', [
-  'material.core'
+angular.module('material.083fork.components.textField', [
+  'material.083fork.core'
 ])
   .directive('mdInputGroup', mdInputGroupDirective)
   .directive('mdInput', mdInputDirective)

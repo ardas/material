@@ -9,9 +9,9 @@
  * Sticky effects for md
  */
 
-angular.module('material.components.sticky', [
-  'material.core',
-  'material.components.content'
+angular.module('material.083fork.components.sticky', [
+  'material.083fork.core',
+  'material.083fork.components.content'
 ])
   .factory('$mdSticky', MdSticky);
 

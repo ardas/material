@@ -6,7 +6,7 @@
  * requirements.
  */
 angular
-  .module('material.core', [ 'material.core.theming' ])
+  .module('material.083fork.core', [ 'material.083fork.core.theming' ])
   .config( MdCoreConfigure );
 
 

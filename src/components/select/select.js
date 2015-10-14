@@ -24,9 +24,9 @@
 var SELECT_EDGE_MARGIN = 8;
 var selectNextId = 0;
 
-angular.module('material.components.select', [
-  'material.core',
-  'material.components.backdrop'
+angular.module('material.083fork.components.select', [
+  'material.083fork.core',
+  'material.083fork.components.backdrop'
 ])
 .directive('mdSelect', SelectDirective)
 .directive('mdSelectMenu', SelectMenuDirective)

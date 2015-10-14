@@ -6,7 +6,7 @@
  * tab selection changes. If `mdNoBar` then do not show the
  * bar nor animate.
  */
-angular.module('material.components.tabs')
+angular.module('material.083fork.components.tabs')
   .directive('mdTabsInkBar', MdTabInkDirective);
 
 function MdTabInkDirective($$rAF) {

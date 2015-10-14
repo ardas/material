@@ -7,9 +7,9 @@
  * @name material.components.switch
  */
 
-angular.module('material.components.switch', [
-  'material.core',
-  'material.components.checkbox'
+angular.module('material.083fork.components.switch', [
+  'material.083fork.core',
+  'material.083fork.components.checkbox'
 ])
   .directive('mdSwitch', MdSwitch);
 

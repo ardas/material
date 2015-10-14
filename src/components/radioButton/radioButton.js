@@ -7,8 +7,8 @@
  * @name material.components.radioButton
  * @description radioButton module!
  */
-angular.module('material.components.radioButton', [
-  'material.core'
+angular.module('material.083fork.components.radioButton', [
+  'material.083fork.core'
 ])
   .directive('mdRadioGroup', mdRadioGroupDirective)
   .directive('mdRadioButton', mdRadioButtonDirective);

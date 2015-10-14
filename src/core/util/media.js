@@ -1,6 +1,6 @@
 (function(){
 
-angular.module('material.core')
+angular.module('material.083fork.core')
 .factory('$mdMedia', mdMediaFactory);
 
 /**

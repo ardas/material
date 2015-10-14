@@ -5,9 +5,9 @@
  * @ngdoc module
  * @name material.components.dialog
  */
-angular.module('material.components.dialog', [
-  'material.core',
-  'material.components.backdrop'
+angular.module('material.083fork.components.dialog', [
+  'material.083fork.core',
+  'material.083fork.components.backdrop'
 ])
   .directive('mdDialog', MdDialogDirective)
   .provider('$mdDialog', MdDialogProvider);

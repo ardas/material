@@ -4,8 +4,8 @@ describe('mdIcon directive', function() {
   var $compile;
   var $q;
 
-  beforeEach(module('material.core'));
-  beforeEach(module('material.components.icon'));
+  beforeEach(module('material.083fork.core'));
+  beforeEach(module('material.083fork.components.icon'));
 
   var mockIconSvc = function(id) {
     var deferred = $q.defer();

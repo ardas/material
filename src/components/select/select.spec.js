@@ -1,6 +1,6 @@
 describe('<md-select-menu>', function() {
 
-  beforeEach(module('material.components.select', 'ngAnimateMock'));
+  beforeEach(module('material.083fork.components.select', 'ngAnimateMock'));
 
   beforeEach(inject(function($mdUtil, $q) {
     $mdUtil.transitionEndPromise = function() {

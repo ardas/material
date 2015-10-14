@@ -6,8 +6,8 @@
  * @name material.components.divider
  * @description Divider module!
  */
-angular.module('material.components.divider', [
-  'material.core'
+angular.module('material.083fork.components.divider', [
+  'material.083fork.core'
 ])
   .directive('mdDivider', MdDividerDirective);
 

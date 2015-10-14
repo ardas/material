@@ -9,7 +9,7 @@
    * A component instance registration service.
    * Note: currently this as a private service in the SideNav component.
    */
-  angular.module('material.core')
+  angular.module('material.083fork.core')
     .factory('$mdComponentRegistry', ComponentRegistry);
 
   /*

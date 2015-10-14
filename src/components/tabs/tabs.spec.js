@@ -1,6 +1,6 @@
 describe('<md-tabs>', function() {
 
-  beforeEach(module('material.components.tabs'));
+  beforeEach(module('material.083fork.components.tabs'));
   beforeEach(function() {
     TestUtil.mockElementFocus(this);
     this.addMatchers({

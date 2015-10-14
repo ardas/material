@@ -1,5 +1,5 @@
 describe('mdProgressCircular', function() {
-  beforeEach(module('material.components.progressCircular'));
+  beforeEach(module('material.083fork.components.progressCircular'));
 
   it('should update aria-valuenow', inject(function($compile, $rootScope) {
     var element = $compile('<div>' +

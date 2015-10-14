@@ -8,8 +8,8 @@
  * @description
  * Card components.
  */
-angular.module('material.components.card', [
-  'material.core'
+angular.module('material.083fork.components.card', [
+  'material.083fork.core'
 ])
   .directive('mdCard', mdCardDirective);
 

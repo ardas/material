@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('material.components.icon' )
+    .module('material.083fork.components.icon' )
     .provider('$mdIcon', MdIconProvider);
 
   /**

@@ -1,6 +1,6 @@
 describe('mdProgressLinear', function() {
 
-  beforeEach(module('material.components.progressLinear'));
+  beforeEach(module('material.083fork.components.progressLinear'));
 
   it('should set transform based on value', inject(function($compile, $rootScope, $mdConstant) {
     var element = $compile('<div>' +

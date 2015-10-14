@@ -1,9 +1,9 @@
 describe('$$interimElement service', function() {
-  beforeEach(module('material.core'));
+  beforeEach(module('material.083fork.core'));
   var $compilerSpy, $themingSpy, resolvingPromise;
 
   function setup() {
-    module('material.core', 'ngAnimateMock', function($provide) {
+    module('material.083fork.core', 'ngAnimateMock', function($provide) {
       var $mdCompiler = { compile: angular.noop };
       $compilerSpy = spyOn($mdCompiler, 'compile');
       $themingSpy = jasmine.createSpy('$mdTheming');

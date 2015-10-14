@@ -7,9 +7,9 @@
  * @description
  * Toast
  */
-angular.module('material.components.toast', [
-  'material.core',
-  'material.components.button'
+angular.module('material.083fork.components.toast', [
+  'material.083fork.core',
+  'material.083fork.components.button'
 ])
   .directive('mdToast', MdToastDirective)
   .provider('$mdToast', MdToastProvider);

@@ -5,7 +5,7 @@
 describe('$mdStickySpec', function() {
   var $document, $compile, $rootScope, $mdSticky;
 
-  beforeEach(module('material.components.sticky'));
+  beforeEach(module('material.083fork.components.sticky'));
 
   beforeEach(inject(function(_$document_, _$compile_, _$rootScope_, _$mdSticky_) {
     $document = _$document_;

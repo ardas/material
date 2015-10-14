@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('material.core.theming.palette', [])
+angular.module('material.083fork.core.theming.palette', [])
 .constant('$mdColorPalette', {
   'red': {
     '50': '#ffebee',

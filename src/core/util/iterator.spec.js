@@ -1,5 +1,5 @@
 describe('iterator', function() {
-  beforeEach(module('material.core'));
+  beforeEach(module('material.083fork.core'));
 
   describe('use to provide accessor API ', function () {
 

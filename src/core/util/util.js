@@ -9,7 +9,7 @@
  */
 var nextUniqueId = ['0','0','0'];
 
-angular.module('material.core')
+angular.module('material.083fork.core')
 .factory('$mdUtil', function($cacheFactory, $document, $timeout, $q, $window, $mdConstant) {
   var Util;
 

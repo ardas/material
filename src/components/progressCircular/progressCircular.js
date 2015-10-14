@@ -6,8 +6,8 @@
  * @name material.components.progressCircular
  * @description Circular Progress module!
  */
-angular.module('material.components.progressCircular', [
-  'material.core'
+angular.module('material.083fork.components.progressCircular', [
+  'material.083fork.core'
 ])
   .directive('mdProgressCircular', MdProgressCircularDirective);
 

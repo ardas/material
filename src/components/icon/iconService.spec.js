@@ -4,8 +4,8 @@ describe('mdIcon service', function() {
   var $httpBackend;
   var $scope;
 
-  beforeEach(module('material.core'));
-  beforeEach(module('material.components.icon',function($mdIconProvider){
+  beforeEach(module('material.083fork.core'));
+  beforeEach(module('material.083fork.components.icon',function($mdIconProvider){
     $mdIconProvider
       .icon('android',   'android.svg')
       .icon('c2',        'c2.svg')

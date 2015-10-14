@@ -24,9 +24,9 @@
 /*
  * @see js folder for tabs implementation
  */
-angular.module('material.components.tabs', [
-  'material.core',
-  'material.components.icon'
+angular.module('material.083fork.components.tabs', [
+  'material.083fork.core',
+  'material.083fork.components.icon'
 ]);
 
 })();

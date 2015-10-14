@@ -6,8 +6,8 @@
  * @name material.components.checkbox
  * @description Checkbox module!
  */
-angular.module('material.components.checkbox', [
-  'material.core'
+angular.module('material.083fork.components.checkbox', [
+  'material.083fork.core'
 ])
   .directive('mdCheckbox', MdCheckboxDirective);
 

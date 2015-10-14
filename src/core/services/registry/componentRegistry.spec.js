@@ -1,5 +1,5 @@
 describe('$mdComponentRegistry Service', function() {
-  beforeEach(module( 'material.core', 'material.components.sidenav' ));
+  beforeEach(module( 'material.083fork.core', 'material.083fork.components.sidenav' ));
 
   /**
    * SideNav element construction macro

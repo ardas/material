@@ -1,7 +1,7 @@
 (function(){
 
   angular
-    .module('material.core')
+    .module('material.083fork.core')
     .config( function($provide){
        $provide.decorator('$mdUtil', ['$delegate', function ($delegate){
            /**

@@ -7,8 +7,8 @@
  * @description
  * List module
  */
-angular.module('material.components.list', [
-  'material.core'
+angular.module('material.083fork.components.list', [
+  'material.083fork.core'
 ])
   .directive('mdList', mdListDirective)
   .directive('mdItem', mdItemDirective)

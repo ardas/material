@@ -1,6 +1,6 @@
 describe('$mdGesture', function() {
 
-  beforeEach(module('material.core', function() {
+  beforeEach(module('material.083fork.core', function() {
     angular.element(document).triggerHandler('$$mdGestureReset');
   }));
 

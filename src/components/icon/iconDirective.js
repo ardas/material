@@ -7,8 +7,8 @@
  * @description
  * Icon
  */
-angular.module('material.components.icon', [
-    'material.core'
+angular.module('material.083fork.components.icon', [
+    'material.083fork.core'
   ])
   .directive('mdIcon', mdIconDirective);
 

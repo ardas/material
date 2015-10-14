@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('material.core.theming', ['material.core.theming.palette'])
+angular.module('material.083fork.core.theming', ['material.083fork.core.theming.palette'])
   .directive('mdTheme', ThemingDirective)
   .directive('mdThemable', ThemableDirective)
   .provider('$mdTheming', ThemingProvider)

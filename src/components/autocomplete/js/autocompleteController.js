@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular
-      .module('material.components.autocomplete')
+      .module('material.083fork.components.autocomplete')
       .controller('MdAutocompleteCtrl', MdAutocompleteCtrl);
 
   function MdAutocompleteCtrl ($scope, $element, $q, $mdUtil, $mdConstant) {

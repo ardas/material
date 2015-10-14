@@ -1,7 +1,7 @@
 describe('<md-switch>', function() {
   var CHECKED_CSS = 'md-checked';
 
-  beforeEach(module('ngAria', 'material.components.switch'));
+  beforeEach(module('ngAria', 'material.083fork.components.switch'));
 
   it('should set checked css class and aria-checked attributes', inject(function($compile, $rootScope) {
     var element = $compile('<div>' +

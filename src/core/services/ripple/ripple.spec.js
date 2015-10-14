@@ -11,7 +11,7 @@ describe('mdInkRipple diretive', function() {
     };
   }
 
-  beforeEach(module('material.core'));
+  beforeEach(module('material.083fork.core'));
 
   it('should support custom colors via md-ink-ripple', inject(function ($timeout, $compile, $rootScope) {
     var elem = $compile('<div md-ink-ripple="#bbb"></div>')($rootScope.$new()),

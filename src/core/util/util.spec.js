@@ -1,5 +1,5 @@
 describe('util', function() {
-  beforeEach(module('material.core'));
+  beforeEach(module('material.083fork.core'));
 
   var disconnectScope, reconnectScope;
   beforeEach(inject(function($mdUtil) {

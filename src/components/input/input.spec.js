@@ -1,5 +1,5 @@
 describe('md-input-container directive', function() {
-  beforeEach(module('material.components.input'));
+  beforeEach(module('material.083fork.components.input'));
 
   function setup(attrs, isForm) {
     var container;

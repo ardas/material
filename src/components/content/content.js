@@ -8,8 +8,8 @@
  * @description
  * Scrollable content
  */
-angular.module('material.components.content', [
-  'material.core'
+angular.module('material.083fork.components.content', [
+  'material.083fork.core'
 ])
   .directive('mdContent', mdContentDirective);
 

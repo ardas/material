@@ -137,7 +137,7 @@ function makeStartPointer(ev) {
   return startPointer;
 }
 
-angular.module('material.core')
+angular.module('material.083fork.core')
 .run(function($mdGesture) {}) // make sure $mdGesture is always instantiated
 .factory('$mdGesture', function($$MdGestureHandler, $$rAF, $timeout) {
   HANDLERS = {};

@@ -5,9 +5,9 @@
  * @ngdoc module
  * @name material.components.toolbar
  */
-angular.module('material.components.toolbar', [
-  'material.core',
-  'material.components.content'
+angular.module('material.083fork.components.toolbar', [
+  'material.083fork.core',
+  'material.083fork.components.content'
 ])
   .directive('mdToolbar', mdToolbarDirective);
 

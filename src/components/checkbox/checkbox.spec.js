@@ -2,7 +2,7 @@
 describe('mdCheckbox', function() {
   var CHECKED_CSS = 'md-checked';
 
-  beforeEach(module('material.components.checkbox'));
+  beforeEach(module('material.083fork.components.checkbox'));
   beforeEach(module('ngAria'));
 
   it('should warn developers they need a label', inject(function($compile, $rootScope, $log){

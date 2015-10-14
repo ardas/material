@@ -1,6 +1,6 @@
 describe('<md-tooltip> directive', function() {
 
-  beforeEach(module('material.components.tooltip'));
+  beforeEach(module('material.083fork.components.tooltip'));
 
   function findTooltip() {
     return angular.element(document.body).find('md-tooltip');

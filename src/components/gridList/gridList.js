@@ -5,7 +5,7 @@
  * @ngdoc module
  * @name material.components.gridList
  */
-angular.module('material.components.gridList', ['material.core'])
+angular.module('material.083fork.components.gridList', ['material.083fork.core'])
        .directive('mdGridList', GridListDirective)
        .directive('mdGridTile', GridTileDirective)
        .directive('mdGridTileFooter', GridTileCaptionDirective)

@@ -7,8 +7,8 @@
  * @name material.components.progressLinear
  * @description Linear Progress module!
  */
-angular.module('material.components.progressLinear', [
-  'material.core'
+angular.module('material.083fork.components.progressLinear', [
+  'material.083fork.core'
 ])
   .directive('mdProgressLinear', MdProgressLinearDirective);
 

@@ -8,8 +8,8 @@
  *
  * Button
  */
-angular.module('material.components.button', [
-  'material.core'
+angular.module('material.083fork.components.button', [
+  'material.083fork.core'
 ])
   .directive('mdButton', MdButtonDirective);
 

@@ -1,6 +1,6 @@
 describe('<md-autocomplete>', function() {
 
-  beforeEach(module('material.components.autocomplete'));
+  beforeEach(module('material.083fork.components.autocomplete'));
 
   function compile (str, scope) {
     var container;

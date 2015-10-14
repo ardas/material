@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('material.core')
+angular.module('material.083fork.core')
   .factory('$mdInkRipple', InkRippleService)
   .directive('mdInkRipple', InkRippleDirective)
   .directive('mdNoInk', attrNoDirective())

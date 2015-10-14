@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('material.components.tabs')
+angular.module('material.083fork.components.tabs')
   .controller('$mdTabs', MdTabsController);
 
 function MdTabsController($scope, $element, $mdUtil, $timeout) {

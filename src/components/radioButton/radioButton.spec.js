@@ -1,7 +1,7 @@
 describe('radioButton', function() {
   var CHECKED_CSS = 'md-checked';
 
-  beforeEach(module('material.components.radioButton'));
+  beforeEach(module('material.083fork.components.radioButton'));
 
   it('should set checked css class', inject(function($compile, $rootScope) {
     var element = $compile('<md-radio-group ng-model="color">' +

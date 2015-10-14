@@ -5,8 +5,8 @@
  * @ngdoc module
  * @name material.components.tooltip
  */
-angular.module('material.components.tooltip', [
-  'material.core'
+angular.module('material.083fork.components.tooltip', [
+  'material.083fork.core'
 ])
   .directive('mdTooltip', MdTooltipDirective);
 

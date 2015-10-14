@@ -5,8 +5,8 @@
  * @name material.components.input
  */
 
-angular.module('material.components.input', [
-  'material.core'
+angular.module('material.083fork.components.input', [
+  'material.083fork.core'
 ])
   .directive('mdInputContainer', mdInputContainerDirective)
   .directive('label', labelDirective)

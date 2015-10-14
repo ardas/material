@@ -1,6 +1,6 @@
 describe('mdCard directive', function() {
 
-  beforeEach(module('material.components.card'));
+  beforeEach(module('material.083fork.components.card'));
 
   it('should have the default theme class when the md-theme attribute is not defined', inject(function($compile, $rootScope) {
     var card = $compile('<md-card></md-card>')($rootScope.$new());

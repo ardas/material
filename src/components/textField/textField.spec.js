@@ -1,5 +1,5 @@
 describe('Text Field directives', function() {
-  beforeEach(module('material.components.textField'));
+  beforeEach(module('material.083fork.components.textField'));
 
   describe('- mdInputGroup', function() {
     var scope;

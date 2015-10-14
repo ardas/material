@@ -1,6 +1,6 @@
 describe('<md-toolbar>', function() {
 
-  beforeEach(module('material.components.toolbar'));
+  beforeEach(module('material.083fork.components.toolbar'));
 
   it('with scrollShrink, it should shrink scrollbar when going to bottom', inject(function($compile, $rootScope, $mdConstant, mdToolbarDirective) {
 

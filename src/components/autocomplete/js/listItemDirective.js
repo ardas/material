@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular
-      .module('material.components.autocomplete')
+      .module('material.083fork.components.autocomplete')
       .directive('mdAutocompleteListItem', MdAutocompleteListItem);
 
   function MdAutocompleteListItem ($compile, $mdUtil) {

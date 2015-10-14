@@ -2,7 +2,7 @@ describe('mdSubheader', function() {
   var $mdStickyMock,
       basicHtml = '<md-subheader>Hello world!</md-header>';
 
-  beforeEach(module('material.components.subheader', function($provide) {
+  beforeEach(module('material.083fork.components.subheader', function($provide) {
     $mdStickyMock = function() {
       $mdStickyMock.args = Array.prototype.slice.call(arguments);
     };

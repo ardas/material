@@ -41,7 +41,7 @@
  * </hljs>
  */
 
-var module = angular.module('material.components.swipe',[]);
+var module = angular.module('material.083fork.components.swipe',[]);
 
 ['SwipeLeft', 'SwipeRight'].forEach(function(name) {
   var directiveName = 'md' + name;

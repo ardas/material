@@ -20,8 +20,8 @@
  *
  */
 
-angular.module('material.components.backdrop', [
-  'material.core'
+angular.module('material.083fork.components.backdrop', [
+  'material.083fork.core'
 ])
   .directive('mdBackdrop', BackdropDirective);
 

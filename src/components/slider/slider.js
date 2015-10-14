@@ -5,8 +5,8 @@
    * @ngdoc module
    * @name material.components.slider
    */
-  angular.module('material.components.slider', [
-    'material.core'
+  angular.module('material.083fork.components.slider', [
+    'material.083fork.core'
   ])
   .directive('mdSlider', SliderDirective);
 

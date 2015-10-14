@@ -1,7 +1,7 @@
 describe('md-slider', function() {
 
   beforeEach(module('ngAria'));
-  beforeEach(module('material.components.slider'));
+  beforeEach(module('material.083fork.components.slider'));
 
   function setup(attrs, dimensions) {
     var slider;
