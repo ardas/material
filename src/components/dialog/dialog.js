@@ -409,7 +409,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
         var computeFrom = (options.parent[0] == $document[0].body && $document[0].documentElement 
                            && $document[0].scrollTop) ? angular.element($document[0].documentElement) : options.parent;
         var parentOffset = computeFrom.prop('scrollTop');
-        options.backdrop = angular.element('<md-backdrop class="md-dialog-backdrop md-opaque">');
+        options.backdrop = angular.element('<md083fork-backdrop class="md-dialog-backdrop md-opaque">');
         $md083forkTheming.inherit(options.backdrop, options.parent);
         $animate.enter(options.backdrop, options.parent);
         element.css('top', parentOffset +'px');

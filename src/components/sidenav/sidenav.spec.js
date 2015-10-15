@@ -21,12 +21,12 @@ describe('mdSidenav', function() {
 
       $animate.triggerCallbacks();
       expect(el.hasClass('md-closed')).toBe(false);
-      expect(el.parent().find('md-backdrop').length).toBe(1);
+      expect(el.parent().find('md083fork-backdrop').length).toBe(1);
 
       $rootScope.$apply('show = false');
       $animate.triggerCallbacks();
       expect(el.hasClass('md-closed')).toBe(true);
-      expect(el.parent().find('md-backdrop').length).toBe(0);
+      expect(el.parent().find('md083fork-backdrop').length).toBe(0);
     }));
 
     it('should close on escape', inject(function($rootScope, $animate, $md083forkConstant, $timeout) {
@@ -47,7 +47,7 @@ describe('mdSidenav', function() {
       $rootScope.$apply('show = true');
 
       $animate.triggerCallbacks();
-      el.parent().find('md-backdrop').triggerHandler('click');
+      el.parent().find('md083fork-backdrop').triggerHandler('click');
       $timeout.flush();
       expect($rootScope.show).toBe(false);
     }));
@@ -68,7 +68,7 @@ describe('mdSidenav', function() {
       expect(el.hasClass('md-locked-open')).toBe(true);
       $rootScope.$apply('show = true');
       $animate.triggerCallbacks();
-      expect(el.parent().find('md-backdrop').hasClass('md-locked-open')).toBe(true);
+      expect(el.parent().find('md083fork-backdrop').hasClass('md-locked-open')).toBe(true);
     }));
 
     it('should expose $md083forkMedia service as $media local in is-locked-open attribute', function() {

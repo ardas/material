@@ -563,7 +563,7 @@ function SelectProvider($$083forkInterimElementProvider) {
         parent: angular.element(opts.parent),
         selectEl: element.find('md083fork-select-menu'),
         contentEl: element.find('md083fork-content'),
-        backdrop: opts.hasBackdrop && angular.element('<md-backdrop class="md-select-backdrop">')
+        backdrop: opts.hasBackdrop && angular.element('<md083fork-backdrop class="md-select-backdrop">')
       });
 
       configureAria();

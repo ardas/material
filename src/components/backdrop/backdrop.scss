@@ -1,4 +1,4 @@
-md-backdrop {
+md083fork-backdrop {
   z-index: $z-index-backdrop;
   &.md-select-backdrop {
     z-index: $z-index-dialog + 1;
@@ -22,18 +22,18 @@ md-backdrop {
   bottom: 0;
 
   &.ng-enter {
-    animation: $swift-ease-out-timing-function mdBackdropFadeIn 0.5s both;
+    animation: $swift-ease-out-timing-function md083forkBackdropFadeIn 0.5s both;
   }
   &.ng-leave {
-    animation: $swift-ease-in-timing-function mdBackdropFadeOut 0.2s both;
+    animation: $swift-ease-in-timing-function md083forkBackdropFadeOut 0.2s both;
   }
 }
 
-@keyframes mdBackdropFadeIn {
+@keyframes md083forkBackdropFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-@keyframes mdBackdropFadeOut {
+@keyframes md083forkBackdropFadeOut {
   from { opacity: 1; }
   to { opacity: 0; }
 }

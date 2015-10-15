@@ -271,7 +271,7 @@ describe('$md083forkDialog', function() {
       $animate.triggerCallbacks();
       $rootScope.$apply();
       expect(parent.find('md083fork-dialog').length).toBe(1);
-      expect(parent.find('md-backdrop').length).toBe(1);
+      expect(parent.find('md083fork-backdrop').length).toBe(1);
     }));
 
     it('should hasBackdrop == false', inject(function($md083forkDialog, $rootScope) {
@@ -284,7 +284,7 @@ describe('$md083forkDialog', function() {
 
       $rootScope.$apply();
       expect(parent[0].querySelectorAll('md083fork-dialog').length).toBe(1);
-      expect(parent[0].querySelectorAll('md-backdrop').length).toBe(0);
+      expect(parent[0].querySelectorAll('md083fork-backdrop').length).toBe(0);
     }));
 
     it('should focus `md083fork-button.dialog-close` on open', inject(function($md083forkDialog, $rootScope, $document, $timeout, $md083forkConstant) {
