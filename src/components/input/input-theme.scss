@@ -1,5 +1,5 @@
 md083fork-input-container.md-THEME_NAME-theme {
-  .md-input {
+  .md083fork-input {
     @include input-placeholder-color('{{foreground-3}}');
     color: '{{foreground-1}}';
     border-color: '{{foreground-4}}';
@@ -24,7 +24,7 @@ md083fork-input-container.md-THEME_NAME-theme {
       }
     }
     &.md-input-focused {
-      .md-input {
+      .md083fork-input {
         border-color: '{{primary-500}}';
       }
       label {
@@ -34,7 +34,7 @@ md083fork-input-container.md-THEME_NAME-theme {
         fill: '{{primary-500}}';
       }
       &.md-accent {
-        .md-input {
+        .md083fork-input {
           border-color: '{{accent-500}}';
         }
         label {
@@ -42,7 +42,7 @@ md083fork-input-container.md-THEME_NAME-theme {
         }
       }
       &.md-warn {
-        .md-input {
+        .md083fork-input {
           border-color: '{{warn-500}}';
         }
         label {
@@ -52,7 +52,7 @@ md083fork-input-container.md-THEME_NAME-theme {
     }
   }
   &.md-input-invalid {
-    .md-input {
+    .md083fork-input {
       border-color: '{{warn-500}}';
     }
     label {
@@ -64,7 +64,7 @@ md083fork-input-container.md-THEME_NAME-theme {
       color: '{{warn-500}}';
     }
   }
-  .md-input {
+  .md083fork-input {
     &[disabled],
     [disabled] & {
       border-bottom-color: transparent;

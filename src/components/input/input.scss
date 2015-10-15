@@ -91,9 +91,9 @@ md083fork-input-container {
 
 
   /*
-   * The .md-input class is added to the input/textarea
+   * The .md083fork-input class is added to the input/textarea
    */
-  .md-input {
+  .md083fork-input {
     flex: 1;
     order: 2;
     display: block;
@@ -161,13 +161,13 @@ md083fork-input-container {
   }
 
   // Use wide border in error state or in focused state
-  &.md-input-focused .md-input,
-  .md-input.ng-invalid.ng-dirty {
+  &.md-input-focused .md083fork-input,
+  .md083fork-input.ng-invalid.ng-dirty {
     padding-bottom: 0px; // Increase border width by 1px, decrease padding by 1
     border-width: 0 0 $input-border-width-focused 0;
   }
 
-  .md-input {
+  .md083fork-input {
     &[disabled],
     [disabled] & {
       background-position: 0 bottom;

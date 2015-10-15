@@ -44,8 +44,8 @@
 var module = angular.module('material.083fork.components.swipe',[]);
 
 ['SwipeLeft', 'SwipeRight'].forEach(function(name) {
-  var directiveName = 'md' + name;
-  var eventName = '$md.' + name.toLowerCase();
+  var directiveName = 'md083fork' + name;
+  var eventName = '$md083fork.' + name.toLowerCase();
 
   module.directive(directiveName, /*@ngInject*/ function($parse) {
     return {

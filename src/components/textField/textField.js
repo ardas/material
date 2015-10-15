@@ -10,9 +10,9 @@
 angular.module('material.083fork.components.textField', [
   'material.083fork.core'
 ])
-  .directive('mdInputGroup', mdInputGroupDirective)
-  .directive('mdInput', mdInputDirective)
-  .directive('mdTextFloat', mdTextFloatDirective);
+  .directive('md083forkInputGroup', mdInputGroupDirective)
+  .directive('md083forkInput', mdInputDirective)
+  .directive('md083forkTextFloat', mdTextFloatDirective);
 
 
 function mdTextFloatDirective($md083forkTheming, $md083forkUtil, $parse, $log) {
@@ -26,7 +26,7 @@ function mdTextFloatDirective($md083forkTheming, $md083forkUtil, $parse, $log) {
     },
     compile : function(element, attr) {
 
-      $log.warn('<md-text-float> is deprecated. Please use `<md083fork-input-container>` and `<input>`.' +
+      $log.warn('<md083fork-text-float> is deprecated. Please use `<md083fork-input-container>` and `<input>`.' +
                 'More information at http://material.angularjs.org/#/api/material.components.input/directive/md083forkInputContainer');
 
       if ( angular.isUndefined(attr.mdFid) ) {
@@ -46,10 +46,10 @@ function mdTextFloatDirective($md083forkTheming, $md083forkUtil, $parse, $log) {
       };
     },
     template:
-    '<md-input-group tabindex="-1">' +
+    '<md083fork-input-group tabindex="-1">' +
     ' <label for="{{fid}}" >{{label}}</label>' +
-    ' <md-input id="{{fid}}" ng-disabled="isDisabled()" ng-model="value" type="{{inputType}}"></md-input>' +
-    '</md-input-group>'
+    ' <md083fork-input id="{{fid}}" ng-disabled="isDisabled()" ng-model="value" type="{{inputType}}"></md083fork-input>' +
+    '</md083fork-input-group>'
   };
 }
 
@@ -58,7 +58,7 @@ function mdInputGroupDirective($log) {
     restrict: 'CE',
     controller: ['$element', function($element) {
 
-      $log.warn('<md-input-group> is deprecated. Please use `<md083fork-input-container>` and `<input>`.' +
+      $log.warn('<md083fork-input-group> is deprecated. Please use `<md083fork-input-container>` and `<input>`.' +
                 'More information at http://material.angularjs.org/#/api/material.components.input/directive/md083forkInputContainer');
       this.setFocused = function(isFocused) {
         $element.toggleClass('md-input-focused', !!isFocused);
@@ -76,11 +76,11 @@ function mdInputDirective($md083forkUtil, $log) {
     restrict: 'E',
     replace: true,
     template: '<input >',
-    require: ['^?mdInputGroup', '?ngModel'],
+    require: ['^?md083forkInputGroup', '?ngModel'],
     link: function(scope, element, attr, ctrls) {
       if ( !ctrls[0] ) return;
 
-      $log.warn('<md-input> is deprecated. Please use `<md083fork-input-container>` and `<input>`.' +
+      $log.warn('<md083fork-input> is deprecated. Please use `<md083fork-input-container>` and `<input>`.' +
                 'More information at http://material.angularjs.org/#/api/material.components.input/directive/md083forkInputContainer');
 
       var inputGroupCtrl = ctrls[0];

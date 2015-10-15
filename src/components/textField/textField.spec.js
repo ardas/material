@@ -1,7 +1,7 @@
 describe('Text Field directives', function() {
   beforeEach(module('material.083fork.components.textField'));
 
-  describe('- mdInputGroup', function() {
+  describe('- md083forkInputGroup', function() {
     var scope;
 
     beforeEach(function() {
@@ -58,7 +58,7 @@ describe('Text Field directives', function() {
 
   });
 
-  describe(' - mdTextFloat', function() {
+  describe(' - md083forkTextFloat', function() {
     var model;
     beforeEach(function() {
       model = {
@@ -96,10 +96,10 @@ describe('Text Field directives', function() {
       expect( el.find('input').val()).toBe("");
     });
     it('should update a label from model changes.', function() {
-      var markup ='<md-text-float ' +
+      var markup ='<md083fork-text-float ' +
                     '  label="{{labels.firstName}}" ' +
                     '  ng-model="user.firstName" >' +
-                    '</md-text-float>';
+                    '</md083fork-text-float>';
       var el = buildElement( markup, model);
 
       expect( el.find('input').val() ).toBe("Andrew");
@@ -116,10 +116,10 @@ describe('Text Field directives', function() {
 
     });
     it('should update an input value from model changes.', function() {
-      var markup ='<md-text-float ' +
+      var markup ='<md083fork-text-float ' +
                   '  label="{{labels.firstName}}" ' +
                   '  ng-model="user.firstName" >' +
-                  '</md-text-float>';
+                  '</md083fork-text-float>';
       var el = buildElement( markup, model);
       var input = el.find('input');
 
@@ -135,10 +135,10 @@ describe('Text Field directives', function() {
 
     // Breaks on IE
     xit('should update a model value from input changes.', function() {
-      var markup ='<md-text-float ' +
+      var markup ='<md083fork-text-float ' +
                   '  label="{{labels.firstName}}" ' +
                   '  ng-model="user.firstName" >' +
-                  '</md-text-float>';
+                  '</md083fork-text-float>';
       var el = buildElement( markup, model);
       var input = el.find('input');
 
@@ -190,11 +190,11 @@ describe('Text Field directives', function() {
     });
 
     it('should pair input and label for accessibility.', function() {
-      var markup ='<md-text-float ' +
+      var markup ='<md083fork-text-float ' +
                   '  md-fid="093" ' +
                   '  label="{{labels.firstName}}" ' +
                   '  ng-model="user.firstName" >' +
-                  '</md-text-float>';
+                  '</md083fork-text-float>';
       var el = buildElement( markup, model);
       var input = el.find('input');
       var label = el.find('label');
@@ -204,10 +204,10 @@ describe('Text Field directives', function() {
     });
 
     it('should auto-pair input and label for accessibility.', function() {
-      var markup ='<md-text-float ' +
+      var markup ='<md083fork-text-float ' +
                   '  label="{{labels.firstName}}" ' +
                   '  ng-model="user.firstName" >' +
-                  '</md-text-float>';
+                  '</md083fork-text-float>';
       var el = buildElement( markup, model);
       var input = el.find('input');
       var label = el.find('label');
@@ -217,10 +217,10 @@ describe('Text Field directives', function() {
     });
 
     it('should add an ARIA attribute for disabled inputs', function() {
-      var markup ='<md-text-float ng-disabled="true" ' +
+      var markup ='<md083fork-text-float ng-disabled="true" ' +
                   '  label="{{labels.firstName}}" ' +
                   '  ng-model="user.firstName" >' +
-                  '</md-text-float>';
+                  '</md083fork-text-float>';
       var el = buildElement( markup, model);
       var input = el.find('input');
 
@@ -233,20 +233,20 @@ describe('Text Field directives', function() {
   // ****************************************************************
 
   var templates = {
-    md_text_float : '<md-text-float ' +
+    md_text_float : '<md083fork-text-float ' +
                 '   type="{{type}}" ' +
                 '   label="{{label}}" ' +
                 '   ng-model="{{model}}" >' +
-                '</md-text-float>',
+                '</md083fork-text-float>',
 
-    md_input_group: '<div class="md-input-group" tabindex="-1">' +
+    md_input_group: '<div class="md083fork-input-group" tabindex="-1">' +
                 ' <label>{{label}}</label>' +
-                ' <md-input id="{{id}}" type="{{type}}" ng-model="{{model}}"></md-input>' +
+                ' <md083fork-input id="{{id}}" type="{{type}}" ng-model="{{model}}"></md083fork-input>' +
                 '</div>'
   };
 
   /**
-   * Build a text float group using the `<md-input-group />` markup template
+   * Build a text float group using the `<md083fork-input-group />` markup template
    */
   function setupInputGroup(expressions, values) {
     values = angular.extend({},{type:"text", id:''},values||{});
@@ -255,7 +255,7 @@ describe('Text Field directives', function() {
   }
 
   /**
-   * Build a text float group using the `<md-text-float />` markup template
+   * Build a text float group using the `<md083fork-text-float />` markup template
    */
   function setupTextFloat(expressions, values) {
     values = angular.extend({ modelValue:"",type:'text' }, values || {});

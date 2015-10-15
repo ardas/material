@@ -98,7 +98,7 @@ function labelDirective() {
 
 /**
  * @ngdoc directive
- * @name mdInput
+ * @name md083forkInput
  * @restrict E
  * @module material.components.input
  *
@@ -161,7 +161,7 @@ function inputTextareaDirective($md083forkUtil, $window) {
     }
     containerCtrl.input = element;
 
-    element.addClass('md-input');
+    element.addClass('md083fork-input');
     if (!element.attr('id')) {
       element.attr('id', 'input_' + $md083forkUtil.nextUid());
     }
