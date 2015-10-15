@@ -1,7 +1,7 @@
 $sidenav-default-width: 304px !default;
 $sidenav-min-space: 56px !default;
 
-md-sidenav {
+md083fork-sidenav {
   position: absolute;
 
   width: $sidenav-default-width;
@@ -96,7 +96,7 @@ md-sidenav {
 }
 
 @media (max-width: $sidenav-default-width + $sidenav-min-space) {
-  md-sidenav {
+  md083fork-sidenav {
     width: 85%;
   }
 }

@@ -1,24 +1,24 @@
 
 angular.module('sidenavDemo1', ['ngMaterial'])
 
-.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $log) {
+.controller('AppCtrl', function($scope, $timeout, $md083forkSidenav, $log) {
   $scope.toggleLeft = function() {
-    $mdSidenav('left').toggle()
+    $md083forkSidenav('left').toggle()
                       .then(function(){
                           $log.debug("toggle left is done");
                       });
   };
   $scope.toggleRight = function() {
-    $mdSidenav('right').toggle()
+    $md083forkSidenav('right').toggle()
                         .then(function(){
                           $log.debug("toggle RIGHT is done");
                         });
   };
 })
 
-.controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $log) {
+.controller('LeftCtrl', function($scope, $timeout, $md083forkSidenav, $log) {
   $scope.close = function() {
-    $mdSidenav('left').close()
+    $md083forkSidenav('left').close()
                       .then(function(){
                         $log.debug("close LEFT is done");
                       });
@@ -26,9 +26,9 @@ angular.module('sidenavDemo1', ['ngMaterial'])
   };
 })
 
-.controller('RightCtrl', function($scope, $timeout, $mdSidenav, $log) {
+.controller('RightCtrl', function($scope, $timeout, $md083forkSidenav, $log) {
   $scope.close = function() {
-    $mdSidenav('right').close()
+    $md083forkSidenav('right').close()
                         .then(function(){
                           $log.debug("close RIGHT is done");
                         });

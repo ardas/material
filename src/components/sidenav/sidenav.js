@@ -12,42 +12,42 @@ angular.module('material.083fork.components.sidenav', [
     'material.083fork.core',
     'material.083fork.components.backdrop'
   ])
-  .factory('$mdSidenav', SidenavService )
-  .directive('mdSidenav', SidenavDirective)
-  .controller('$mdSidenavController', SidenavController);
+  .factory('$md083forkSidenav', SidenavService )
+  .directive('md083forkSidenav', SidenavDirective)
+  .controller('$md083forkSidenavController', SidenavController);
 
 
 /**
  * @private
  * @ngdoc service
- * @name $mdSidenav
+ * @name $md083forkSidenav
  * @module material.components.sidenav
  *
  * @description
- * `$mdSidenav` makes it easy to interact with multiple sidenavs
+ * `$md083forkSidenav` makes it easy to interact with multiple sidenavs
  * in an app.
  *
  * @usage
  * <hljs lang="js">
  * // Toggle the given sidenav
- * $mdSidenav(componentId).toggle();
+ * $md083forkSidenav(componentId).toggle();
  * </hljs>
  * <hljs lang="js">
  * // Open the given sidenav
- * $mdSidenav(componentId).open();
+ * $md083forkSidenav(componentId).open();
  * </hljs>
  * <hljs lang="js">
  * // Close the given sidenav
- * $mdSidenav(componentId).close();
+ * $md083forkSidenav(componentId).close();
  * </hljs>
  * <hljs lang="js">
  * // Exposes whether given sidenav is set to be open
- * $mdSidenav(componentId).isOpen();
+ * $md083forkSidenav(componentId).isOpen();
  * </hljs>
  * <hljs lang="js">
  * // Exposes whether given sidenav is locked open
  * // If this is true, the sidenav will be open regardless of isOpen()
- * $mdSidenav(componentId).isLockedOpen();
+ * $md083forkSidenav(componentId).isLockedOpen();
  * </hljs>
  */
 function SidenavService($md083forkComponentRegistry, $q) {
@@ -82,7 +82,7 @@ function SidenavService($md083forkComponentRegistry, $q) {
 
 /**
  * @ngdoc directive
- * @name mdSidenav
+ * @name md083forkSidenav
  * @module material.components.sidenav
  * @restrict E
  *
@@ -95,9 +95,9 @@ function SidenavService($md083forkComponentRegistry, $q) {
  * @usage
  * <hljs lang="html">
  * <div layout="row" ng-controller="MyController">
- *   <md-sidenav md-component-id="left" class="md-sidenav-left">
+ *   <md083fork-sidenav md-component-id="left" class="md-sidenav-left">
  *     Left Nav!
- *   </md-sidenav>
+ *   </md083fork-sidenav>
  *
  *   <md083fork-content>
  *     Center Content
@@ -106,25 +106,25 @@ function SidenavService($md083forkComponentRegistry, $q) {
  *     </md083fork-button>
  *   </md083fork-content>
  *
- *   <md-sidenav md-component-id="right"
+ *   <md083fork-sidenav md-component-id="right"
  *     md-is-locked-open="$md083forkMedia('min-width: 333px')"
  *     class="md-sidenav-right">
  *     Right Nav!
- *   </md-sidenav>
+ *   </md083fork-sidenav>
  * </div>
  * </hljs>
  *
  * <hljs lang="js">
  * var app = angular.module('myApp', ['ngMaterial']);
- * app.controller('MyController', function($scope, $mdSidenav) {
+ * app.controller('MyController', function($scope, $md083forkSidenav) {
  *   $scope.openLeftMenu = function() {
- *     $mdSidenav('left').toggle();
+ *     $md083forkSidenav('left').toggle();
  *   };
  * });
  * </hljs>
  *
  * @param {expression=} md-is-open A model bound to whether the sidenav is opened.
- * @param {string=} md-component-id componentId to use with $mdSidenav service.
+ * @param {string=} md-component-id componentId to use with $md083forkSidenav service.
  * @param {expression=} md-is-locked-open When this expression evalutes to true,
  * the sidenav 'locks open': it falls into the content's flow instead
  * of appearing over it. This overrides the `is-open` attribute.
@@ -133,9 +133,9 @@ function SidenavService($md083forkComponentRegistry, $q) {
  * can be given a media query or one of the `sm`, `gt-sm`, `md`, `gt-md`, `lg` or `gt-lg` presets.
  * Examples:
  *
- *   - `<md-sidenav md-is-locked-open="shouldLockOpen"></md-sidenav>`
- *   - `<md-sidenav md-is-locked-open="$md083forkMedia('min-width: 1000px')"></md-sidenav>`
- *   - `<md-sidenav md-is-locked-open="$md083forkMedia('sm')"></md-sidenav>` (locks open on small screens)
+ *   - `<md083fork-sidenav md-is-locked-open="shouldLockOpen"></md083fork-sidenav>`
+ *   - `<md083fork-sidenav md-is-locked-open="$md083forkMedia('min-width: 1000px')"></md083fork-sidenav>`
+ *   - `<md083fork-sidenav md-is-locked-open="$md083forkMedia('sm')"></md083fork-sidenav>` (locks open on small screens)
  */
 function SidenavDirective($timeout, $animate, $parse, $log, $md083forkMedia, $md083forkConstant, $compile, $md083forkTheming, $q, $document) {
   return {
@@ -143,7 +143,7 @@ function SidenavDirective($timeout, $animate, $parse, $log, $md083forkMedia, $md
     scope: {
       isOpen: '=?mdIsOpen'
     },
-    controller: '$mdSidenavController',
+    controller: '$md083forkSidenavController',
     compile: function(element) {
       element.addClass('md-closed');
       element.attr('tabIndex', '-1');

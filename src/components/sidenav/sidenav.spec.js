@@ -1,11 +1,11 @@
-describe('mdSidenav', function() {
+describe('md083forkSidenav', function() {
   beforeEach(module('material.083fork.components.sidenav', 'ngAnimateMock'));
 
   function setup(attrs) {
     var el;
     inject(function($compile, $rootScope) {
       var parent = angular.element('<div>');
-      el = angular.element('<md-sidenav ' + (attrs||'') + '>');
+      el = angular.element('<md083fork-sidenav ' + (attrs||'') + '>');
       parent.append(el);
       $compile(parent)($rootScope);
       $rootScope.$apply();
@@ -87,14 +87,14 @@ describe('mdSidenav', function() {
   describe('controller', function() {
     it('should create controller', function() {
       var el = setup('');
-      var controller = el.controller('mdSidenav');
+      var controller = el.controller('md083forkSidenav');
       expect(controller).not.toBe(undefined);
     });
 
     it('should open and close and toggle', inject(function($timeout) {
       var el = setup('');
       var scope = el.isolateScope();
-      var controller = el.controller('mdSidenav');
+      var controller = el.controller('md083forkSidenav');
 
       // Should start closed
       expect(el.hasClass('md-closed')).toBe(true);
@@ -137,7 +137,7 @@ describe('mdSidenav', function() {
     it('should open(), close(), and toggle() with promises', function () {
       var el = setup('');
       var scope = el.isolateScope();
-      var controller = el.controller('mdSidenav');
+      var controller = el.controller('md083forkSidenav');
 
       var openDone = 0, closeDone = 0, toggleDone = 0;
       var onOpen = function() { openDone++; };
@@ -175,7 +175,7 @@ describe('mdSidenav', function() {
 
     it('should open() to work multiple times before close()', function () {
       var el = setup('');
-      var controller = el.controller('mdSidenav');
+      var controller = el.controller('md083forkSidenav');
 
       var openDone = 0, closeDone = 0;
       var onOpen = function() { openDone++; };
@@ -204,12 +204,12 @@ describe('mdSidenav', function() {
 
   });
 
-  describe('$mdSidenav Service', function() {
-    it('should grab instance', inject(function($mdSidenav) {
+  describe('$md083forkSidenav Service', function() {
+    it('should grab instance', inject(function($md083forkSidenav) {
       var el = setup('md-component-id="left"');
       var scope = el.isolateScope();
 
-      var instance = $mdSidenav('left');
+      var instance = $md083forkSidenav('left');
       expect(instance).toBeTruthy();
 
       instance.open();
@@ -233,11 +233,11 @@ describe('mdSidenav', function() {
       expect(el.hasClass('md-closed')).toBe(true);
     }));
 
-    it('exposes state', inject(function($mdSidenav) {
+    it('exposes state', inject(function($md083forkSidenav) {
       var el = setup('md-component-id="stateTest" md-is-open="shouldOpen" md-is-locked-open="shouldLockOpen"');
       var scope = el.scope();
 
-      var instance = $mdSidenav('stateTest');
+      var instance = $md083forkSidenav('stateTest');
       expect(instance.isOpen()).toBe(false);
       expect(instance.isLockedOpen()).toBe(false);
 

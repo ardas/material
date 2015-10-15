@@ -8,7 +8,7 @@ describe('$md083forkComponentRegistry Service', function() {
     var el;
     inject(function($compile, $rootScope) {
       var parent = angular.element('<div>');
-      el = angular.element('<md-sidenav ' + (attrs||'') + '>');
+      el = angular.element('<md083fork-sidenav ' + (attrs||'') + '>');
       parent.append(el);
       $compile(parent)($rootScope);
       $rootScope.$apply();
