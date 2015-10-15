@@ -33,7 +33,7 @@ describe('<md-toolbar>', function() {
       mdShrinkSpeedFactor: 1
     });
 
-    $rootScope.$broadcast('$mdContentLoaded', contentEl);
+    $rootScope.$broadcast('$md083forkContentLoaded', contentEl);
 
     //Expect everything to be in its proper initial state.
     expect(toolbarCss[$md083forkConstant.CSS.TRANSFORM]).toEqual('translate3d(0,0px,0)');

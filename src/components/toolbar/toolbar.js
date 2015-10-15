@@ -42,16 +42,16 @@ angular.module('material.083fork.components.toolbar', [
  *     </div>
  *
  *   </md-toolbar>
- *   <md-content>
+ *   <md083fork-content>
  *     Hello!
- *   </md-content>
+ *   </md083fork-content>
  * </div>
  * </hljs>
  *
  * @param {boolean=} md-scroll-shrink Whether the header should shrink away as
  * the user scrolls down, and reveal itself as the user scrolls up.
  * Note: for scrollShrink to work, the toolbar must be a sibling of a
- * `md-content` element, placed before it. See the scroll shrink demo.
+ * `md083fork-content` element, placed before it. See the scroll shrink demo.
  *
  *
  * @param {number=} md-shrink-speed-factor How much to change the speed of the toolbar's
@@ -84,10 +84,10 @@ function mdToolbarDirective($$rAF, $md083forkConstant, $md083forkUtil, $md083for
         var debouncedContentScroll = $$rAF.throttle(onContentScroll);
         var debouncedUpdateHeight = $md083forkUtil.debounce(updateToolbarHeight, 5 * 1000);
 
-        // Wait for $mdContentLoaded event from mdContent directive.
-        // If the mdContent element is a sibling of our toolbar, hook it up
+        // Wait for $md083forkContentLoaded event from md083forkContent directive.
+        // If the md083forkContent element is a sibling of our toolbar, hook it up
         // to scroll events.
-        scope.$on('$mdContentLoaded', onMdContentLoad);
+        scope.$on('$md083forkContentLoaded', onMdContentLoad);
 
         function onMdContentLoad($event, newContentEl) {
           // Toolbar and content must be siblings

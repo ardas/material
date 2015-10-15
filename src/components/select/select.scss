@@ -103,7 +103,7 @@ md083fork-select-menu {
   }
 
   &:not(.md-overflow) {
-    md-content {
+    md083fork-content {
       padding-top: $baseline-grid;
       padding-bottom: $baseline-grid;
     }
@@ -115,7 +115,7 @@ md083fork-select-menu {
   max-height: ($select-option-height * $select-max-visible-options) + 2 * $baseline-grid;
   overflow-y: hidden;
 
-  md-content {
+  md083fork-content {
     min-width: 136px;
     max-height: ($select-option-height * $select-max-visible-options) + 2 * $baseline-grid;
     overflow-y: auto;

@@ -452,7 +452,7 @@ describe('$md083forkDialog with custom interpolation symbols', function() {
 
     var mdContainer = angular.element(parent[0].querySelector('.md-dialog-container'));
     var mdDialog = mdContainer.find('md083fork-dialog');
-    var mdContent = mdDialog.find('md-content');
+    var mdContent = mdDialog.find('md083fork-content');
     var title = mdContent.find('h2');
     var content = mdContent.find('p');
     var mdActions = angular.element(mdDialog[0].querySelector('.md-actions'));
@@ -479,7 +479,7 @@ describe('$md083forkDialog with custom interpolation symbols', function() {
 
     var mdContainer = angular.element(parent[0].querySelector('.md-dialog-container'));
     var mdDialog = mdContainer.find('md083fork-dialog');
-    var mdContent = mdDialog.find('md-content');
+    var mdContent = mdDialog.find('md083fork-content');
     var title = mdContent.find('h2');
     var content = mdContent.find('p');
     var mdActions = angular.element(mdDialog[0].querySelector('.md-actions'));

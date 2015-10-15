@@ -39,7 +39,7 @@ function MdSticky($document, $md083forkConstant, $compile, $$rAF, $md083forkUtil
    * Registers an element as sticky, used internally by directives to register themselves
    */
   return function registerStickyElement(scope, element, stickyClone) {
-    var contentCtrl = element.controller('mdContent');
+    var contentCtrl = element.controller('md083forkContent');
     if (!contentCtrl) return;
 
     if (browserStickySupport) {

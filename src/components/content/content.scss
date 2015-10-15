@@ -1,4 +1,4 @@
-md-content {
+md083fork-content {
 
   display: block;
   position: relative;
@@ -22,7 +22,7 @@ md-content {
 }
 
 @media (min-width: $layout-breakpoint-sm) {
-  md-content.md-padding {
+  md083fork-content.md-padding {
     padding: 16px;
   }
 }

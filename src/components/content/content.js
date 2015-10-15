@@ -11,17 +11,17 @@
 angular.module('material.083fork.components.content', [
   'material.083fork.core'
 ])
-  .directive('mdContent', mdContentDirective);
+  .directive('md083forkContent', mdContentDirective);
 
 /**
  * @ngdoc directive
- * @name mdContent
+ * @name md083forkContent
  * @module material.components.content
  *
  * @restrict E
  *
  * @description
- * The `<md-content>` directive is a container element useful for scrollable content
+ * The `<md083fork-content>` directive is a container element useful for scrollable content
  *
  * ### Restrictions
  *
@@ -29,9 +29,9 @@ angular.module('material.083fork.components.content', [
  *
  * @usage
  * <hljs lang="html">
- *  <md-content class="md-padding">
+ *  <md083fork-content class="md-padding">
  *      Lorem ipsum dolor sit amet, ne quod novum mei.
- *  </md-content>
+ *  </md083fork-content>
  * </hljs>
  *
  */
@@ -44,7 +44,7 @@ function mdContentDirective($md083forkTheming) {
       var node = element[0];
 
       $md083forkTheming(element);
-      scope.$broadcast('$mdContentLoaded', element);
+      scope.$broadcast('$md083forkContentLoaded', element);
 
       iosScrollFix(element[0]);
     }

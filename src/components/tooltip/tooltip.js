@@ -45,7 +45,7 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $md083forkUtil,
     transclude: true,
     template:
       '<div class="md-background"></div>' +
-      '<div class="md-content" ng-transclude></div>',
+      '<div class="md083fork-content" ng-transclude></div>',
     scope: {
       visible: '=?mdVisible',
       delay: '=?mdDelay'
@@ -57,7 +57,7 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $md083forkUtil,
     $md083forkTheming(element);
     var parent = element.parent();
     var background = angular.element(element[0].getElementsByClassName('md-background')[0]);
-    var content = angular.element(element[0].getElementsByClassName('md-content')[0]);
+    var content = angular.element(element[0].getElementsByClassName('md083fork-content')[0]);
     var direction = attr.mdDirection;
 
     // Keep looking for a higher parent if our current one has no pointer events
@@ -65,10 +65,10 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $md083forkUtil,
       parent = parent.parent();
     }
 
-    // Look for the nearest parent md-content, stopping at the rootElement.
+    // Look for the nearest parent md083fork-content, stopping at the rootElement.
     var current = element.parent()[0];
     while (current && current !== $rootElement[0] && current !== document.body) {
-      if (current.tagName && current.tagName.toLowerCase() == 'md-content') break;
+      if (current.tagName && current.tagName.toLowerCase() == 'md083fork-content') break;
       current = current.parentNode;
     }
     var tooltipParent = angular.element(current || document.body);

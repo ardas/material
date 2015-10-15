@@ -18,14 +18,14 @@ describe('$mdStickySpec', function() {
   function setup(opts) {
     opts = opts || {};
 
-    var TEST_HTML = '<md-content><h2>First sticky</h2><h2>Second sticky</h2></md-content>';
+    var TEST_HTML = '<md083fork-content><h2>First sticky</h2><h2>Second sticky</h2></md083fork-content>';
     var scope = $rootScope.$new();
     $container = $compile(TEST_HTML)(scope);
     $firstSticky = $container.children().eq(0);
     $secondSticky = $container.children().eq(1);
 
     // Wire up our special $container instance;
-    $firstSticky.controller('mdContent').$element = $container;
+    $firstSticky.controller('md083forkContent').$element = $container;
 
     $document.find('body').html('');
     $document.find('body').append($container);
@@ -76,12 +76,12 @@ describe('$mdStickySpec', function() {
     scope.$digest();
   }
 
-  it('throws an error if uses outside of md-content', inject(function($mdSticky, $compile, $rootScope) {
+  it('throws an error if uses outside of md083fork-content', inject(function($mdSticky, $compile, $rootScope) {
     var html = '<h2>Hello world!</h2>';
-    function useWithoutMdContent() {
+    function useWithoutmd083forkContent() {
       $mdSticky($rootScope.$new(), angular.element(html));
     }
-    expect(useWithoutMdContent).toThrow('$mdSticky used outside of md-content');
+    expect(useWithoutMdContent).toThrow('$mdSticky used outside of md083fork-content');
   }));
 
   it('adds class md-sticky-active when an element would scroll off screen', function() {

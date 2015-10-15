@@ -18,7 +18,7 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
     link: function(scope, element, attr) {
       $md083forkTheming(element);
       $$rAF(function() {
-        var content = element[0].querySelector('md-content');
+        var content = element[0].querySelector('md083fork-content');
         if (content && content.scrollHeight > content.clientHeight) {
           element.addClass('md-content-overflow');
         }
@@ -41,7 +41,7 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *
  * - The dialog is always given an isolate scope.
  * - The dialog's template must have an outer `<md083fork-dialog>` element.
- *   Inside, use an `<md-content>` element for the dialog's content, and use
+ *   Inside, use an `<md083fork-content>` element for the dialog's content, and use
  *   an element with class `md-actions` for the dialog's actions.
  *
  * @usage
@@ -101,13 +101,13 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *          targetEvent: $event,
  *          template:
  *            '<md083fork-dialog aria-label="List dialog">' +
- *            '  <md-content>'+
+ *            '  <md083fork-content>'+
  *            '    <md-list>'+
  *            '      <md-item ng-repeat="item in items">'+
  *            '       <p>Number {{item}}</p>' +
  *            '      </md-item>'+
  *            '    </md-list>'+
- *            '  </md-content>' +
+ *            '  </md083fork-content>' +
  *            '  <div class="md-actions">' +
  *            '    <md083fork-button ng-click="closeDialog()">' +
  *            '      Close Dialog' +
@@ -185,7 +185,7 @@ function MdDialogDirective($$rAF, $md083forkTheming) {
  *           template:
  *             '<md083fork-dialog>' +
  *
- *             '  <md-content>Hello {{ employee }}!</md-content>' +
+ *             '  <md083fork-content>Hello {{ employee }}!</md083fork-content>' +
  *
  *             '  <div class="md-actions">' +
  *             '    <md083fork-button ng-click="closeDialog()">' +
@@ -348,10 +348,10 @@ function MdDialogProvider($$083forkInterimElementProvider) {
     return {
       template: [
         '<md083fork-dialog md-theme="{{ dialog.theme }}" aria-label="{{ dialog.ariaLabel }}">',
-          '<md-content>',
+          '<md083fork-content>',
             '<h2>{{ dialog.title }}</h2>',
             '<p>{{ dialog.content }}</p>',
-          '</md-content>',
+          '</md083fork-content>',
           '<div class="md-actions">',
             '<md083fork-button ng-if="dialog.$type == \'confirm\'" ng-click="dialog.abort()">',
               '{{ dialog.cancel }}',
@@ -497,7 +497,7 @@ function MdDialogProvider($$083forkInterimElementProvider) {
         'role': 'dialog'
       });
 
-      var dialogContent = element.find('md-content');
+      var dialogContent = element.find('md083fork-content');
       if (dialogContent.length === 0){
         dialogContent = element;
       }

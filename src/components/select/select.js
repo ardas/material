@@ -89,14 +89,14 @@ function SelectDirective($md083forkSelect, $md083forkUtil, $md083forkTheming, $i
     labelEl.addClass('md-select-label');
     labelEl.attr('id', 'select_label_' + $md083forkUtil.nextUid());
 
-    // There's got to be an md-content inside. If there's not one, let's add it.
-    if (!element.find('md-content').length) {
-      element.append( angular.element('<md-content>').append(element.contents()) );
+    // There's got to be an md083fork-content inside. If there's not one, let's add it.
+    if (!element.find('md083fork-content').length) {
+      element.append( angular.element('<md083fork-content>').append(element.contents()) );
     }
 
     // Add progress spinner for md083fork-options-loading
     if (attr.mdOnOpen) {
-      element.find('md-content').prepend(
+      element.find('md083fork-content').prepend(
         angular.element('<md-progress-circular>')
                .attr('md-mode', 'indeterminate')
                .attr('ng-hide', '$$loadingAsyncDone')
@@ -562,7 +562,7 @@ function SelectProvider($$083forkInterimElementProvider) {
         target: angular.element(opts.target), //make sure it's not a naked dom node
         parent: angular.element(opts.parent),
         selectEl: element.find('md083fork-select-menu'),
-        contentEl: element.find('md-content'),
+        contentEl: element.find('md083fork-content'),
         backdrop: opts.hasBackdrop && angular.element('<md-backdrop class="md-select-backdrop">')
       });
 
@@ -587,7 +587,7 @@ function SelectProvider($$083forkInterimElementProvider) {
       }
 
       if (opts.disableParentScroll) {
-        opts.disableTarget = opts.parent.find('md-content');
+        opts.disableTarget = opts.parent.find('md083fork-content');
         if (!opts.disableTarget.length) opts.disableTarget = opts.parent;
         opts.lastOverflow = opts.disableTarget.css('overflow');
         opts.disableTarget.css('overflow', 'hidden');

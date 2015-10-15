@@ -99,12 +99,12 @@ function SidenavService($md083forkComponentRegistry, $q) {
  *     Left Nav!
  *   </md-sidenav>
  *
- *   <md-content>
+ *   <md083fork-content>
  *     Center Content
  *     <md083fork-button ng-click="openLeftMenu()">
  *       Open Left Menu
  *     </md083fork-button>
- *   </md-content>
+ *   </md083fork-content>
  *
  *   <md-sidenav md-component-id="right"
  *     md-is-locked-open="$md083forkMedia('min-width: 333px')"
