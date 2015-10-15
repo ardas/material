@@ -8,12 +8,12 @@
             <div ng-repeat="it in sizes" flex layout-align="center center">
 
               <div class="preview-glyphs">
-                <md-icon md-font-icon="{{ font.name }}"
+                <md083fork-icon md-font-icon="{{ font.name }}"
                          ng-style="{color: !font.theme && font.color, 'font-size': it.size + 'px', height: it.size + 'px'}"
                          ng-class="font.theme"
                          alt="{{ font.name + it.size }}"
                          class="step ">
-                </md-icon>
+                </md083fork-icon>
               </div>
 
               <div class="preview-scale">
@@ -26,7 +26,7 @@
 </div>
 
 <!--
-  For this demo, include the font-faces needed by mdIcon above
+  For this demo, include the font-faces needed by md083forkIcon above
 -->
 <style>
 @font-face {

@@ -23,11 +23,11 @@ angular.module('material.083fork.components.tooltip', [
  *
  * @usage
  * <hljs lang="html">
- * <md-icon icon="/img/icons/ic_play_arrow_24px.svg">
+ * <md083fork-icon icon="/img/icons/ic_play_arrow_24px.svg">
  *   <md-tooltip>
  *     Play Music
  *   </md-tooltip>
- * </md-icon>
+ * </md083fork-icon>
  * </hljs>
  *
  * @param {expression=} md-visible Boolean bound to whether the tooltip is

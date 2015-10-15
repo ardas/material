@@ -110,7 +110,7 @@ function TabsDirective($md083forkTheming) {
           'ng-if="pagination.active && pagination.hasPrev" ' +
           'ng-click="pagination.clickPrevious()" ' +
           'aria-hidden="true">' +
-          '<md-icon md-svg-icon="tabs-arrow"></md-icon>' +
+          '<md083fork-icon md-svg-icon="tabs-arrow"></md083fork-icon>' +
         '</button>' +
 
         // overflow: hidden container when paginating
@@ -125,7 +125,7 @@ function TabsDirective($md083forkTheming) {
           'ng-if="pagination.active && pagination.hasNext" ' +
           'ng-click="pagination.clickNext()" ' +
           'aria-hidden="true">' +
-          '<md-icon md-svg-icon="tabs-arrow"></md-icon>' +
+          '<md083fork-icon md-svg-icon="tabs-arrow"></md083fork-icon>' +
         '</button>' +
 
       '</section>' +

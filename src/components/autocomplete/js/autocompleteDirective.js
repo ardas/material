@@ -56,7 +56,7 @@
               type="button"\
               ng-if="searchText"\
               ng-click="$mdAutocompleteCtrl.clear()">\
-            <md-icon md-svg-icon="cancel"></md-icon>\
+            <md083fork-icon md-svg-icon="cancel"></md083fork-icon>\
             <span class="visually-hidden">Clear</span>\
           </button>\
           <md-progress-linear\

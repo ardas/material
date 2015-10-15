@@ -1,12 +1,12 @@
-describe('mdIcon service', function() {
+describe('md083forkIcon service', function() {
 
-  var $mdIcon;
+  var $md083forkIcon;
   var $httpBackend;
   var $scope;
 
   beforeEach(module('material.083fork.core'));
-  beforeEach(module('material.083fork.components.icon',function($mdIconProvider){
-    $mdIconProvider
+  beforeEach(module('material.083fork.components.icon',function($md083forkIconProvider){
+    $md083forkIconProvider
       .icon('android',   'android.svg')
       .icon('c2',        'c2.svg')
       .iconSet('social', 'social.svg' )
@@ -14,8 +14,8 @@ describe('mdIcon service', function() {
       .defaultIconSet('core.svg');
   }));
 
-  beforeEach(inject(function($templateCache, _$httpBackend_, _$mdIcon_, $rootScope){
-    $mdIcon = _$mdIcon_;
+  beforeEach(inject(function($templateCache, _$httpBackend_, _$md083forkIcon_, $rootScope){
+    $md083forkIcon = _$md083forkIcon_;
     $httpBackend = _$httpBackend_;
     $scope = $rootScope;
     $templateCache.put('android.svg', '<svg><g id="android"></g></svg>');
@@ -27,11 +27,11 @@ describe('mdIcon service', function() {
 
   }));
 
-  describe('when $mdIcon() is passed and icon ID', function() {
+  describe('when $md083forkIcon() is passed and icon ID', function() {
 
     it('should append configured SVG single icon', function() {
       var expected = updateDefaults('<svg><g id="android"></g></svg>');
-      $mdIcon('android').then(function(el) {
+      $md083forkIcon('android').then(function(el) {
         expect(el[0].outerHTML).toEqual(expected);
       })
       $scope.$digest();
@@ -39,7 +39,7 @@ describe('mdIcon service', function() {
 
     it('should append configured SVG icon from named group', function() {
       var expected = updateDefaults('<svg xmlns="http://www.w3.org/2000/svg"><g id="s1"></g></g></svg>');
-      $mdIcon('social:s1').then(function(el) {
+      $md083forkIcon('social:s1').then(function(el) {
         expect(el[0].outerHTML).toEqual(expected);
       })
       $scope.$digest();
@@ -47,14 +47,14 @@ describe('mdIcon service', function() {
 
     it('should append configured SVG icon from default group', function() {
       var expected = updateDefaults('<svg xmlns="http://www.w3.org/2000/svg"><g id="c1"></g></g></svg>');
-      $mdIcon('c1').then(function(el) {
+      $md083forkIcon('c1').then(function(el) {
         expect(el[0].outerHTML).toEqual(expected);
       })
       $scope.$digest();
     });
 
     it('should allow single icon defs to override those defined in groups', function() {
-      $mdIcon('c2').then(function(el) {
+      $md083forkIcon('c2').then(function(el) {
         expect(el.find('g').hasClass('override')).toBe(true);
       })
       $scope.$digest();
@@ -62,10 +62,10 @@ describe('mdIcon service', function() {
 
   });
 
-  describe('When $mdIcon() is passed a URL', function() {
+  describe('When $md083forkIcon() is passed a URL', function() {
 
     it('should return correct SVG markup', function() {
-      $mdIcon('android.svg').then(function(el) {
+      $md083forkIcon('android.svg').then(function(el) {
         expect(el[0].outerHTML).toEqual( updateDefaults('<svg><g id="android"></g></svg>') );
       })
       $scope.$digest();
@@ -77,7 +77,7 @@ describe('mdIcon service', function() {
     it('should throw Error', function() {
       var msg;
       try {
-        $mdIcon('notconfigured')
+        $md083forkIcon('notconfigured')
           .catch(function(error){
             msg = error;
           });
@@ -93,7 +93,7 @@ describe('mdIcon service', function() {
     it('should throw Error', function() {
       var msg;
       try {
-        $mdIcon('notfound:someIcon')
+        $md083forkIcon('notfound:someIcon')
           .catch(function(error){
             msg = error;
           });

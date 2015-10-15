@@ -1,12 +1,12 @@
 
 angular.module('appUsingTemplateCache', ['ngMaterial'])
   .controller('DemoCtrl', function($scope) {})
-  .config(function($mdIconProvider) {
+  .config(function($md083forkIconProvider) {
 
-    // Register icon IDs with sources. Future $mdIcon( <id> ) lookups
+    // Register icon IDs with sources. Future $md083forkIcon( <id> ) lookups
     // will load by url and retrieve the data via the $http and $templateCache
 
-    $mdIconProvider
+    $md083forkIconProvider
       .iconSet('core', 'img/icons/sets/core-icons.svg',24)
       .icon('social:cake', 'img/icons/cake.svg',24);
 

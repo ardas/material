@@ -7,14 +7,14 @@ md083fork-checkbox.md-THEME_NAME-theme {
     color: '{{background-600}}';
   }
 
-  .md-icon {
+  .md083fork-icon {
     border-color: '{{foreground-2}}';
   }
-  &.md-checked .md-icon {
+  &.md-checked .md083fork-icon {
     background-color: '{{accent-color-0.87}}';
   }
 
-  &.md-checked .md-icon:after {
+  &.md-checked .md083fork-icon:after {
     border-color: '{{background-200}}';
   }
 
@@ -27,14 +27,14 @@ md083fork-checkbox.md-THEME_NAME-theme {
         color: '{{background-600}}';
       }
 
-      .md-icon {
+      .md083fork-icon {
         border-color: '{{foreground-2}}';
       }
-      &.md-checked .md-icon {
+      &.md-checked .md083fork-icon {
         background-color: '{{primary-color-0.87}}';
       }
 
-      &.md-checked .md-icon:after {
+      &.md-checked .md083fork-icon:after {
         border-color: '{{background-200}}';
       }
     }
@@ -44,25 +44,25 @@ md083fork-checkbox.md-THEME_NAME-theme {
         color: '{{warn-600}}';
       }
 
-      .md-icon {
+      .md083fork-icon {
         border-color: '{{foreground-2}}';
       }
-      &.md-checked .md-icon {
+      &.md-checked .md083fork-icon {
         background-color: '{{warn-color-0.87}}';
       }
 
-      &.md-checked .md-icon:after {
+      &.md-checked .md083fork-icon:after {
         border-color: '{{background-200}}';
       }
     }
   }
 
   &[disabled] {
-    .md-icon {
+    .md083fork-icon {
       border-color: '{{foreground-3}}';
     }
 
-    &.md-checked .md-icon {
+    &.md-checked .md083fork-icon {
       background-color: '{{foreground-3}}';
     }
   }

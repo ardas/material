@@ -6,7 +6,7 @@ md083fork-input-container.md-THEME_NAME-theme {
     text-shadow: '{{foreground-shadow}}';
   }
 
-  > md-icon {
+  > md083fork-icon {
     fill: '{{foreground-1}}';
   }
 
@@ -30,7 +30,7 @@ md083fork-input-container.md-THEME_NAME-theme {
       label {
         color: '{{primary-500}}';
       }
-      md-icon {
+      md083fork-icon {
         fill: '{{primary-500}}';
       }
       &.md-accent {

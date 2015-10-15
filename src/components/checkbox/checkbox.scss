@@ -38,7 +38,7 @@ md083fork-checkbox {
   }
 
   // unchecked
-  .md-icon {
+  .md083fork-icon {
     transition: 240ms;
     position: absolute;
     top: 0;
@@ -49,7 +49,7 @@ md083fork-checkbox {
     border-radius: 2px;
   }
 
-  &.md-checked .md-icon {
+  &.md-checked .md083fork-icon {
     border: none;
   }
 
@@ -64,7 +64,7 @@ md083fork-checkbox {
   }
 
 
-  &.md-checked .md-icon:after {
+  &.md-checked .md083fork-icon:after {
     transform: rotate(45deg);
     position: absolute;
     left: 6px;

@@ -10,24 +10,24 @@
 angular.module('material.083fork.components.icon', [
     'material.083fork.core'
   ])
-  .directive('mdIcon', mdIconDirective);
+  .directive('md083forkIcon', mdIconDirective);
 
 /**
  * @ngdoc directive
- * @name mdIcon
+ * @name md083forkIcon
  * @module material.components.icon
  *
  * @restrict E
  *
  * @description
- * The `md-icon` directive is an markup element useful for showing an icon based on a font-face
+ * The `md083fork-icon` directive is an markup element useful for showing an icon based on a font-face
  * or a SVG. Both external SVGs (via URLs) or cached SVG from icon sets can be
  * easily loaded and used.
  *
  * @param {string} md-svg-src String URL [or expression ] used to load, cache, and display an external SVG.
  * @param {string} md-svg-icon String name used for lookup of the icon from the internal cache; interpolated strings or
  * expressions may also be used. Specific set names can be used with the syntax `<set name>:<icon name>`.<br/><br/>
- * To use icon sets, developers are required to pre-register the sets using the `$mdIconProvider` service.
+ * To use icon sets, developers are required to pre-register the sets using the `$md083forkIconProvider` service.
  * @param {string} md-font-icon String name of CSS icon associated with the font-face will be used
  * to render the icon. Requires the fonts and the named CSS styles to be preloaded.
  * @param {string=} alt Labels icon for accessibility. If an empty string is provided, icon
@@ -36,13 +36,13 @@ angular.module('material.083fork.components.icon', [
  *
  * @usage
  * <hljs lang="html">
- *  <md-icon md-font-icon="android"          alt="android " ></md-icon>
- *  <md-icon md-svg-icon="action:android"    alt="android " ></md-icon>
- *  <md-icon md-svg-src="/android.svg"       alt="android " ></md-icon>
- *  <md-icon md-svg-src="{{ getAndroid() }}" alt="android " ></md-icon>
+ *  <md083fork-icon md-font-icon="android"          alt="android " ></md083fork-icon>
+ *  <md083fork-icon md-svg-icon="action:android"    alt="android " ></md083fork-icon>
+ *  <md083fork-icon md-svg-src="/android.svg"       alt="android " ></md083fork-icon>
+ *  <md083fork-icon md-svg-src="{{ getAndroid() }}" alt="android " ></md083fork-icon>
  * </hljs>
  */
-function mdIconDirective($mdIcon, $md083forkTheming, $md083forkAria ) {
+function mdIconDirective($md083forkIcon, $md083forkTheming, $md083forkAria ) {
   return {
     scope: {
       fontIcon: '@mdFontIcon',
@@ -82,7 +82,7 @@ function mdIconDirective($mdIcon, $md083forkTheming, $md083forkAria ) {
 
         element.empty();
         if (attrVal) {
-          $mdIcon(attrVal).then(function(svg) {
+          $md083forkIcon(attrVal).then(function(svg) {
             element.append(svg);
           });
         }

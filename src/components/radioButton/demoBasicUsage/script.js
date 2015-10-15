@@ -45,6 +45,6 @@ angular
     };
 
   })
-  .config(function($mdIconProvider) {
-    $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
+  .config(function($md083forkIconProvider) {
+    $md083forkIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
   });

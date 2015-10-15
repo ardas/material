@@ -72,7 +72,7 @@ $button-fab-toast-offset: $button-fab-height * 0.75;
     border-radius: 0;
   }
 
-  &.md-icon {
+  &.md083fork-icon {
     padding: 0;
     background: none;
   }
@@ -108,14 +108,14 @@ $button-fab-toast-offset: $button-fab-height * 0.75;
     transition: 0.2s linear;
     transition-property: transform, box-shadow;
 
-    md-icon {
+    md083fork-icon {
       margin-top: 0;
     }
 
     &.md-mini {
       width: $button-fab-mini-width;
       height: $button-fab-mini-height;
-      md-icon {
+      md083fork-icon {
       }
     }
 

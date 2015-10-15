@@ -19,12 +19,12 @@ describe('md083fork-button', function() {
 
   it('should expect an aria-label if element has no text', inject(function($compile, $rootScope, $log) {
     spyOn($log, 'warn');
-    var button = $compile('<md083fork-button><md-icon></md-icon></md083fork-button>')($rootScope);
+    var button = $compile('<md083fork-button><md083fork-icon></md083fork-icon></md083fork-button>')($rootScope);
     $rootScope.$apply();
     expect($log.warn).toHaveBeenCalled();
 
     $log.warn.reset();
-    button = $compile('<md083fork-button aria-label="something"><md-icon></md-icon></md083fork-button>')($rootScope);
+    button = $compile('<md083fork-button aria-label="something"><md083fork-icon></md083fork-icon></md083fork-button>')($rootScope);
     $rootScope.$apply();
     expect($log.warn).not.toHaveBeenCalled();
   }));
