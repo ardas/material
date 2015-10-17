@@ -12,7 +12,7 @@ describe('md083fork-button', function() {
   it('should only have one ripple container when a custom ripple color is set', inject(function ($compile, $rootScope, $timeout) {
     var button = $compile('<md083fork-button md-ink-ripple="#f00">button</md083fork-button>')($rootScope);
 
-    button.triggerHandler({ type: '$md.pressdown', pointer: { x: 0, y: 0 } });
+    button.triggerHandler({ type: '$md083fork.pressdown', pointer: { x: 0, y: 0 } });
     expect(button[0].getElementsByClassName('md-ripple-container').length).toBe(1);
   }));
 

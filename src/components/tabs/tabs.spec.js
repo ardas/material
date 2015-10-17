@@ -194,19 +194,19 @@ describe('<md083fork-tabs>', function() {
                        '</md083fork-tabs>');
       var tabItems = tabs.find('md083fork-tab');
 
-      tabItems.eq(0).triggerHandler('$md.swipeleft');
+      tabItems.eq(0).triggerHandler('$md083fork.swipeleft');
       expect(tabItems.eq(1)).toBeActiveTab();
 
-      tabItems.eq(1).triggerHandler('$md.swipeleft');
+      tabItems.eq(1).triggerHandler('$md083fork.swipeleft');
       expect(tabItems.eq(1)).toBeActiveTab();
 
-      tabItems.eq(1).triggerHandler('$md.swipeleft');
+      tabItems.eq(1).triggerHandler('$md083fork.swipeleft');
       expect(tabItems.eq(1)).toBeActiveTab();
 
-      tabItems.eq(1).triggerHandler('$md.swiperight');
+      tabItems.eq(1).triggerHandler('$md083fork.swiperight');
       expect(tabItems.eq(0)).toBeActiveTab();
 
-      tabItems.eq(0).triggerHandler('$md.swiperight');
+      tabItems.eq(0).triggerHandler('$md083fork.swiperight');
       expect(tabItems.eq(0)).toBeActiveTab();
     });
 

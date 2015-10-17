@@ -130,11 +130,11 @@ function SliderDirective($$rAF, $window, $md083forkAria, $md083forkUtil, $md083f
 
     element
       .on('keydown', keydownListener)
-      .on('$md.pressdown', onPressDown)
-      .on('$md.pressup', onPressUp)
-      .on('$md.dragstart', onDragStart)
-      .on('$md.drag', onDrag)
-      .on('$md.dragend', onDragEnd);
+      .on('$md083fork.pressdown', onPressDown)
+      .on('$md083fork.pressup', onPressUp)
+      .on('$md083fork.dragstart', onDragStart)
+      .on('$md083fork.drag', onDrag)
+      .on('$md083fork.dragend', onDragEnd);
 
     // On resize, recalculate the slider's dimensions and re-render
     function updateAll() {

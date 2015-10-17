@@ -157,10 +157,10 @@ angular.module('material.083fork.core')
 
   addHandler('press', {
     onStart: function(ev, pointer) {
-      this.dispatchEvent(ev, '$md.pressdown');
+      this.dispatchEvent(ev, '$md083fork.pressdown');
     },
     onEnd: function(ev, pointer) {
-      this.dispatchEvent(ev, '$md.pressup');
+      this.dispatchEvent(ev, '$md083fork.pressup');
     }
   });
 
@@ -182,7 +182,7 @@ angular.module('material.083fork.core')
 
       this.state.pos = {x: pointer.x, y: pointer.y};
       this.state.timeout = $timeout(angular.bind(this, function holdDelayFn() {
-        this.dispatchEvent(ev, '$md.hold');
+        this.dispatchEvent(ev, '$md083fork.hold');
         this.cancel(); //we're done!
       }), this.state.options.delay, false);
     },
@@ -226,7 +226,7 @@ angular.module('material.083fork.core')
           // Create a new pointer, starting at this point where the drag started.
           this.state.dragPointer = makeStartPointer(ev);
           updatePointerState(ev, this.state.dragPointer);
-          this.dispatchEvent(ev, '$md.dragstart', this.state.dragPointer);
+          this.dispatchEvent(ev, '$md083fork.dragstart', this.state.dragPointer);
 
         } else if (shouldCancel) {
           this.cancel();
@@ -240,13 +240,13 @@ angular.module('material.083fork.core')
       // Make sure the drag didn't stop while waiting for the next frame
       if (this.state.isRunning) {
         updatePointerState(ev, this.state.dragPointer);
-        this.dispatchEvent(ev, '$md.drag', this.state.dragPointer);
+        this.dispatchEvent(ev, '$md083fork.drag', this.state.dragPointer);
       }
     }),
     onEnd: function(ev, pointer) {
       if (this.state.dragPointer) {
         updatePointerState(ev, this.state.dragPointer);
-        this.dispatchEvent(ev, '$md.dragend', this.state.dragPointer);
+        this.dispatchEvent(ev, '$md083fork.dragend', this.state.dragPointer);
       }
     }
   });
@@ -259,7 +259,7 @@ angular.module('material.083fork.core')
     onEnd: function(ev, pointer) {
       if (Math.abs(pointer.velocityX) > this.state.options.minVelocity &&
           Math.abs(pointer.distanceX) > this.state.options.minDistance) {
-        var eventType = pointer.directionX == 'left' ? '$md.swipeleft' : '$md.swiperight';
+        var eventType = pointer.directionX == 'left' ? '$md083fork.swipeleft' : '$md083fork.swiperight';
         this.dispatchEvent(ev, eventType);
       }
     }

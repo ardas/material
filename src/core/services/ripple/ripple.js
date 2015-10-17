@@ -96,8 +96,8 @@ function InkRippleService($window, $timeout) {
 
     // expose onInput for ripple testing
     if (options.mousedown) {
-      element.on('$md.pressdown', onPressDown)
-        .on('$md.pressup', onPressUp);
+      element.on('$md083fork.pressdown', onPressDown)
+        .on('$md083fork.pressup', onPressUp);
     }
 
     controller.createRipple = createRipple;
@@ -114,8 +114,8 @@ function InkRippleService($window, $timeout) {
 
     // Publish self-detach method if desired...
     return function detach() {
-      element.off('$md.pressdown', onPressDown)
-        .off('$md.pressup', onPressUp);
+      element.off('$md083fork.pressdown', onPressDown)
+        .off('$md083fork.pressup', onPressUp);
       getRippleContainer().remove();
     };
 

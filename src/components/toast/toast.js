@@ -231,15 +231,15 @@ function MdToastProvider($$083forkInterimElementProvider) {
 
       options.onSwipe = function(ev, gesture) {
         //Add swipeleft/swiperight class to element so it can animate correctly
-        element.addClass('md-' + ev.type.replace('$md.',''));
+        element.addClass('md-' + ev.type.replace('$md083fork.',''));
         $timeout($md083forkToast.cancel);
       };
-      element.on('$md.swipeleft $md.swiperight', options.onSwipe);
+      element.on('$md083fork.swipeleft $md083fork.swiperight', options.onSwipe);
       return $animate.enter(element, options.parent);
     }
 
     function onRemove(scope, element, options) {
-      element.off('$md.swipeleft $md.swiperight', options.onSwipe);
+      element.off('$md083fork.swipeleft $md083fork.swiperight', options.onSwipe);
       options.parent.removeClass(toastOpenClass(options.position));
       return $animate.leave(element);
     }

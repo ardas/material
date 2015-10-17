@@ -65,7 +65,7 @@ function TabItemController($scope, $element, $attrs, $compile, $animate, $md083f
         'aria-selected': true,
         'tabIndex': 0
       })
-      .on('$md.swipeleft $md.swiperight', onSwipe);
+      .on('$md083fork.swipeleft $md083fork.swiperight', onSwipe);
 
     toggleAnimationClass(rightToLeft);
     $animate.removeClass(self.contentContainer, 'ng-hide');
@@ -83,7 +83,7 @@ function TabItemController($scope, $element, $attrs, $compile, $animate, $md083f
         'aria-selected': false,
         'tabIndex': -1
       })
-      .off('$md.swipeleft $md.swiperight', onSwipe);
+      .off('$md083fork.swipeleft $md083fork.swiperight', onSwipe);
 
     toggleAnimationClass(rightToLeft);
     $animate.addClass(self.contentContainer, 'ng-hide');

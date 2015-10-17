@@ -23,17 +23,17 @@ describe('md083fork-slider', function() {
     var slider = setup('ng-model="value" min="0" max="100"');
     $rootScope.$apply('value = 50');
 
-    slider.triggerHandler({type: '$md.pressdown', pointer: { x: 30 }});
-    slider.triggerHandler({type: '$md.dragstart', pointer: { x: 30 } });
+    slider.triggerHandler({type: '$md083fork.pressdown', pointer: { x: 30 }});
+    slider.triggerHandler({type: '$md083fork.dragstart', pointer: { x: 30 } });
     $timeout.flush();
     expect($rootScope.value).toBe(30);
 
     //When going past max, it should clamp to max
-    slider.triggerHandler({type: '$md.drag', pointer: { x: 150 } });
+    slider.triggerHandler({type: '$md083fork.drag', pointer: { x: 150 } });
     $timeout.flush();
     expect($rootScope.value).toBe(100);
 
-    slider.triggerHandler({type: '$md.drag', pointer: { x: 50 }});
+    slider.triggerHandler({type: '$md083fork.drag', pointer: { x: 50 }});
     $timeout.flush();
     expect($rootScope.value).toBe(50);
   }));
@@ -105,11 +105,11 @@ describe('md083fork-slider', function() {
     $timeout.flush();
     expect(slider[0].querySelector('.md-thumb-text').textContent).toBe('29');
 
-    slider.triggerHandler({type: '$md.pressdown', pointer: { x: 30 }});
+    slider.triggerHandler({type: '$md083fork.pressdown', pointer: { x: 30 }});
     expect(slider[0].querySelector('.md-thumb-text').textContent).toBe('30');
 
-    slider.triggerHandler({type: '$md.dragstart', pointer: { x: 31 }});
-    slider.triggerHandler({type: '$md.drag', pointer: { x: 31 }});
+    slider.triggerHandler({type: '$md083fork.dragstart', pointer: { x: 31 }});
+    slider.triggerHandler({type: '$md083fork.drag', pointer: { x: 31 }});
     expect(slider[0].querySelector('.md-thumb-text').textContent).toBe('31');
   }));
 
@@ -121,7 +121,7 @@ describe('md083fork-slider', function() {
     var slider = setup('ng-model="value" min="0" max="100" ng-change="stayAt50()"');
     var sliderCtrl = slider.controller('md083forkSlider');
 
-    slider.triggerHandler({type: '$md.pressdown', pointer: { x: 30 }});
+    slider.triggerHandler({type: '$md083fork.pressdown', pointer: { x: 30 }});
     $timeout.flush();
     expect($rootScope.value).toBe(50);
     expect(slider[0].querySelector('.md-thumb-text').textContent).toBe('50');
@@ -163,7 +163,7 @@ describe('md083fork-slider', function() {
 
     // Doesn't add active class on pressdown when disabled
     slider.triggerHandler({
-      type: '$md.pressdown',
+      type: '$md083fork.pressdown',
       pointer: {}
     });
     expect(slider).not.toHaveClass('active');
@@ -171,7 +171,7 @@ describe('md083fork-slider', function() {
     // Doesn't remove active class up on pressup when disabled
     slider.addClass('active');
     slider.triggerHandler({
-      type: '$md.pressup',
+      type: '$md083fork.pressup',
       pointer: {}
     });
     expect(slider).toHaveClass('active');
@@ -183,13 +183,13 @@ describe('md083fork-slider', function() {
     expect(slider).not.toHaveClass('active');
 
     slider.triggerHandler({
-      type: '$md.pressdown',
+      type: '$md083fork.pressdown',
       pointer: {}
     });
     expect(slider).toHaveClass('active');
 
     slider.triggerHandler({
-      type: '$md.pressup',
+      type: '$md083fork.pressup',
       pointer: {}
     });
     expect(slider).not.toHaveClass('active');

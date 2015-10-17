@@ -217,8 +217,8 @@ describe('$md083forkGesture', function() {
       var upSpy = jasmine.createSpy('pressup');
       var el = angular.element('<div>');
 
-      el.on('$md.pressdown', downSpy)
-        .on('$md.pressup', upSpy);
+      el.on('$md083fork.pressdown', downSpy)
+        .on('$md083fork.pressup', upSpy);
 
       $document.triggerHandler({
         type: 'touchstart',
@@ -255,7 +255,7 @@ describe('$md083forkGesture', function() {
         delay: 333
       });
 
-      el.on('$md.hold', holdSpy);
+      el.on('$md083fork.hold', holdSpy);
 
       $document.triggerHandler({
         type: 'touchstart',
@@ -279,7 +279,7 @@ describe('$md083forkGesture', function() {
         maxDistance: 10
       });
 
-      el.on('$md.hold', holdSpy);
+      el.on('$md083fork.hold', holdSpy);
       spyOn($timeout, 'cancel').andCallThrough();
 
       $document.triggerHandler({
@@ -309,7 +309,7 @@ describe('$md083forkGesture', function() {
         maxDistance: 10
       });
 
-      el.on('$md.hold', holdSpy);
+      el.on('$md083fork.hold', holdSpy);
 
       $document.triggerHandler({
         type: 'touchstart',
@@ -348,9 +348,9 @@ describe('$md083forkGesture', function() {
         el = angular.element('<div>');
 
         $md083forkGesture.register(el, 'drag');
-        el.on('$md.dragstart', startSpy)
-          .on('$md.drag', moveSpy)
-          .on('$md.dragend', endSpy);
+        el.on('$md083fork.dragstart', startSpy)
+          .on('$md083fork.drag', moveSpy)
+          .on('$md083fork.dragend', endSpy);
       });
     });
 
@@ -438,8 +438,8 @@ describe('$md083forkGesture', function() {
       var rightSpy = jasmine.createSpy('right');
       var el = angular.element('<div>');
 
-      el.on('$md.swipeleft', leftSpy)
-        .on('$md.swiperight', rightSpy);
+      el.on('$md083fork.swipeleft', leftSpy)
+        .on('$md083fork.swiperight', rightSpy);
 
       $document.triggerHandler({
         type: 'touchstart', target: el[0], pageX: 0, pageY: 0
@@ -467,8 +467,8 @@ describe('$md083forkGesture', function() {
       var rightSpy = jasmine.createSpy('right');
       var el = angular.element('<div>');
 
-      el.on('$md.swipeleft', leftSpy)
-        .on('$md.swiperight', rightSpy);
+      el.on('$md083fork.swipeleft', leftSpy)
+        .on('$md083fork.swiperight', rightSpy);
 
       $document.triggerHandler({
         type: 'touchstart', target: el[0], pageX: 0, pageY: 0
@@ -496,8 +496,8 @@ describe('$md083forkGesture', function() {
       var rightSpy = jasmine.createSpy('right');
       var el = angular.element('<div>');
 
-      el.on('$md.swipeleft', leftSpy)
-        .on('$md.swiperight', rightSpy);
+      el.on('$md083fork.swipeleft', leftSpy)
+        .on('$md083fork.swiperight', rightSpy);
 
       $document.triggerHandler({
         type: 'touchstart', target: el[0], pageX: 0, pageY: 0
@@ -530,8 +530,8 @@ describe('$md083forkGesture', function() {
       var rightSpy = jasmine.createSpy('right');
       var el = angular.element('<div>');
 
-      el.on('$md.swipeleft', leftSpy)
-        .on('$md.swiperight', rightSpy);
+      el.on('$md083fork.swipeleft', leftSpy)
+        .on('$md083fork.swiperight', rightSpy);
 
       $document.triggerHandler({
         type: 'touchstart', target: el[0], pageX: 0, pageY: 0
