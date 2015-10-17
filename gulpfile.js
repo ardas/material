@@ -376,7 +376,7 @@ function themeBuildStream() {
     .pipe(concat('default-theme.scss'))
     .pipe(utils.hoistScssVariables())
     .pipe(sass())
-    .pipe(utils.cssToNgConstant('material.core', '$MD_THEME_CSS'));
+    .pipe(utils.cssToNgConstant('material.083fork.core', '$MD_THEME_CSS'));
 }
 
 
