@@ -10,7 +10,7 @@ angular.module('material.083fork.core.theming', ['material.083fork.core.theming.
 /**
  * @ngdoc provider
  * @name $md083forkThemingProvider
- * @module material.core
+ * @module material.083fork.core
  *
  * @description Provider to configure the `$md083forkTheming` service.
  */

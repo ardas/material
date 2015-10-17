@@ -7,7 +7,7 @@ angular.module('material.083fork.core')
 /*
  * @ngdoc service
  * @name $$083forkInterimElement
- * @module material.core
+ * @module material.083fork.core
  *
  * @description
  *

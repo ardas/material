@@ -6,7 +6,7 @@ angular.module('material.083fork.core')
 /**
  * @ngdoc service
  * @name $md083forkMedia
- * @module material.core
+ * @module material.083fork.core
  *
  * @description
  * `$md083forkMedia` is used to evaluate whether a given media query is true or false given the

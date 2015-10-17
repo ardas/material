@@ -3,7 +3,7 @@
 
   /**
    * @ngdoc module
-   * @name material.core.componentRegistry
+   * @name material.083fork.core.componentRegistry
    *
    * @description
    * A component instance registration service.
@@ -16,7 +16,7 @@
    * @private
    * @ngdoc factory
    * @name ComponentRegistry
-   * @module material.core.componentRegistry
+   * @module material.083fork.core.componentRegistry
    *
    */
   function ComponentRegistry($log, $q) {

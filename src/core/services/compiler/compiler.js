@@ -10,7 +10,7 @@ function mdCompilerService($q, $http, $injector, $compile, $controller, $templat
   /*
    * @ngdoc service
    * @name $md083forkCompiler
-   * @module material.core
+   * @module material.083fork.core
    * @description
    * The $md083forkCompiler service is an abstraction of angular's compiler, that allows the developer
    * to easily compile an element with a templateUrl, controller, and locals.
