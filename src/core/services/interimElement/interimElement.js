@@ -395,7 +395,9 @@ function InterimElementProvider() {
           },
           remove: function() {
             self.cancelTimeout();
-            return removeDone = $q.when(showDone).then(function() {
+            /*YuVK "showDoneForRemove" -- fixed popup freeze in FF*/
+            var showDoneForRemove = -1 === showDone.$$state.status ? 1 : showDone;
+            return removeDone = $q.when(showDoneForRemove).then(function() {
               var ret = element ? options.onRemove(options.scope, element, options) : true;
               return $q.when(ret).then(function() {
                 if (!options.preserveScope) options.scope.$destroy();
