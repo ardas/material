@@ -400,7 +400,7 @@ function MdDialogProvider($$interimElementProvider) {
       options.parent = angular.element(options.parent);
 
       options.popInTarget = angular.element((options.targetEvent || {}).target);
-      var closeButton = findCloseButton();
+      var elementToFocus = options.elementToFocus || findCloseButton();
 
       configureAria(element.find('md-dialog'));
 
@@ -444,7 +444,8 @@ function MdDialogProvider($$interimElementProvider) {
           };
           element.on('click', options.dialogClickOutsideCallback);
         }
-        closeButton.focus();
+
+        element.find(elementToFocus).focus();
       });
 
 
@@ -456,7 +457,7 @@ function MdDialogProvider($$interimElementProvider) {
           var actionButtons = element[0].querySelectorAll('.md-actions button');
           closeButton = actionButtons[ actionButtons.length - 1 ];
         }
-        return angular.element(closeButton);
+        return closeButton;
       }
 
     }
